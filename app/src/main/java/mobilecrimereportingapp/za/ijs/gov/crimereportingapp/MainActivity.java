@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * Created by MaribolleR on 2017/07/01.
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*Toolbar and Button components declaration*/
     private Toolbar Toolbar;
-    private Button btnReportCrime, btnFraudCorruption, btnCases, btnCourtFinder, btnCompose, btnFeedback;
+    private Button btnReportCrime, btnFraudCorruption, btnCases, btnCourtFinder, btnCompose, btnFeedback, btnEmergency, btnUnsafe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,47 +37,64 @@ public class MainActivity extends AppCompatActivity {
         btnCourtFinder = (Button) findViewById(R.id.btnCourtfinder);
         btnCompose = (Button) findViewById(R.id.btnCompose);
         btnFeedback = (Button) findViewById(R.id.btnFeedback);
+        btnEmergency = (Button) findViewById(R.id.btnEmergency);
+        btnUnsafe = (Button) findViewById(R.id.btnFeelsafe);
+
 
         /*Button listeners for clickable button events*/
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "Report a Crime Selected.", Toast.LENGTH_LONG).show();
             }
         });
 
         btnFraudCorruption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "Report Fraud and Corruption Selected.", Toast.LENGTH_LONG).show();
             }
         });
 
         btnCases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "My Cases Selected.", Toast.LENGTH_LONG).show();
             }
         });
 
         btnCourtFinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "Court Finder Selected.", Toast.LENGTH_LONG).show();
             }
         });
 
         btnCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "Compose Message Selected.", Toast.LENGTH_LONG).show();
             }
         });
 
         btnFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Feedback Selected.", Toast.LENGTH_LONG).show();
+            }
+        });
 
+        btnEmergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Emergency Created.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btnUnsafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Feeling unsafe. Distress signal sent.", Toast.LENGTH_LONG).show();
             }
         });
 
