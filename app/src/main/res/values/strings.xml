@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">Crime Reporting App</string>
+    <string name="app_name">Crime Reporting</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="terms">Terms and conditions</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
+    <string name="feeling_unsafe">Feeling Unsafe</string>
+    <string name="emergency">Emergency</string>
+    <string name="compose_message">Compose Message</string>
+    <string name="provide_feedback">Provide Feedback</string>
+    <string name="court_finder">Court Finder</string>
+    <string name="my_cases">My Cases</string>
+    <string name="report_fraud_and_corruption">Report Fraud and Corruption</string>
+    <string name="report_crime">Report Crime</string>
+    <string name="single_row">Single row</string>
+    <string name="welcome">Welcome Jimmy Mapunya</string>
+    <string name="email">jimmymapunya@ijs.gov.za</string>
+    <string name="inbox">Inbox</string>
+    <string name="notifications">Notifications</string>
 </resources>
