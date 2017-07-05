@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*Toolbar and Buttons instantiation*/
         mToolbar = (Toolbar) findViewById(R.id.appBar);
-        mBtnReportCrime = (Button) findViewById(R.id.btnreportcrime);
+        mBtnReportCrime = (Button) findViewById(R.id.btnReportcrime);
 
         mBtnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
