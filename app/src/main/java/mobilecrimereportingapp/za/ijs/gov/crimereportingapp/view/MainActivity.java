@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View.NavigationDrawerFrag;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View.NotificationsActivity;
+
 /**
  * Created by MaribolleR on 2017/07/01.
  * Purpose: Main class for the crime reporting app.
