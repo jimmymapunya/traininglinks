@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model;
 
 /**
  * Created by MaribolleR on 2017/04/17.
@@ -6,6 +6,7 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp;
 
 public class NavigationInfo {
 
+    //message
     private int iconID;
     private String itemName;
 
