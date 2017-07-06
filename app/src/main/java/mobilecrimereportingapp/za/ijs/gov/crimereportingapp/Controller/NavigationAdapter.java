@@ -1,7 +1,6 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Controller;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
+
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model.NavigationInfo;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
 
 /**
@@ -29,6 +31,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.na
 
     private List<NavigationInfo> navigationData= Collections.emptyList();
     private Context context;
+    //
 
     public NavigationAdapter(Context context, List<NavigationInfo> navigationData){
         this.navigationData = navigationData;
