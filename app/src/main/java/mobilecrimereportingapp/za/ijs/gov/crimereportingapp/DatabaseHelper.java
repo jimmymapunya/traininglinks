@@ -37,7 +37,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //contentValues.put();
+        contentValues.put(COL_1,notificationCount);
+        contentValues.put(COL_2,inboxCount);
+        contentValues.put(COL_3,caseCount);
 
         return true;
     }
