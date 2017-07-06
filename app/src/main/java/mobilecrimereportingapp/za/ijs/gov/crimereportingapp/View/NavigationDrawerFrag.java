@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View;
 
 
 import android.content.Context;
@@ -18,6 +18,10 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Controller.NavigationAdapter;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model.NavigationInfo;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -35,7 +39,7 @@ public class NavigationDrawerFrag extends Fragment {
     /*Data members to be tracked of if the drawer has been opened before.*/
     private boolean userKnowsAboutDrawer;
     private boolean fromSavedInstance;
-
+//
     /*Declaration of view for the drawer*/
     private View fragView;
     /*Recycler view declaration*/
