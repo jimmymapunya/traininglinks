@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Controller;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model.NavigationInfo;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.NavigationInfo;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
 

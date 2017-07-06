@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 
 import android.content.Context;
@@ -18,8 +18,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Controller.NavigationAdapter;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model.NavigationInfo;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.NavigationAdapter;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.NavigationInfo;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
 /**

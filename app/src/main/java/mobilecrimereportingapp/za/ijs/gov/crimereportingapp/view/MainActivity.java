@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View.NavigationDrawerFrag;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.View.NotificationsActivity;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
 /**
  * Created by MaribolleR on 2017/07/01.

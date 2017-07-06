@@ -1,4 +1,4 @@
-package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.Model;
+package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model;
 
 /**
  * Created by MaribolleR on 2017/04/17.
