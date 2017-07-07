@@ -1,5 +1,6 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class MainActivity extends AppCompatActivity {
 
     /*Toolbar and Button components declaration*/
+    private Context context=this;
     private Toolbar Toolbar;
     private Button btnReportCrime, btnFraudCorruption, btnCases, btnCourtFinder, btnCompose, btnFeedback, btnEmergency, btnUnsafe;
 
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         btnCases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                startActivity(new Intent(context, CaseListActivity.class));
                 Toast.makeText(getApplicationContext(), "My Cases Selected.", Toast.LENGTH_LONG).show();
             }
         });

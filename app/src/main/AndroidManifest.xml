@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.NotificationsActivity"></activity>
+        <activity android:name=".view.NotificationsActivity" />
+        <activity android:name=".view.CaseListActivity"></activity>
     </application>
 
 </manifest>

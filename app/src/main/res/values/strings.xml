@@ -18,5 +18,16 @@
     <string name="email">jimmymapunya@ijs.gov.za</string>
     <string name="inbox">Inbox</string>
     <string name="notifications">Notifications</string>
-    <string name="title_activity_provide_feedback">ProvideFeedback</string>
+    <string name="str_caseNo">Case No: 25/2017/95</string>
+    <string name="str_offense">Adam Mkhabele accused of attempted murder</string>
+    <string name="str_courtDate">26 May 2017</string>
+    <string name="str_arrest">Arrest</string>
+    <string name="str_investigate">Investigate</string>
+    <string name="str_trial">Trial</string>
+    <string name="str_bail">Bail hearing</string>
+    <string name="str_vedict">Verdict</string>
+    <string name="str_aquit">Aquit</string>
+    <string name="str_sentencing">Sentencing</string>
+    <string name="str_search">Search</string>
+    <string name="str_image">Image</string>
 </resources>
