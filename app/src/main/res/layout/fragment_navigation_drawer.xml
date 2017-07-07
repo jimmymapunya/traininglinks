@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.NavigationDrawerFrag">
+    tools:context="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag">
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
