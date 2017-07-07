@@ -18,4 +18,5 @@
     <string name="email">jimmymapunya@ijs.gov.za</string>
     <string name="inbox">Inbox</string>
     <string name="notifications">Notifications</string>
+    <string name="title_activity_provide_feedback">ProvideFeedback</string>
 </resources>
