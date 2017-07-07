@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by MaribolleR on 2017/07/05.
  */
 
+
 public class DatabaseHelper extends SQLiteOpenHelper
 {
     public static final String DB_NAME = "DashboardDB.db";
