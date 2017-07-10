@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -17,6 +22,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class ComposeMessageActivity extends AppCompatActivity {
 
     private Toolbar Toolbar;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,25 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+        addItemsOnSpinner();
+
+
+
+
+    }
+
+    void addItemsOnSpinner()
+    {
+        spinner = (Spinner) findViewById(R.id.spinner);
+        List<String> list = new ArrayList<String>();
+        list.add("10/2017/11");
+        list.add("10/2017/98");
+        list.add("09/2017/101");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
 
     }
 
