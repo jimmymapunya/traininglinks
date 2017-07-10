@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -21,6 +23,15 @@ public class ReportCrimeActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("Report Crime");
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.injuries_choice, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
         setSupportActionBar(Toolbar);
 
