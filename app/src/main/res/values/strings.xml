@@ -19,4 +19,5 @@
     <string name="inbox">Inbox</string>
     <string name="notifications">Notifications</string>
     <string name="title_activity_provide_feedback">ProvideFeedback</string>
+    <string name="title_activity_court_finder">Court Finder</string>
 </resources>
