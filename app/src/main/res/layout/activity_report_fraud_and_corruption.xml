@@ -13,6 +13,159 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="#000">
+
+                <EditText
+                    android:id="@+id/plain_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/edittext_formatted"
+                    android:drawableStart="@drawable/search"
+                    android:hint="@string/str_search"
+                    android:inputType="text"
+                    android:padding="5dp" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/txtFullnames"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/txtEmail"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_margin="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Full names"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txtFullnames"
+                android:layout_margin="5dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Email Address"
+                android:inputType="text"
+                android:padding="10dp"
+                android:paddingTop="15dp" />
+
+            <EditText
+                android:id="@+id/txtCellnumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/txtEmail"
+                android:layout_margin="5dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Cellphone Number"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/txtIdnumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/txtCellnumber"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="ID Number"
+                android:inputType="text"
+                android:padding="10dp"
+                android:paddingTop="15dp" />
+
+            <Button
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/emergencybutton"
+                android:text="Submit"
+                android:textColor="#fff"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignStart="@+id/editText5"
+                android:layout_below="@+id/editText6"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Corruption details"
+                android:inputType="text"
+                android:padding="10dp"
+                android:paddingTop="15dp" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText5"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Physical Address"
+                android:inputType="text"
+                android:padding="10dp"
+                android:paddingTop="15dp" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edittext_formatted"
+                android:hint="Company/Individual commiting fraud"
+                android:inputType="text"
+                android:padding="10dp"
+                android:paddingTop="15dp"
+                android:layout_below="@+id/textView2"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtIdnumber"
+                android:layout_centerHorizontal="true"
+                android:text="Fraud/Corruption Details"
+                android:textAppearance="@android:style/TextAppearance.Material.Small"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
         <fragment
             android:id="@+id/frag_nav_drawer"
             android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"
