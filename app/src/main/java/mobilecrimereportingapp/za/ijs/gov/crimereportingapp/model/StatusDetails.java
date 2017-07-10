@@ -14,6 +14,15 @@ public class StatusDetails {
     private String actionLocation;
     private String dateCreated;
 
+    public StatusDetails(String caseNo, String processName, boolean isCurrent, String actionDate, String actionLocation, String dateCreated) {
+        this.caseNo = caseNo;
+        this.processName = processName;
+        this.isCurrent = isCurrent;
+        this.actionDate = actionDate;
+        this.actionLocation = actionLocation;
+        this.dateCreated = dateCreated;
+    }
+
     public String getCaseNo() {
         return caseNo;
     }

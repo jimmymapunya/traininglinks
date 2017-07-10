@@ -14,16 +14,27 @@ public class CaseDetails {
 
     private String caseNo;
     private String victim;
-    private boolean accused;
+    private String accused;
     private String offense;
     private String caseDesc;
     private ArrayList<StatusDetails> status;
+
 
     public CaseDetails(){
 
         status = new ArrayList<StatusDetails>();
 
     }
+
+    public CaseDetails(String caseNo, String victim, String accused, String offense, String caseDesc, ArrayList<StatusDetails> status) {
+        this.caseNo = caseNo;
+        this.victim = victim;
+        this.accused = accused;
+        this.offense = offense;
+        this.caseDesc = caseDesc;
+        this.status = status;
+    }
+
     public String getCaseNo() {
         return caseNo;
     }
@@ -40,11 +51,11 @@ public class CaseDetails {
         this.victim = victim;
     }
 
-    public boolean isAccused() {
+    public String getAccused() {
         return accused;
     }
 
-    public void setAccused(boolean accused) {
+    public void setAccused(String accused) {
         this.accused = accused;
     }
 
@@ -68,8 +79,10 @@ public class CaseDetails {
         return status;
     }
 
-    public void setStatus(StatusDetails statusDetails) {
-        status.add(statusDetails);
+    public void setStatus(ArrayList<StatusDetails> status) {
+
+       this.status = status;
+
     }
 
 }
