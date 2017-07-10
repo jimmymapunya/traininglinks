@@ -58,7 +58,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
             return true;
         } else if (id == R.id.notifications) {
-            startActivity(new Intent(this, NotificationsActivity.class));
+            //startActivity(new Intent(this, NotificationsActivity.class));
 
         } else if (id == R.id.inbox) {
             /*Add some inbox code to redirect*/

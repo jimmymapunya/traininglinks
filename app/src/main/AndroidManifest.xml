@@ -43,7 +43,8 @@
         <activity android:name=".view.OverallFeedbackActivity" />
         <activity android:name=".view.EventFeedbackActivity" />
         <activity android:name=".view.IndividualFeedbackActivity" />
-        <activity android:name=".view.ReportCrimeActivity"></activity>
+        <activity android:name=".view.ReportCrimeActivity" />
+        <activity android:name=".view.ReportFraudAndCorruptionActivity"></activity>
     </application>
 
 </manifest>
