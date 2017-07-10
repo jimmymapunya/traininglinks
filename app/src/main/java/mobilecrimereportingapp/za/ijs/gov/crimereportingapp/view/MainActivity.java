@@ -22,8 +22,8 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class MainActivity extends AppCompatActivity {
 
     /*Toolbar and Button components declaration*/
-    Context context;
     private Toolbar Toolbar;
+    Context context = this;
     private Button btnReportCrime, btnFraudCorruption, btnCases, btnCourtFinder, btnCompose, btnFeedback, btnEmergency, btnUnsafe;
 
     @Override
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btnCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Compose Message Selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, NotificationsActivity.class));
             }
         });
 
