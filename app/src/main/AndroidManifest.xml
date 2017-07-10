@@ -24,8 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ProvideFeedback" />
-        <activity android:name=".view.NotificationsActivity"/>
-        <activity android:name=".view.ComposeMessageActivity"/>
+        <activity android:name=".view.ComposeMessageActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,7 +42,8 @@
             android:label="@string/title_activity_court_finder" />
         <activity android:name=".view.OverallFeedbackActivity" />
         <activity android:name=".view.EventFeedbackActivity" />
-        <activity android:name=".view.IndividualFeedbackActivity"></activity>
+        <activity android:name=".view.IndividualFeedbackActivity" />
+        <activity android:name=".view.ReportCrimeActivity"></activity>
     </application>
 
 </manifest>
