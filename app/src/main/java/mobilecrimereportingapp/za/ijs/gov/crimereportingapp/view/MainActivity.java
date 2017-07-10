@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btnCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, NotificationsActivity.class));
+                startActivity(new Intent(context, ComposeMessageActivity.class));
             }
         });
 

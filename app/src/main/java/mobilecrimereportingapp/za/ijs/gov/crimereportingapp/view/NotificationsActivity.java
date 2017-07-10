@@ -26,7 +26,7 @@ public class NotificationsActivity extends AppCompatActivity {
         setSupportActionBar(Toolbar);
 
         /*Back icon for navigation drawer*/
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
