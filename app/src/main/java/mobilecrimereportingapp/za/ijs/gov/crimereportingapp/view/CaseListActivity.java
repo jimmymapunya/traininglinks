@@ -32,18 +32,7 @@ public class CaseListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_case_list);
          /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
-        Toolbar.setTitle("Compose Message");
-
-
-        setSupportActionBar(Toolbar);
-
-        /*Back icon for navigation drawer*/
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
-                getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
-
-        navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+        Toolbar.setTitle("Case List");
 
 
         ArrayList<StatusDetails> statusDetailsList = new ArrayList<>();
@@ -86,6 +75,16 @@ public class CaseListActivity extends AppCompatActivity {
 
         // Setting the adapter to the listView
         listView.setAdapter(adapter);
+
+        setSupportActionBar(Toolbar);
+
+        /*Back icon for navigation drawer*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
+                getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
+
+        navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
     }
 

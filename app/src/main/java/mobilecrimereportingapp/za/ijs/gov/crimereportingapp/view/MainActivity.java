@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         btnCourtFinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Court Finder Selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, CourtFinderActivity.class));
             }
         });
 
