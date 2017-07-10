@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Report a Crime Selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, ReportCrimeActivity.class));
             }
         });
 
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         } else if (id == R.id.notifications) {
-            startActivity(new Intent(this, NotificationsActivity.class));
+            //startActivity(new Intent(this, NotificationsActivity.class));
 
         } else if (id == R.id.inbox) {
             /*Add some inbox code to redirect*/
