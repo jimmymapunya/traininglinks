@@ -23,11 +23,28 @@ import android.widget.SimpleAdapter;
 
 public class CaseListActivity extends AppCompatActivity {
 
+    private Toolbar Toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case_list);
+         /*Toolbar and Buttons instantiation*/
+        Toolbar = (Toolbar) findViewById(R.id.appBar);
+        Toolbar.setTitle("Compose Message");
+
+
+        setSupportActionBar(Toolbar);
+
+        /*Back icon for navigation drawer*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
+                getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
+
+        navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+
 
         ArrayList<StatusDetails> statusDetailsList = new ArrayList<>();
         statusDetailsList.add(new StatusDetails("02/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
@@ -69,6 +86,31 @@ public class CaseListActivity extends AppCompatActivity {
 
         // Setting the adapter to the listView
         listView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+
+            return true;
+        } else if (id == R.id.notifications) {
+            //startActivity(new Intent(this, NotificationsActivity.class));
+
+        } else if (id == R.id.inbox) {
+            /*Add some inbox code to redirect*/
+        }
+
+        return false;
 
     }
 }

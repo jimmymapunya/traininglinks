@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         btnFraudCorruption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Report Fraud and Corruption Selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, ReportFraudAndCorruptionActivity.class));
             }
         });
 
         btnCases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "My Cases Selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, CaseListActivity.class));
             }
         });
 
