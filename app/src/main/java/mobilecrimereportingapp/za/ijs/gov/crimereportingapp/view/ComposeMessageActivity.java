@@ -22,7 +22,8 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class ComposeMessageActivity extends AppCompatActivity {
 
     private Toolbar Toolbar;
-    private Spinner spinner;
+    private Spinner spinner1;
+    private Spinner spinner2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +46,17 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
-        addItemsOnSpinner();
+        addItemsOnSpinner1();
+        addItemsOnSpinner2();
 
 
 
 
     }
 
-    void addItemsOnSpinner()
+    void addItemsOnSpinner1()
     {
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner1 = (Spinner) findViewById(R.id.spinner1);
         List<String> list = new ArrayList<String>();
         list.add("10/2017/11");
         list.add("10/2017/98");
@@ -63,7 +65,21 @@ public class ComposeMessageActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+        spinner1.setAdapter(dataAdapter);
+
+    }
+    void addItemsOnSpinner2()
+    {
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
+        List<String> list = new ArrayList<String>();
+        list.add("Jimmy Mapunya");
+        list.add("Thabang Banks");
+        list.add("Joe Smith");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
 
     }
 
