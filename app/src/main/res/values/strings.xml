@@ -32,6 +32,10 @@
     <string name="str_sentencing">Sentencing</string>
     <string name="str_search">Search</string>
     <string name="str_image">Image</string>
+    <string name="str_overall_feedback">Overall Case Feedback</string>
+    <string name="str_event_feedback">Case Stage Feedback</string>
+    <string name="str_Individual_feedback">Case Role Players Feedback</string>
+    <string name="title_activity_maps">Map</string>
 
     <string-array name="injuries_choice">
         <item>Yes</item>
