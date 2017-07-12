@@ -28,6 +28,7 @@ public class ProvideFeedback extends AppCompatActivity {
         Toolbar.setTitle("Provide Feedback");
 
 
+
         setSupportActionBar(Toolbar);
 
         /*Back icon for navigation drawer*/
