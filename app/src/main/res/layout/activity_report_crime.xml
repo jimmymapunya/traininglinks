@@ -118,10 +118,10 @@
                     android:text="Was there any injuries to anyone?" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinnerInjuries"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_style"
+                    android:background="@drawable/bg_spinner_style"
                     android:layout_below="@+id/lblInjuries"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -131,7 +131,7 @@
                     android:id="@+id/txtInjuries"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinner"
+                    android:layout_below="@+id/spinnerInjuries"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
@@ -139,9 +139,9 @@
                     android:gravity="top|left"
                     android:hint="Describe those injuries"
                     android:inputType="textMultiLine"
-                    android:lines="1"
+                    android:lines="2"
                     android:maxLines="10"
-                    android:minLines="1"
+                    android:minLines="2"
                     android:scrollbars="vertical"
                     android:textColorHint="@color/colorAccent" />
                 <TextView
@@ -162,16 +162,117 @@
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="30dp"
                     android:text="(e.g condoms, ropes, firearms)?" />
-
                 <Spinner
-                    android:id="@+id/spinnerr"
+                    android:id="@+id/spinnerWeapons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_style"
-                    android:layout_below="@+id/lblInjuries"
+                    android:background="@drawable/bg_spinner_style"
+                    android:layout_below="@+id/lblWeaponsSub"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/txtWeapons"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerWeapons"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="top|left"
+                    android:hint="Describe those objects"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:maxLines="10"
+                    android:minLines="2"
+                    android:scrollbars="vertical"
+                    android:textColorHint="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/lblSceneItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtWeapons"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Was there any items removed from the crime scene ?" />
+
+                <Spinner
+                    android:id="@+id/spinnerSceneItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner_style"
+                    android:layout_below="@+id/lblSceneItems"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/txtSceneItems"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerSceneItems"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="top|left"
+                    android:hint="Describe those items"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:maxLines="10"
+                    android:minLines="2"
+                    android:scrollbars="vertical"
+                    android:textColorHint="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/lblSurroundings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSceneItems"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Describe the surroundings where the incident took place." />
+
+                <EditText
+                    android:id="@+id/txtSurroundings"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblSurroundings"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="top|left"
+                    android:hint=""
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLines="10"
+                    android:minLines="3"
+                    android:scrollbars="vertical"
+                    android:textColorHint="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/lblKnowOffender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSurroundings"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="30dp"
+                    android:text="Do you know the offender?" />
+                <Spinner
+                    android:id="@+id/spinnerKnowOffender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner_style"
+                    android:layout_below="@+id/lblKnowOffender"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"/>
+
             </RelativeLayout>
         </ScrollView>
 
