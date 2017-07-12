@@ -1,11 +1,15 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -17,6 +21,9 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class ProvideFeedback extends AppCompatActivity {
 
     private Toolbar Toolbar;
+    Context context = this;
+    private  Button btnOverallFeedback, btnEventFeedback, btnIndividualFeedback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //lets commit first try
@@ -27,10 +34,33 @@ public class ProvideFeedback extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("Provide Feedback");
 
+        btnOverallFeedback = (Button) findViewById(R.id.btnOverallFeedback);
+        btnEventFeedback = (Button) findViewById(R.id.btnEventFeedback);
+        btnIndividualFeedback = (Button) findViewById(R.id.btnIndividualFeedback);
 
+
+        btnOverallFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, OverallFeedbackActivity.class));
+            }
+        });
+
+        btnEventFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, EventFeedbackActivity.class));
+            }
+        });
+
+        btnIndividualFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, IndividualFeedbackActivity.class));
+            }
+        });
 
         setSupportActionBar(Toolbar);
-
         /*Back icon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
