@@ -22,6 +22,133 @@
         android:layout_height="match_parent">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtFeedbackQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txtStarRating"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="How do you feel about the hekp you just received?"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStarRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ratingBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="9dp"
+                android:text="Please give it a star rating" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/checkBox2EF"
+                android:layout_centerHorizontal="true" />
+
+            <CheckBox
+                android:id="@+id/checkBoxEF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox4EF"
+                android:layout_below="@+id/checkBox2EF"
+                android:text="Time spent on one case is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox2EF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtFeedbackQuestion"
+                android:layout_alignStart="@+id/checkBoxEF"
+                android:layout_centerVertical="true"
+                android:text="Time spent on one case is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox4EF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox5EF"
+                android:layout_below="@+id/checkBoxEF"
+                android:text="Time spent on one case is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox5EF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txtOverallFeedbackEditText"
+                android:layout_alignEnd="@+id/txtStarRating"
+                android:layout_marginBottom="10dp"
+                android:text="Time spent on one case is too long" />
+
+            <EditText
+                android:id="@+id/txtOverallFeedbackEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Additional Comments"
+                android:textAlignment="viewStart"
+                android:layout_above="@+id/btnSubmitFeedback"
+                android:layout_alignStart="@+id/checkBox5EF" />
+
+            <Button
+                android:id="@+id/btnSubmitFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btnNotNow"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/emergencybutton"
+                android:text="@string/strSubmitFeedback"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/btnNotNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/emergencybutton"
+                android:text="@string/strNotNow"
+                android:textColor="#fff" />
+
+            <Spinner
+                android:id="@+id/spinnerCaseNo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/spinnerPhase"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/spinnerPhase"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_spinner_style" />
+
+            <Spinner
+                android:id="@+id/spinnerPhase"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/txtFeedbackQuestion"
+                android:layout_alignStart="@+id/btnSubmitFeedback"
+                android:layout_below="@+id/spinnerCaseNo"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner_style" />
+
+        </RelativeLayout>
+
+
         <fragment
             android:id="@+id/frag_nav_drawer"
             android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"

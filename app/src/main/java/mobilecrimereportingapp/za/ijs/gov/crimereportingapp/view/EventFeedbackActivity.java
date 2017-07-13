@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -17,6 +22,8 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class EventFeedbackActivity extends AppCompatActivity {
 
     private Toolbar Toolbar;
+    private Spinner spinnerCaseNo;
+    private Spinner spinnerPhase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,43 @@ public class EventFeedbackActivity extends AppCompatActivity {
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+
+        addItemsOnSpinnerCaseNo();
+        addItemsOnSpinnerPhase();
+    }
+
+    void addItemsOnSpinnerCaseNo(){
+
+        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
+        List<String> list = new ArrayList<String>();
+        list.add("---Select Case No---");
+        list.add("05/2017/99");
+        list.add("07/2017/40");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                R.layout.spinner_item, list);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
+        spinnerCaseNo.setAdapter(dataAdapter);
+    }
+
+    void addItemsOnSpinnerPhase(){
+
+        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerPhase);
+        List<String> list = new ArrayList<String>();
+        list.add("---Select Phase---");
+        list.add("Investigation");
+        list.add("Arrest");
+        list.add("Bail Hearing");
+        list.add("Trial");
+        list.add("Verdict");
+        list.add("Acquit");
+        list.add("Sentencing");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                R.layout.spinner_item, list);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
+        spinnerCaseNo.setAdapter(dataAdapter);
+
     }
 
     @Override
