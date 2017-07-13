@@ -9,8 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,6 +35,10 @@ public class CaseDetailsActivity extends AppCompatActivity {
     private android.support.v7.widget.Toolbar Toolbar;
     private Bundle bundle;
     private String caseNo;
+    private String[] processNameArr;
+    private String[] actionDateArr;
+    private String[] actionLocationArr;
+    private String currentProcess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
         TextView txtCaseDesc = (TextView)findViewById(R.id.txtCaseDesc);
         TextView txtInbox = (TextView)findViewById(R.id.txtInbox);
         TextView txtNotification = (TextView)findViewById(R.id.txtNotification);
+        Button btnNavigateToCourt = (Button)findViewById(R.id.btnNavigateToCourt);
 
         txtCaseNo.setText("Case No "+caseNo);
         txtVictim.setText(bundle.getString("victim"));
@@ -58,6 +66,62 @@ public class CaseDetailsActivity extends AppCompatActivity {
         txtCaseDesc.setText(bundle.getString("caseDesc"));
         txtInbox.setText(3+ "");
         txtNotification.setText(7+"");
+        processNameArr = bundle.getStringArray("processNameArr");
+        actionDateArr = bundle.getStringArray("actionDateArr");
+        actionLocationArr = bundle.getStringArray("actionLocationArr");
+        currentProcess = bundle.getString("currentProcess");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, processNameArr);
+
+        Spinner spinProcessNames = (Spinner)findViewById(R.id.processNamesSpinner);
+        spinProcessNames.setAdapter(adapter);
+        btnNavigateToCourt.setVisibility(View.GONE);
+        for(int x=0; x<processNameArr.length; x++){
+
+            if(processNameArr[x].equals(currentProcess) && actionLocationArr[x]!=null){
+
+                btnNavigateToCourt.setVisibility(View.VISIBLE);
+
+            }
+        }
+
+        spinProcessNames.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view, int position, long id) {
+                        String processDesc ="";
+                        if(processNameArr[position].equals("Investigate")){
+
+                            if(processNameArr[position].equals(currentProcess)){
+                                processDesc = "The case is currently being investigated from "+actionDateArr[position];
+
+                            }else{
+                                processDesc = "Investigation has been processed from "+actionDateArr[position]+" until "+actionDateArr[position+1];
+                            }
+                        }
+                        if(processNameArr[position].equals("Arrest")){
+
+                            processDesc = "Suspects has been arrested on the "+actionDateArr[position]+" to "+actionLocationArr[position];
+
+                        }
+                        if(processNameArr[position].equals("Bail Hearing")){
+
+                            if(processNameArr[position].equals(currentProcess)){
+                                processDesc = "Bail Hearing will take place on the  "+actionDateArr[position]+" at "+actionLocationArr[position]+ " 08:00 AM";
+
+                            }else{
+                                processDesc = "Bail hearing took place at "+actionLocationArr[position]+ " 08:00 AM on the "+actionDateArr[position];
+                            }
+                        }
+                        TextView txtProcessDesc = (TextView)findViewById(R.id.txtProcessDesc);
+                        txtProcessDesc.setText(processDesc);
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+
+                    }
+                });
 
         setSupportActionBar(Toolbar);
 

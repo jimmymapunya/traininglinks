@@ -30,6 +30,7 @@ public class CaseListActivity extends AppCompatActivity {
     private Toolbar Toolbar;
     private Context context = this;
     ArrayList<CaseDetails> listdao = new ArrayList<>();
+    ArrayList<StatusDetails> statusDetailsList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +40,17 @@ public class CaseListActivity extends AppCompatActivity {
         Toolbar.setTitle("My Cases");
 
 
-        ArrayList<StatusDetails> statusDetailsList = new ArrayList<>();
+
         statusDetailsList.add(new StatusDetails("02/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
-        statusDetailsList.add(new StatusDetails("02/2017/25", "Arrest", false, "22-03-2017", null, "01-05-2017"));
-        statusDetailsList.add(new StatusDetails("02/2017/25", "Bail", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList.add(new StatusDetails("02/2017/25", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList.add(new StatusDetails("02/2017/25", "Bail Hearing", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
 
 
-        listdao.add(new CaseDetails("02/2017/25", "Adam Mkhabele", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("02/2017/25", "Adam Mkhabele", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("02/2017/25", "Adam Mkhabele", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("02/2017/25", "Adam Mkhabele", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("02/2017/25", "Adam Mkhabele", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        listdao.add(new CaseDetails("03/2015/99", "John Dumelo", "Hlengiwe Mkhabele", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        listdao.add(new CaseDetails("04/2017/44", "Yvone Nelson", "Adam Rabopape", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
 
         // Each row in the list stores country name, currency and flag
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
@@ -85,13 +86,34 @@ public class CaseListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+
                 Intent intent =new Intent(context, CaseDetailsActivity.class);
+
+                String[] processName = new String[statusDetailsList.size()];
+                String[] actionDate = new String[statusDetailsList.size()];
+                String[] actionLocation = new String[statusDetailsList.size()];
+                boolean[] isCurrent = new boolean[statusDetailsList.size()];
+                String currentProcess ="";
+                for(int x=0; x<statusDetailsList.size(); x++){
+
+                    processName[x] = statusDetailsList.get(x).getProcessName();
+                    actionDate[x] = statusDetailsList.get(x).getActionDate();
+                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
+                    if(statusDetailsList.get(x).isIsCurrent()){
+                        currentProcess =  statusDetailsList.get(x).getProcessName();
+                    }
+                }
 
                 intent.putExtra("caseNo",listdao.get(position).getCaseNo());
                 intent.putExtra("victim",listdao.get(position).getVictim());
                 intent.putExtra("accused",listdao.get(position).getAccused());
                 intent.putExtra("offense",listdao.get(position).getOffense());
                 intent.putExtra("caseDesc",listdao.get(position).getCaseDesc());
+                intent.putExtra("processNameArr",processName);
+                intent.putExtra("actionDateArr",actionDate);
+                intent.putExtra("actionLocationArr",actionLocation);
+                intent.putExtra("currentProcess",currentProcess);
                 startActivity(intent);
             }
         });

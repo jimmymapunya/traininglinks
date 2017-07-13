@@ -199,6 +199,8 @@
                         android:layout_toEndOf="@+id/textView10"
                         android:background="@drawable/messages_formatted"
                         android:text="3"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
                         android:textSize="16dp" />
 
                 </RelativeLayout>
@@ -218,6 +220,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="48dp"
                         android:text="Notifications"
+                        android:textStyle="bold"
                         android:textSize="16dp" />
 
                     <TextView
@@ -226,14 +229,95 @@
                         android:layout_height="60dp"
                         android:textAlignment="center"
                         android:layout_alignTop="@+id/textView11"
-                        android:layout_marginLeft="108dp"
+                        android:layout_marginLeft="105dp"
                         android:layout_toEndOf="@+id/textView11"
                         android:text="7"
                         android:background="@drawable/messages_formatted"
-
+                        android:textColor="#fff"
+                        android:textStyle="bold"
                         android:textSize="16dp" />
 
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout8"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:background="#fff">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="48dp"
+                        android:text="Stage"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/processNamesSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="160dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentStart="true" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/relativeLayout19"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:background="#fff">
+
+                    <TextView
+                        android:id="@+id/txtProcessDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="48dp"
+                        android:text="describe"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/relativeLayout18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:background="#eee">
+
+                    <Button
+                        android:id="@+id/btnNavigateToCourt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/emergencybutton"
+                        android:text="Navigete to court"
+                        android:textColor="#fff" />
+
+                    <Button
+                        android:id="@+id/btnProvideFeedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnNavigateToCourt"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/emergencybutton"
+                        android:text="Provide Feedback"
+                        android:textColor="#fff" />
+
+                </RelativeLayout>
+
 
 
             </LinearLayout>
