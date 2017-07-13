@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -22,7 +24,10 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("Report Fraud And Corruption");
 
-
+        String[] arrTypes = {"Company","Person"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrTypes);
+        Spinner spinTypes = (Spinner)findViewById(R.id.spinnerType);
+        spinTypes.setAdapter(adapter);
         setSupportActionBar(Toolbar);
 
         /*Back icon for navigation drawer*/

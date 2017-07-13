@@ -29,20 +29,17 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:background="#000">
-
-                <EditText
-                    android:id="@+id/plain_text_input"
+                <Spinner
+                    android:id="@+id/spinnerType"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/edittext_formatted"
-                    android:drawableStart="@drawable/search"
-                    android:hint="@string/str_search"
-                    android:inputType="text"
-                    android:padding="5dp" />
+                    android:background="@drawable/bg_spinner_style"
+                    android:layout_alignStart="@+id/plain_text_input" />
+
 
             </RelativeLayout>
 

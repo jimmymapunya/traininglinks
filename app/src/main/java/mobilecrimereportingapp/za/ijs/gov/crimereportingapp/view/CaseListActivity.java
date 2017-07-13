@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.CaseAdapter;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.CaseDetails;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.StatusDetails;
 
@@ -30,7 +31,8 @@ public class CaseListActivity extends AppCompatActivity {
     private Toolbar Toolbar;
     private Context context = this;
     ArrayList<CaseDetails> listdao = new ArrayList<>();
-    ArrayList<StatusDetails> statusDetailsList = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +41,53 @@ public class CaseListActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("My Cases");
 
+        getIntent().removeExtra("key");
+        getIntent().removeExtra("caseNo");
+        getIntent().removeExtra("victim");
+        getIntent().removeExtra("accused");
+        getIntent().removeExtra("offense");
+        getIntent().removeExtra("caseDesc");
+        getIntent().removeExtra("processNameArr");
+        getIntent().removeExtra("actionDateArr");
+        getIntent().removeExtra("actionLocationArr");
+        getIntent().removeExtra("currentProcess");
 
+        ArrayList<StatusDetails> statusDetailsList1 = new ArrayList<>();
+        ArrayList<StatusDetails> statusDetailsList2 = new ArrayList<>();
+        ArrayList<StatusDetails> statusDetailsList3 = new ArrayList<>();
+        ArrayList<StatusDetails> statusDetailsList4 = new ArrayList<>();
+        ArrayList<StatusDetails> statusDetailsList5 = new ArrayList<>();
 
-        statusDetailsList.add(new StatusDetails("02/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
-        statusDetailsList.add(new StatusDetails("02/2017/25", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
-        statusDetailsList.add(new StatusDetails("02/2017/25", "Bail Hearing", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList1.add(new StatusDetails("02/2016/98", "Investigate", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList1.add(new StatusDetails("02/2016/98", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList1.add(new StatusDetails("02/2016/98", "Bail Hearing", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
 
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Investigate", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Trial", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Verdict", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Sentence", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
 
-        listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("03/2015/99", "John Dumelo", "Hlengiwe Mkhabele", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("04/2017/44", "Yvone Nelson", "Adam Rabopape", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
-        listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList));
+        statusDetailsList3.add(new StatusDetails("04/2017/44", "Investigate", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList3.add(new StatusDetails("04/2017/44", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList3.add(new StatusDetails("04/2017/44", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList3.add(new StatusDetails("04/2017/44", "Trial", true, "22-03-2017", null, "01-05-2017"));
+
+        statusDetailsList4.add(new StatusDetails("06/2014/11", "Investigate", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList4.add(new StatusDetails("06/2014/11", "Aquit", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+
+        statusDetailsList5.add(new StatusDetails("06/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
+        statusDetailsList5.add(new StatusDetails("06/2017/25", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList5.add(new StatusDetails("06/2017/25", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList5.add(new StatusDetails("06/2017/25", "Trial", true, "22-03-2017", null, "01-05-2017"));
+
+        listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList1));
+        listdao.add(new CaseDetails("03/2015/99", "John Dumelo", "Hlengiwe Mkhabele", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList2));
+        listdao.add(new CaseDetails("04/2017/44", "Yvone Nelson", "Adam Rabopape", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList3));
+        listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList4));
+        listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList5));
+
 
         // Each row in the list stores country name, currency and flag
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
@@ -62,6 +99,19 @@ public class CaseListActivity extends AppCompatActivity {
             hm.put("caseNo", listdao.get(i).getCaseNo());
             hm.put("caseContent", "Crime: " + listdao.get(i).getOffense() + "Suspect(s) " + listdao.get(i).getAccused());
             hm.put("dateCreated", listdao.get(i).getStatus().get(status_last_index).getDateCreated());
+            String status = "";
+            for(int y=0; y< listdao.get(i).getStatus().size(); y++){
+
+
+                if(listdao.get(i).getStatus().get(y).isIsCurrent()){
+                    status = status  + listdao.get(i).getStatus().get(y).getProcessName() + "*#";
+                }else{
+                    status = status  + listdao.get(i).getStatus().get(y).getProcessName() + "#";
+                }
+
+            }
+
+            hm.put("status"+ (i), status);
             aList.add(hm);
         }
 
@@ -73,7 +123,8 @@ public class CaseListActivity extends AppCompatActivity {
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
-        SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.activity_case_list_row, from, to);
+
+        CaseAdapter adapter = new CaseAdapter(getBaseContext(), aList, R.layout.activity_case_list_row, from, to);
 
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(R.id.listview);
@@ -87,7 +138,18 @@ public class CaseListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
+                getIntent().removeExtra("key");
+                getIntent().removeExtra("caseNo");
+                getIntent().removeExtra("victim");
+                getIntent().removeExtra("accused");
+                getIntent().removeExtra("offense");
+                getIntent().removeExtra("caseDesc");
+                getIntent().removeExtra("processNameArr");
+                getIntent().removeExtra("actionDateArr");
+                getIntent().removeExtra("actionLocationArr");
+                getIntent().removeExtra("currentProcess");
 
+                ArrayList<StatusDetails> statusDetailsList = listdao.get(position).getStatus();
                 Intent intent =new Intent(context, CaseDetailsActivity.class);
 
                 String[] processName = new String[statusDetailsList.size()];
@@ -154,5 +216,9 @@ public class CaseListActivity extends AppCompatActivity {
         return false;
 
     }
+    public ArrayList<CaseDetails> getCaseDetails(){
+        return listdao;
+    }
+
 }
 
