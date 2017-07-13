@@ -28,6 +28,7 @@ import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.AppSingleton;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
 
 import static java.security.AccessController.getContext;
 
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private Button btnReportCrime, btnFraudCorruption, btnCases, btnCourtFinder, btnCompose, btnFeedback, btnEmergency, btnUnsafe;
     private String username, role, device_id, longitude, latitude;
+    private double lat,lon;
+    GPSTracker gpsTracker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         volleyStringRequest(URL_request);
         setSupportActionBar(Toolbar);
 
@@ -164,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
     //create emergency
     public void createEmergency(String url)
     {
+        gpsTracker = new GPSTracker(context);
+        lat = gpsTracker.getLatitude();
+        lon = gpsTracker.getLongitude();
+        Toast.makeText(MainActivity.this,"Lon "+lat,Toast.LENGTH_LONG).show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -186,8 +195,8 @@ public class MainActivity extends AppCompatActivity {
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
                 username = "jimmy";
                 role = "admin";
-                longitude = "1233.555";
-                latitude = "13334.55";
+                longitude = String.valueOf(lat);
+                latitude = String.valueOf(lon);
 
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("AuthDetail.UserName",username);
