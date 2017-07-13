@@ -36,6 +36,8 @@
     <string name="str_event_feedback">Event Feedback</string>
     <string name="str_Individual_feedback">Individual Feedback</string>
     <string name="title_activity_maps">Map</string>
+    <string name="strSubmitFeedback">Submit Feedback</string>
+    <string name="strNotNow">Not Now</string>
 
     <string-array name="injuries_choice">
         <item>Yes</item>
