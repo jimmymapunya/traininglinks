@@ -16,51 +16,62 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_spinner_style"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"/>
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_spinner_style"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"/>/>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="410dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:orientation="vertical">
 
-
-            <EditText
-                android:id="@+id/editText8"
-                android:layout_width="250dp"
-                android:layout_height="45dp"
-                android:ems="10"
-                android:background="@drawable/edit_text_style"
-                android:hint="Enter message" />
-
-            <Button
-                android:id="@+id/button3"
+            <LinearLayout
+                android:id="@+id/main1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/emergencybutton"
-                android:textColor="#fff"
-                android:text="Send" />
-        </LinearLayout>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner_style" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="50"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editText8"
+                    android:layout_width="250dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edit_text_style"
+                    android:ems="10"
+                    android:hint="Enter message" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/emergencybutton"
+                    android:text="Send"
+                    android:textColor="#fff" />
+            </LinearLayout>
 
         </LinearLayout>
 
