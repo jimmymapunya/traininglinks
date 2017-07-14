@@ -23,12 +23,16 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.AppSingleton;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.DashboardModel;
 
 import static java.security.AccessController.getContext;
 
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private String username, role, device_id, longitude, latitude;
     private double lat,lon;
     GPSTracker gpsTracker;
+
+    String notificationCount, inboxCount, myCaseCount;
 
 
     @Override
@@ -129,7 +135,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        volleyStringRequest(URL_request);
+        getDashboard(URL_request);
+
+       // Toast.makeText(getApplicationContext(),"Oncreate "+ dashboardModel.getNotificationCount(), Toast.LENGTH_LONG).show();
+
         setSupportActionBar(Toolbar);
 
         /*Back icon for navigation drawer*/
@@ -141,8 +150,8 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
     }
 
-    //Get data from API service
-    public void volleyStringRequest(String url)
+    //Get data from API service for dashboard
+    public void getDashboard(String url)
     {
         String  REQUEST_TAG = "net.nnovationmessagehub.azurewebsites.";
         progressDialog.setMessage("Loading...");
@@ -151,7 +160,22 @@ public class MainActivity extends AppCompatActivity {
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(),"response "+ response.toString(), Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(),"response "+ response.toString(), Toast.LENGTH_LONG).show();
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+
+                    notificationCount = jsonResponse.getString("notificationCount");
+                    inboxCount = jsonResponse.getString("notificationCount");
+                    myCaseCount= jsonResponse.getString("notificationCount");
+
+
+                    //DashboardModel dashboardModel = new DashboardModel(notificationCount,inboxCount,myCaseCount);
+
+                    //Toast.makeText(getApplicationContext(),"Notif "+ notificationCount, Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 progressDialog.hide();
             }
         }, new Response.ErrorListener() {
@@ -200,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("AuthDetail.UserName",username);
-                params.put("AuthDetail.Role","admin");
+                params.put("AuthDetail.Role",role);
                 params.put("AuthDetail.DeviceId", device_id);
                 params.put("Location.Longitude",longitude);
                 params.put("Location.Latitude", latitude);
@@ -230,6 +254,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (id == R.id.notifications) {
             //startActivity(new Intent(this, NotificationsActivity.class));
+            Toast.makeText(MainActivity.this,notificationCount,Toast.LENGTH_LONG).show();
+
 
         } else if (id == R.id.inbox) {
             /*Add some inbox code to redirect*/

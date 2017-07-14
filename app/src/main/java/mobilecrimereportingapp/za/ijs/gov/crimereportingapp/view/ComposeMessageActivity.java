@@ -51,7 +51,6 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
 
 
-
     }
 
     void addItemsOnSpinner1()
