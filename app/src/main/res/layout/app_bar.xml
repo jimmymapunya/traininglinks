@@ -9,13 +9,13 @@
     app:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <include
-        android:id="@+id/NotificationTest"
+        android:id="@+id/Notification"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:gravity="end"
         layout="@layout/notificationicon"/>
     <include
-        android:id="@+id/NotificationTest"
+        android:id="@+id/Inbox"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:gravity="end"

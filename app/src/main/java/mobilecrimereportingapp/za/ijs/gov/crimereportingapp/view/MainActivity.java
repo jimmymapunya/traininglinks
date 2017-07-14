@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     String notificationCount, inboxCount, myCaseCount;
     private TextView notificationCountIcon, inboxCountIcon;
-    private FrameLayout frameLayout;
+    private FrameLayout notificationLayout, inboxLayout;
 
 
     @Override
@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         progressDialog = new ProgressDialog(context);
 
-        frameLayout = (FrameLayout) findViewById(R.id.NotificationTest);
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
@@ -87,13 +89,19 @@ public class MainActivity extends AppCompatActivity {
 
         /*Button listeners for clickable button events*/
 
-        frameLayout.setOnClickListener(new View.OnClickListener() {
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Will you marry me Tsu?.", Toast.LENGTH_LONG).show();
             }
         });
 
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Inbox clicked.", Toast.LENGTH_LONG).show();
+            }
+        });
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
