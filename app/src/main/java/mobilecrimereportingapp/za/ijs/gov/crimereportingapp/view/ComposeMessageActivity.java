@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
     String username;
     String role;
     String URL = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateInboxMessage";
-    private String subject, to;
+    private String body, subject, to;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -56,6 +57,9 @@ public class ComposeMessageActivity extends AppCompatActivity {
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("Compose Message");
+
+        spinner1 = (Spinner) findViewById(R.id.spinner1);
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
 
 
         setSupportActionBar(Toolbar);
@@ -71,6 +75,22 @@ public class ComposeMessageActivity extends AppCompatActivity {
         addItemsOnSpinner1();
         addItemsOnSpinner2();
 
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                subject = parent.getItemAtPosition(position).toString();
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                to = parent.getItemAtPosition(position).toString();
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         edtMessage = (EditText) findViewById(R.id.edtMessage);
         btnSend = (Button)findViewById(R.id.btnSend);
 
@@ -78,8 +98,9 @@ public class ComposeMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String body = edtMessage.getText().toString();
-                createInboxMessage(URL,subject, body, to, username);
+                body = edtMessage.getText().toString();
+                createInboxMessage(URL, subject,body,to);
+                edtMessage.setText("");
             }
         });
 
@@ -88,12 +109,10 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
     void addItemsOnSpinner1()
     {
-        spinner1 = (Spinner) findViewById(R.id.spinner1);
         List<String> list = new ArrayList<String>();
         list.add("10/2017/11");
         list.add("10/2017/98");
         list.add("09/2017/101");
-        subject = (String) spinner1.getSelectedItem();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -102,12 +121,13 @@ public class ComposeMessageActivity extends AppCompatActivity {
     }
     void addItemsOnSpinner2()
     {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
+
         List<String> list = new ArrayList<String>();
         list.add("Jimmy Mapunya");
         list.add("Thabang Banks");
         list.add("Joe Smith");
         to = (String) spinner2.getSelectedItem();
+        Toast.makeText(context,"To "+to,Toast.LENGTH_LONG).show();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,14 +136,14 @@ public class ComposeMessageActivity extends AppCompatActivity {
     }
 
     //create message
-    public void createInboxMessage(String url, final String subject, final String body, final String to,final String from)
+    public void createInboxMessage(String url, final String subject, final String body, final String to)
     {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(context,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -141,7 +161,6 @@ public class ComposeMessageActivity extends AppCompatActivity {
                 username = "jimmy";
                 role = "admin";
 
-
                 Map<String,String > params = new HashMap<String,String>();
                 params.put("AuthDetail.UserName",username);
                 params.put("AuthDetail.Role",role);
@@ -150,7 +169,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
                 params.put("Subject",subject);
                 params.put("Body", body);
                 params.put("To", to);
-                params.put("From", from);
+                params.put("From", username);
                 return params;
             }
 
