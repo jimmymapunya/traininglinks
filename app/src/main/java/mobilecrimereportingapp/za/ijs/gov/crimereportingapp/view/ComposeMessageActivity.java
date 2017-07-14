@@ -142,7 +142,6 @@ public class ComposeMessageActivity extends AppCompatActivity {
         list.add("Thabang Banks");
         list.add("Joe Smith");
         to = (String) spinner2.getSelectedItem();
-        Toast.makeText(context,"To "+to,Toast.LENGTH_LONG).show();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
