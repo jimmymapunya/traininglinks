@@ -63,7 +63,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
     void addItemsOnSpinnerPhase(){
 
-        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerPhase);
+        spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
         List<String> list = new ArrayList<String>();
         list.add("---Select Phase---");
         list.add("Investigation");
@@ -77,9 +77,10 @@ public class EventFeedbackActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, list);
         dataAdapter.setDropDownViewResource(R.layout.spinner_item);
-        spinnerCaseNo.setAdapter(dataAdapter);
+        spinnerPhase.setAdapter(dataAdapter);
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

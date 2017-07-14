@@ -85,22 +85,23 @@
                 android:id="@+id/checkBox5EF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/txtOverallFeedbackEditText"
-                android:layout_alignEnd="@+id/txtStarRating"
-                android:layout_marginBottom="10dp"
-                android:text="Time spent on one case is too long" />
+                android:text="Time spent on one case is too long"
+                android:layout_below="@+id/checkBox4EF"
+                android:layout_alignEnd="@+id/txtStarRating" />
 
             <EditText
-                android:id="@+id/txtOverallFeedbackEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="28dp"
+                android:id="@+id/txtEventFeedbackEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Additional Comments"
+                android:background="@drawable/edittext_formatted"
+                android:hint=" Additional comments"
                 android:textAlignment="viewStart"
-                android:layout_above="@+id/btnSubmitFeedback"
-                android:layout_alignStart="@+id/checkBox5EF" />
+                android:layout_below="@+id/checkBox4EF"
+                android:layout_marginTop="33dp"
+                android:layout_alignStart="@+id/btnSubmitFeedback"
+                android:layout_alignEnd="@+id/btnSubmitFeedback" />
 
             <Button
                 android:id="@+id/btnSubmitFeedback"

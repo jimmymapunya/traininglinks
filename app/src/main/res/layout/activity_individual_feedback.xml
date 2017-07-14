@@ -22,6 +22,141 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spinnerActorName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/spinnerActorRole"
+                android:layout_alignStart="@+id/spinnerActorRole"
+                android:layout_below="@+id/spinnerActorRole"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner_style" />
+
+            <TextView
+                android:id="@+id/txtFeedbackQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerActorName"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="13dp"
+                android:text="How do you feel about the hekp you just received?"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStarRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtFeedbackQuestion"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:text="Please give it a star rating" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtStarRating"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxIF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox5IF"
+                android:layout_below="@+id/checkBox5IF"
+                android:text="Time spent on one case is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox2IF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time spent on one case is too long"
+                android:layout_centerVertical="true"
+                android:layout_alignStart="@+id/checkBox4IF" />
+
+            <CheckBox
+                android:id="@+id/checkBox4IF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtStarRating"
+                android:layout_below="@+id/checkBox2IF"
+                android:text="Time spent on one case is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox5IF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox4IF"
+                android:layout_below="@+id/checkBox4IF"
+                android:text="Time spent on one case is too long" />
+
+            <EditText
+                android:id="@+id/txtEventFeedbackEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_formatted"
+                android:ems="10"
+                android:hint=" Additional comments"
+                android:inputType="textPersonName"
+                android:textAlignment="viewStart"
+                android:layout_below="@+id/checkBoxIF"
+                android:layout_alignEnd="@+id/btnSubmitFeedback"
+                android:layout_alignStart="@+id/btnSubmitFeedback" />
+
+            <Button
+                android:id="@+id/btnSubmitFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/emergencybutton"
+                android:text="@string/strSubmitFeedback"
+                android:textColor="#fff"
+                android:layout_above="@+id/btnNotNow"
+                android:layout_marginBottom="13dp" />
+
+            <Button
+                android:id="@+id/btnNotNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/emergencybutton"
+                android:text="@string/strNotNow"
+                android:textColor="#fff"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+            <Spinner
+                android:id="@+id/spinnerCaseNo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/spinnerActorRole"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/spinnerActorRole"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner_style" />
+
+            <Spinner
+                android:id="@+id/spinnerActorRole"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/txtFeedbackQuestion"
+                android:layout_alignStart="@+id/btnSubmitFeedback"
+                android:layout_below="@+id/spinnerCaseNo"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner_style" />
+
+        </RelativeLayout>
 
         <fragment
             android:id="@+id/frag_nav_drawer"
