@@ -254,8 +254,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.notifications) {
             //startActivity(new Intent(this, NotificationsActivity.class));
             Toast.makeText(MainActivity.this,notificationCount,Toast.LENGTH_LONG).show();
-
-
+            
         } else if (id == R.id.inbox) {
             /*Add some inbox code to redirect*/
         }

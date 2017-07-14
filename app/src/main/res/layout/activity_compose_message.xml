@@ -51,23 +51,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="50"
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
 
                 <EditText
-                    android:id="@+id/editText8"
-                    android:layout_width="250dp"
+                    android:id="@+id/edtMessage"
+                    android:layout_width="240dp"
                     android:layout_height="45dp"
                     android:background="@drawable/edit_text_style"
                     android:ems="10"
                     android:hint="Enter message" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnSend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/emergencybutton"
                     android:text="Send"
                     android:textColor="#fff" />
