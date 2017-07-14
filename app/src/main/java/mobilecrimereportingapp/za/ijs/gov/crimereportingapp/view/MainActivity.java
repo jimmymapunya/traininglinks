@@ -26,6 +26,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private double lat,lon;
     GPSTracker gpsTracker;
 
-    public static String notificationCount, inboxCount, myCaseCount;
+    public static String notificationCount, inboxCount, myCaseCount, notificationDescription,notificationDate;
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
 
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         notificationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Will you marry me Tsu?.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, NotificationActivity.class));
             }
         });
 
@@ -196,6 +197,19 @@ public class MainActivity extends AppCompatActivity {
 
                     myCaseCount= jsonResponse.getString("notificationCount");
 
+                    JSONArray jsonArrayNotification = jsonResponse.getJSONArray("notifications");
+
+                    for(int x=0;x<jsonArrayNotification.length();x++)
+                    {
+                        JSONObject jsonObjectNotification = jsonArrayNotification.getJSONObject(x);
+                        notificationDescription = jsonObjectNotification.getString("description");
+                        notificationDate = jsonObjectNotification.getString("notificationDate");
+
+                        Toast.makeText(getApplicationContext(),"Notif "+ jsonObjectNotification, Toast.LENGTH_LONG).show();
+
+                    }
+
+
                     //DashboardModel dashboardModel = new DashboardModel(notificationCount,inboxCount,myCaseCount);
 
                     //Toast.makeText(getApplicationContext(),"Notif "+ notificationCount, Toast.LENGTH_LONG).show();
@@ -223,13 +237,13 @@ public class MainActivity extends AppCompatActivity {
         gpsTracker = new GPSTracker(context);
         lat = gpsTracker.getLatitude();
         lon = gpsTracker.getLongitude();
-        Toast.makeText(MainActivity.this,"Lon "+lat,Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this,"Lon "+lat,Toast.LENGTH_LONG).show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"Emergency Created",Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

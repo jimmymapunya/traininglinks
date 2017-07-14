@@ -8,8 +8,8 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -46,10 +46,11 @@
         <activity android:name=".view.EventFeedbackActivity" />
         <activity android:name=".view.IndividualFeedbackActivity" />
         <activity android:name=".view.ReportCrimeActivity" />
-        <activity android:name=".view.ReportFraudAndCorruptionActivity"></activity>
-        <activity android:name=".view.CaseListActivity"></activity>
-        <activity android:name=".view.CaseDetailsActivity"></activity>
-
+        <activity android:name=".view.ReportFraudAndCorruptionActivity" />
+        <activity android:name=".view.CaseListActivity" />
+        <activity android:name=".view.CaseDetailsActivity" />
+        <activity android:name=".view.NotificationActivity" />
+        <activity android:name=".view.InboxActivity"></activity>
     </application>
 
 </manifest>
