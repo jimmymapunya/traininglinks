@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -24,11 +26,23 @@ public class ProvideFeedback extends AppCompatActivity {
     Context context = this;
     private  Button btnOverallFeedback, btnEventFeedback, btnIndividualFeedback;
 
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout notificationLayout, inboxLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //lets commit first try
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provide_feedback);
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
+        notificationCountIcon.setText(MainActivity.notificationCount);
+        inboxCountIcon.setText(MainActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

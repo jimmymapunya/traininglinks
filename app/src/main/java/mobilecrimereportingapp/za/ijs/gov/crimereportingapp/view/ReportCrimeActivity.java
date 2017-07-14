@@ -7,8 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -25,10 +27,22 @@ public class ReportCrimeActivity extends AppCompatActivity {
     private ArrayAdapter<CharSequence> spinnerKnowOffenderAdapter, spinnerInjuriesAdapter, spinnerSceneItemsAdapter, spinnerWeaponsAdapter;
     private RelativeLayout relativeLayout;
 
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout notificationLayout, inboxLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_crime);
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
+        notificationCountIcon.setText(MainActivity.notificationCount);
+        inboxCountIcon.setText(MainActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

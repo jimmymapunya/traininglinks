@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private double lat,lon;
     GPSTracker gpsTracker;
 
-    String notificationCount, inboxCount, myCaseCount;
+    public static String notificationCount, inboxCount, myCaseCount;
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
 
@@ -191,11 +191,10 @@ public class MainActivity extends AppCompatActivity {
                     notificationCount = jsonResponse.getString("notificationCount");
                     notificationCountIcon.setText(notificationCount);
 
-                    inboxCount = jsonResponse.getString("notificationCount");
+                    inboxCount = jsonResponse.getString("inboxCount");
                     inboxCountIcon.setText(inboxCount);
 
                     myCaseCount= jsonResponse.getString("notificationCount");
-
 
                     //DashboardModel dashboardModel = new DashboardModel(notificationCount,inboxCount,myCaseCount);
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -40,10 +41,23 @@ public class CaseDetailsActivity extends AppCompatActivity {
     private String[] actionLocationArr;
     private String currentProcess;
 
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout notificationLayout, inboxLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case_details);
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
+        notificationCountIcon.setText(MainActivity.notificationCount);
+        inboxCountIcon.setText(MainActivity.inboxCount);
+
          /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("Case Details");
