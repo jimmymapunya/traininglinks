@@ -35,7 +35,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
         Toolbar.setTitle("Event Feedback");
 
         setSupportActionBar(Toolbar);
-        /*Back icon for navigation drawer*/
+        /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)

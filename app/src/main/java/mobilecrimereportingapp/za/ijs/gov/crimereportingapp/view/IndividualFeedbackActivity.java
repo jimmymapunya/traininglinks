@@ -36,7 +36,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
         Toolbar.setTitle("Individual Feedback");
 
         setSupportActionBar(Toolbar);
-        /*Back icon for navigation drawer*/
+        /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)

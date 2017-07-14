@@ -60,7 +60,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
         setSupportActionBar(Toolbar);
 
-        /*Back icon for navigation drawer*/
+        /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)

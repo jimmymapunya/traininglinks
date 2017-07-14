@@ -12,10 +12,9 @@
 
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtNotificationCount"
         android:layout_width="20dip"
         android:layout_height="20dip"
-        android:text="@string/notification_count_example"
         android:textColor="#FFF"
         android:textStyle="bold"
         android:padding="2sp"

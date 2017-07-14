@@ -62,7 +62,6 @@
     <string name="witness_name_example">Kocokoco Mabunda</string>
     <string name="witness_contact_example">0733119856</string>
     <string name="witness_address_example">44 Condere Estate</string>
-    <string name="notification_count_example">5</string>
     <string name="describe_those_objects">Describe those objects</string>
 
     <string-array name="injuries_choice">

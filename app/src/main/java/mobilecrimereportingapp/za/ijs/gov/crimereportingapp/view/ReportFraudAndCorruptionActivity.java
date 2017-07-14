@@ -30,7 +30,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         spinTypes.setAdapter(adapter);
         setSupportActionBar(Toolbar);
 
-        /*Back icon for navigation drawer*/
+        /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)

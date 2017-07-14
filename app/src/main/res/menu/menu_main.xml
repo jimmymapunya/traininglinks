@@ -22,14 +22,14 @@
         android:orderInCategory="200"
         android:title="@string/notifications"
         android:icon="@mipmap/ic_notification"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/inbox"
         android:orderInCategory="200"
         android:title="@string/inbox"
         android:icon="@mipmap/ic_inbox"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
 
 

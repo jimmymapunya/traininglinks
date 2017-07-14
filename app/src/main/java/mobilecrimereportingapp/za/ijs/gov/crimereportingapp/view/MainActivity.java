@@ -3,6 +3,7 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     GPSTracker gpsTracker;
 
     String notificationCount, inboxCount, myCaseCount;
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout frameLayout;
 
 
     @Override
@@ -67,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         progressDialog = new ProgressDialog(context);
 
+        frameLayout = (FrameLayout) findViewById(R.id.NotificationTest);
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
         btnReportCrime = (Button) findViewById(R.id.btnReportcrime);
         btnFraudCorruption = (Button) findViewById(R.id.btnFraud);
         btnCases = (Button) findViewById(R.id.btnMycases);
@@ -76,8 +85,15 @@ public class MainActivity extends AppCompatActivity {
         btnEmergency = (Button) findViewById(R.id.btnEmergency);
         btnUnsafe = (Button) findViewById(R.id.btnFeelsafe);
 
-
         /*Button listeners for clickable button events*/
+
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Will you marry me Tsu?.", Toast.LENGTH_LONG).show();
+            }
+        });
+
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(Toolbar);
 
-        /*Back icon for navigation drawer*/
+        /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
@@ -165,7 +181,11 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
 
                     notificationCount = jsonResponse.getString("notificationCount");
+                    notificationCountIcon.setText(notificationCount);
+
                     inboxCount = jsonResponse.getString("notificationCount");
+                    inboxCountIcon.setText(inboxCount);
+
                     myCaseCount= jsonResponse.getString("notificationCount");
 
 
