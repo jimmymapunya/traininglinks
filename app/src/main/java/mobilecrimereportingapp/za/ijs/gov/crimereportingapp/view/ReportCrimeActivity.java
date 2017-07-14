@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
@@ -22,6 +23,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons;
     private ArrayAdapter<CharSequence> spinnerKnowOffenderAdapter, spinnerInjuriesAdapter, spinnerSceneItemsAdapter, spinnerWeaponsAdapter;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
+
         Toolbar.setTitle("Report Crime");
 
         setSupportActionBar(Toolbar);
@@ -45,7 +48,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerKnowOffender = (Spinner) findViewById(R.id.spinnerKnowOffender);
         spinnerInjuries = (Spinner) findViewById(R.id.spinnerInjuries);
         spinnerSceneItems = (Spinner) findViewById(R.id.spinnerSceneItems);
-        spinnerWeapons = (Spinner) findViewById(R.id.spinnerWeapons);
+        spinnerWeapons = (Spinner) findViewById(R.id.spinnerObjectsUsed);
 
         /* Create ArrayAdapters using the string array and a default spinner layout*/
         spinnerKnowOffenderAdapter = ArrayAdapter.createFromResource(this,
@@ -70,6 +73,8 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerWeapons.setAdapter(spinnerWeaponsAdapter);
 
     }
+
+    //Button listener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

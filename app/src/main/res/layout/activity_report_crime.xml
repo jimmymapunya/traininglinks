@@ -28,104 +28,104 @@
                 android:scrollbars="vertical">
 
                 <TextView
-                    android:id="@+id/lblBefore"
+                    android:id="@+id/lblBeforeCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:text="What happened before the crime took place?" />
+                    android:text="@string/before_crime" />
 
                 <EditText
-                    android:id="@+id/txtBefore"
+                    android:id="@+id/txtBeforeCrime"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblBefore"
+                    android:layout_below="@+id/lblBeforeCrime"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
+                    android:gravity="top|start"
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:maxLines="10"
                     android:minLines="3"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
-                    android:id="@+id/lblDuring"
+                    android:id="@+id/lblDuringCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtBefore"
+                    android:layout_below="@+id/txtBeforeCrime"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="What happened during the crime ?" />
+                    android:text="@string/during_crime" />
 
                 <EditText
-                    android:id="@+id/txtDuring"
+                    android:id="@+id/txtDuringCrime"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblDuring"
+                    android:layout_below="@+id/lblDuringCrime"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
+                    android:gravity="top|start"
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:maxLines="10"
                     android:minLines="3"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
-                    android:id="@+id/lblAfter"
+                    android:id="@+id/lblAfterCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDuring"
+                    android:layout_below="@+id/txtDuringCrime"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="What happened after the crime took place ?" />
+                    android:text="@string/after_crime" />
 
                 <EditText
-                    android:id="@+id/txtAfter"
+                    android:id="@+id/txtAfterCrime"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblAfter"
+                    android:layout_below="@+id/lblAfterCrime"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
+                    android:gravity="top|start"
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:maxLines="10"
                     android:minLines="3"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
                     android:id="@+id/lblInjuries"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtAfter"
+                    android:layout_below="@+id/txtAfterCrime"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="Was there any injuries to anyone?" />
+                    android:text="@string/injuries" />
 
                 <Spinner
                     android:id="@+id/spinnerInjuries"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_spinner_style"
                     android:layout_below="@+id/lblInjuries"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
 
                 <EditText
                     android:id="@+id/txtInjuries"
@@ -136,78 +136,81 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
-                    android:hint="Describe those injuries"
+                    android:gravity="top|start"
+                    android:hint="@string/describe_injuries"
                     android:inputType="textMultiLine"
                     android:lines="2"
                     android:maxLines="10"
                     android:minLines="2"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
+
                 <TextView
-                    android:id="@+id/lblWeapons"
+                    android:id="@+id/lblObjectsUsed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtInjuries"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="Was there any threat and/or objects used ?" />
+                    android:text="@string/objects_used" />
 
                 <TextView
-                    android:id="@+id/lblWeaponsSub"
+                    android:id="@+id/lblObjectsUsedSub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblWeapons"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="30dp"
-                    android:text="(e.g condoms, ropes, firearms)?" />
+                    android:layout_below="@+id/lblObjectsUsed"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/objects_used_subtitle" />
+
                 <Spinner
-                    android:id="@+id/spinnerWeapons"
+                    android:id="@+id/spinnerObjectsUsed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_spinner_style"
-                    android:layout_below="@+id/lblWeaponsSub"
+                    android:layout_below="@+id/lblObjectsUsedSub"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
+
                 <EditText
-                    android:id="@+id/txtWeapons"
+                    android:id="@+id/txtObjectsUsed"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerWeapons"
+                    android:layout_below="@+id/spinnerObjectsUsed"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
-                    android:hint="Describe those objects"
+                    android:gravity="top|start"
+                    android:hint="@string/describe_those_objects"
                     android:inputType="textMultiLine"
                     android:lines="2"
                     android:maxLines="10"
                     android:minLines="2"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
                     android:id="@+id/lblSceneItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtWeapons"
+                    android:layout_below="@+id/txtObjectsUsed"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="Was there any items removed from the crime scene ?" />
+                    android:text="@string/crime_scene_items" />
 
                 <Spinner
                     android:id="@+id/spinnerSceneItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_spinner_style"
                     android:layout_below="@+id/lblSceneItems"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
 
                 <EditText
                     android:id="@+id/txtSceneItems"
@@ -218,60 +221,169 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
-                    android:hint="Describe those items"
+                    android:gravity="top|start"
+                    android:hint="@string/describe_crimescene_items"
                     android:inputType="textMultiLine"
                     android:lines="2"
                     android:maxLines="10"
                     android:minLines="2"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
-                    android:id="@+id/lblSurroundings"
+                    android:id="@+id/lblCrimeSurroundings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtSceneItems"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="Describe the surroundings where the incident took place." />
+                    android:text="@string/crime_surroundings" />
 
                 <EditText
-                    android:id="@+id/txtSurroundings"
+                    android:id="@+id/txtCrimeSurroundings"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblSurroundings"
+                    android:layout_below="@+id/lblCrimeSurroundings"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="top|left"
+                    android:gravity="top|start"
                     android:hint=""
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:maxLines="10"
                     android:minLines="3"
                     android:scrollbars="vertical"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="#B0BEC5" />
 
                 <TextView
                     android:id="@+id/lblKnowOffender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtSurroundings"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="30dp"
-                    android:text="Do you know the offender?" />
+                    android:layout_below="@+id/txtCrimeSurroundings"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/know_offender" />
+
                 <Spinner
                     android:id="@+id/spinnerKnowOffender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_spinner_style"
                     android:layout_below="@+id/lblKnowOffender"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
+
+                <LinearLayout
+                    android:id="@+id/OffenderDetailsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerKnowOffender"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/editOffenderDetails"
+                    layout="@layout/custom_offender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/OffenderDetailsLayout" />
+
+                <Button
+                    android:id="@+id/btnAddOffenderInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editOffenderDetails"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/emergencybutton"
+                    android:drawableStart="@mipmap/ic_add"
+                    android:text="@string/add_offender_details"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:id="@+id/lblFirstAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnAddOffenderInfo"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_account" />
+
+                <Spinner
+                    android:id="@+id/spinnerFirstAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblFirstAccount"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
+
+                <include
+                    android:id="@+id/editFirstAccountDetails"
+                    layout="@layout/custom_witness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerFirstAccount" />
+
+                <TextView
+                    android:id="@+id/lblWitnesses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editFirstAccountDetails"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/possible_witnesses" />
+
+                <Spinner
+                    android:id="@+id/spinnerWitnesses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblWitnesses"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style" />
+
+                <LinearLayout
+                    android:id="@+id/doneWitnessDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerWitnesses"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/editWitnessDetails"
+                    layout="@layout/custom_witness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/doneWitnessDetails" />
+
+                <Button
+                    android:id="@+id/btnAddWitnessInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editWitnessDetails"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/emergencybutton"
+                    android:drawableStart="@mipmap/ic_add"
+                    android:text="@string/add_witness_details"
+                    android:textColor="#fff" />
 
             </RelativeLayout>
         </ScrollView>

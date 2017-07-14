@@ -38,6 +38,32 @@
     <string name="title_activity_maps">Map</string>
     <string name="strSubmitFeedback">Submit Feedback</string>
     <string name="strNotNow">Not Now</string>
+    <string name="before_crime">What happened before the crime took place?</string>
+    <string name="during_crime">What happened during the crime ?</string>
+    <string name="after_crime">What happened after the crime took place ?</string>
+    <string name="injuries">Was there any injuries to anyone?</string>
+    <string name="describe_injuries">Describe those injuries</string>
+    <string name="objects_used">Was there any threat and/or objects used ?</string>
+    <string name="objects_used_subtitle">(e.g condoms, ropes, firearms)?</string>
+    <string name="crime_scene_items">Was there any items removed from the crime scene ?</string>
+    <string name="describe_crimescene_items">Describe those items</string>
+    <string name="crime_surroundings">Describe the surroundings where the incident took place.</string>
+    <string name="know_offender">Do you know the offender?</string>
+    <string name="first_account">Did you tell anyone about this incident?</string>
+    <string name="add_offender_details">Add offender details</string>
+    <string name="possible_witnesses">Is there any possible witness(es)?</string>
+    <string name="add_witness_details">Add witness details</string>
+    <string name="full_names_hint">Full Names</string>
+    <string name="contact_number_hint">Contact Number</string>
+    <string name="tattoos">Describe tattoos if applicable</string>
+    <string name="describe_physical_appearance">Describe physical appearance</string>
+    <string name="facial_identikit">Will be able to identify the suspect(s) and/or compile a facial identikit?</string>
+    <string name="address">Address</string>
+    <string name="witness_name_example">Kocokoco Mabunda</string>
+    <string name="witness_contact_example">0733119856</string>
+    <string name="witness_address_example">44 Condere Estate</string>
+    <string name="notification_count_example">5</string>
+    <string name="describe_those_objects">Describe those objects</string>
 
     <string-array name="injuries_choice">
         <item>Yes</item>
