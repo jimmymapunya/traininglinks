@@ -63,9 +63,33 @@
     <string name="witness_contact_example">0733119856</string>
     <string name="witness_address_example">44 Condere Estate</string>
     <string name="describe_those_objects">Describe those objects</string>
+    <string name="please_confirm_that_all_details_provided_are_correct_and_accurate">Please confirm that all details provided are correct and accurate</string>
+    <string name="submit">Submit</string>
 
     <string-array name="injuries_choice">
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Select sex</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="racial_group">
+        <item>Select race</item>
+        <item>Black</item>
+        <item>Coloured</item>
+        <item>Asian</item>
+        <item>White</item>
+    </string-array>
+
+    <string-array name="age_group">
+        <item>Select age</item>
+        <item>1 - 8</item>
+        <item>9 - 17</item>
+        <item>18 - 35 </item>
+        <item>36 and above</item>
     </string-array>
 </resources>

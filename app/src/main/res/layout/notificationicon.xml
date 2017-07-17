@@ -16,6 +16,7 @@
         android:layout_width="20dip"
         android:layout_height="20dip"
         android:textColor="#FFF"
+        android:text="3"
         android:textStyle="bold"
         android:padding="2sp"
         android:gravity="center"
