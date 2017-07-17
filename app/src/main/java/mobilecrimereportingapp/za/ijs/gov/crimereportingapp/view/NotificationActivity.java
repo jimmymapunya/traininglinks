@@ -37,11 +37,9 @@ public class NotificationActivity extends AppCompatActivity {
         adapter = new NotificationAdapter(context,notifications);
         lv.setAdapter(adapter);
 
-
         setSupportActionBar(Toolbar);
         /*Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
 
