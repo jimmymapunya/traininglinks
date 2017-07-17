@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -75,11 +76,21 @@ public class InboxActivity extends AppCompatActivity {
 
                 String body ="";
                 String from ="";
+                //String bodyFinal ="";
                 for(int i=0;i<jsonArrayMessages.length();i++)
                 {
                     JSONObject jsonObjectMessages = jsonArrayMessages.getJSONObject(i);
                      body = jsonObjectMessages.getString("body");
                      from = jsonObjectMessages.getString("from");
+
+                   /** if(body.length()<=20)
+                    {
+                        bodyFinal = body + "...";
+                    }
+                    else
+                    {
+                        bodyFinal = body.substring(19) + "...";
+                    }**/
 
                 }
                 inbox.add(new InboxModel(subject,inboxDate, from,body));
@@ -93,6 +104,12 @@ public class InboxActivity extends AppCompatActivity {
         adapter = new InboxAdapter(context,inbox);
         lv.setAdapter(adapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
         setSupportActionBar(Toolbar);
         /*Back notificationicon for navigation drawer*/

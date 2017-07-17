@@ -80,7 +80,16 @@ public class NotificationActivity extends AppCompatActivity {
                 String notificationDate = jsonObjectNotification.getString("notificationDate");
                 //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                // String date = format.format(Date.parse(notificationDate));
+                String finalDescription = "";
 
+                /**if(notificationDescription.length()<=20)
+                {
+                    finalDescription = notificationDescription + "...";
+                }
+                else
+                {
+                    finalDescription = notificationDescription.substring(19) + "...";
+                }**/
 
                 notifications.add(new NotificationInfo(notificationDescription, notificationDate));
 
