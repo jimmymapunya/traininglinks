@@ -19,7 +19,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.InboxAdapter;
@@ -93,9 +96,12 @@ public class InboxActivity extends AppCompatActivity {
                     }**/
 
                 }
-                inbox.add(new InboxModel(subject,inboxDate, from,body));
+                String date = reFormatDate(inboxDate);
+                inbox.add(new InboxModel(subject,date, from,body));
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
 
@@ -119,6 +125,13 @@ public class InboxActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
     }
+    private String reFormatDate(String dateIn) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = simpleDateFormat.parse(dateIn);
+        simpleDateFormat = new SimpleDateFormat("dd-MMM HH:mm");
+        return simpleDateFormat.format(date);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

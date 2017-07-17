@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -79,7 +80,7 @@ public class NotificationActivity extends AppCompatActivity {
                 String notificationDescription = jsonObjectNotification.getString("description");
                 String notificationDate = jsonObjectNotification.getString("notificationDate");
                 //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-               // String date = format.format(Date.parse(notificationDate));
+               String date = reFormatDate(notificationDate);
                 String finalDescription = "";
 
                 /**if(notificationDescription.length()<=20)
@@ -91,9 +92,11 @@ public class NotificationActivity extends AppCompatActivity {
                     finalDescription = notificationDescription.substring(19) + "...";
                 }**/
 
-                notifications.add(new NotificationInfo(notificationDescription, notificationDate));
+                notifications.add(new NotificationInfo(notificationDescription, date));
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
 
@@ -127,6 +130,12 @@ public class NotificationActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+    }
+    private String reFormatDate(String dateIn) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = simpleDateFormat.parse(dateIn);
+        simpleDateFormat = new SimpleDateFormat("dd-MMM HH:mm");
+        return simpleDateFormat.format(date);
     }
 
     @Override
