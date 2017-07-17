@@ -58,9 +58,11 @@ public class MainActivity extends AppCompatActivity {
     private double lat,lon;
     GPSTracker gpsTracker;
 
-    public static String notificationCount, inboxCount, myCaseCount, notificationDescription,notificationDate;
+    public static String notificationCount, inboxCount, myCaseCount;
+    public static JSONArray jsonArrayNotification;
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
+
 
 
     @Override
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         inboxLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Inbox clicked.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, InboxActivity.class));
             }
         });
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
@@ -197,18 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
                     myCaseCount= jsonResponse.getString("notificationCount");
 
-                    JSONArray jsonArrayNotification = jsonResponse.getJSONArray("notifications");
-
-                    for(int x=0;x<jsonArrayNotification.length();x++)
-                    {
-                        JSONObject jsonObjectNotification = jsonArrayNotification.getJSONObject(x);
-                        notificationDescription = jsonObjectNotification.getString("description");
-                        notificationDate = jsonObjectNotification.getString("notificationDate");
-
-                        Toast.makeText(getApplicationContext(),"Notif "+ jsonObjectNotification, Toast.LENGTH_LONG).show();
-
-                    }
-
+                    jsonArrayNotification = jsonResponse.getJSONArray("notifications");
 
                     //DashboardModel dashboardModel = new DashboardModel(notificationCount,inboxCount,myCaseCount);
 
