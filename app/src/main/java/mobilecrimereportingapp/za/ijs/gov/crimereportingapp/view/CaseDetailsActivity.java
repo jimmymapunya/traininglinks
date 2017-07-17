@@ -127,6 +127,38 @@ public class CaseDetailsActivity extends AppCompatActivity {
                                 processDesc = "Bail hearing took place at "+actionLocationArr[position]+ " 08:00 AM on the "+actionDateArr[position];
                             }
                         }
+                        if(processNameArr[position].equals("Trial")){
+
+                            if(processNameArr[position].equals(currentProcess)){
+                                processDesc = "This case is awaiting trial from  "+actionDateArr[position];
+
+                            }else{
+                                processDesc = "The trial period of the case started from "+actionDateArr[position]+" until "+actionDateArr[position+1];
+                            }
+                        }
+                        if(processNameArr[position].equals("Verdict")){
+
+                            if(processNameArr[position].equals(currentProcess)){
+                                processDesc = "The court date for the verdict is  "+actionDateArr[position]+" at "+actionLocationArr[position]+ " 08:00 AM";
+
+                            }else{
+                                processDesc = "Verdict has taken place at "+actionLocationArr[position]+ " 08:00 AM on the "+actionDateArr[position];
+                            }
+                        }
+                        if(processNameArr[position].equals("Aquit")){
+
+                                processDesc = "This case has been dismissed on the  " + actionDateArr[position];
+                        }
+                        if(processNameArr[position].equals("Sentence")){
+
+                            if(processNameArr[position].equals(currentProcess)){
+                                processDesc = "Sentencing of this case will take place on the  "+actionDateArr[position]+" at "+actionLocationArr[position]+ " 08:00 AM";
+
+                            }else{
+                                processDesc = "The offender has been sentenced at "+actionLocationArr[position]+ " 08:00 AM on the "+actionDateArr[position];
+                            }
+                        }
+
                         TextView txtProcessDesc = (TextView)findViewById(R.id.txtProcessDesc);
                         txtProcessDesc.setText(processDesc);
                     }
