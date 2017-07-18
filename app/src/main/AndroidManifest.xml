@@ -37,7 +37,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAXmstVeBpRDxfGMcN1TRWaKD52HhZ4SpY" />
+            android:value="AIzaSyAePVpDdZtjq1d4qvMN5VtHi3r2l87jA6k" />
 
         <activity
             android:name=".view.CourtFinderActivity"
