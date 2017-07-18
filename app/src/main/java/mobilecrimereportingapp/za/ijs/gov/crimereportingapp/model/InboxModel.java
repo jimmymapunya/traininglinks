@@ -14,7 +14,7 @@ public class InboxModel {
     public InboxModel() {
     }
 
-    public InboxModel(String subject, String inboxDate, String from, String message) {
+    public InboxModel(String subject, String inboxDate, String from) {
         this.subject = subject;
         this.inboxDate = inboxDate;
         this.from = from;

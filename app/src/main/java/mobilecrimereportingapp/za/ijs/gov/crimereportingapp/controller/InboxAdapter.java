@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.InboxModel;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.NotificationInfo;
 
 /**
  * Created by JimmyM on 2017/07/17.
@@ -35,12 +34,12 @@ public class InboxAdapter extends ArrayAdapter<InboxModel>
         View single_row = inflater.inflate(R.layout.inbox_custom_list, null,true);
         TextView txtFrom = (TextView) single_row.findViewById(R.id.txtFrom);
         TextView txtSubject = (TextView) single_row.findViewById(R.id.txtSubject);
-        TextView txtMessage = (TextView) single_row.findViewById(R.id.txtMessage);
+        //TextView txtMessage = (TextView) single_row.findViewById(R.id.txtMessage);
         TextView txtInboxDare = (TextView) single_row.findViewById(R.id.txtInboxDare);
 
         txtFrom.setText(inbox.get(position).getFrom());
         txtSubject.setText(inbox.get(position).getSubject());
-        txtMessage.setText(inbox.get(position).getMessage());
+        //txtMessage.setText(inbox.get(position).getMessage());
         txtInboxDare.setText(inbox.get(position).getInboxDate());
 
         return single_row;

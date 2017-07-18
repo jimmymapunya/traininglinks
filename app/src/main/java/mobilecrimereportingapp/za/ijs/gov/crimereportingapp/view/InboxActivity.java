@@ -77,27 +77,17 @@ public class InboxActivity extends AppCompatActivity {
                 String inboxDate = jsonObjectInbox.getString("inboxDate");
                 JSONArray jsonArrayMessages = jsonObjectInbox.getJSONArray("messages");
 
-                String body ="";
                 String from ="";
-                //String bodyFinal ="";
+
                 for(int i=0;i<jsonArrayMessages.length();i++)
                 {
                     JSONObject jsonObjectMessages = jsonArrayMessages.getJSONObject(i);
-                     body = jsonObjectMessages.getString("body");
+                     //body = jsonObjectMessages.getString("body");
                      from = jsonObjectMessages.getString("from");
-
-                   /** if(body.length()<=20)
-                    {
-                        bodyFinal = body + "...";
-                    }
-                    else
-                    {
-                        bodyFinal = body.substring(19) + "...";
-                    }**/
 
                 }
                 String date = reFormatDate(inboxDate);
-                inbox.add(new InboxModel(subject,date, from,body));
+                inbox.add(new InboxModel(subject,date, from));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -109,11 +99,13 @@ public class InboxActivity extends AppCompatActivity {
 
         adapter = new InboxAdapter(context,inbox);
         lv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                startActivity(new Intent(context, InboxMessagesActivity.class));
             }
         });
 
