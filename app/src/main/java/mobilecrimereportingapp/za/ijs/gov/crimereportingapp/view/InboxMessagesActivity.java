@@ -1,12 +1,14 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,9 @@ public class InboxMessagesActivity extends AppCompatActivity {
     private Toolbar Toolbar;
     Context context = this;
 
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout notificationLayout,inboxLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,28 @@ public class InboxMessagesActivity extends AppCompatActivity {
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
-        Toolbar.setTitle("Inbox");
+        Toolbar.setTitle("Messages");
+
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
+        notificationCountIcon.setText(MainActivity.notificationCount);
+        inboxCountIcon.setText(MainActivity.inboxCount);
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, InboxActivity.class));
+            }
+        });
 
 
         LinearLayout layout = (LinearLayout)findViewById(R.id.lay);
