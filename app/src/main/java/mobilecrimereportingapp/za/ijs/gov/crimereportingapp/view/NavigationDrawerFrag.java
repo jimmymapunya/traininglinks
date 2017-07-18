@@ -37,7 +37,7 @@ public class NavigationDrawerFrag extends Fragment {
     private NavigationAdapter navigationAdapter;
 
     /*Data members to be tracked of if the drawer has been opened before.*/
-    private boolean userKnowsAboutDrawer;
+    private boolean userKnowsAboutDrawer = true;
     private boolean fromSavedInstance;
 //
     /*Declaration of view for the drawer*/
@@ -52,7 +52,7 @@ public class NavigationDrawerFrag extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userKnowsAboutDrawer = Boolean.valueOf(readFromPreferences(getActivity(),USER_KNOWS_OF_DRAWER, "false"));
+        userKnowsAboutDrawer = Boolean.valueOf(readFromPreferences(getActivity(),USER_KNOWS_OF_DRAWER, "true"));
 
         if(savedInstanceState!= null){
             fromSavedInstance = true;

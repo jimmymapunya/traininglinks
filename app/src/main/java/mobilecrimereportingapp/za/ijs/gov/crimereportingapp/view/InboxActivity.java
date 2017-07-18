@@ -40,6 +40,7 @@ public class InboxActivity extends AppCompatActivity {
 
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout;
+     JSONArray jsonArrayMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class InboxActivity extends AppCompatActivity {
 
                 String subject = jsonObjectInbox.getString("subject");
                 String inboxDate = jsonObjectInbox.getString("inboxDate");
-                JSONArray jsonArrayMessages = jsonObjectInbox.getJSONArray("messages");
+                jsonArrayMessages = jsonObjectInbox.getJSONArray("messages");
 
                 String from ="";
 
@@ -87,7 +88,7 @@ public class InboxActivity extends AppCompatActivity {
 
                 }
                 String date = reFormatDate(inboxDate);
-                inbox.add(new InboxModel(subject,date, from));
+                inbox.add(new InboxModel(subject,date, from,jsonArrayMessages));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -105,7 +106,10 @@ public class InboxActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                startActivity(new Intent(context, InboxMessagesActivity.class));
+
+                Intent intent = new Intent(context,InboxMessagesActivity.class);
+                intent.putExtra("JsonArrayMessages", inbox.get(position).getJsonArray().toString());
+                startActivity(intent);
             }
         });
 
