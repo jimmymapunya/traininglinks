@@ -1,9 +1,87 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Created by ThatoM on 2017/07/10.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    map:cameraZoom="15"
-    tools:context="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CourtFinderActivity" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/txtFrom"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_formatted"
+                android:hint=" from"
+                android:textAlignment="viewStart" />
+            <EditText
+                android:id="@+id/txtTo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_formatted"
+                android:hint=" to"
+                android:textAlignment="viewStart"
+                android:layout_below="@+id/txtFrom"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:id="@+id/btnGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emergencybutton"
+                android:text="Go"
+                android:textColor="#fff"
+                android:layout_below="@+id/txtTo"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <fragment
+            android:id="@+id/frag_nav_drawer"
+            android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"
+            android:layout_width="@dimen/nav_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:layout="@layout/fragment_navigation_drawer" />
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginTop="126dp"
+            android:layout_marginBottom="0dp"
+            map:cameraZoom="15"
+            tools:context="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CourtFinderActivity"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>
