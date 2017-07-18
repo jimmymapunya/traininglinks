@@ -1,11 +1,14 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
+import android.content.Context;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +28,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 public class ReportCrimeActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar Toolbar;
+    private Context context = this;
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons, spinnerFirstAccount, spinnerWitnesses, spinnerRacialGroup,
             spinnerGender, spinnerAgeGroup, spinnerFacialIdentikit;
@@ -85,9 +89,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtWitnessAddress = (EditText) findViewById(R.id.txtWitnessAddress);
 
         /*TextView components initialisation*/
-        lblWitnessName = (TextView) findViewById(R.id.lblWitnessName);
-        lblWitnessContact = (TextView) findViewById(R.id.lblWitnessContact);
-        lblWitnessAddress = (TextView) findViewById(R.id.lblWitnessAddress);
+
 
         /*Starting code for the spinners*/
         spinnerKnowOffender = (Spinner) findViewById(R.id.spinnerKnowOffender);
@@ -163,10 +165,49 @@ public class ReportCrimeActivity extends AppCompatActivity {
         /*Checkbox to confirm details reported are correct*/
         checkBoxConfirmation = (CheckBox) findViewById(R.id.checkBoxConfirmation);
 
+        /*Button listeners*/
+        btnAddOffenderInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
+                OffenderDetailsLayout.addView(view);
+            }
+        });
+
+        btnAddWitnessInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+              String manda = txtWitnessName.getText().toString();
+
+                if(txtWitnessName.getText().toString() != null &&  txtWitnessAddress.getText().toString() != null  ){
+
+                    final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
+                    lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
+                    lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
+                    lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
+
+                    lblWitnessName.setText(txtWitnessName.getText().toString());
+                    lblWitnessContact.setText(txtWitnessContact.getText().toString());
+                    lblWitnessAddress.setText(txtWitnessAddress.getText().toString());
+
+                    doneWitnessDetails.addView(view);
+
+                }
+
+
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
     }
-
-    //Button listener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -15,6 +15,19 @@ public class CaseDetails {
     private String caseNo;
     private String victim;
     private String accused;
+    private String beforeCrime;
+    private String duringCrime;
+    private String injuries;
+    private String crimeSurroundings;
+    private String afterCrime;
+    private String offenderName;
+    private String offenderContact;
+    private String offenderAddress;
+    private String descriptionTattoos;
+    private String appearance;
+    private String WitnessName;
+    private String WitnessContact;
+    private String WitnessAddress;
     private String offense;
     private String caseDesc;
     private ArrayList<StatusDetails> status;
@@ -85,4 +98,107 @@ public class CaseDetails {
 
     }
 
+    public String getBeforeCrime() {
+        return beforeCrime;
+    }
+
+    public void setBeforeCrime(String beforeCrime) {
+        this.beforeCrime = beforeCrime;
+    }
+
+    public String getDuringCrime() {
+        return duringCrime;
+    }
+
+    public void setDuringCrime(String duringCrime) {
+        this.duringCrime = duringCrime;
+    }
+
+    public String getAfterCrime() {
+        return afterCrime;
+    }
+
+    public void setAfterCrime(String afterCrime) {
+        this.afterCrime = afterCrime;
+    }
+
+    public String getInjuries() {
+        return injuries;
+    }
+
+    public void setInjuries(String injuries) {
+        this.injuries = injuries;
+    }
+
+    public String getCrimeSurroundings() {
+        return crimeSurroundings;
+    }
+
+    public void setCrimeSurroundings(String crimeSurroundings) {
+        this.crimeSurroundings = crimeSurroundings;
+    }
+
+    public String getOffenderName() {
+        return offenderName;
+    }
+
+    public void setOffenderName(String offenderName) {
+        this.offenderName = offenderName;
+    }
+
+    public String getOffenderContact() {
+        return offenderContact;
+    }
+
+    public void setOffenderContact(String offenderContact) {
+        this.offenderContact = offenderContact;
+    }
+
+    public String getOffenderAddress() {
+        return offenderAddress;
+    }
+
+    public void setOffenderAddress(String offenderAddress) {
+        this.offenderAddress = offenderAddress;
+    }
+
+    public String getDescriptionTattoos() {
+        return descriptionTattoos;
+    }
+
+    public void setDescriptionTattoos(String descriptionTattoos) {
+        this.descriptionTattoos = descriptionTattoos;
+    }
+
+    public String getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(String appearance) {
+        this.appearance = appearance;
+    }
+
+    public String getWitnessName() {
+        return WitnessName;
+    }
+
+    public void setWitnessName(String witnessName) {
+        WitnessName = witnessName;
+    }
+
+    public String getWitnessContact() {
+        return WitnessContact;
+    }
+
+    public void setWitnessContact(String witnessContact) {
+        WitnessContact = witnessContact;
+    }
+
+    public String getWitnessAddress() {
+        return WitnessAddress;
+    }
+
+    public void setWitnessAddress(String witnessAddress) {
+        WitnessAddress = witnessAddress;
+    }
 }
