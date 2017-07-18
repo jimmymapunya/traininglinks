@@ -45,7 +45,8 @@ public abstract class Feedback {
         this.btnNotNow = btnNotNow;
     }
     protected void submitFeedback(Bundle savedInstanceState){
-
+        // submits feedback when the submit feedback button is clicked else
+        // does not submit when the Not Now button is clicked
     }
 
 }
