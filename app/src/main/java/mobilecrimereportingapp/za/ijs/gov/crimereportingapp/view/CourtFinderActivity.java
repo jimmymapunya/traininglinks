@@ -12,6 +12,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
+/**
+ * Created by ThatoM on 2017/07/12.
+ * This is the class for court finder
+ */
+
 public class CourtFinderActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -41,7 +46,7 @@ public class CourtFinderActivity extends FragmentActivity implements OnMapReadyC
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-25.7510, 28.18833);
+        LatLng sydney = new LatLng(-33.852, 151.211);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Current Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
