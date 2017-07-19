@@ -10,7 +10,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtWitnessName"
+            android:id="@+id/txtWitnessNameH"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -23,7 +23,7 @@
             android:textColorHint="#B0BEC5" />
 
         <EditText
-            android:id="@+id/txtWitnessContact"
+            android:id="@+id/txtWitnessContactH"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -44,7 +44,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/txtWitnessAddress"
+            android:id="@+id/txtWitnessAddressH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

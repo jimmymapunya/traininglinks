@@ -29,6 +29,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar Toolbar;
     private Context context = this;
+
     private static final String URL_case = "http://innovationmessagehub.azurewebsites.net//api/MessageHub/CreateCaseDetail";
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons, spinnerFirstAccount, spinnerWitnesses, spinnerRacialGroup,
@@ -38,7 +39,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
             spinnerWitnessesAdapter, spinnerRacialGroupAdapter, spinnerGenderAdapter, spinnerAgeGroupAdapter, spinnerFacialIdentikitAdapter;
 
     private Button btnAddOffenderInfo, btnAddWitnessInfo,btnSubmit;
-    private EditText txtBeforeCrime, txtDuringCrime, txtAfterCrime, txtInjuries, txtCrimeSurroundings, txtOffenderName, txtOffenderContact, txtOffenderAddress, txtTattoos,
+    private EditText txtFirstAccountAddress, txtFirstAccountContact, txtFirstAccountName, txtBeforeCrime, txtDuringCrime, txtAfterCrime, txtInjuries, txtCrimeSurroundings, txtOffenderName, txtOffenderContact, txtOffenderAddress, txtTattoos,
             txtAppearance, txtWitnessName, txtWitnessContact, txtWitnessAddress;
     private TextView notificationCountIcon, inboxCountIcon, lblWitnessName, lblWitnessContact, lblWitnessAddress;
     private LinearLayout OffenderDetailsLayout,doneWitnessDetails;
@@ -66,12 +67,12 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
         setSupportActionBar(Toolbar);
 
-        /*Back notificationicon for navigation drawer*/
+        /*Back for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        /*Navigation fragment init and setup*/
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
-
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
         /*EditText components initialisation*/
@@ -85,12 +86,12 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtOffenderAddress = (EditText) findViewById(R.id.txtOffenderAddress);
         txtTattoos = (EditText) findViewById(R.id.txtTattoos);
         txtAppearance = (EditText) findViewById(R.id.txtAppearance);
+        txtFirstAccountName = (EditText) findViewById(R.id.txtFirstAccountName);
+        txtFirstAccountContact = (EditText) findViewById(R.id.txtFirstAccountContact);
+        txtFirstAccountAddress = (EditText) findViewById(R.id.txtFirstAccountAddress);
         txtWitnessName = (EditText) findViewById(R.id.txtWitnessName);
         txtWitnessContact = (EditText) findViewById(R.id.txtWitnessContact);
         txtWitnessAddress = (EditText) findViewById(R.id.txtWitnessAddress);
-
-        /*TextView components initialisation*/
-
 
         /*Starting code for the spinners*/
         spinnerKnowOffender = (Spinner) findViewById(R.id.spinnerKnowOffender);
@@ -171,6 +172,16 @@ public class ReportCrimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
+
+                /*TextView components initialisation*/
+                lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
+                lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
+                lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
+
+                lblWitnessName.setText(txtOffenderName.getText().toString());
+                lblWitnessContact.setText(txtOffenderContact.getText().toString());
+                lblWitnessAddress.setText(txtOffenderAddress.getText().toString());
+
                 OffenderDetailsLayout.addView(view);
             }
         });
@@ -179,11 +190,9 @@ public class ReportCrimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-              String manda = txtWitnessName.getText().toString();
-
-                if(txtWitnessName.getText().toString() != null &&  txtWitnessAddress.getText().toString() != null  ){
-
                     final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
+
+                    /*TextView components initialisation*/
                     lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
                     lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
                     lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
@@ -193,9 +202,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
                     lblWitnessAddress.setText(txtWitnessAddress.getText().toString());
 
                     doneWitnessDetails.addView(view);
-
-                }
-
 
             }
         });

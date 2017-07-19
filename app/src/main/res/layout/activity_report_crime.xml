@@ -289,12 +289,169 @@
 
                 </LinearLayout>
 
-                <include
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:id="@+id/editOffenderDetails"
-                    layout="@layout/custom_offender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/OffenderDetailsLayout" />
+                    android:layout_below="@+id/OffenderDetailsLayout"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/txtOffenderName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/full_names_hint"
+                            android:textColorHint="#B0BEC5" />
+
+                        <EditText
+                            android:id="@+id/txtOffenderContact"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/contact_number_hint"
+                            android:inputType="number"
+                            android:textColorHint="#B0BEC5" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/txtOffenderAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/address"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinnerRacialGroup"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/bg_spinner_style" />
+
+                        <Spinner
+                            android:id="@+id/spinnerGender"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/bg_spinner_style" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/spinnerAgeGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="100"
+                            android:background="@drawable/bg_spinner_style" />
+
+                        <EditText
+                            android:id="@+id/txtTattoos"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/tattoos"
+                            android:inputType="textMultiLine"
+                            android:lines="3"
+                            android:maxLines="10"
+                            android:minLines="3"
+                            android:scrollbars="vertical"
+                            android:textColorHint="#B0BEC5" />
+
+                        <EditText
+                            android:id="@+id/txtAppearance"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/describe_physical_appearance"
+                            android:inputType="textMultiLine"
+                            android:lines="3"
+                            android:maxLines="10"
+                            android:minLines="3"
+                            android:scrollbars="vertical"
+                            android:textColorHint="#B0BEC5" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/facial_identikit" />
+
+                        <Spinner
+                            android:id="@+id/spinnerFacialIdentikit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="100"
+                            android:background="@drawable/bg_spinner_style" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnAddOffenderInfo"
@@ -329,12 +486,76 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
-                <include
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:id="@+id/editFirstAccountDetails"
-                    layout="@layout/custom_witness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerFirstAccount" />
+                    android:layout_below="@+id/spinnerFirstAccount"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/txtFirstAccountName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/full_names_hint"
+                            android:textColorHint="#B0BEC5" />
+
+                        <EditText
+                            android:id="@+id/txtFirstAccountContact"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/contact_number_hint"
+                            android:inputType="number"
+                            android:textColorHint="#B0BEC5" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/txtFirstAccountAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/address"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
 
                 <TextView
                     android:id="@+id/lblWitnesses"
@@ -368,12 +589,76 @@
 
                 </LinearLayout>
 
-                <include
+                <LinearLayout
                     android:id="@+id/editWitnessDetails"
-                    layout="@layout/custom_witness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/doneWitnessDetails" />
+                    android:layout_below="@+id/doneWitnessDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/txtWitnessName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/full_names_hint"
+                            android:textColorHint="#B0BEC5" />
+
+                        <EditText
+                            android:id="@+id/txtWitnessContact"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="50"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/contact_number_hint"
+                            android:inputType="number"
+                            android:textColorHint="#B0BEC5" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/txtWitnessAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_style"
+                            android:gravity="top|start"
+                            android:hint="@string/address"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
 
                 <Button
                     android:id="@+id/btnAddWitnessInfo"
