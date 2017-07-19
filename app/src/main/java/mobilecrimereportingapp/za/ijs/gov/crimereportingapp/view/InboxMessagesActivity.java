@@ -84,7 +84,6 @@ public class InboxMessagesActivity extends AppCompatActivity {
                 String finalDate = reFormatDate(messageDate);
                 txtBody.setText(body);
                 txtDate.setText(finalDate);
-
                 layout.addView(view);
 
             }

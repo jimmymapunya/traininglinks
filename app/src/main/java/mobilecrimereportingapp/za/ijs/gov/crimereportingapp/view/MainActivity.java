@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     /*Toolbar and Button components declaration*/
     private static final String URL_request = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/GetDashboard?AuthDetail.UserName=Jimmy&AuthDetail.Role=map&AuthDetail.DeviceId=1234rrt";
     private static final String URL_emergency = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateEmergency";
+    private static final String URL_unsafe = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateUnsafe";
 
     private Toolbar Toolbar;
     Context context = this;
@@ -157,14 +158,11 @@ public class MainActivity extends AppCompatActivity {
         btnUnsafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Feeling unsafe. Distress signal sent.", Toast.LENGTH_LONG).show();
+                createCreateUnsafe(URL_unsafe);
             }
         });
 
-
         getDashboard(URL_request);
-
-       // Toast.makeText(getApplicationContext(),"Oncreate "+ dashboardModel.getNotificationCount(), Toast.LENGTH_LONG).show();
 
         setSupportActionBar(Toolbar);
 
@@ -235,6 +233,52 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(MainActivity.this,"Emergency Created",Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+
+                //Values to post
+                device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
+                username = "Jimmy";
+                role = "1";
+                longitude = String.valueOf(lat);
+                latitude = String.valueOf(lon);
+
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("AuthDetail.UserName",username);
+                params.put("AuthDetail.Role",role);
+                params.put("AuthDetail.DeviceId", device_id);
+                params.put("Location.Longitude",longitude);
+                params.put("Location.Latitude", latitude);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    //create unsafe
+    public void createCreateUnsafe(String url)
+    {
+        gpsTracker = new GPSTracker(context);
+        lat = gpsTracker.getLatitude();
+        lon = gpsTracker.getLongitude();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(), "Feeling unsafe. Distress signal sent.", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
