@@ -29,6 +29,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar Toolbar;
     private Context context = this;
+    private static final String URL_case = "http://innovationmessagehub.azurewebsites.net//api/MessageHub/CreateCaseDetail";
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons, spinnerFirstAccount, spinnerWitnesses, spinnerRacialGroup,
             spinnerGender, spinnerAgeGroup, spinnerFacialIdentikit;

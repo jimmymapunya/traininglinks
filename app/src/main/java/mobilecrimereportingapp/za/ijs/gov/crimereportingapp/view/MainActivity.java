@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     /*Toolbar and Button components declaration*/
     private static final String URL_request = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/GetDashboard?AuthDetail.UserName=Jimmy&AuthDetail.Role=map&AuthDetail.DeviceId=1234rrt";
     private static final String URL_emergency = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateEmergency";
+
     private Toolbar Toolbar;
     Context context = this;
     ProgressDialog progressDialog;
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
-                username = "Peter M";
+                username = "Jimmy";
                 role = "1";
                 longitude = String.valueOf(lat);
                 latitude = String.valueOf(lon);
