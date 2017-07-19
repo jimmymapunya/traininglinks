@@ -22,8 +22,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +58,26 @@ public class CaseListActivity extends AppCompatActivity {
         Toolbar = (Toolbar) findViewById(R.id.appBar);
         Toolbar.setTitle("My Cases");
 
+        Button btnHeading=(Button)findViewById(R.id.btnHeading);
+
+        ImageView sortImage=(ImageView)findViewById(R.id.img_sort);
+        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayoutExpand);
+
+        sortImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                relativeLayout.setVisibility(View.VISIBLE);
+            }
+        });
+        btnHeading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                relativeLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+
         getIntent().removeExtra("key");
         getIntent().removeExtra("caseNo");
         getIntent().removeExtra("victim");
@@ -71,6 +94,7 @@ public class CaseListActivity extends AppCompatActivity {
         ArrayList<StatusDetails> statusDetailsList3 = new ArrayList<>();
         ArrayList<StatusDetails> statusDetailsList4 = new ArrayList<>();
         ArrayList<StatusDetails> statusDetailsList5 = new ArrayList<>();
+
 
         statusDetailsList1.add(new StatusDetails("02/2016/98", "Investigate", false, "22-03-2017", null, "01-05-2017"));
         statusDetailsList1.add(new StatusDetails("02/2016/98", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
@@ -145,6 +169,8 @@ public class CaseListActivity extends AppCompatActivity {
 
         // Setting the adapter to the listView
         listView.setAdapter(adapter);
+
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 

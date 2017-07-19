@@ -6,6 +6,9 @@ import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,16 +30,19 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
     public class CaseAdapter extends SimpleAdapter {
 
         List<? extends Map<String, ?>> list  = new ArrayList<>();
+
         public CaseAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
             super(context, data, resource, from, to);
             list = data;
         }
+
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
 
             View view=super.getView(position, convertView, parent);
+            final RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayoutExpand);
             View investigate=(View) view.findViewById(R.id.investigate);
             View arrested=(View) view.findViewById(R.id.arrested);
             View bail=(View) view.findViewById(R.id.bail);
@@ -53,6 +59,48 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
             TextView txtaquit=(TextView) view.findViewById(R.id.txtAquit);
             TextView txtsentence=(TextView) view.findViewById(R.id.txtSentence);
 
+            Button btnHeading=(Button) view.findViewById(R.id.btnHeading);
+            Button btnFindCourt=(Button) view.findViewById(R.id.btnFindCourt);
+            Button btnCaseDetails=(Button) view.findViewById(R.id.btnCaseDetails);
+            Button btnFeedback=(Button) view.findViewById(R.id.btnFeedback);
+
+            ImageView imgDropDown=(ImageView) view.findViewById(R.id.imgDropDown);
+
+            imgDropDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    relativeLayout.setVisibility(View.VISIBLE);
+                }
+            });
+            btnHeading.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    relativeLayout.setVisibility(View.INVISIBLE);
+                }
+            });
+            btnFindCourt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //call an intent
+                }
+            });
+            btnCaseDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //call an intent
+                }
+            });
+            btnFeedback.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                   //call an intent
+                }
+            });
 
 
 

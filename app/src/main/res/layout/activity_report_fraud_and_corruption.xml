@@ -54,6 +54,7 @@
                 android:background="@drawable/edittext_formatted"
                 android:hint="Full names"
                 android:inputType="text"
+                android:focusable="false"
                 android:padding="10dp"
                 android:layout_alignStart="@+id/txtEmail" />
 
@@ -69,6 +70,7 @@
                 android:background="@drawable/edittext_formatted"
                 android:hint="Email Address"
                 android:inputType="text"
+                android:focusable="false"
                 android:padding="10dp"
                 android:paddingTop="15dp" />
 
@@ -83,6 +85,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edittext_formatted"
                 android:hint="Cellphone Number"
+                android:focusable="false"
                 android:inputType="text"
                 android:padding="10dp" />
 
@@ -97,12 +100,13 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edittext_formatted"
                 android:hint="ID Number"
+                android:focusable="false"
                 android:inputType="text"
                 android:padding="10dp"
                 android:paddingTop="15dp" />
 
             <Button
-                android:id="@+id/editText"
+                android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -115,11 +119,11 @@
 
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/txtFraudDetails"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_alignStart="@+id/editText5"
-                android:layout_below="@+id/editText6"
+                android:layout_alignStart="@+id/txtCompanyOrPerson"
+                android:layout_below="@+id/txtAddress"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="20dp"
@@ -130,11 +134,11 @@
                 android:paddingTop="15dp" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/txtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText5"
+                android:layout_below="@+id/txtCompanyOrPerson"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -145,7 +149,7 @@
                 android:paddingTop="15dp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/txtCompanyOrPerson"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
@@ -164,7 +168,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fraud/Corruption Details"
-                android:textAppearance="@android:style/TextAppearance.Material.Small"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_below="@+id/txtIdnumber"

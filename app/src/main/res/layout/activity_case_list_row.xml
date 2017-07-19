@@ -19,6 +19,7 @@
         android:layout_marginStart="12dp" />
 
     <ImageView
+        android:id="@+id/imgDropDown"
         android:layout_width="25dp"
         android:layout_height="18dp"
         android:src="@drawable/expand"
@@ -47,13 +48,18 @@
         android:layout_marginEnd="59dp" />
 
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:scrollbars="horizontal"
+        android:layout_below="@+id/txtDateCreated"
+        android:layout_alignParentStart="true">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:id="@+id/relativeLayout2"
-        android:layout_below="@+id/txtDateCreated"
-        android:layout_alignParentStart="true">
+        >
         <View
             android:id="@+id/investigate"
             android:layout_width="25dp"
@@ -284,5 +290,72 @@
             android:layout_alignEnd="@+id/investigate" />
 
     </RelativeLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/relativeLayoutExpand"
+        android:background="#eee"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:id="@+id/btnHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/ic_uparrow"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000"
+            android:paddingRight="20dp"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnFindCourt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnHeading"
+            android:drawableStart="@mipmap/ic_location"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000"
+            android:paddingLeft="20dp"
+            android:text="Navigate to Court"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnCaseDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnFindCourt"
+            android:drawableStart="@mipmap/ic_court"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000"
+            android:text="Case Details"
+            android:paddingLeft="20dp"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnCaseDetails"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:drawableStart="@mipmap/ic_feedback"
+            android:background="#000"
+            android:text="Ptovide Feedback"
+            android:paddingLeft="20dp"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
 
 </RelativeLayout>
