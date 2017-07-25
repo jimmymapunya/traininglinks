@@ -27,28 +27,53 @@
             android:orientation="vertical">
 
             <CheckBox
+                android:id="@+id/checkBoxOF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox2OF"
+                android:layout_below="@+id/ratingBar"
+                android:layout_marginTop="19dp"
+                android:text="Time spent on one process is too long" />
+
+            <CheckBox
                 android:id="@+id/checkBox2OF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/txtFeedbackQuestion"
-                android:layout_alignStart="@+id/txtFeedbackQuestion"
+                android:layout_alignStart="@+id/btnSubmitOF"
                 android:layout_below="@+id/ratingBar"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="51dp"
+                android:text="Time spent on one process is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox5OF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox4OF"
+                android:layout_below="@+id/checkBox2OF"
+                android:text="Time spent on one process is too long" />
+
+            <CheckBox
+                android:id="@+id/checkBox4OF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox2OF"
+                android:layout_below="@+id/checkBox2OF"
+                android:layout_marginTop="31dp"
                 android:text="Time spent on one process is too long" />
 
             <TextView
+                android:id="@+id/txtFeedbackQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="33dp"
                 android:text="How do you feel about the hekp you just received?"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/txtFeedbackQuestion" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtStarRating"
@@ -65,71 +90,48 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtStarRating"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="22dp" />
-
-            <CheckBox
-                android:id="@+id/checkBoxOF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time spent on one process is too long"
-                android:layout_below="@+id/checkBox2OF"
-                android:layout_alignStart="@+id/checkBox2OF"
-                android:layout_alignEnd="@+id/checkBox2OF" />
-
-            <CheckBox
-                android:id="@+id/checkBox4OF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/checkBoxOF"
-                android:layout_below="@+id/checkBoxOF"
-                android:text="Time spent on one process is too long"
-                android:layout_alignEnd="@+id/checkBoxOF" />
-
-            <CheckBox
-                android:id="@+id/checkBox5OF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/checkBox4OF"
-                android:layout_below="@+id/checkBox4OF"
-                android:text="Time spent on one process is too long"
-                android:layout_alignEnd="@+id/checkBox4OF" />
+                android:layout_marginTop="22dp"
+                android:numStars="5"
+                android:stepSize="0.5" />
 
             <EditText
                 android:id="@+id/txtOverallFeedbackEditText"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:background="@drawable/edittext_formatted"
+                android:ems="10"
                 android:hint=" Additional comments"
+                android:inputType="textPersonName"
                 android:textAlignment="viewStart"
-                android:layout_below="@+id/checkBox5OF"
-                android:layout_alignStart="@+id/checkBox5OF"
-                android:layout_alignEnd="@+id/checkBox5OF" />
+                android:layout_below="@+id/checkBox4OF"
+                android:layout_marginTop="10dp"
+                android:layout_alignEnd="@+id/btnSubmitOF"
+                android:layout_alignStart="@+id/checkBox4OF" />
 
             <Button
-                android:id="@+id/btnEmergency"
+                android:id="@+id/btnSubmitOF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/btnNotNowOF"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="13dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/emergencybutton"
                 android:text="@string/strSubmitFeedback"
-                android:textColor="#fff"
-                android:layout_above="@+id/btnFeelsafe"
-                android:layout_alignParentStart="true" />
+                android:textColor="#fff" />
 
             <Button
-                android:id="@+id/btnFeelsafe"
+                android:id="@+id/btnNotNowOF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/emergencybutton"
                 android:text="@string/strNotNow"
-                android:textColor="#fff"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true" />
+                android:textColor="#fff" />
         </RelativeLayout>
 
         <fragment
