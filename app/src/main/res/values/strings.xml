@@ -67,6 +67,7 @@
     <string name="submit">Submit</string>
 
     <string-array name="injuries_choice">
+        <item>Select</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
