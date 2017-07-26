@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="How do you feel about the hekp you just received?"
+                    android:text="How do you feel about the help you just received?"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -68,12 +68,12 @@
 
                 <TextView
                     android:id="@+id/txtStarRating"
-                    android:layout_width="356dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please give it a star rating"
                     android:layout_below="@+id/txtFeedbackQuestion"
                     android:textAlignment="center"
-                    android:layout_marginTop="18dp" />
+                    android:layout_marginTop="13dp"
+                    android:text="Please give it a star rating" />
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -81,7 +81,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="12dp"
-                    tools:layout_gravity="center_horizontal"/>
+                    tools:layout_gravity="center_horizontal"
+                    android:numStars="5"
+                    android:stepSize="0.5"/>
 
                 <CheckBox
                     android:id="@+id/checkBoxEF"

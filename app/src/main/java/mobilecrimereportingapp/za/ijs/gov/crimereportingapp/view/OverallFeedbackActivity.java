@@ -100,9 +100,6 @@ public class OverallFeedbackActivity extends AppCompatActivity {
         txtOverallFeedbackEditText = (EditText) findViewById(R.id.txtOverallFeedbackEditText);
 
         btnSubmit = (Button) findViewById(R.id.btnSubmitOF);
-        //load with button disabled
-        btnSubmit.setEnabled(false);
-        btnSubmit.setClickable(false);
 
         //get star rating
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -111,19 +108,14 @@ public class OverallFeedbackActivity extends AppCompatActivity {
 
         //if rating value is changed,
         //display the current rating value in the on screen automatically
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+        //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+           //@Override
+            //public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
                 //show the star rating on change
                 starRating = String.valueOf(ratingBar.getRating());
                 //get text in additional comments text box
                 txtOverallFeedbackEditTextString = txtOverallFeedbackEditText.getText().toString();
                 //Toast.makeText(context,starRating,Toast.LENGTH_LONG).show();
-                //only submit form when something is filled in on the form
-                if(starRating != ""){
-                    //enable submit button and submit form
-                    btnSubmit.setEnabled(true);
-                    btnSubmit.setClickable(true);
 
                     btnSubmit.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -137,35 +129,57 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                             checkBox3 = (CheckBox) findViewById(R.id.checkBox5OF);
                             checkBox4 = (CheckBox) findViewById(R.id.checkBox4OF);
 
-                            //create and submit the overall feedback
-                            createFeedback(URL, ratingBar, txtOverallFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4);
+                            //show the star rating on change
+                            //starRating = String.valueOf(ratingBar.getRating());
+                            if(String.valueOf(ratingBar.getRating()).equals("0.0")) {
+                                //Toast.makeText(context,"Star Rating Test: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
+                                //show pop up notifying user to star rate
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                // set title
+                                alertDialogBuilder.setTitle("Please star rate");
 
-                            //after feedback has been submitted show pop up
-                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                            // set title
-                            alertDialogBuilder.setTitle("Thank you for your feedback");
+                                //set dialog message
+                                alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // if this button is clicked, just close
+                                        // the dialog box and do nothing
+                                        dialog.cancel();
+                                    }
+                                });
+                                // create alert dialog
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                //show it
+                                alertDialog.show();
 
-                            //set dialog message
-                            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    //if this is clicked, close current activity and go back to provide feedback
-                                    startActivity(new Intent(context, ProvideFeedback.class));
-                                }
-                            });
-                            // create alert dialog
-                            AlertDialog alertDialog = alertDialogBuilder.create();
-                            //show it
-                            alertDialog.show();
+                            }else{
+
+                                //create and submit the overall feedback
+                                createFeedback(URL, ratingBar, txtOverallFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4);
+
+                                //after feedback has been submitted show pop up
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                // set title
+                                alertDialogBuilder.setTitle("Thank you for your feedback");
+
+                                //set dialog message
+                                alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //if this is clicked, close current activity and go back to provide feedback
+                                        startActivity(new Intent(context, ProvideFeedback.class));
+                                    }
+                                });
+                                // create alert dialog
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                //show it
+                                alertDialog.show();
+
+                            }
+
                         }
                     });
 
-                }else{
-                    btnSubmit.setEnabled(false);
-                    btnSubmit.setClickable(false);
-
-                }
-            }
-        });
+            //}
+        //});
 
         //when the user does not want submit feedback
         btnNotNow.setOnClickListener(new View.OnClickListener() {
