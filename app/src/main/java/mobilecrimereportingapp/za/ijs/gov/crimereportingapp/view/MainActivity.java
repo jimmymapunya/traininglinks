@@ -48,7 +48,7 @@ import static java.security.AccessController.getContext;
 public class MainActivity extends AppCompatActivity {
 
     /*Toolbar and Button components declaration*/
-    private static final String URL_request = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/GetDashboard?AuthDetail.UserName=Jimmy&AuthDetail.Role=map&AuthDetail.DeviceId=1234rrt";
+    private static final String URL_request = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/GetDashboard?AuthDetail.UserName=john&AuthDetail.Role=map&AuthDetail.DeviceId=1234rrt";
     private static final String URL_emergency = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateEmergency";
     private static final String URL_unsafe = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateUnsafe";
 
