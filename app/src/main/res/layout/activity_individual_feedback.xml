@@ -141,17 +141,17 @@
                     android:layout_marginBottom="13dp" />
 
                 <Button
-                    android:id="@+id/btnSubmitFeedback"
+                    android:id="@+id/btnSubmitFeedbackIF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/emergencybutton"
                     android:text="@string/strSubmitFeedback"
                     android:textColor="#fff"
-                    android:layout_above="@+id/btnNotNow"
+                    android:layout_above="@+id/btnNotNowIF"
                     android:layout_marginBottom="13dp" />
 
                 <Button
-                    android:id="@+id/btnNotNow"
+                    android:id="@+id/btnNotNowIF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/emergencybutton"

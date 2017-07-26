@@ -108,7 +108,7 @@
                     android:text="Time spent on one case is too long" />
 
                 <CheckBox
-                    android:id="@+id/checkBox5IF"
+                    android:id="@+id/checkBox5EF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/checkBox4EF"
