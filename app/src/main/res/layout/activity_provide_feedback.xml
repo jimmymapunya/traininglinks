@@ -20,44 +20,54 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnOverallFeedback"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@mipmap/ic_feedback"
-                android:drawableEnd="@mipmap/ic_arrow"
-                android:text="@string/str_overall_feedback"
-                android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnEventFeedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@mipmap/ic_feedback"
-                android:drawableEnd="@mipmap/ic_arrow"
-                android:text="@string/str_event_feedback"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/btnOverallFeedback"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
+                <Button
+                    android:id="@+id/btnOverallFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:drawableEnd="@mipmap/ic_arrow"
+                    android:drawableStart="@mipmap/ic_feedback"
+                    android:text="@string/str_overall_feedback" />
 
-            <Button
-                android:id="@+id/btnIndividualFeedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@mipmap/ic_feedback"
-                android:drawableEnd="@mipmap/ic_arrow"
-                android:text="@string/str_Individual_feedback"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/btnEventFeedback"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
+                <Button
+                    android:id="@+id/btnEventFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/btnOverallFeedback"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawableEnd="@mipmap/ic_arrow"
+                    android:drawableStart="@mipmap/ic_feedback"
+                    android:text="@string/str_event_feedback" />
+
+                <Button
+                    android:id="@+id/btnIndividualFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/btnEventFeedback"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawableEnd="@mipmap/ic_arrow"
+                    android:drawableStart="@mipmap/ic_feedback"
+                    android:text="@string/str_Individual_feedback" />
+            </LinearLayout>
 
         </LinearLayout>
 
