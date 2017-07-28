@@ -347,7 +347,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-                username = "jimmy";
+                username = "John";
                 role = "admin";
 
                 Map<String, String> params = new HashMap<String, String>();

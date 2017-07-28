@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
-                username = "Jimmy";
+                username = "John";
                 role = "1";
                 longitude = String.valueOf(lat);
                 latitude = String.valueOf(lon);
