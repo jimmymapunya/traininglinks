@@ -138,8 +138,12 @@ public class ReportCrimeActivity extends AppCompatActivity {
                     witnessContact = txtWitnessContact.getText().toString();
                     witnessAddress = txtWitnessAddress.getText().toString();
                 }
+                    if(checkBoxConfirmation.isChecked()){
+                        reportCrime(URL_case);
+                    } else{
+                        Toast.makeText(context, "Please confirm that all details provided are correct by checking the confirmation",Toast.LENGTH_LONG).show();;
+                    }
 
-                    reportCrime(URL_case);
             }
         });
 
@@ -271,8 +275,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 if (!itemSelected.equals("Select")) {
                     isIdentifyFacialIdentiKit = true;
-                } else {
-                    Toast.makeText(context, "Please select if you will be able to identify the offender.", Toast.LENGTH_LONG).show();
                 }
             }
 
