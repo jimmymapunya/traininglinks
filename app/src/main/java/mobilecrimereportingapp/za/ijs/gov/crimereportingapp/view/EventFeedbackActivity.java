@@ -101,6 +101,16 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+        checkBox1 = (CheckBox) findViewById(R.id.checkBoxEF);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2EF);
+        checkBox3 = (CheckBox) findViewById(R.id.checkBox5EF);
+        checkBox4 = (CheckBox) findViewById(R.id.checkBox4EF);
+        //hide checkboxes on load
+        checkBox1.setVisibility(View.INVISIBLE);
+        checkBox2.setVisibility(View.INVISIBLE);
+        checkBox3.setVisibility(View.INVISIBLE);
+        checkBox4.setVisibility(View.INVISIBLE);
+
         addItemsOnSpinnerCaseNo();
         addItemsOnSpinnerPhase();
 
@@ -117,6 +127,8 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         btnNotNow = (Button) findViewById(R.id.btnNotNowEF);
 
+
+
         spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
         spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
 
@@ -128,12 +140,25 @@ public class EventFeedbackActivity extends AppCompatActivity {
         spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
         spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
 
-        //only submit form when something is filled in on the form
-        //if(starRating != ""){
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+                //show the star rating on change
+                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) <= 2.5){
+                    checkBox1.setVisibility(View.VISIBLE);
+                    checkBox2.setVisibility(View.VISIBLE);
+                    checkBox3.setVisibility(View.VISIBLE);
+                    checkBox4.setVisibility(View.VISIBLE);
+                }else{
+                    //hide them
+                    checkBox1.setVisibility(View.INVISIBLE);
+                    checkBox2.setVisibility(View.INVISIBLE);
+                    checkBox3.setVisibility(View.INVISIBLE);
+                    checkBox4.setVisibility(View.INVISIBLE);
 
-        //enable submit button and submit form
-        //btnSubmit.setEnabled(true);
-        //btnSubmit.setClickable(true);
+                }
+            }
+        });
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

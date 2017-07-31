@@ -96,6 +96,16 @@ public class OverallFeedbackActivity extends AppCompatActivity {
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
 
+        checkBox1 = (CheckBox) findViewById(R.id.checkBoxOF);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2OF);
+        checkBox3 = (CheckBox) findViewById(R.id.checkBox5OF);
+        checkBox4 = (CheckBox) findViewById(R.id.checkBox4OF);
+        //hide checkboxes on load
+        checkBox1.setVisibility(View.INVISIBLE);
+        checkBox2.setVisibility(View.INVISIBLE);
+        checkBox3.setVisibility(View.INVISIBLE);
+        checkBox4.setVisibility(View.INVISIBLE);
+
         //get additional comments
         txtOverallFeedbackEditText = (EditText) findViewById(R.id.txtOverallFeedbackEditText);
 
@@ -108,10 +118,25 @@ public class OverallFeedbackActivity extends AppCompatActivity {
 
         //if rating value is changed,
         //display the current rating value in the on screen automatically
-        //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-           //@Override
-            //public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
-                //show the star rating on change
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+           @Override
+            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+               //show the star rating on change
+               if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) <= 2.5){
+                   checkBox1.setVisibility(View.VISIBLE);
+                   checkBox2.setVisibility(View.VISIBLE);
+                   checkBox3.setVisibility(View.VISIBLE);
+                   checkBox4.setVisibility(View.VISIBLE);
+               }else{
+                   //hide them
+                   checkBox1.setVisibility(View.INVISIBLE);
+                   checkBox2.setVisibility(View.INVISIBLE);
+                   checkBox3.setVisibility(View.INVISIBLE);
+                   checkBox4.setVisibility(View.INVISIBLE);
+
+               }
+           }
+        });
                 starRating = String.valueOf(ratingBar.getRating());
                 //get text in additional comments text box
                 txtOverallFeedbackEditTextString = txtOverallFeedbackEditText.getText().toString();
@@ -121,8 +146,6 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
 
-                            //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-                            //txtOverallFeedbackEditTextString = txtOverallFeedbackEditText.getText().toString();
 
                             checkBox1 = (CheckBox) findViewById(R.id.checkBoxOF);
                             checkBox2 = (CheckBox) findViewById(R.id.checkBox2OF);

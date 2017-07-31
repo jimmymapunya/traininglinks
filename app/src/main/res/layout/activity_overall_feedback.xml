@@ -137,6 +137,7 @@
             </LinearLayout>
 
         </ScrollView>
+
         <fragment
             android:id="@+id/frag_nav_drawer"
             android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"

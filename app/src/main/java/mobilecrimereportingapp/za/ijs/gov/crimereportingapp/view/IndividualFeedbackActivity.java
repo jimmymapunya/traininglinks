@@ -102,6 +102,16 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+        checkBox1 = (CheckBox) findViewById(R.id.checkBoxIF);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2IF);
+        checkBox3 = (CheckBox) findViewById(R.id.checkBox5IF);
+        checkBox4 = (CheckBox) findViewById(R.id.checkBox4IF);
+        //hide checkboxes on load
+        checkBox1.setVisibility(View.INVISIBLE);
+        checkBox2.setVisibility(View.INVISIBLE);
+        checkBox3.setVisibility(View.INVISIBLE);
+        checkBox4.setVisibility(View.INVISIBLE);
+
         addItemsOnSpinnerCaseNo();
         addItemsOnSpinnerActorRole();
         addItemsOnSpinnerActorName();
@@ -122,6 +132,26 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
         //get text in additional comments text box
         txtIndividualFeedbackEditTextString = txtIndividualFeedbackEditText.getText().toString();
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+                //show the star rating on change
+                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) <= 2.5){
+                    checkBox1.setVisibility(View.VISIBLE);
+                    checkBox2.setVisibility(View.VISIBLE);
+                    checkBox3.setVisibility(View.VISIBLE);
+                    checkBox4.setVisibility(View.VISIBLE);
+                }else{
+                    //hide them
+                    checkBox1.setVisibility(View.INVISIBLE);
+                    checkBox2.setVisibility(View.INVISIBLE);
+                    checkBox3.setVisibility(View.INVISIBLE);
+                    checkBox4.setVisibility(View.INVISIBLE);
+
+                }
+            }
+        });
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
