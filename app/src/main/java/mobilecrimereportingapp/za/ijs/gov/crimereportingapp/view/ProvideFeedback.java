@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,21 +78,34 @@ public class ProvideFeedback extends AppCompatActivity {
         btnOverallFeedback.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(context,"Overall Feedback is feedback about everything that has happened throughout the handling of the case.", Toast.LENGTH_LONG).show();
+                Toast toast= Toast.makeText(getApplicationContext(),
+                        "Overall Feedback is feedback about everything that has happened throughout the handling of the case.", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+                toast.show();
+                //Toast.makeText(context,"Overall Feedback is feedback about everything that has happened throughout the handling of the case.", Toast.LENGTH_LONG).setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                //Toast.show();
                 return true;
             }
         });
         btnEventFeedback.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(context,"Event Feedback is feedback about a specific stage of the case is in, eg- Investigation", Toast.LENGTH_LONG).show();
+                Toast toast= Toast.makeText(getApplicationContext(),
+                        "Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+                toast.show();
+                //Toast.makeText(context,"Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_LONG).show();
                 return true;
             }
         });
         btnIndividualFeedback.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(context,"Individual Feedback is feedback on the officials that took part in the handling of the case, eg- Police Officer, Prosecutor etc... ", Toast.LENGTH_LONG).show();
+                Toast toast= Toast.makeText(getApplicationContext(),
+                        "Individual Feedback is feedback on the officials that took part in the handling of the case, eg- Police Officer, Prosecutor etc...", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+                toast.show();
+                //Toast.makeText(context,"Individual Feedback is feedback on the officials that took part in the handling of the case, eg- Police Officer, Prosecutor etc... ", Toast.LENGTH_LONG).show();
                 return true;
             }
         });
