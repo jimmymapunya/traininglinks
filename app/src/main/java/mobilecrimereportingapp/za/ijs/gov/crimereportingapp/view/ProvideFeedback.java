@@ -2,9 +2,9 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 
@@ -52,27 +53,49 @@ public class ProvideFeedback extends AppCompatActivity {
         btnEventFeedback = (Button) findViewById(R.id.btnEventFeedback);
         btnIndividualFeedback = (Button) findViewById(R.id.btnIndividualFeedback);
 
-
+        //buttons short press
         btnOverallFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, OverallFeedbackActivity.class));
             }
         });
-
         btnEventFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, EventFeedbackActivity.class));
             }
         });
-
         btnIndividualFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, IndividualFeedbackActivity.class));
             }
         });
+
+        //buttons longPress
+        btnOverallFeedback.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context,"Overall Feedback is feedback about everything that has happened throughout the handling of the case.", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+        btnEventFeedback.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context,"Event Feedback is feedback about a specific stage of the case is in, eg- Investigation", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+        btnIndividualFeedback.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context,"Individual Feedback is feedback on the officials that took part in the handling of the case, eg- Police Officer, Prosecutor etc... ", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
 
         setSupportActionBar(Toolbar);
         /*Back notificationicon for navigation drawer*/
