@@ -68,6 +68,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="12dp"
                         android:numStars="5"
+                        android:progressTint="@android:color/holo_orange_dark"
                         android:stepSize="0.5"
                         tools:layout_gravity="center_horizontal" />
 
