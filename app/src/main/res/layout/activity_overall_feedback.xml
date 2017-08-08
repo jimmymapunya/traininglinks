@@ -45,7 +45,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginTop="10dp"
                         android:text="How do you feel about the help you just received?"
                         android:textAlignment="center"
                         android:textSize="18sp"
@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtFeedbackQuestion"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginTop="10dp"
                         android:text="Please give it a star rating"
                         android:textAlignment="center" />
 
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtStarRating"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:numStars="5"
                         android:progressTint="@android:color/holo_orange_dark"
                         android:stepSize="0.5"
@@ -108,9 +108,9 @@
                     <EditText
                         android:id="@+id/txtOverallFeedbackEditText"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="45dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/edittext_formatted"
+                        android:background="@drawable/edit_text_style"
                         android:ems="10"
                         android:hint=" Additional comments"
                         android:inputType="textPersonName"
@@ -120,7 +120,8 @@
                         android:id="@+id/btnSubmitOF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/emergencybutton"
                         android:text="@string/strSubmitFeedback"
                         android:textColor="#fff" />

@@ -36,31 +36,22 @@
                 <Spinner
                     android:id="@+id/spinnerCaseNo"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignEnd="@+id/spinnerActorRole"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/spinnerActorRole"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
                 <Spinner
                     android:id="@+id/spinnerActorRole"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignEnd="@+id/txtFeedbackQuestion"
-                    android:layout_alignStart="@+id/btnSubmitFeedback"
-                    android:layout_below="@+id/spinnerCaseNo"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
                 <Spinner
                     android:id="@+id/spinnerActorName"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignEnd="@+id/spinnerActorRole"
-                    android:layout_alignStart="@+id/spinnerActorRole"
-                    android:layout_below="@+id/spinnerActorRole"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
                 <TextView
@@ -70,7 +61,7 @@
                     android:layout_below="@+id/spinnerActorName"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="10dp"
                     android:text="How do you feel about the help you just received?"
                     android:textAlignment="center"
                     android:textSize="18sp"
@@ -82,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtFeedbackQuestion"
                     android:textAlignment="center"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="10dp"
                     android:text="Please give it a star rating" />
 
                 <RatingBar
@@ -91,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtStarRating"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     tools:layout_gravity="center_horizontal"
                     android:numStars="5"
                     android:progressTint="@android:color/holo_orange_dark"
@@ -132,8 +123,8 @@
                 <EditText
                     android:id="@+id/txtIndividualFeedbackEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/edittext_formatted"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edit_text_style"
                     android:ems="10"
                     android:hint=" Additional comments"
                     android:inputType="textPersonName"
@@ -141,7 +132,7 @@
                     android:layout_below="@+id/checkBoxIF"
                     android:layout_alignEnd="@+id/btnSubmitFeedback"
                     android:layout_alignStart="@+id/btnSubmitFeedback"
-                    android:layout_marginBottom="13dp" />
+                    android:layout_marginBottom="10dp" />
 
                 <Button
                     android:id="@+id/btnSubmitFeedbackIF"
@@ -151,7 +142,7 @@
                     android:text="@string/strSubmitFeedback"
                     android:textColor="#fff"
                     android:layout_above="@+id/btnNotNowIF"
-                    android:layout_marginBottom="13dp" />
+                    android:layout_marginBottom="10dp" />
 
                 <Button
                     android:id="@+id/btnNotNowIF"
