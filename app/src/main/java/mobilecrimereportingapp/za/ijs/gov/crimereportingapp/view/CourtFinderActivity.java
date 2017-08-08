@@ -1,12 +1,15 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,10 +29,24 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     private GoogleMap mMap;
     private Toolbar Toolbar;
 
+    Context context = this;
+
+    private TextView notificationCountIcon, inboxCountIcon;
+    private FrameLayout notificationLayout, inboxLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_finder);
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+
+        notificationCountIcon.setText(MainActivity.notificationCount);
+        inboxCountIcon.setText(MainActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
