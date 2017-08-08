@@ -32,197 +32,216 @@
 
     <TextView android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/str_offense"
+        android:text="Crime: Attempted Murder"
         android:id="@+id/txtCaseContent"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/txtCaseNo"
         android:layout_alignStart="@+id/txtCaseNo" />
 
     <TextView
+        android:id="@+id/txtSuspects"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtCaseNo"
+        android:layout_below="@+id/txtCaseContent"
+        android:layout_marginTop="5dp"
+        android:text="Suspect (s): Lindiwe Matepe" />
+
+    <TextView
         android:id="@+id/txtDateCreated"
         android:layout_width="wrap_content"
         android:layout_height="30dip"
         android:text="@string/str_courtDate"
-        android:layout_below="@+id/txtCaseContent"
+        android:layout_below="@+id/txtSuspects"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="59dp" />
 
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="70dp"
+
+
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="horizontal"
-        android:layout_below="@+id/txtDateCreated"
-        android:layout_alignParentStart="true">
+        android:orientation="horizontal"
+        android:fillViewport="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:layout_below="@+id/txtDateCreated">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
         android:id="@+id/relativeLayout2"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
         <View
             android:id="@+id/investigate"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="10dp"
+            android:background="@drawable/process_status_formatted"
             android:paddingTop="210dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
+
         <View
             android:id="@+id/investigateLine"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="35dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/arrested"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="70dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/arrestLine"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="105dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="95dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
+
         <View
             android:id="@+id/bail"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="150dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="130dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/bailLine"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="175dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="155dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
+
         <View
             android:id="@+id/trial"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="220dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="190dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/trialLine"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="245dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="215dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/verdict"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="290dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="250dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/verdictLine"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="315dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="275dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/aquit"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="360dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="310dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/aquitLine"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_height="2dp"
-            android:background="#ccc"
-            android:textColor="#fff"
-            android:paddingTop="210dp"
-            android:textSize="12sp"
+            android:layout_marginStart="385dp"
             android:layout_marginTop="15dp"
+            android:background="#ccc"
+            android:paddingTop="210dp"
             android:textAlignment="center"
-            android:layout_marginStart="335dp" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
         <View
             android:id="@+id/sentence"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="420dp"
             android:background="@drawable/process_status_formatted"
-            android:textColor="#fff"
             android:paddingTop="210dp"
-            android:layout_marginStart="370dp"
-            android:textSize="12sp"
             android:textAlignment="center"
-            android:layout_alignParentStart="true" />
+            android:textColor="#fff"
+            android:textSize="12sp" />
 
 
         <TextView
             android:id="@+id/txtArrested"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Arrest"
-            android:textSize="12dp"
             android:layout_alignBottom="@+id/txtInvestigate"
             android:layout_alignStart="@+id/arrested"
-            android:layout_alignTop="@+id/txtBail" />
+            android:text="Arrest"
+            android:textSize="12dp"
+            android:layout_alignTop="@+id/txtInvestigate" />
 
         <TextView
             android:id="@+id/txtVerdict"
@@ -240,6 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/txtInvestigate"
             android:layout_alignBottom="@+id/txtInvestigate"
+            android:layout_alignEnd="@+id/sentence"
             android:layout_alignStart="@+id/aquit"
             android:text="Aquit"
             android:textSize="12dp" />
@@ -248,12 +268,11 @@
             android:id="@+id/txtSentence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sentence"
-            android:textSize="12dp"
             android:layout_alignBaseline="@+id/txtAquit"
             android:layout_alignBottom="@+id/txtAquit"
-            android:layout_toEndOf="@+id/txtAquit"
-            android:layout_marginStart="18dp" />
+            android:layout_toEndOf="@+id/aquitLine"
+            android:text="Sentence"
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/txtBail"
@@ -261,20 +280,20 @@
             android:layout_height="wrap_content"
             android:text="Bail hearing"
             android:textSize="12dp"
-            android:layout_alignBaseline="@+id/txtTrial"
-            android:layout_alignBottom="@+id/txtTrial"
-            android:layout_alignEnd="@+id/bailLine" />
+            android:layout_toEndOf="@+id/txtArrested"
+            android:layout_marginStart="17dp"
+            android:layout_alignTop="@+id/txtArrested" />
 
         <TextView
             android:id="@+id/txtTrial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trial"
-            android:textSize="12dp"
             android:layout_alignBaseline="@+id/txtVerdict"
             android:layout_alignBottom="@+id/txtVerdict"
-            android:layout_toEndOf="@+id/txtBail"
-            android:layout_marginStart="12dp" />
+            android:layout_marginStart="12dp"
+            android:text="Trial"
+            android:textSize="12dp"
+            android:layout_alignEnd="@+id/trial" />
 
         <TextView
             android:id="@+id/txtInvestigate"
@@ -286,21 +305,17 @@
             android:layout_marginTop="12dp"
             android:layout_toStartOf="@+id/txtArrested"
             android:text="Investigate"
-            android:textSize="12dp"
-            android:layout_alignEnd="@+id/investigate" />
+            android:textSize="12dp" />
 
     </RelativeLayout>
-
-    </ScrollView>
+    </HorizontalScrollView>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:id="@+id/relativeLayoutExpand"
-        android:background="#eee"
-        android:layout_alignParentTop="true"
         android:visibility="gone"
-        android:layout_alignParentEnd="true">
+        android:id="@+id/relativeLayoutExpand"
+        android:background="#eee">
 
         <Button
             android:id="@+id/btnHeading"
@@ -352,10 +367,9 @@
             android:layout_marginRight="2dp"
             android:drawableStart="@mipmap/ic_feedback"
             android:background="#000"
-            android:text="Ptovide Feedback"
+            android:text="Provide Feedback"
             android:paddingLeft="20dp"
             android:textColor="#fff" />
     </RelativeLayout>
-
 
 </RelativeLayout>

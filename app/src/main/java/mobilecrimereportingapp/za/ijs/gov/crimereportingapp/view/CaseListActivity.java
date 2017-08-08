@@ -6,11 +6,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.CaseAdapter;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.CaseListAdapter;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.CaseDetails;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.StatusDetails;
 
@@ -35,7 +37,7 @@ public class CaseListActivity extends AppCompatActivity {
 
     private Toolbar Toolbar;
     private Context context = this;
-    ArrayList<CaseDetails> listdao = new ArrayList<>();
+    public static ArrayList<CaseDetails> listdao = new ArrayList<>();
 
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
@@ -135,7 +137,8 @@ public class CaseListActivity extends AppCompatActivity {
 
             int status_last_index = (listdao.get(i).getStatus().size()) - 1;
             hm.put("caseNo", listdao.get(i).getCaseNo());
-            hm.put("caseContent", "Crime: " + listdao.get(i).getOffense() + "Suspect(s) " + listdao.get(i).getAccused());
+            hm.put("caseContent", "Crime: " + listdao.get(i).getOffense());
+            hm.put("suspects", "Suspect(s): " + listdao.get(i).getAccused());
             hm.put("dateCreated", listdao.get(i).getStatus().get(status_last_index).getDateCreated());
             String status = "";
             for(int y=0; y< listdao.get(i).getStatus().size(); y++){
@@ -154,71 +157,25 @@ public class CaseListActivity extends AppCompatActivity {
         }
 
         // Keys used in Hashmap
-        String[] from = {"caseNo", "caseContent", "dateCreated"};
+        String[] from = {"caseNo", "caseContent", "suspects", "dateCreated"};
 
         // Ids of views in listview_layout
-        int[] to = {R.id.txtCaseNo, R.id.txtCaseContent, R.id.txtDateCreated};
+        int[] to = {R.id.txtCaseNo, R.id.txtCaseContent, R.id.txtSuspects, R.id.txtDateCreated};
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
 
-        CaseAdapter adapter = new CaseAdapter(getBaseContext(), aList, R.layout.activity_case_list_row, from, to);
+        CaseListAdapter adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
 
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(R.id.listview);
 
         // Setting the adapter to the listView
+
         listView.setAdapter(adapter);
 
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-                getIntent().removeExtra("key");
-                getIntent().removeExtra("caseNo");
-                getIntent().removeExtra("victim");
-                getIntent().removeExtra("accused");
-                getIntent().removeExtra("offense");
-                getIntent().removeExtra("caseDesc");
-                getIntent().removeExtra("processNameArr");
-                getIntent().removeExtra("actionDateArr");
-                getIntent().removeExtra("actionLocationArr");
-                getIntent().removeExtra("currentProcess");
-
-                ArrayList<StatusDetails> statusDetailsList = listdao.get(position).getStatus();
-                Intent intent =new Intent(context, CaseDetailsActivity.class);
-
-                String[] processName = new String[statusDetailsList.size()];
-                String[] actionDate = new String[statusDetailsList.size()];
-                String[] actionLocation = new String[statusDetailsList.size()];
-                boolean[] isCurrent = new boolean[statusDetailsList.size()];
-                String currentProcess ="";
-                for(int x=0; x<statusDetailsList.size(); x++){
-
-                    processName[x] = statusDetailsList.get(x).getProcessName();
-                    actionDate[x] = statusDetailsList.get(x).getActionDate();
-                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
-                    if(statusDetailsList.get(x).isIsCurrent()){
-                        currentProcess =  statusDetailsList.get(x).getProcessName();
-                    }
-                }
-
-                intent.putExtra("caseNo",listdao.get(position).getCaseNo());
-                intent.putExtra("victim",listdao.get(position).getVictim());
-                intent.putExtra("accused",listdao.get(position).getAccused());
-                intent.putExtra("offense",listdao.get(position).getOffense());
-                intent.putExtra("caseDesc",listdao.get(position).getCaseDesc());
-                intent.putExtra("processNameArr",processName);
-                intent.putExtra("actionDateArr",actionDate);
-                intent.putExtra("actionLocationArr",actionLocation);
-                intent.putExtra("currentProcess",currentProcess);
-                startActivity(intent);
-            }
-        });
 
         setSupportActionBar(Toolbar);
 

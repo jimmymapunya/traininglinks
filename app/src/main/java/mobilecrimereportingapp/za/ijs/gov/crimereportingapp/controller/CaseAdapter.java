@@ -1,11 +1,13 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -19,6 +21,11 @@ import java.util.List;
 import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.CaseDetails;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.StatusDetails;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CaseDetailsActivity;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CaseListActivity;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ProvideFeedback;
 
 import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.relativeLayout;
 import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInvestigate;
@@ -27,20 +34,26 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
  * Created by TsundzukaniM on 13-Jul-17.
  */
 
-    public class CaseAdapter extends SimpleAdapter {
+    public class CaseAdapter extends SimpleAdapter implements AdapterView.OnItemClickListener {
 
         List<? extends Map<String, ?>> list  = new ArrayList<>();
+        private Context context;
+        private int index;
+        private String arrStatuses[];
 
         public CaseAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
             super(context, data, resource, from, to);
             list = data;
+
+
         }
 
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-
+            index = position;
+            context = parent.getContext();
             View view=super.getView(position, convertView, parent);
             final RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayoutExpand);
             View investigate=(View) view.findViewById(R.id.investigate);
@@ -107,8 +120,8 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
 
             //imageView.setBackgroundResource(R.drawable.success_status);
             String processes = list.get(position).get("status"+position).toString();
-            String arrStatuses[] = processes.substring(0,processes.length()).split("#");
-
+            arrStatuses = processes.substring(0,processes.length()).split("#");
+            int countOccurences=0;
             for(int x=0; x<arrStatuses.length; x++){
 
 
@@ -174,14 +187,6 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
 
             }
 
-
-
-            investigate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
-                }
-            });
             return view;
             //return super.getView(position, convertView, parent);
 
@@ -191,4 +196,9 @@ import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.txtInves
         public int getCount() {
             return super.getCount();
         }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
+}
