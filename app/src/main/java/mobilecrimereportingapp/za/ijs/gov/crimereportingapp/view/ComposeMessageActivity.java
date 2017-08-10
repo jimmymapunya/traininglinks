@@ -94,14 +94,24 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                subject = parent.getItemAtPosition(position).toString();
+                String itemSelected = parent.getItemAtPosition(position).toString();
+
+                if (!itemSelected.equals("Select case number")) {
+                    subject = itemSelected;
+                }
+
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                to = parent.getItemAtPosition(position).toString();
+
+                String itemSelected = parent.getItemAtPosition(position).toString();
+
+                if (!itemSelected.equals("To")) {
+                    to = itemSelected;
+                }
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
