@@ -43,10 +43,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
-                        android:text="How do you feel about the help you just received?"
+                        android:text="Are you satisfied with how your case was handled from beginning to end?"
                         android:textAlignment="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />

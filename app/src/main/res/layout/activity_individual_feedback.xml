@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
+                    android:background="@drawable/bg_spinner_style"/>
 
                 <Spinner
                     android:id="@+id/spinnerActorName"
@@ -58,11 +58,8 @@
                     android:id="@+id/txtFeedbackQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerActorName"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="How do you feel about the help you just received?"
+                    android:text="Are you  satisfied with help you received from the professional individual?"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -74,7 +71,7 @@
                     android:layout_below="@+id/txtFeedbackQuestion"
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
-                    android:text="Please give it a star rating" />
+                    android:text="Please give him/ her a star rating" />
 
                 <RatingBar
                     android:id="@+id/ratingBar"

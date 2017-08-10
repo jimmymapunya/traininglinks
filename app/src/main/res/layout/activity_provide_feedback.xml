@@ -37,7 +37,7 @@
                     android:layout_centerVertical="true"
                     android:layout_weight="1"
                     android:drawableEnd="@mipmap/ic_arrow"
-                    android:drawableStart="@mipmap/ic_info"
+                    android:drawableStart="@mipmap/ic_feedback"
                     android:text="@string/str_overall_feedback" />
 
                 <Button
@@ -51,7 +51,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:drawableEnd="@mipmap/ic_arrow"
-                    android:drawableStart="@mipmap/ic_info"
+                    android:drawableStart="@mipmap/ic_feedback"
                     android:text="@string/str_event_feedback" />
 
                 <Button
@@ -65,7 +65,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:drawableEnd="@mipmap/ic_arrow"
-                    android:drawableStart="@mipmap/ic_info"
+                    android:drawableStart="@mipmap/ic_feedback"
                     android:text="@string/str_Individual_feedback" />
             </LinearLayout>
 

@@ -145,7 +145,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
                 //show the star rating on change
-                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) <= 2.5){
+                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
                     checkBox1.setVisibility(View.VISIBLE);
                     checkBox2.setVisibility(View.VISIBLE);
                     checkBox3.setVisibility(View.VISIBLE);

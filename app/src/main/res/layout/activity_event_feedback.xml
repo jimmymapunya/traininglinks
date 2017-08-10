@@ -50,15 +50,15 @@
                     android:id="@+id/txtFeedbackQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="How do you feel about the help you just received?"
+                    android:layout_below="@+id/spinnerPhase"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:text="Are you satisfied with how each phase of handling your case was dealt with?"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/spinnerPhase"
-                    android:layout_centerHorizontal="true" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtStarRating"

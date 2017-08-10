@@ -138,7 +138,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
                 //show the star rating on change
-                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) <= 2.5){
+                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
                     checkBox1.setVisibility(View.VISIBLE);
                     checkBox2.setVisibility(View.VISIBLE);
                     checkBox3.setVisibility(View.VISIBLE);
@@ -370,7 +370,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
         spinnerActorRole = (Spinner) findViewById(R.id.spinnerActorRole);
         List<String> list = new ArrayList<String>();
-        list.add("---Select Role of Actor---");
+        list.add("---Select Individual Role---");
         list.add("Police Officer");
         list.add("National Prosecuting Officer");
         list.add("Judge");
@@ -385,7 +385,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
         spinnerActorName = (Spinner) findViewById(R.id.spinnerActorName);
         List<String> list = new ArrayList<String>();
-        list.add("---Select Name of Actor---");
+        list.add("---Select Individual Name---");
         list.add("The TF Mr. Makola Himself");
         list.add("Rappy");
         list.add("koco");

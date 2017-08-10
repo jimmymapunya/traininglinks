@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -87,7 +88,7 @@ public class ProvideFeedback extends AppCompatActivity {
                 return true;
             }
         });
-        btnEventFeedback.setOnLongClickListener(new View.OnLongClickListener() {
+        /*btnEventFeedback.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 Toast toast= Toast.makeText(getApplicationContext(),
@@ -97,7 +98,42 @@ public class ProvideFeedback extends AppCompatActivity {
                 //Toast.makeText(context,"Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_LONG).show();
                 return true;
             }
+        });*/
+        btnEventFeedback.setOnHoverListener( new View.OnHoverListener(){
+           @Override
+           public boolean onHover(View v, MotionEvent event){
+               switch (event.getAction()){
+                   case MotionEvent.ACTION_HOVER_ENTER:
+
+                       /*Toast toast= Toast.makeText(getApplicationContext(),
+                               "Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_SHORT);
+                       //toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+                       toast.show();*/
+                       //View txtView = findViewById(R.id.textView);
+
+                       break;
+                   case MotionEvent.ACTION_HOVER_MOVE:
+                       /*toast= Toast.makeText(getApplicationContext(),
+                               "Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_SHORT);
+                       toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+
+                       toast.show();*/
+
+                       break;
+                   case MotionEvent.ACTION_HOVER_EXIT:
+                       /*toast= Toast.makeText(getApplicationContext(),
+                               "Event Feedback is feedback about a specific stage of the case is in, eg- Investigation.", Toast.LENGTH_SHORT);
+                       toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 400);
+
+                       toast.show();*/
+
+                       break;
+               }
+
+                return false;
+            }
         });
+
         btnIndividualFeedback.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
