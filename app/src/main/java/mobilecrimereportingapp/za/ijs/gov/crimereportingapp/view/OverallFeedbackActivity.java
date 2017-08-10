@@ -35,6 +35,7 @@ import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.OverallFeedback;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 /**
  * Created by ThatoM on 2017/07/12.
@@ -254,7 +255,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
 
                 //Values to post
-                username = "Thato";
+                username = UserProfile.Username;
                 role = "admin";
                 device_id = "1";
 

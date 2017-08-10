@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 /**
  * Created by MaribolleR on 2017/07/01.
@@ -347,7 +348,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-                username = "John";
+                username = UserProfile.Username;
                 role = "admin";
 
                 Map<String, String> params = new HashMap<String, String>();

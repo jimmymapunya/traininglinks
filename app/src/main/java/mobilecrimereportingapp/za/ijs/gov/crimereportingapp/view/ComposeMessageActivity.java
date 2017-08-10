@@ -33,6 +33,7 @@ import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 /**
  * Created by JimmyM on 2017/07/07.
@@ -125,6 +126,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
     void addItemsOnSpinner1()
     {
         List<String> list = new ArrayList<String>();
+        list.add("Select case number");
         list.add("10/2017/11");
         list.add("10/2017/98");
         list.add("09/2017/101");
@@ -138,6 +140,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
     {
 
         List<String> list = new ArrayList<String>();
+        list.add("To");
         list.add("Jimmy Mapunya");
         list.add("Thabang Banks");
         list.add("Joe Smith");
@@ -172,7 +175,7 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
-                username = "jimmy";
+                username = UserProfile.Username;
                 role = "admin";
 
                 Map<String,String > params = new HashMap<String,String>();

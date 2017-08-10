@@ -39,6 +39,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.AppSingleton;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.DashboardModel;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 import static java.security.AccessController.getContext;
 
@@ -311,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
-                username = "Jimmy";
+                username = UserProfile.Username;
                 role = "1";
                 longitude = String.valueOf(lat);
                 latitude = String.valueOf(lon);

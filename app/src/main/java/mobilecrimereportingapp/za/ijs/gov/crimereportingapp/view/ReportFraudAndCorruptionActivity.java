@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
 
@@ -135,7 +136,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
 
                 //Values to post
                 device_id = Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
-                username = "jimmy";
+                username = UserProfile.Username;
                 role = "admin";
 
                 Map<String,String > params = new HashMap<String,String>();
