@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Are you sure you want to create Emegency?")
+                builder.setMessage("Are you sure you want to report an emergency, continuing will results in your details and current location being sent to SAPS?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(MainActivity.this,"Emergency Created",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"Emergency reported",Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

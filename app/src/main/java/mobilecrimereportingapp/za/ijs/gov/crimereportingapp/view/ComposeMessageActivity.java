@@ -96,9 +96,9 @@ public class ComposeMessageActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
-                if (!itemSelected.equals("Select case number")) {
+                //if (!itemSelected.equals("Select case number")) {
                     subject = itemSelected;
-                }
+                //}
 
             }
             public void onNothingSelected(AdapterView<?> parent) {
@@ -109,9 +109,9 @@ public class ComposeMessageActivity extends AppCompatActivity {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
-                if (!itemSelected.equals("To")) {
+                //if (!itemSelected.equals("To")) {
                     to = itemSelected;
-                }
+                //}
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -125,8 +125,26 @@ public class ComposeMessageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 body = edtMessage.getText().toString();
-                createInboxMessage(URL, subject,body,to);
-                edtMessage.setText("");
+
+                if(body.equals(""))
+                {
+                    Toast.makeText(context,"Please enter message",Toast.LENGTH_LONG).show();
+                }
+                else if(subject == "Select case number" )
+                {
+                    Toast.makeText(context,"Please select subject",Toast.LENGTH_LONG).show();
+                }
+                else if(to=="To")
+                {
+                    Toast.makeText(context,"Please select recipient",Toast.LENGTH_LONG).show();
+
+                }
+                else
+                {
+                    createInboxMessage(URL, subject,body,to);
+                    edtMessage.setText("");
+                }
+
             }
         });
 
