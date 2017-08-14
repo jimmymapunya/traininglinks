@@ -63,6 +63,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     String device_id, username, role;
 
+    public static boolean isVictim;
     private boolean isInjuries, isObjectsUsed, isRemovedItems, isKnowOffender, isIdentifyFacialIdentiKit, isToldAnyone, isPossibleWitnesses, isConfirmed;
 
     private String beforeCrime, duringCrime, afterCrime, injuriesDescript, objectsUsedDescript, removedItemsDescript, surroundingsDescript,
@@ -91,6 +92,12 @@ public class ReportCrimeActivity extends AppCompatActivity {
                 lblWitnessContact.setText(txtOffenderContact.getText().toString());
                 lblWitnessAddress.setText(txtOffenderAddress.getText().toString());
 
+                txtOffenderName.setText("");
+                txtOffenderContact.setText("");
+                txtOffenderAddress.setText("");
+                txtTattoos.setText("");
+                txtAppearance.setText("");
+
                 OffenderDetailsLayout.addView(view);
             }
         });
@@ -109,6 +116,10 @@ public class ReportCrimeActivity extends AppCompatActivity {
                 lblWitnessName.setText(txtWitnessName.getText().toString());
                 lblWitnessContact.setText(txtWitnessContact.getText().toString());
                 lblWitnessAddress.setText(txtWitnessAddress.getText().toString());
+
+                txtWitnessName.setText("");
+                txtWitnessContact.setText("");
+                txtWitnessAddress.setText("");
 
                 doneWitnessDetails.addView(view);
 

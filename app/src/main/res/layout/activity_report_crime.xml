@@ -150,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtInjuries"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="60dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/objects_used" />
@@ -461,7 +461,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/emergencybutton"
+                    android:background="@drawable/unsafebutton"
                     android:drawableStart="@mipmap/ic_add"
                     android:text="@string/add_offender_details"
                     android:textColor="#fff" />
@@ -668,7 +668,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/emergencybutton"
+                    android:background="@drawable/unsafebutton"
                     android:drawableStart="@mipmap/ic_add"
                     android:text="@string/add_witness_details"
                     android:textColor="#fff" />
@@ -691,7 +691,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/emergencybutton"
+                    android:background="@drawable/unsafebutton"
                     android:text="@string/submit"
                     android:textColor="#fff" />
 

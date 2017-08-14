@@ -118,7 +118,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/emergencybutton"
+                android:background="@drawable/unsafebutton"
                 android:text="Submit"
                 android:textColor="#fff"
                 android:layout_below="@id/txtFraudDetails"

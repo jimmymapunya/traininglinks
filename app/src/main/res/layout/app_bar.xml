@@ -2,23 +2,25 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:orientation="vertical"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:theme="@style/ThemeOverlay.AppCompat.Light">
 
     <include
         android:id="@+id/Notification"
+        layout="@layout/notificationicon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:gravity="end"
-        layout="@layout/notificationicon"/>
+        android:gravity="end" />
+
     <include
         android:id="@+id/Inbox"
+        layout="@layout/inboxicon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:gravity="end"
-        layout="@layout/inboxicon"/>
+        android:gravity="end" />
 
 </android.support.v7.widget.Toolbar>

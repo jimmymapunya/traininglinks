@@ -57,7 +57,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:drawableStart="@mipmap/ic_court"
-                    android:drawableEnd="@drawable/one"
+                    android:drawableEnd="@mipmap/ic_arrow"
                     android:text="@string/my_cases" />
 
                 <Button
@@ -94,27 +94,27 @@
                     android:text="@string/provide_feedback" />
 
                 <Button
-                    android:id="@+id/btnEmergency"
+                    android:id="@+id/btnFeelsafe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/btnFeedback"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/emergencybutton"
-                    android:text="@string/emergency"
+                    android:background="@drawable/unsafebutton"
+                    android:text="@string/feeling_unsafe"
                     android:textColor="#fff" />
 
                 <Button
-                    android:id="@+id/btnFeelsafe"
+                    android:id="@+id/btnEmergency"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/btnEmergency"
+                    android:layout_below="@+id/btnFeelsafe"
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/emergencybutton"
-                    android:text="@string/feeling_unsafe"
+                    android:background="@drawable/emergencybuttton"
+                    android:text="@string/emergency"
                     android:textColor="#fff" />
 
 

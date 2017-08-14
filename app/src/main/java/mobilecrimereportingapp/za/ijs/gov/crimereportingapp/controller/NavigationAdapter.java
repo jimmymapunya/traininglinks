@@ -17,6 +17,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CaseListActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ComposeMessageActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CourtFinderActivity;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.MainActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ProvideFeedback;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportCrimeActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportFraudAndCorruptionActivity;
@@ -29,12 +30,13 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportFraudAndC
 public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.naviViewHolder> {
 
     /*Static variables for Navigation*/
-    private static final int REPORT_CRIME= 0;
-    private static final int REPORT_FRAUD = 1;
-    private static final int CASES = 2;
-    private static final int COURT_FINDER= 3;
-    private static final int FEEDBACK = 4;
-    private static final int COMPOSE = 5;
+    private static final int HOME= 0;
+    private static final int REPORT_CRIME= 1;
+    private static final int REPORT_FRAUD = 2;
+    private static final int CASES = 3;
+    private static final int COURT_FINDER= 4;
+    private static final int FEEDBACK = 5;
+    private static final int COMPOSE = 6;
 
     private List<NavigationInfo> navigationData= Collections.emptyList();
     private Context context;
@@ -86,7 +88,9 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.na
 
         @Override
         public void onClick(View v) {
-            if(getLayoutPosition()==REPORT_CRIME){
+            if(getLayoutPosition() == HOME){
+                context.startActivity(new Intent(context.getApplicationContext(), MainActivity.class));
+            } else if(getLayoutPosition()==REPORT_CRIME){
                 context.startActivity(new Intent(context.getApplicationContext(), ReportCrimeActivity.class));
             } else if(getLayoutPosition() == REPORT_FRAUD){
                 context.startActivity(new Intent(context.getApplicationContext(), ReportFraudAndCorruptionActivity.class));

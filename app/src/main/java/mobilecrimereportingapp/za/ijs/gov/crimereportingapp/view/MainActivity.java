@@ -112,7 +112,26 @@ public class MainActivity extends AppCompatActivity {
         btnReportCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, ReportCrimeActivity.class));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please select whether you are reporting as a witness or victim")
+                        .setCancelable(false)
+                        .setPositiveButton("Witness", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ReportCrimeActivity.isVictim = false;
+                                startActivity(new Intent(context, ReportCrimeActivity.class));
+                            }
+                        })
+                        .setNegativeButton("Victim", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ReportCrimeActivity.isVictim = true;
+                                startActivity(new Intent(context, ReportCrimeActivity.class));
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
             }
         });
 

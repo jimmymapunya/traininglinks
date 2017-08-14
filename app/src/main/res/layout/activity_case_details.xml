@@ -300,7 +300,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/emergencybutton"
+                        android:background="@drawable/unsafebutton"
                         android:text="Navigete to court"
                         android:textColor="#fff" />
 
@@ -312,7 +312,7 @@
                         android:layout_marginBottom="15dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/emergencybutton"
+                        android:background="@drawable/unsafebutton"
                         android:text="Provide Feedback"
                         android:textColor="#fff" />
 
