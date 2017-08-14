@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +38,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
     int layoutResourceId;
     ArrayList<CaseDetails> aList = null;
     CaseHolder holder = null;
-    private int index;
+    private static int index;
     private ArrayList<CaseDetails> listdao = CaseListActivity.listdao;
 
     public CaseListAdapter(Context context, int layoutResourceId, ArrayList<CaseDetails> aList) {
@@ -49,7 +51,8 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        index = position;
+        index = position -2;
+        Toast.makeText(context, index+" "+position, Toast.LENGTH_SHORT).show();
 
         if(view == null)
         {
@@ -94,9 +97,9 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
 
         CaseDetails caseDetails = aList.get(position);
         ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
-        holder.txtCaseNo.setText(aList.get(position).getCaseNo());
+        holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
        // holder.txtOffense.setText("Crime : ");
-        holder.txtSuspects.setText("Suspect (s) : "+aList.get(position).getAccused());
+        holder.txtSuspects.setText("Suspect(s): "+aList.get(position).getAccused());
 
         int occurencesCount=0;
         //Check if the process have taken place
@@ -135,6 +138,14 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
 
                 occurencesCount++;
                 dateCreated = arrStatuses.get(x).getActionDate();
+
+                    holder.txtinvestigate.setTextColor(Color.parseColor("#808080"));
+                    holder.txtarrested.setTextColor(Color.parseColor("#808080"));
+                    holder.txtbail.setTextColor(Color.parseColor("#808080"));
+                    holder.txttrial.setTextColor(Color.parseColor("#808080"));
+                    holder.txtverdict.setTextColor(Color.parseColor("#808080"));
+                    holder.txtaquit.setTextColor(Color.parseColor("#808080"));
+                    holder.txtsentence.setTextColor(Color.parseColor("#808080"));
 
                 if(arrStatuses.get(x).getProcessName().equals("Investigate")){
                     holder.investigate.setBackgroundResource(R.drawable.progress_status);
@@ -185,24 +196,43 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
             @Override
             public void onClick(View v) {
 
-                holder.relativeLayout.setVisibility(View.VISIBLE);
-            }
-        });
-        holder.btnHeading.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                Toast.makeText(context, "heloooooooooooooooo", Toast.LENGTH_SHORT).show();
+                PopupMenu popup = new PopupMenu(context, v);
+                popup.getMenuInflater().inflate(R.menu.case_dropdown,
+                        popup.getMenu());
+                popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
-                holder.relativeLayout.setVisibility(View.INVISIBLE);
-            }
-        });
-        holder.btnFindCourt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
 
-                //call an intent
-                context.startActivity(new Intent(context, CourtFinderActivity.class));
+                        switch (item.getItemId()) {
+                            case R.id.action_navigate:
+
+                                //Or Some other code you want to put here.. This is just an example.
+                                Toast.makeText(context, "heloooooooooooooooo", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(contex, " Install Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
+
+                                break;
+                            case R.id.action_feedback:
+
+                                Toast.makeText(context, "zeeeeeeeeeeeeeeeeeeeeeee", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+
+
+
             }
         });
+
+
         holder.btnCaseDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -270,7 +300,6 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
                         currentProcess = statusDetailsList.get(x).getProcessName();
                     }
                 }
-                Toast.makeText(context, listdao.get(0).getCaseNo()+" "+listdao.get(1).getVictim()+" "+listdao.get(2).getAccused()+" "+listdao.get(index).getOffense(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("caseNo", aList.get(index).getCaseNo());
                 intent.putExtra("victim", aList.get(index).getVictim());
                 intent.putExtra("accused", aList.get(index).getAccused());

@@ -4,16 +4,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+
+
     <TextView
         android:id="@+id/txtCaseNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_caseNo"
-        android:padding="10dp"
         android:textColor="#424242"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="12dp" />
@@ -29,6 +30,7 @@
         android:layout_marginEnd="23dp"
         android:contentDescription="@string/str_image"
         android:layout_alignTop="@+id/txtCaseNo" />
+
 
     <TextView android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -57,10 +59,6 @@
         android:layout_marginEnd="59dp" />
 
 
-
-
-
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,11 +66,12 @@
         android:orientation="horizontal"
         android:fillViewport="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:layout_below="@+id/txtDateCreated">
+        android:layout_below="@+id/txtDateCreated"
+        android:id="@+id/horizontalScrollView">
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="10dp">
 
@@ -268,11 +267,11 @@
             android:id="@+id/txtSentence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txtAquit"
             android:layout_alignBottom="@+id/txtAquit"
             android:layout_toEndOf="@+id/aquitLine"
             android:text="Sentence"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:layout_alignTop="@+id/txtAquit" />
 
         <TextView
             android:id="@+id/txtBail"
@@ -307,69 +306,80 @@
             android:text="Investigate"
             android:textSize="12dp" />
 
+
     </RelativeLayout>
     </HorizontalScrollView>
+
     <RelativeLayout
-        android:layout_width="match_parent"
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:visibility="gone"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
         android:id="@+id/relativeLayoutExpand"
-        android:background="#eee">
+        android:layout_alignParentTop="true">
 
-        <Button
-            android:id="@+id/btnHeading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@mipmap/ic_uparrow"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:background="#000"
-            android:paddingRight="20dp"
-            android:textColor="#fff" />
+   <Button
+        android:id="@+id/btnHeading"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:text=""
+        android:drawableEnd="@mipmap/ic_uparrow"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#333333"
+        android:paddingRight="20dp"
+        android:textColor="#fff"
+       />
 
-        <Button
-            android:id="@+id/btnFindCourt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnHeading"
-            android:drawableStart="@mipmap/ic_location"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:background="#000"
-            android:paddingLeft="20dp"
-            android:text="Navigate to Court"
-            android:textColor="#fff" />
+    <Button
+        android:id="@+id/btnFindCourt"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:text="Navigate to Court"
+        android:drawableStart="@mipmap/ic_court"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#333333"
+        android:paddingRight="20dp"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:layout_below="@+id/btnHeading"
+        android:layout_alignParentEnd="true" />
 
-        <Button
-            android:id="@+id/btnCaseDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnFindCourt"
-            android:drawableStart="@mipmap/ic_court"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:background="#000"
-            android:text="Case Details"
-            android:paddingLeft="20dp"
-            android:textColor="#fff" />
+    <Button
+        android:id="@+id/btnFeedback"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:text="Provide Feedback"
+        android:drawableStart="@mipmap/ic_location"
+        android:layout_margin="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#333333"
+        android:padding="10dp"
+        android:paddingRight="20dp"
+        android:textColor="#fff"
+        android:layout_below="@+id/btnFindCourt"
+        android:layout_alignParentEnd="true" />
 
-        <Button
-            android:id="@+id/btnFeedback"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnCaseDetails"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:drawableStart="@mipmap/ic_feedback"
-            android:background="#000"
-            android:text="Provide Feedback"
-            android:paddingLeft="20dp"
-            android:textColor="#fff" />
+    <Button
+        android:id="@+id/btnCaseDetails"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:text="Navigate to Court"
+        android:padding="10dp"
+        android:drawableStart="@mipmap/ic_feedback"
+
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#333333"
+        android:paddingRight="20dp"
+        android:textColor="#fff"
+        android:layout_below="@+id/btnFeedback"
+        android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
-
 </RelativeLayout>

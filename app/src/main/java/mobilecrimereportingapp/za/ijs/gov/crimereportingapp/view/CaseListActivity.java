@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,6 +33,8 @@ import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.id.listview;
 
 public class CaseListActivity extends AppCompatActivity {
 
@@ -62,23 +65,12 @@ public class CaseListActivity extends AppCompatActivity {
 
         Button btnHeading=(Button)findViewById(R.id.btnHeading);
 
-        ImageView sortImage=(ImageView)findViewById(R.id.img_sort);
+        //ImageView sortImage=(ImageView)findViewById(R.id.img_sort);
         final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayoutExpand);
 
-        sortImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                relativeLayout.setVisibility(View.VISIBLE);
-            }
-        });
-        btnHeading.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                relativeLayout.setVisibility(View.INVISIBLE);
-            }
-        });
+        EditText txtSearch = (EditText) findViewById(R.id.plain_text_input);
+        txtSearch .setFocusable(false);
 
         getIntent().removeExtra("key");
         getIntent().removeExtra("caseNo");
@@ -168,15 +160,20 @@ public class CaseListActivity extends AppCompatActivity {
         CaseListAdapter adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
 
         // Getting a reference to listview of main.xml layout file
-        ListView listView = (ListView) findViewById(R.id.listview);
+        ListView listView = (ListView) findViewById(listview);
 
         // Setting the adapter to the listView
 
         listView.setAdapter(adapter);
-
-
-
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3)
+            {
+                //do your work here
+            }
+        });
         setSupportActionBar(Toolbar);
 
         /*Back notificationicon for navigation drawer*/

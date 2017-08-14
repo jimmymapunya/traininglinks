@@ -67,7 +67,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
         TextView txtCaseNo = (TextView)findViewById(R.id.txtCaseNo);
         TextView txtVictim = (TextView)findViewById(R.id.txtVictim);
         TextView txtAccused = (TextView)findViewById(R.id.txtAccused);
-        TextView txtOffense = (TextView)findViewById(R.id.txtOffense);
+        //TextView txtOffense = (TextView)findViewById(R.id.txtOffense);
         TextView txtCaseDesc = (TextView)findViewById(R.id.txtCaseDesc);
         TextView txtInbox = (TextView)findViewById(R.id.txtInbox);
         TextView txtNotification = (TextView)findViewById(R.id.txtNotification);
@@ -76,7 +76,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
         txtCaseNo.setText("Case No "+caseNo);
         txtVictim.setText(bundle.getString("victim"));
         txtAccused.setText(bundle.getString("accused"));
-        txtOffense.setText(bundle.getString("offense"));
+        //txtOffense.setText(bundle.getString("offense"));
         txtCaseDesc.setText(bundle.getString("caseDesc"));
         txtInbox.setText(3+ "");
         txtNotification.setText(7+"");
