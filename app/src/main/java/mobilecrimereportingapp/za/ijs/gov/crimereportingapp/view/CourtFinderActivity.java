@@ -1,9 +1,7 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,27 +14,16 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.GeneralCourtInfo;
 
 /**
@@ -63,6 +50,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
 
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
+    ProgressDialog progressDialog;
 
 
     String strTxtTo;
@@ -74,10 +62,11 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_finder);
 
-        btnGo = (Button) findViewById(R.id.btnGo);
+        /*btnGo = (Button) findViewById(R.id.btnGo);
         txtTo = (EditText) findViewById(R.id.txtTo);
-        txtFrom = (EditText) findViewById(R.id.txtFrom);
+        txtFrom = (EditText) findViewById(R.id.txtFrom);*/
 
+        progressDialog = new ProgressDialog(context);
 
         notificationLayout = (FrameLayout) findViewById(R.id.Notification);
         inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
@@ -162,8 +151,11 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        /*mMap = googleMap;*/
+        /*mMap = googleMap;
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+        progressDialog.hide();*/
         btnGo.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -177,110 +169,14 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 strTxtFrom = txtFrom.getText().toString();
                 strTxtTo = txtTo.getText().toString();
 
-                String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(i);
+                //String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
+                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                //startActivity(i);
 
             }
         });
 
-        mMap = googleMap;
 
-        try
-        {
-            /*Get the JSON content using loadJSONFromAsset file*/
-            JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
-            /*Get the JSON array of the codes within the loaded asset*/
-            JSONArray jsonArrayCodes = jsonObject.getJSONArray("Codes");
-
-            for (int i = 0; i < jsonArrayCodes.length(); i++)
-            {
-                /*Get object for each of the array codes*/
-                JSONObject jsonInsideCodes = jsonArrayCodes.getJSONObject(i);
-
-                courtTitle = jsonInsideCodes.getString("Description");
-                JSONArray additionalAttributes = jsonInsideCodes.getJSONArray("AdditionalAttributes");
-
-                court = new GeneralCourtInfo(courtTitle);
-                courtList.add(court);
-
-                for (int x = 0; x < additionalAttributes.length(); x++) {
-
-                    JSONObject jsonInsideAdditionalAttributes = additionalAttributes.getJSONObject(x);
-                    String name = jsonInsideAdditionalAttributes.getString("Name");
-
-                    /*Check to ensure we dealing with Coordinate lat and long*/
-
-                    if(name.equalsIgnoreCase("GPS Coordinate Lattitude"))
-                    {
-                        String value = jsonInsideAdditionalAttributes.getString("Value");
-
-                        /*Check if value contains data and not empty*/
-                        if(!value.equals(""))
-                        {
-                            courtLatitude = Double.parseDouble(value);
-                        }
-                    }
-                    if(name.equalsIgnoreCase("GPS Coordinate Longitude"))
-                    {
-                        String value = jsonInsideAdditionalAttributes.getString("Value");
-
-                        /*Check if value contains data and not empty*/
-                        if(!value.equals(""))
-                        {
-                            courtLongitude = Double.parseDouble(value);
-                        }
-                    }
-
-                    if(name.equalsIgnoreCase("Facility Type"))
-                    {
-                        courtType = jsonInsideAdditionalAttributes.getString("Value");
-
-                    }
-                }
-
-                //Calculate distance between courts and current location
-
-                GPSTracker gps = new GPSTracker(this);
-                Location currentLocation = new Location("");
-                currentLocation.setLatitude(gps.getLatitude());
-                currentLocation.setLongitude(gps.getLongitude());
-
-                LatLng CurrentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
-                final Marker markerCurrentLocation = mMap.addMarker(new MarkerOptions().position(CurrentLocation).title("You are here"));
-                //mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(CurrentLocation));
-                mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
-                //markerCurrentLocation.setSnippet(courtType);
-                markerCurrentLocation.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-
-                Location courtLocation = new Location("");
-                courtLocation.setLatitude(courtLatitude);
-                courtLocation.setLongitude(courtLongitude);
-
-                DecimalFormat decimalFormat = new DecimalFormat("##");
-
-                float distanceInMeters = currentLocation.distanceTo(courtLocation)/1000;
-                String km = decimalFormat.format(distanceInMeters);
-                int finalKM = Integer.parseInt(km);
-
-                if(finalKM<=50)
-                {
-
-                    LatLng location = new LatLng(courtLatitude, courtLongitude);
-                    final Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-                    mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
-                    marker.setSnippet(courtType+"\n"+"Court is "+finalKM+" KM away");
-                    marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                    //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.court));
-                }
-            }
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
 
 
     }
