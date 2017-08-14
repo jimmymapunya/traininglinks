@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/checkBox5OF"
                         android:layout_below="@+id/checkBox5OF"
-                        android:text="Time spent on one case is too long" />
+                        android:text="The decision in my case was unfair." />
 
                     <CheckBox
                         android:id="@+id/checkBox2OF"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/checkBox4OF"
                         android:layout_centerVertical="true"
-                        android:text="Time spent on one case is too long" />
+                        android:text="The decision in my case was incorrect." />
 
                     <CheckBox
                         android:id="@+id/checkBox5OF"
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/checkBox4OF"
                         android:layout_below="@+id/checkBox4OF"
-                        android:text="Time spent on one case is too long" />
+                        android:text="No follow up was done after opening the case." />
 
                     <CheckBox
                         android:id="@+id/checkBox4OF"
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/txtStarRating"
                         android:layout_below="@+id/checkBox2OF"
-                        android:text="Time spent on one case is too long" />
+                        android:text="Nothing was communicated to me until the end." />
 
 
                     <EditText

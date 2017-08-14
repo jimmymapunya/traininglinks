@@ -55,7 +55,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="0dp"
                     android:paddingRight="0dp"
-                    android:text="Are you satisfied with how each phase of handling your case was dealt with?"
+                    android:text="Are you satisfied with how each event of handling your case was dealt with?"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -86,13 +86,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/checkBox5EF"
                     android:layout_below="@+id/checkBox5EF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="The outcome in event was unfair." />
 
                 <CheckBox
                     android:id="@+id/checkBox2EF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time spent on one case is too long"
+                    android:text="Too much time was spent in that event."
                     android:layout_centerVertical="true"
                     android:layout_alignStart="@+id/checkBox4EF" />
 
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/txtStarRating"
                     android:layout_below="@+id/checkBox2EF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="My case was not attended in that event for too long." />
 
                 <CheckBox
                     android:id="@+id/checkBox5EF"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/checkBox4EF"
                     android:layout_below="@+id/checkBox4EF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="Nothing was communicated to me prior to the event." />
 
                 <EditText
                     android:id="@+id/txtEventFeedbackEditText"

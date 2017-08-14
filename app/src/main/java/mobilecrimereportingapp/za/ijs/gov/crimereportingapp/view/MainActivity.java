@@ -4,14 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +22,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -38,10 +35,7 @@ import java.util.Map;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.AppSingleton;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.DashboardModel;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by MaribolleR on 2017/07/01.
@@ -153,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, CourtFinderActivity.class));
+                //String uri = "https://maps.google.com/maps?saddr=316 thabo sehume street pretoria&daddr=Church Square, Pretoria Central, Pretoria, 0186";
+                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                //startActivity(i);
             }
         });
 

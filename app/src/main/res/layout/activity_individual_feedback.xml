@@ -91,13 +91,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/checkBox5IF"
                     android:layout_below="@+id/checkBox5IF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="The individual was very rude." />
 
                 <CheckBox
                     android:id="@+id/checkBox2IF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time spent on one case is too long"
+                    android:text="The individual did not respect my time."
                     android:layout_centerVertical="true"
                     android:layout_alignStart="@+id/checkBox4IF" />
 
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/checkBox4IF"
                     android:layout_below="@+id/checkBox4IF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="The individual did not speak my language." />
 
                 <CheckBox
                     android:id="@+id/checkBox4IF"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/txtStarRating"
                     android:layout_below="@+id/checkBox2IF"
-                    android:text="Time spent on one case is too long" />
+                    android:text="The individual was assigned a role not qualified for." />
 
                 <EditText
                     android:id="@+id/txtIndividualFeedbackEditText"

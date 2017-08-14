@@ -379,7 +379,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
         List<String> list = new ArrayList<String>();
-        list.add("---Select Phase---");
+        list.add("---Select Event---");
         list.add("Investigation");
         list.add("Arrest");
         list.add("Bail Hearing");
