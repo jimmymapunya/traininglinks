@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -209,9 +210,9 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
                         switch (item.getItemId()) {
                             case R.id.action_navigate:
 
-                                //Or Some other code you want to put here.. This is just an example.
-                                Toast.makeText(context, "heloooooooooooooooo", Toast.LENGTH_SHORT).show();
-                                //Toast.makeText(contex, " Install Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
+                                String uri = "https://maps.google.com/maps?saddr=current location&daddr=316 Thabo Sehume street Pretoria";
+                                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                                context.startActivity(i);
 
                                 break;
                             case R.id.action_feedback:
@@ -220,6 +221,34 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
                                 break;
 
                             default:
+                                ArrayList<StatusDetails> statusDetailsList = aList.get(index).getStatus();
+                                Intent intent = new Intent(context, CaseDetailsActivity.class);
+
+                                String[] processName = new String[statusDetailsList.size()];
+                                String[] actionDate = new String[statusDetailsList.size()];
+                                String[] actionLocation = new String[statusDetailsList.size()];
+                                boolean[] isCurrent = new boolean[statusDetailsList.size()];
+                                String currentProcess = "";
+                                for (int x = 0; x < statusDetailsList.size(); x++) {
+
+                                    processName[x] = statusDetailsList.get(x).getProcessName();
+                                    actionDate[x] = statusDetailsList.get(x).getActionDate();
+                                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
+                                    if (statusDetailsList.get(x).isIsCurrent()) {
+                                        currentProcess = statusDetailsList.get(x).getProcessName();
+                                    }
+                                }
+                                Toast.makeText(context, listdao.get(0).getCaseNo()+" "+listdao.get(1).getVictim()+" "+listdao.get(2).getAccused()+" "+listdao.get(index).getOffense(), Toast.LENGTH_SHORT).show();
+                                intent.putExtra("caseNo", aList.get(index).getCaseNo());
+                                intent.putExtra("victim", aList.get(index).getVictim());
+                                intent.putExtra("accused", aList.get(index).getAccused());
+                                intent.putExtra("offense", aList.get(index).getOffense());
+                                intent.putExtra("caseDesc", aList.get(index).getCaseDesc());
+                                intent.putExtra("processNameArr", processName);
+                                intent.putExtra("actionDateArr", actionDate);
+                                intent.putExtra("actionLocationArr", actionLocation);
+                                intent.putExtra("currentProcess", currentProcess);
+                                context.startActivity(intent);
                                 break;
                         }
 
@@ -237,34 +266,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
             @Override
             public void onClick(View v) {
 
-                ArrayList<StatusDetails> statusDetailsList = aList.get(index).getStatus();
-                Intent intent = new Intent(context, CaseDetailsActivity.class);
 
-                String[] processName = new String[statusDetailsList.size()];
-                String[] actionDate = new String[statusDetailsList.size()];
-                String[] actionLocation = new String[statusDetailsList.size()];
-                boolean[] isCurrent = new boolean[statusDetailsList.size()];
-                String currentProcess = "";
-                for (int x = 0; x < statusDetailsList.size(); x++) {
-
-                    processName[x] = statusDetailsList.get(x).getProcessName();
-                    actionDate[x] = statusDetailsList.get(x).getActionDate();
-                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
-                    if (statusDetailsList.get(x).isIsCurrent()) {
-                        currentProcess = statusDetailsList.get(x).getProcessName();
-                    }
-                }
-                Toast.makeText(context, listdao.get(0).getCaseNo()+" "+listdao.get(1).getVictim()+" "+listdao.get(2).getAccused()+" "+listdao.get(index).getOffense(), Toast.LENGTH_SHORT).show();
-                intent.putExtra("caseNo", aList.get(index).getCaseNo());
-                intent.putExtra("victim", aList.get(index).getVictim());
-                intent.putExtra("accused", aList.get(index).getAccused());
-                intent.putExtra("offense", aList.get(index).getOffense());
-                intent.putExtra("caseDesc", aList.get(index).getCaseDesc());
-                intent.putExtra("processNameArr", processName);
-                intent.putExtra("actionDateArr", actionDate);
-                intent.putExtra("actionLocationArr", actionLocation);
-                intent.putExtra("currentProcess", currentProcess);
-                context.startActivity(intent);
                 //context.startActivity(new Intent(context, CaseDetailsActivity.class));
 
             }

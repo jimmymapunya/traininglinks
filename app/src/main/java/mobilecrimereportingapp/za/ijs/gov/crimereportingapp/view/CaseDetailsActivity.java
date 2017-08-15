@@ -68,7 +68,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
         TextView txtVictim = (TextView)findViewById(R.id.txtVictim);
         TextView txtAccused = (TextView)findViewById(R.id.txtAccused);
         //TextView txtOffense = (TextView)findViewById(R.id.txtOffense);
-        TextView txtCaseDesc = (TextView)findViewById(R.id.txtCaseDesc);
+        TextView txtCaseDesc = (TextView)findViewById(R.id.txtOffense);
         TextView txtInbox = (TextView)findViewById(R.id.txtInbox);
         TextView txtNotification = (TextView)findViewById(R.id.txtNotification);
         Button btnNavigateToCourt = (Button)findViewById(R.id.btnNavigateToCourt);

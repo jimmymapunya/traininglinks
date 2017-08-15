@@ -32,7 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
-                    android:background="#000">
+                    android:paddingLeft="30dp"
+                    android:background="#fff">
 
                     <TextView
                         android:id="@+id/txtCaseNo"
@@ -42,133 +43,142 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_marginStart="11dp"
                         android:inputType="text"
-                        android:padding="5dp"
-                        android:text="nothinh"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
+                        android:paddingTop="5dp"
+                        android:text="208025236"
+                        android:textColor="#696969"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/relativeLayout4"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_alignParentStart="true"
-                    android:background="#fff">
 
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="Victim"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/txtVictim"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/textView12"
-                        android:layout_alignBottom="@+id/textView12"
-                        android:layout_marginStart="67dp"
-                        android:layout_toEndOf="@+id/textView12"
-                        android:text="Albert mkhavele"
-                        android:textSize="16dp" />
-
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout5"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_alignParentStart="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingLeft="10dp"
                     android:background="#eee">
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="Suspect (s)"
-                        android:textSize="16dp" />
+                        android:src="@drawable/icon_case"
+                        android:layout_alignParentTop="true" />
 
                     <TextView
-                        android:id="@+id/txtAccused"
+                        android:id="@+id/txtOffense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/textView13"
-                        android:layout_marginStart="27dp"
-                        android:layout_toEndOf="@+id/textView13"
-                        android:text="Albert Ralder Mahlaule"
-                        android:textSize="16dp" />
+                        android:text="Accused of attempted murder on 16-Mar-2017"
+                        android:textSize="16dp"
+                        android:paddingLeft="60dp"
+                        android:layout_centerVertical="true" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout6"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
+
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:background="#fff">
+                    <Spinner
+                        android:id="@+id/processNamesSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
 
+                        android:background="@drawable/bg_spinner_style"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/txtProcessDesc"
+                        android:layout_marginTop="15dp" />
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/txtProcessDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="Offense"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/txtOffense"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/textView14"
-                        android:layout_alignBottom="@+id/textView14"
-                        android:layout_marginStart="54dp"
-                        android:layout_toEndOf="@+id/textView14"
-                        android:text="Albert mkhavele"
-                        android:textSize="16dp" />
+                        android:text="Description"
+                        android:textSize="16dp"
+                        android:background="#eee"
+                        android:padding="10dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/processNamesSpinner"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentStart="true" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout7"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="110dp"
                     android:layout_alignParentStart="true"
-                    android:background="#eee">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#fff"
+                    android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/txtA1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="Description"
-                        android:textSize="16dp" />
+                        android:text="Victim"
+                        android:textStyle="bold"
+                        android:paddingLeft="30dp"
+                        android:textSize="16dp"
+                        android:layout_alignStart="@+id/txtAccused"
+                        android:layout_alignEnd="@+id/txtAccused"
+                        android:layout_alignTop="@+id/txtA2" />
 
                     <TextView
-                        android:id="@+id/txtCaseDesc"
+                        android:id="@+id/txtA2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/textView15"
+                        android:textStyle="bold"
+                        android:paddingRight="30dp"
                         android:layout_alignBottom="@+id/textView15"
-                        android:layout_marginStart="29dp"
-                        android:layout_toEndOf="@+id/textView15"
-                        android:text="Albert Ralder Mahlaule"
-                        android:textSize="16dp" />
+                        android:text="Accused"
+                        android:textSize="16dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignTop="@+id/textView15"
+                        android:layout_alignParentEnd="true" />
+
+                    <TextView
+                        android:id="@+id/txtAccused"
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:textAlignment="center"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@id/txtA1"
+                        android:background="@drawable/edit_text_style"
+                        android:text="Albert Rhulani Mathebula"
+                        android:textSize="16dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <TextView
+                        android:id="@+id/txtVictim"
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:layout_alignBottom="@+id/textView15"
+                        android:text="Sebendzile Mabunda"
+                        android:textAlignment="center"
+                        android:textSize="16dp"
+                        android:layout_below="@id/txtA2"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_text_style"
+                        android:layout_alignTop="@+id/textView15"
+                        android:layout_alignParentEnd="true" />
+
 
                 </RelativeLayout>
 
@@ -177,7 +187,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentStart="true"
-                    android:background="#fff">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#eee">
 
                     <TextView
                         android:id="@+id/textView10"
@@ -186,6 +198,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="48dp"
+                        android:paddingRight="160dp"
                         android:text="Inbox"
                         android:textSize="16dp" />
 
@@ -194,11 +207,13 @@
                         android:layout_width="40dp"
                         android:layout_height="60dp"
                         android:textAlignment="center"
+                        android:layout_marginBottom="5dp"
                         android:layout_alignTop="@+id/textView10"
-                        android:layout_marginLeft="157dp"
+                        android:layout_marginRight="20dp"
                         android:layout_toEndOf="@+id/textView10"
                         android:background="@drawable/messages_formatted"
                         android:text="3"
+                        android:padding="2dp"
                         android:textColor="#fff"
                         android:textStyle="bold"
                         android:textSize="16dp" />
@@ -210,6 +225,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentStart="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
                     android:background="#eee">
 
                     <TextView
@@ -220,77 +238,37 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="48dp"
                         android:text="Notifications"
-                        android:textStyle="bold"
-                        android:textSize="16dp" />
+                        android:paddingRight="105dp"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtNotification"
                         android:layout_width="40dp"
                         android:layout_height="60dp"
-                        android:textAlignment="center"
-                        android:layout_alignTop="@+id/textView11"
-                        android:layout_marginLeft="105dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_toEndOf="@+id/textView11"
-                        android:text="7"
                         android:background="@drawable/messages_formatted"
+                        android:padding="2dp"
+                        android:text="7"
+                        android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:textSize="16dp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relativeLayout8"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignParentStart="true"
-                    android:background="#fff">
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="Stage"
                         android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/processNamesSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="160dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_alignParentStart="true" />
-
+                        android:textStyle="bold"
+                        android:layout_alignTop="@+id/textView11" />
 
                 </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/relativeLayout19"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_alignParentStart="true"
-                    android:background="#fff">
 
-                    <TextView
-                        android:id="@+id/txtProcessDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="48dp"
-                        android:text="describe"
-                        android:textSize="14dp" />
 
-                </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/relativeLayout18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:layout_alignParentStart="true"
+
                     android:background="#eee">
 
                     <Button
@@ -298,9 +276,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/unsafebutton"
+                        android:background="#000"
                         android:text="Navigete to court"
                         android:textColor="#fff" />
 
@@ -310,9 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnNavigateToCourt"
                         android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/unsafebutton"
+                        android:background="#000"
                         android:text="Provide Feedback"
                         android:textColor="#fff" />
 
