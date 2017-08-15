@@ -276,7 +276,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:background="@drawable/emergencybutton"
                         android:text="Navigete to court"
                         android:textColor="#fff" />
 
@@ -286,7 +285,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnNavigateToCourt"
                         android:layout_marginBottom="15dp"
-                        android:background="@drawable/emergencybutton"
                         android:text="Provide Feedback"
                         android:textColor="#fff" />
 
