@@ -28,9 +28,31 @@
                 android:scrollbars="vertical">
 
                 <TextView
+                    android:id="@+id/lblSelectCrime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Please specify which crime you would like to report." />
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblSelectCrime"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_style"
+                    android:entries="@array/crimes"
+                    app:hintText="Specify Here" />
+
+                <TextView
                     android:id="@+id/lblBeforeCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinner"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
@@ -150,25 +172,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtInjuries"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/objects_used" />
-
-                <TextView
-                    android:id="@+id/lblObjectsUsedSub"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblObjectsUsed"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginStart="60dp"
-                    android:text="@string/objects_used_subtitle" />
 
                 <Spinner
                     android:id="@+id/spinnerObjectsUsed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblObjectsUsedSub"
+                    android:layout_below="@+id/lblObjectsUsed"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
@@ -290,10 +303,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
                     android:id="@+id/editOffenderDetails"
-                    android:layout_below="@+id/OffenderDetailsLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/OffenderDetailsLayout"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -487,10 +500,10 @@
                     android:background="@drawable/bg_spinner_style" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
                     android:id="@+id/editFirstAccountDetails"
-                    android:layout_below="@+id/spinnerFirstAccount"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/spinnerFirstAccount"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -556,7 +569,6 @@
                 </LinearLayout>
 
 
-
                 <TextView
                     android:id="@+id/lblWitnesses"
                     android:layout_width="match_parent"
@@ -591,9 +603,9 @@
 
                 <LinearLayout
                     android:id="@+id/editWitnessDetails"
-                    android:layout_below="@+id/doneWitnessDetails"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/doneWitnessDetails"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -659,7 +671,6 @@
                 </LinearLayout>
 
 
-
                 <Button
                     android:id="@+id/btnAddWitnessInfo"
                     android:layout_width="match_parent"
@@ -707,5 +718,9 @@
             app:layout="@layout/fragment_navigation_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar" />
 
 </LinearLayout>

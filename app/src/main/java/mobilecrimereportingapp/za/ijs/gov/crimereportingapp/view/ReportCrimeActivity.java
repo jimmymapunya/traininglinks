@@ -1,7 +1,10 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
+import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +52,8 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons, spinnerFirstAccount, spinnerWitnesses, spinnerRacialGroup,
             spinnerGender, spinnerAgeGroup, spinnerFacialIdentikit;
+
+    private SearchableSpinner searchableSpinner;
 
     private ArrayAdapter<CharSequence> spinnerKnowOffenderAdapter, spinnerInjuriesAdapter, spinnerSceneItemsAdapter, spinnerWeaponsAdapter, spinnerFirstAccountAdapter,
             spinnerWitnessesAdapter, spinnerRacialGroupAdapter, spinnerGenderAdapter, spinnerAgeGroupAdapter, spinnerFacialIdentikitAdapter;
@@ -153,7 +159,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
                     if(checkBoxConfirmation.isChecked()){
                         reportCrime(URL_case);
                     } else{
-                        Toast.makeText(context, "Please confirm that all details provided are correct by checking the confirmation",Toast.LENGTH_LONG).show();;
+                        Toast.makeText(context, "Please confirm that all details provided are correct by checking the confirmation",Toast.LENGTH_LONG).show();
                     }
 
             }
@@ -394,6 +400,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void Initialisation() {
         /*Icons with number init and setup*/
 
@@ -441,6 +448,8 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtWitnessAddress = (EditText) findViewById(R.id.txtWitnessAddress);
 
         /*Starting code for the spinners*/
+        searchableSpinner = (SearchableSpinner) findViewById(R.id.spinner);
+
         spinnerKnowOffender = (Spinner) findViewById(R.id.spinnerKnowOffender);
         spinnerInjuries = (Spinner) findViewById(R.id.spinnerInjuries);
         spinnerSceneItems = (Spinner) findViewById(R.id.spinnerSceneItems);

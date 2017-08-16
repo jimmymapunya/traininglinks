@@ -43,8 +43,7 @@
     <string name="after_crime">What happened after the crime took place ?</string>
     <string name="injuries">Were there any injuries to anyone?</string>
     <string name="describe_injuries">Describe those injuries</string>
-    <string name="objects_used">Were there any objects used ?</string>
-    <string name="objects_used_subtitle">(e.g condoms, ropes, firearms)?</string>
+    <string name="objects_used">Were there any objects used?(e.g condoms, ropes, firearms)</string>
     <string name="crime_scene_items">Were there any items removed from the crime scene ?</string>
     <string name="describe_crimescene_items">Describe those items</string>
     <string name="crime_surroundings">Describe the surroundings where the incident took place.</string>
@@ -70,6 +69,30 @@
         <item>Select</item>
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+
+    <string-array name="crimes">
+        <item>Possession or Use of Drugs</item>
+        <item>Theft</item>
+        <item>Aggravated Assault</item>
+        <item>Common Assault</item>
+        <item>Driving under the influence</item>
+        <item>House breaking to commit unknown crime</item>
+        <item>Malicious Injury to Property</item>
+        <item>Consuming liquor in public</item>
+        <item>Possession of suspected stolen goods</item>
+        <item>Aggravated Robbery</item>
+        <item>Dealing in Drugs</item>
+        <item>Driving MV without license</item>
+        <item>Rape</item>
+        <item>Murder</item>
+        <item>Drunk in public</item>
+        <item>House breaking to steal</item>
+        <item>Possession of weapon</item>
+        <item>Common Robbery</item>
+        <item>Failure to wear safety belt.</item>
+        <item>Contravening the conditions of a Protection Order</item>
+        <item>Reckless or Negligent driving</item>
     </string-array>
 
     <string-array name="gender">
