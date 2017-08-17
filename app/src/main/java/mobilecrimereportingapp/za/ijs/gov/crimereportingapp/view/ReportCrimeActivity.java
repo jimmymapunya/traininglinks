@@ -1,6 +1,7 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
@@ -20,6 +21,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +51,8 @@ public class ReportCrimeActivity extends AppCompatActivity {
     private Context context = this;
 
     private static final String URL_case = "http://innovationmessagehub.azurewebsites.net//api/MessageHub/CreateCaseDetail";
+
+    private RelativeLayout reportCrimeLayout;
 
     private Spinner spinnerKnowOffender, spinnerInjuries, spinnerSceneItems, spinnerWeapons, spinnerFirstAccount, spinnerWitnesses, spinnerRacialGroup,
             spinnerGender, spinnerAgeGroup, spinnerFacialIdentikit;
@@ -227,10 +231,13 @@ public class ReportCrimeActivity extends AppCompatActivity {
                 if (itemSelected.equals("Yes")) {
                     editOffenderDetails.setVisibility(View.VISIBLE);
                     btnAddOffenderInfo.setClickable(true);
+                    btnAddOffenderInfo.setVisibility(View.VISIBLE);
                     isKnowOffender = true;
+
                 } else {
                     editOffenderDetails.setVisibility(View.INVISIBLE);
                     btnAddOffenderInfo.setClickable(false);
+                    btnAddOffenderInfo.setVisibility(View.INVISIBLE);
                     isKnowOffender = false;
                 }
             }
@@ -356,7 +363,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context, "An error has occurred.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Please ensure that mobile data or Wifi is switched on.", Toast.LENGTH_LONG).show();
                         error.printStackTrace();
                     }
                 }) {
@@ -400,7 +407,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void Initialisation() {
         /*Icons with number init and setup*/
 
@@ -410,6 +416,20 @@ public class ReportCrimeActivity extends AppCompatActivity {
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
         notificationCountIcon.setText(MainActivity.notificationCount);
         inboxCountIcon.setText(MainActivity.inboxCount);
+
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, InboxActivity.class));
+            }
+        });
 
         /*Toolbar instantiation and setup*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
@@ -423,6 +443,8 @@ public class ReportCrimeActivity extends AppCompatActivity {
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+
+        reportCrimeLayout = (RelativeLayout) findViewById(R.id.reportCrimeLayout);
 
         /*EditText components initialisation*/
         txtBeforeCrime = (EditText) findViewById(R.id.txtBeforeCrime);
@@ -524,6 +546,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         /*Button to add the dynamic linear layout above*/
         btnAddOffenderInfo = (Button) findViewById(R.id.btnAddOffenderInfo);
         btnAddOffenderInfo.setClickable(false);
+        btnAddOffenderInfo.setVisibility(View.INVISIBLE);
         btnAddWitnessInfo = (Button) findViewById(R.id.btnAddWitnessInfo);
         btnAddWitnessInfo.setClickable(false);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
