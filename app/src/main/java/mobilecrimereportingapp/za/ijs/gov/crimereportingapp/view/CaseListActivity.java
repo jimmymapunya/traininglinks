@@ -169,7 +169,7 @@ public class CaseListActivity extends AppCompatActivity {
         // Setting the adapter to the listView
 
         listView.setAdapter(adapter);
-        listView.setTextFilterEnabled(true);
+        adapter.notifyDataSetChanged();
 
         txtSearch.addTextChangedListener(new TextWatcher() {
 
@@ -191,6 +191,19 @@ public class CaseListActivity extends AppCompatActivity {
                                     long arg3)
             {
                 //do your work here
+            }
+        });
+
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CaseListActivity.this, InboxActivity.class));
+            }
+        });
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CaseListActivity.this, NotificationActivity.class));
             }
         });
         setSupportActionBar(Toolbar);

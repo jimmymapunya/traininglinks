@@ -1,6 +1,7 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
     private String[] actionDateArr;
     private String[] actionLocationArr;
     private String currentProcess;
+    private String currentCourtName;
 
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
@@ -94,6 +96,7 @@ public class CaseDetailsActivity extends AppCompatActivity {
 
             if(processNameArr[x].equals(currentProcess) && actionLocationArr[x]!=null){
 
+                currentCourtName = actionLocationArr[x];
                 btnNavigateToCourt.setVisibility(View.VISIBLE);
 
             }
@@ -169,6 +172,34 @@ public class CaseDetailsActivity extends AppCompatActivity {
                     }
                 });
 
+        Button navigateTOCourrt = (Button)findViewById(R.id.btnNavigateToCourt);
+        navigateTOCourrt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://maps.google.com/maps?saddr=current location&daddr="+currentCourtName;
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
+
+            }
+        });
+        Button provideFeedback = (Button)findViewById(R.id.btnProvideFeedback);
+        provideFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CaseDetailsActivity.this, EventFeedbackActivity.class));
+            }
+        });
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CaseDetailsActivity.this, InboxActivity.class));
+            }
+        });
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CaseDetailsActivity.this, NotificationActivity.class));
+            }
+        });
         setSupportActionBar(Toolbar);
 
         /*Back notificationicon for navigation drawer*/

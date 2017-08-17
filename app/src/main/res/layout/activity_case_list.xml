@@ -131,7 +131,7 @@
                 <ListView
                     android:id="@+id/listview"
                     android:layout_width="wrap_content"
-                    android:layout_height="564dp"
+                    android:layout_height="497dp"
                     android:layout_below="@+id/relativeLayout"
                     >
                 </ListView>

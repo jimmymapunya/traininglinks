@@ -278,7 +278,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:background="#000"
+                        android:background="@drawable/unsafebutton"
                         android:text="Navigate to court"
                         android:textColor="#fff" />
 
@@ -288,7 +288,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnNavigateToCourt"
                         android:layout_marginBottom="15dp"
-                        android:background="#000"
+                        android:background="@drawable/unsafebutton"
                         android:text="Provide Feedback"
                         android:textColor="#fff" />
 

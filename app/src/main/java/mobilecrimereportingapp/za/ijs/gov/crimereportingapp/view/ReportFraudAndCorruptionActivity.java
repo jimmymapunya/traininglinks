@@ -2,6 +2,7 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
@@ -93,7 +94,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         spinnerReportType.setAdapter(reportAdapter);
         spinnerComplaintype.setAdapter(companyOrIndividualAdapter);
 
-        setSupportActionBar(Toolbar);
+
 
 
        txtBusTel = (EditText)findViewById(R.id.txtBusTel);
@@ -313,7 +314,19 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
             }
         });
 
-
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ReportFraudAndCorruptionActivity.this, InboxActivity.class));
+            }
+        });
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ReportFraudAndCorruptionActivity.this, NotificationActivity.class));
+            }
+        });
+        setSupportActionBar(Toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
