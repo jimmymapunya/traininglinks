@@ -6,21 +6,29 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
@@ -56,15 +64,21 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     String strTxtTo;
     String strTxtFrom;
 
+    String [] items;
+    ArrayList<String> listItems;
+    ArrayAdapter<String> adapter;
+    ListView listView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_finder);
 
-        /*btnGo = (Button) findViewById(R.id.btnGo);
+        btnGo = (Button) findViewById(R.id.btnGo);
         txtTo = (EditText) findViewById(R.id.txtTo);
-        txtFrom = (EditText) findViewById(R.id.txtFrom);*/
+        txtFrom = (EditText) findViewById(R.id.txtFrom);
 
         progressDialog = new ProgressDialog(context);
 
@@ -95,7 +109,67 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+
+        listView = (ListView) findViewById(R.id.listview);
+        txtFrom = (EditText) findViewById(R.id.txtFrom);
+
+        initList();
+
+        txtFrom.addTextChangedListener(new TextWatcher(){
+
+            @Override
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int	after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(s.toString().equals("")){
+
+                    // reset listview
+
+                }else{
+
+                    // perform search
+                    searchItem(s.toString());
+
+                }
+
+            }
+
+            @Override
+
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
     }
+
+    public void searchItem(String textToSearch){
+
+        for(String item:items){
+            if(!item.contains(textToSearch)){
+                listItems.remove(item);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+
+    public void initList(){
+
+        items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
+
+        listItems=new ArrayList<>(Arrays.asList(items));
+
+        adapter=new ArrayAdapter<String>(this,R.layout.list_item, R.id.txtitem, listItems);
+
+        listView.setAdapter(adapter);
+
+    }
+
 
     public String loadJSONFromAsset() {
         String json = null;
@@ -151,20 +225,20 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        /*mMap = googleMap;
+        mMap = googleMap;
 
-        progressDialog.setMessage("Loading...");
+        /*progressDialog.setMessage("Loading...");
         progressDialog.show();
         progressDialog.hide();*/
         btnGo.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                /*startActivity(new Intent(context, OverallFeedbackActivity.class));
+                //startActivity(new Intent(context, OverallFeedbackActivity.class));
                 // Add a marker in Sydney and move the camera
                 LatLng currentLocation = new LatLng(-25.75006, 28.19121);
                 mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));*/
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
 
                 strTxtFrom = txtFrom.getText().toString();
                 strTxtTo = txtTo.getText().toString();
