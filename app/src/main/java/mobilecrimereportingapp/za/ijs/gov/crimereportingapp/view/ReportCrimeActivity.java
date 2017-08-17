@@ -560,6 +560,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         isPossibleWitnesses = false;
 
     }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
