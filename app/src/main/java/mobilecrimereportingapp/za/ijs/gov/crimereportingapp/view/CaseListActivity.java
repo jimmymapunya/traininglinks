@@ -111,7 +111,7 @@ public class CaseListActivity extends AppCompatActivity {
         statusDetailsList3.add(new StatusDetails("04/2017/44", "Trial", true, "22-03-2017", null, "01-05-2017"));
 
         statusDetailsList4.add(new StatusDetails("06/2014/11", "Investigate", false, "22-03-2017", null, "01-05-2017"));
-        statusDetailsList4.add(new StatusDetails("06/2014/11", "Aquit", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList4.add(new StatusDetails("06/2014/11", "Aquit", true, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
 
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
@@ -125,49 +125,12 @@ public class CaseListActivity extends AppCompatActivity {
         listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Murder", "The accused is suspected of killing his girlfriend", statusDetailsList5));
 
 
-        // Each row in the list stores country name, currency and flag
-        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-
-        for (int i = 0; i < listdao.size(); i++) {
-            HashMap<String, String> hm = new HashMap<String, String>();
-
-            int status_last_index = (listdao.get(i).getStatus().size()) - 1;
-            hm.put("caseNo", listdao.get(i).getCaseNo());
-            hm.put("caseContent", "Crime: " + listdao.get(i).getOffense());
-            hm.put("suspects", "Suspect(s): " + listdao.get(i).getAccused());
-            hm.put("dateCreated", listdao.get(i).getStatus().get(status_last_index).getDateCreated());
-            String status = "";
-            for(int y=0; y< listdao.get(i).getStatus().size(); y++){
-
-
-                if(listdao.get(i).getStatus().get(y).isIsCurrent()){
-                    status = status  + listdao.get(i).getStatus().get(y).getProcessName() + "*#";
-                }else{
-                    status = status  + listdao.get(i).getStatus().get(y).getProcessName() + "#";
-                }
-
-            }
-
-            hm.put("status"+ (i), status);
-            aList.add(hm);
-        }
-
-        // Keys used in Hashmap
-        String[] from = {"caseNo", "caseContent", "suspects", "dateCreated"};
-
-        // Ids of views in listview_layout
-        int[] to = {R.id.txtCaseNo, R.id.txtCaseContent, R.id.txtSuspects, R.id.txtDateCreated};
-
-        // Instantiating an adapter to store each items
-        // R.layout.listview_layout defines the layout of each item
 
         adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
-
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(listview);
 
         // Setting the adapter to the listView
-
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

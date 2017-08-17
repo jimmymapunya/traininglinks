@@ -87,9 +87,8 @@ public class CaseDetailsActivity extends AppCompatActivity {
         actionLocationArr = bundle.getStringArray("actionLocationArr");
         currentProcess = bundle.getString("currentProcess");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, processNameArr);
-
         Spinner spinProcessNames = (Spinner)findViewById(R.id.processNamesSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, processNameArr);;
         spinProcessNames.setAdapter(adapter);
         btnNavigateToCourt.setVisibility(View.GONE);
         for(int x=0; x<processNameArr.length; x++){

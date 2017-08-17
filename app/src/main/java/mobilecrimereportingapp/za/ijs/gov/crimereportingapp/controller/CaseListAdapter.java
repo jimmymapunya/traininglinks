@@ -57,19 +57,13 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
     public int getCount() {
         return filteredData.size();
     }
-
     public CaseDetails getItem(int position) {
         return filteredData.get(position);
     }
-
     public long getItemId(int position) {
         return position;
     }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-
+    private View initializeHolder(View view, ViewGroup parent){
         if(view == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -95,8 +89,8 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
             holder.txtsentence=(TextView) view.findViewById(R.id.txtSentence);
 
             holder.txtSuspects=(TextView) view.findViewById(R.id.txtSuspects);
+            holder.txtCaseContent=(TextView) view.findViewById(R.id.txtCaseContent);
             holder.txtCaseNo=(TextView) view.findViewById(R.id.txtCaseNo);
-            holder.txtOffense=(TextView) view.findViewById(R.id.txtOffense);
             holder.txtDateCreated=(TextView) view.findViewById(R.id.txtDateCreated);
 
             holder.btnHeading=(Button) view.findViewById(R.id.btnHeading);
@@ -110,103 +104,22 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
         {
             holder = (CaseHolder) view.getTag();
         }
-        System.out.println(position+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-        CaseDetails caseDetails = aList.get(position);
+        return view;
+    }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        System.out.println(position+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx start");
+        View view = initializeHolder(convertView, parent);
         ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
         holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
-        holder.txtSuspects.setText("Suspect(s): "+aList.get(position).getAccused());
-
-        int occurencesCount=0;
-
-        String dateCreated ="";
-        for(int x = 0; x<arrStatuses.size(); x++){
-
-            //Cheking if its a current process
-            if(arrStatuses.get(x).getActionDate()!=null){
-
-                if(arrStatuses.get(x).getProcessName().equals("Investigate")){
-                    holder.investigate.setBackgroundResource(R.drawable.success_status);
-
-                } else if(arrStatuses.get(x).getProcessName().equals("Arrest")){
-                    holder.arrested.setBackgroundResource(R.drawable.success_status);
-
-                }  else if(arrStatuses.get(x).getProcessName().equals("Bail Hearing")){
-                    holder.bail.setBackgroundResource(R.drawable.success_status);
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Trial")){
-                    holder.trial.setBackgroundResource(R.drawable.success_status);
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Verdict")){
-                    holder.verdict.setBackgroundResource(R.drawable.success_status);
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Aquit")){
-                    holder.aquit.setBackgroundResource(R.drawable.success_status);
-
-                }else{
-                    holder.sentence.setBackgroundResource(R.drawable.success_status);
-
-                }
-
-            }
-            //Checking if have occured
-            if(arrStatuses.get(x).isIsCurrent()){
-
-                occurencesCount++;
-                dateCreated = arrStatuses.get(x).getProcessName()+" date: "+ arrStatuses.get(x).getActionDate();
-
-                    holder.txtinvestigate.setTextColor(Color.parseColor("#808080"));
-                    holder.txtarrested.setTextColor(Color.parseColor("#808080"));
-                    holder.txtbail.setTextColor(Color.parseColor("#808080"));
-                    holder.txttrial.setTextColor(Color.parseColor("#808080"));
-                    holder.txtverdict.setTextColor(Color.parseColor("#808080"));
-                    holder.txtaquit.setTextColor(Color.parseColor("#808080"));
-                    holder.txtsentence.setTextColor(Color.parseColor("#808080"));
-
-                if(arrStatuses.get(x).getProcessName().equals("Investigate")){
-                    holder.investigate.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtinvestigate.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtinvestigate.setTextColor(Color.parseColor("#F39C12"));
-
-                } else if(arrStatuses.get(x).getProcessName().equals("Arrest")){
-                    holder.arrested.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtarrested.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtarrested.setTextColor(Color.parseColor("#F39C12"));
-
-                }  else if(arrStatuses.get(x).getProcessName().equals("Bail Hearing")){
-                    holder.bail.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtbail.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtbail.setTextColor(Color.parseColor("#F39C12"));
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Trial")){
-                    holder.trial.setBackgroundResource(R.drawable.progress_status);
-                    holder.txttrial.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txttrial.setTextColor(Color.parseColor("#F39C12"));
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Verdict")){
-                    holder.verdict.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtverdict.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtverdict.setTextColor(Color.parseColor("#F39C12"));
-
-                }else if(arrStatuses.get(x).getProcessName().equals("Aquit")){
-                    holder.aquit.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtaquit.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtaquit.setTextColor(Color.parseColor("#F39C12"));
-
-                }else{
-                    holder.sentence.setBackgroundResource(R.drawable.progress_status);
-                    holder.txtsentence.setTypeface(Typeface.DEFAULT_BOLD);
-                    holder.txtsentence.setTextColor(Color.parseColor("#F39C12"));
-                }
-
-            }
-
-
-            }
-        if(occurencesCount==0){
-           dateCreated =  arrStatuses.get(arrStatuses.size()-1).getProcessName() + " date: "+arrStatuses.get(arrStatuses.size()-1).getActionDate();
-        }
-        holder.txtDateCreated.setText(dateCreated);
+        holder.txtSuspects.setText("Crime: "+aList.get(position).getAccused());
+        holder.txtCaseContent.setText("Suspect(s): "+aList.get(position).getOffense());
         holder.relativeLayout2.setTag(position);
+
+        applyStatusBarColors(arrStatuses);
+
+        //When click the horizontal status bar
         holder.relativeLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,7 +178,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
             }
         });
 
-
+        System.out.println(position+"Eeeeeeeeeeeeeeeeeeeeeeeeeeeeee end");
         return view;
     }
     private void navigateToCaseDetails(int pos){
@@ -300,7 +213,6 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
         intent.putExtra("currentProcess", currentProcess);
         context.startActivity(intent);
     }
-
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
@@ -347,15 +259,107 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
         };
         return filter;
     }
+    private void applyStatusBarColors(ArrayList<StatusDetails> arrStatuses){
 
 
+        int occurencesCount=0;
 
+        String dateCreated ="";
+        for(int x = 0; x<arrStatuses.size(); x++){
+
+            //Cheking if its a current process
+            if(arrStatuses.get(x).getActionDate()!=null){
+
+                if(arrStatuses.get(x).getProcessName().equals("Investigate")){
+                    holder.investigate.setBackgroundResource(R.drawable.success_status);
+
+                } else if(arrStatuses.get(x).getProcessName().equals("Arrest")){
+                    holder.arrested.setBackgroundResource(R.drawable.success_status);
+
+                }  else if(arrStatuses.get(x).getProcessName().equals("Bail Hearing")){
+                    holder.bail.setBackgroundResource(R.drawable.success_status);
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Trial")){
+                    holder.trial.setBackgroundResource(R.drawable.success_status);
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Verdict")){
+                    holder.verdict.setBackgroundResource(R.drawable.success_status);
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Aquit")){
+                    holder.aquit.setBackgroundResource(R.drawable.success_status);
+
+                }else{
+                    holder.sentence.setBackgroundResource(R.drawable.success_status);
+
+                }
+
+            }
+            //Checking if have occured
+            if(arrStatuses.get(x).isIsCurrent()){
+
+                occurencesCount++;
+                dateCreated = arrStatuses.get(x).getProcessName()+" date: "+ arrStatuses.get(x).getActionDate();
+
+                holder.txtinvestigate.setTextColor(Color.parseColor("#808080"));
+                holder.txtarrested.setTextColor(Color.parseColor("#808080"));
+                holder.txtbail.setTextColor(Color.parseColor("#808080"));
+                holder.txttrial.setTextColor(Color.parseColor("#808080"));
+                holder.txtverdict.setTextColor(Color.parseColor("#808080"));
+                holder.txtaquit.setTextColor(Color.parseColor("#808080"));
+                holder.txtsentence.setTextColor(Color.parseColor("#808080"));
+
+                if(arrStatuses.get(x).getProcessName().equals("Investigate")){
+                    holder.investigate.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtinvestigate.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtinvestigate.setTextColor(Color.parseColor("#F39C12"));
+
+                } else if(arrStatuses.get(x).getProcessName().equals("Arrest")){
+                    holder.arrested.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtarrested.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtarrested.setTextColor(Color.parseColor("#F39C12"));
+
+                }  else if(arrStatuses.get(x).getProcessName().equals("Bail Hearing")){
+                    holder.bail.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtbail.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtbail.setTextColor(Color.parseColor("#F39C12"));
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Trial")){
+                    holder.trial.setBackgroundResource(R.drawable.progress_status);
+                    holder.txttrial.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txttrial.setTextColor(Color.parseColor("#F39C12"));
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Verdict")){
+                    holder.verdict.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtverdict.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtverdict.setTextColor(Color.parseColor("#F39C12"));
+
+                }else if(arrStatuses.get(x).getProcessName().equals("Aquit")){
+                    holder.aquit.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtaquit.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtaquit.setTextColor(Color.parseColor("#F39C12"));
+
+                }else{
+                    holder.sentence.setBackgroundResource(R.drawable.progress_status);
+                    holder.txtsentence.setTypeface(Typeface.DEFAULT_BOLD);
+                    holder.txtsentence.setTextColor(Color.parseColor("#F39C12"));
+                }
+
+            }
+
+
+        }
+        if(occurencesCount==0){
+            dateCreated =  arrStatuses.get(arrStatuses.size()-1).getProcessName() + " date: "+arrStatuses.get(arrStatuses.size()-1).getActionDate();
+        }
+        holder.txtDateCreated.setText(dateCreated);
+
+    }
     static class CaseHolder
     {
         RelativeLayout relativeLayout,relativeLayout2;
         View investigate,arrested,bail,trial,verdict,aquit,sentence;
         TextView txtinvestigate,txtarrested,txtbail,txttrial,txtverdict,txtaquit,txtsentence;
-        TextView txtSuspects,txtCaseNo,txtOffense,txtDateCreated;
+        TextView txtSuspects,txtCaseNo,txtDateCreated, txtCaseContent;
         Button btnHeading,btnFindCourt,btnCaseDetails,btnFeedback;
         ImageView imgDropDown;
 

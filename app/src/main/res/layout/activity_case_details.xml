@@ -94,8 +94,7 @@
                     <Spinner
                         android:id="@+id/processNamesSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-
+                        android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_alignStart="@+id/txtProcessDesc"
                         android:layout_marginTop="15dp"
