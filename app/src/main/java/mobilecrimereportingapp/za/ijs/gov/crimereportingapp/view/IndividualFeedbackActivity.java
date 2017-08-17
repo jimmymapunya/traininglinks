@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -54,7 +55,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
     private Spinner spinnerActorRole;
     private Spinner spinnerActorName;
 
-    private TextView notificationCountIcon, inboxCountIcon;
+    private TextView notificationCountIcon, inboxCountIcon, happyQ, txtViewFeedbackQuestion;
     private FrameLayout notificationLayout, inboxLayout;
 
     private IndividualFeedback individualFeedbackFeedback;
@@ -64,7 +65,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
     private String txtIndividualFeedbackEditTextString;
     private String starRating;
     private String additionalComments;
-    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6;
     private ArrayList<String> CheckBoxComments;
     private Button btnSubmit, btnNotNow;
 
@@ -78,189 +79,241 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_individual_feedback);
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_individual_feedback);
 
-        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
-        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+                    notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+                    inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
 
-        notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
-        inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
+                    notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
+                    inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+                    notificationCountIcon.setText(MainActivity.notificationCount);
+                    inboxCountIcon.setText(MainActivity.inboxCount);
 
-        /*Toolbar and Buttons instantiation*/
-        Toolbar = (Toolbar) findViewById(R.id.appBar);
-        Toolbar.setTitle("Individual Feedback");
+                    /*Toolbar and Buttons instantiation*/
+                    Toolbar = (Toolbar) findViewById(R.id.appBar);
+                    Toolbar.setTitle("Individual Feedback");
 
-        setSupportActionBar(Toolbar);
-        /*Back notificationicon for navigation drawer*/
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    setSupportActionBar(Toolbar);
+                    /*Back notificationicon for navigation drawer*/
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
-                getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
+                    NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
+                            getSupportFragmentManager().findFragmentById(R.id.frag_nav_drawer);
 
-        navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
+                    navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
-        checkBox1 = (CheckBox) findViewById(R.id.checkBoxIF);
-        checkBox2 = (CheckBox) findViewById(R.id.checkBox2IF);
-        checkBox3 = (CheckBox) findViewById(R.id.checkBox5IF);
-        checkBox4 = (CheckBox) findViewById(R.id.checkBox4IF);
-        //hide checkboxes on load
-        checkBox1.setVisibility(View.INVISIBLE);
-        checkBox2.setVisibility(View.INVISIBLE);
-        checkBox3.setVisibility(View.INVISIBLE);
-        checkBox4.setVisibility(View.INVISIBLE);
+                    txtViewFeedbackQuestion = (TextView) findViewById(R.id.txtFeedbackQuestion);
+                    happyQ = (TextView) findViewById(R.id.happyQ);
+                    checkBox1 = (CheckBox) findViewById(R.id.checkBoxIF);
+                    checkBox2 = (CheckBox) findViewById(R.id.checkBox2IF);
+                    checkBox3 = (CheckBox) findViewById(R.id.checkBox5IF);
+                    checkBox4 = (CheckBox) findViewById(R.id.checkBox4IF);
+                    checkBox5 = (CheckBox) findViewById(R.id.checkBox6IF);
+                    checkBox6= (CheckBox) findViewById(R.id.checkBox7IF);
 
-        addItemsOnSpinnerCaseNo();
-        addItemsOnSpinnerActorRole();
-        addItemsOnSpinnerActorName();
-
-        //get additional comments
-        txtIndividualFeedbackEditText = (EditText) findViewById(R.id.txtIndividualFeedbackEditText);
-
-        btnSubmit = (Button) findViewById(R.id.btnSubmitFeedbackIF);
-
-        //get star rating
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-
-        btnNotNow = (Button) findViewById(R.id.btnNotNowIF);
-
-        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
-        spinnerActorRole = (Spinner) findViewById(R.id.spinnerActorRole);
-        spinnerActorName = (Spinner) findViewById(R.id.spinnerActorName);
-
-        //get text in additional comments text box
-        txtIndividualFeedbackEditTextString = txtIndividualFeedbackEditText.getText().toString();
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
-                //show the star rating on change
-                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
-                    checkBox1.setVisibility(View.VISIBLE);
-                    checkBox2.setVisibility(View.VISIBLE);
-                    checkBox3.setVisibility(View.VISIBLE);
-                    checkBox4.setVisibility(View.VISIBLE);
-                }else{
-                    //hide them
+                    //hide checkboxes on load  //txtViewFeedbackQuestion.setVisibility(View.INVISIBLE);
+                    happyQ.setVisibility(View.INVISIBLE);
                     checkBox1.setVisibility(View.INVISIBLE);
                     checkBox2.setVisibility(View.INVISIBLE);
                     checkBox3.setVisibility(View.INVISIBLE);
                     checkBox4.setVisibility(View.INVISIBLE);
+                    checkBox5.setVisibility(View.INVISIBLE);
+                    checkBox6.setVisibility(View.INVISIBLE);
 
-                }
-            }
-        });
+                    addItemsOnSpinnerCaseNo();
+                    addItemsOnSpinnerActorRole();
+                    addItemsOnSpinnerActorName();
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    //get additional comments
+                    txtIndividualFeedbackEditText = (EditText) findViewById(R.id.txtIndividualFeedbackEditText);
 
-                //spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
-                //spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
+                    btnSubmit = (Button) findViewById(R.id.btnSubmitFeedbackIF);
 
-                checkBox1 = (CheckBox) findViewById(R.id.checkBoxIF);
-                checkBox2 = (CheckBox) findViewById(R.id.checkBox2IF);
-                checkBox3 = (CheckBox) findViewById(R.id.checkBox5IF);
-                checkBox4 = (CheckBox) findViewById(R.id.checkBox4IF);
+                    //get star rating
+                    ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
-                //make sure case no and phase are selected
-                if(!(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && !(String.valueOf(spinnerActorRole.getSelectedItem()).equals("---Select Role of Actor---")) && !(String.valueOf(spinnerActorName.getSelectedItem()).equals("---Select Name of Actor---"))) {
+                    btnNotNow = (Button) findViewById(R.id.btnNotNowIF);
+
+                    spinnerActorName = (Spinner) findViewById(R.id.spinnerActorName);
+                    spinnerActorRole = (Spinner) findViewById(R.id.spinnerActorRole);
+                    spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
 
 
-                    //if rating value is changed,
-                    //display the current rating value in the on screen automatically
-                    //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                    //@Override
-                    //public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
-                    //show the star rating on change
-                    //starRating = String.valueOf(ratingBar.getRating());
-                    if(String.valueOf(ratingBar.getRating()).equals("0.0")) {
-                            //Toast.makeText(context,"Star Rating Test: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
-                            //show pop up notifying user to star rate
-                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                            // set title
-                            alertDialogBuilder.setTitle("Please star rate");
+                    //dynamically select spinner item
+                    final Spinner[] arr = {spinnerActorRole, spinnerActorName, spinnerCaseNo};
 
-                            //set dialog message
-                            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // if this button is clicked, just close
-                                    // the dialog box and do nothing
-                                    dialog.cancel();
-                                }
-                            });
-                            // create alert dialog
-                            AlertDialog alertDialog = alertDialogBuilder.create();
-                            //show it
-                            alertDialog.show();
+                    for(int i = 0; i <= 2; i++){
 
-                        }else{
+                        arr[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                            //create and submit the overall feedback
-                            createFeedback(URL, spinnerCaseNo, spinnerActorRole, spinnerActorName, ratingBar, txtIndividualFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4);
 
-                            //after feedback has been submitted show pop up
-                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                            // set title
-                            alertDialogBuilder.setTitle("Thank you for your feedback");
+                                String txtFeedbackQuestion = "Are you satisfied with how "+ String.valueOf(arr[0].getSelectedItem()) + " " + String.valueOf(arr[1].getSelectedItem()) + " assisted you on  case " + String.valueOf(arr[2].getSelectedItem()) +" ?";
+                                txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
 
-                            //set dialog message
-                            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    //if this is clicked, close current activity and go back to provide feedback
-                                    startActivity(new Intent(context, ProvideFeedback.class));
-                                }
-                            });
-                            // create alert dialog
-                            AlertDialog alertDialog = alertDialogBuilder.create();
-                            //show it
-                            alertDialog.show();
+                            }
+
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+                                return;
+                            }
+                        });
 
                     }
-                    //}
-                    //});
+
+                    //get text in additional comments text box
+                    txtIndividualFeedbackEditTextString = txtIndividualFeedbackEditText.getText().toString();
+
+                    ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                        @Override
+                        public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+                            //show the star rating on change
+                            if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
+
+                                happyQ.setVisibility(View.VISIBLE);
+                                checkBox1.setVisibility(View.VISIBLE);
+                                checkBox2.setVisibility(View.VISIBLE);
+                                checkBox3.setVisibility(View.VISIBLE);
+                                checkBox4.setVisibility(View.VISIBLE);
+
+                            }else if((double) ratingBar.getRating() == 5){
+
+                                //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                                happyQ.setText("What were you happy with?");
+                                happyQ.setVisibility(View.VISIBLE);
+                                checkBox1.setVisibility(View.VISIBLE);
+                                checkBox2.setVisibility(View.VISIBLE);
+                                checkBox3.setVisibility(View.VISIBLE);
+                                checkBox4.setVisibility(View.VISIBLE);
+                                checkBox5.setVisibility(View.VISIBLE);
+                                checkBox6.setVisibility(View.VISIBLE);
 
 
-                }else {
+                            }else{
+                                //hide them and
+                                //hide happyQ text view
+                                happyQ.setVisibility(View.INVISIBLE);
+                                checkBox1.setVisibility(View.INVISIBLE);
+                                checkBox2.setVisibility(View.INVISIBLE);
+                                checkBox3.setVisibility(View.INVISIBLE);
+                                checkBox4.setVisibility(View.INVISIBLE);
+                                checkBox5.setVisibility(View.INVISIBLE);
+                                checkBox6.setVisibility(View.INVISIBLE);
 
-                    //show pop up notifying user to select a case number or phase
-                    //after feedback has been submitted show pop up
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    // set title
-                    alertDialogBuilder.setTitle("Please select Case No,\n Actor Role and\nActor Name");
-
-                    //set dialog message
-                    alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
-                            dialog.cancel();
+                            }
                         }
                     });
-                    // create alert dialog
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    //show it
-                    alertDialog.show();
 
-                }
-            }
-        });
+                    btnSubmit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-        //when the user does not want submit feedback
-        btnNotNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context, ProvideFeedback.class));
-            }
-        });
+                            //spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
+                            //spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
+
+                            checkBox1 = (CheckBox) findViewById(R.id.checkBoxIF);
+                            checkBox2 = (CheckBox) findViewById(R.id.checkBox2IF);
+                            checkBox3 = (CheckBox) findViewById(R.id.checkBox5IF);
+                            checkBox4 = (CheckBox) findViewById(R.id.checkBox4IF);
+                            checkBox5 = (CheckBox) findViewById(R.id.checkBox6IF);
+                            checkBox6= (CheckBox) findViewById(R.id.checkBox7IF);
+
+                            //make sure case no and phase are selected
+                            if(!(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && !(String.valueOf(spinnerActorRole.getSelectedItem()).equals("---Select Role of Actor---")) && !(String.valueOf(spinnerActorName.getSelectedItem()).equals("---Select Name of Actor---"))) {
+
+
+                                //if rating value is changed,
+                                //display the current rating value in the on screen automatically
+                                //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                                //@Override
+                                //public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+                                //show the star rating on change
+                                //starRating = String.valueOf(ratingBar.getRating());
+                                if(String.valueOf(ratingBar.getRating()).equals("0.0")) {
+                                        //Toast.makeText(context,"Star Rating Test: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
+                                        //show pop up notifying user to star rate
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                        // set title
+                                        alertDialogBuilder.setTitle("Please star rate");
+
+                                        //set dialog message
+                                        alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                // if this button is clicked, just close
+                                                // the dialog box and do nothing
+                                                dialog.cancel();
+                                            }
+                                        });
+                                        // create alert dialog
+                                        AlertDialog alertDialog = alertDialogBuilder.create();
+                                        //show it
+                                        alertDialog.show();
+
+                                    }else{
+
+                                        //create and submit the overall feedback
+                                        createFeedback(URL, spinnerCaseNo, spinnerActorRole, spinnerActorName, ratingBar, txtIndividualFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6);
+
+                                        //after feedback has been submitted show pop up
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                        // set title
+                                        alertDialogBuilder.setTitle("Thank you for your feedback");
+
+                                        //set dialog message
+                                        alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                //if this is clicked, close current activity and go back to provide feedback
+                                                startActivity(new Intent(context, ProvideFeedback.class));
+                                            }
+                                        });
+                                        // create alert dialog
+                                        AlertDialog alertDialog = alertDialogBuilder.create();
+                                        //show it
+                                        alertDialog.show();
+
+                                }
+                                //}
+                                //});
+
+
+                            }else {
+
+                                //show pop up notifying user to select a case number or phase
+                                //after feedback has been submitted show pop up
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                // set title
+                                alertDialogBuilder.setTitle("Please select Case No,\n Actor Role and\nActor Name");
+
+                                //set dialog message
+                                alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // if this button is clicked, just close
+                                        // the dialog box and do nothing
+                                        dialog.cancel();
+                                    }
+                                });
+                                // create alert dialog
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                //show it
+                                alertDialog.show();
+
+                            }
+                        }
+                    });
+
+                    //when the user does not want submit feedback
+                    btnNotNow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(context, ProvideFeedback.class));
+                        }
+                    });
 
     }
 
     //create feedback
-    public void createFeedback(String url, final Spinner spinnerCaseNo, final Spinner spinnerActorRole, final Spinner spinnerActorName, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4){
+    public void createFeedback(String url, final Spinner spinnerCaseNo, final Spinner spinnerActorRole, final Spinner spinnerActorName, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4final, CheckBox checkBox5, final CheckBox checkBox6){
 
         //submit objects that are strings
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -276,12 +329,12 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                         result.append("\ncheckbox3 : ").append(checkBox3.isChecked());
                         result.append("\ncheckbox4 : ").append(checkBox4.isChecked());
 
-                        Toast.makeText(context,"Case No: " + String.valueOf(spinnerCaseNo.getSelectedItem()) +
+                       /** Toast.makeText(context,"Case No: " + String.valueOf(spinnerCaseNo.getSelectedItem()) +
                                 "\nRole: "+ String.valueOf(spinnerActorRole.getSelectedItem()) + "\nName: "+ String.valueOf(spinnerActorName.getSelectedItem()) ,Toast.LENGTH_LONG).show();
                         Toast.makeText(context,"Star Rating: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
                         Toast.makeText(context,"Checkboxes: \n" + result.toString(),Toast.LENGTH_LONG).show();
                         //Tell user values have been submitted
-                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();*/
 
 
                     }
@@ -338,6 +391,8 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                     object.put("checkBox2",checkBox2.isChecked());
                     object.put("checkBox3",checkBox3.isChecked());
                     object.put("checkBox4",checkBox4.isChecked());
+                    //object.put("checkBox5",checkBox5.isChecked());
+                    //object.put("checkBox6",checkBox6.isChecked());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

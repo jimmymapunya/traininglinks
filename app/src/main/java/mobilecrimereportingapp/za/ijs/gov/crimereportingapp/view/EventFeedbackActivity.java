@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -53,7 +54,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
     private Spinner spinnerCaseNo;
     private Spinner spinnerPhase;
 
-    private TextView notificationCountIcon, inboxCountIcon;
+    private TextView notificationCountIcon, inboxCountIcon, happyQ, txtViewFeedbackQuestion;
     private FrameLayout notificationLayout, inboxLayout;
 
     private EventFeedback eventFeedback;
@@ -63,7 +64,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
     private String txtEventFeedbackEditTextString;
     private String starRating;
     private String additionalComments;
-    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6;
     private ArrayList<String> CheckBoxComments;
     private Button btnSubmit, btnNotNow;
 
@@ -94,7 +95,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
         Toolbar.setTitle("Event Feedback");
 
         setSupportActionBar(Toolbar);
-        /*Back notificationicon for navigation drawer*/
+        /**Back notificationicon for navigation drawer*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationDrawerFrag navigationDrawerFrag = (NavigationDrawerFrag)
@@ -102,18 +103,53 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+        txtViewFeedbackQuestion = (TextView) findViewById(R.id.txtFeedbackQuestion);
+        happyQ = (TextView) findViewById(R.id.happyQ);
         checkBox1 = (CheckBox) findViewById(R.id.checkBoxEF);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2EF);
         checkBox3 = (CheckBox) findViewById(R.id.checkBox5EF);
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4EF);
+        checkBox5 = (CheckBox) findViewById(R.id.checkBox6EF);
+        checkBox6 = (CheckBox) findViewById(R.id.checkBox7EF);
+
         //hide checkboxes on load
+        //txtViewFeedbackQuestion.setVisibility(View.INVISIBLE);
+        happyQ.setVisibility(View.INVISIBLE);
         checkBox1.setVisibility(View.INVISIBLE);
         checkBox2.setVisibility(View.INVISIBLE);
         checkBox3.setVisibility(View.INVISIBLE);
         checkBox4.setVisibility(View.INVISIBLE);
+        checkBox5.setVisibility(View.INVISIBLE);
+        checkBox6.setVisibility(View.INVISIBLE);
 
         addItemsOnSpinnerCaseNo();
         addItemsOnSpinnerPhase();
+
+        spinnerCaseNo = (Spinner)findViewById(R.id.spinnerCaseNo);
+        spinnerPhase = (Spinner)findViewById(R.id.spinnerPhase);
+
+        //dynamically select spinner item
+        final Spinner[] arr = {spinnerPhase, spinnerCaseNo};
+
+        for(int i = 0; i <= 1; i++){
+
+            arr[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                    String txtFeedbackQuestion = "Are you satisfied with how the "+ String.valueOf(arr[0].getSelectedItem()) + " of case " + String.valueOf(arr[1].getSelectedItem()) + " was handled?";
+                    txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
+
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    return;
+                }
+            });
+
+        }
+
+
 
         //get additional comments
         txtEventFeedbackEditText = (EditText) findViewById(R.id.txtEventFeedbackEditText);
@@ -146,16 +182,37 @@ public class EventFeedbackActivity extends AppCompatActivity {
             public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
                 //show the star rating on change
                 if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
+
+                    happyQ.setVisibility(View.VISIBLE);
                     checkBox1.setVisibility(View.VISIBLE);
                     checkBox2.setVisibility(View.VISIBLE);
                     checkBox3.setVisibility(View.VISIBLE);
                     checkBox4.setVisibility(View.VISIBLE);
+                    checkBox5.setVisibility(View.VISIBLE);
+                    checkBox6.setVisibility(View.VISIBLE);
+
+                }else if((double) ratingBar.getRating() == 5){
+
+                    //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                    happyQ.setText("What were you happy with?");
+                    happyQ.setVisibility(View.VISIBLE);
+                    checkBox1.setVisibility(View.VISIBLE);
+                    checkBox2.setVisibility(View.VISIBLE);
+                    checkBox3.setVisibility(View.VISIBLE);
+                    checkBox4.setVisibility(View.VISIBLE);
+                    checkBox5.setVisibility(View.VISIBLE);
+                    checkBox6.setVisibility(View.VISIBLE);
+
+
                 }else{
-                    //hide them
+                    //hide happyQ text view
+                    happyQ.setVisibility(View.INVISIBLE);
                     checkBox1.setVisibility(View.INVISIBLE);
                     checkBox2.setVisibility(View.INVISIBLE);
                     checkBox3.setVisibility(View.INVISIBLE);
                     checkBox4.setVisibility(View.INVISIBLE);
+                    checkBox5.setVisibility(View.INVISIBLE);
+                    checkBox6.setVisibility(View.INVISIBLE);
 
                 }
             }
@@ -172,11 +229,21 @@ public class EventFeedbackActivity extends AppCompatActivity {
                 checkBox2 = (CheckBox) findViewById(R.id.checkBox2EF);
                 checkBox3 = (CheckBox) findViewById(R.id.checkBox5EF);
                 checkBox4 = (CheckBox) findViewById(R.id.checkBox4EF);
+                checkBox5 = (CheckBox) findViewById(R.id.checkBox6EF);
+                checkBox6 = (CheckBox) findViewById(R.id.checkBox7EF);
+
 
                 //make sure case no and phase are selected
                 if(!(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && !(String.valueOf(spinnerPhase.getSelectedItem()).equals("---Select Phase---"))) {
 
 
+                    //String txtFeedbackQuestion = "Are you satisfied with how the "+ String.valueOf(spinnerPhase.getSelectedItem()) + " of your case was handled?";
+
+                    //if(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("Investigation")){
+
+                    //txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
+
+                    //}
                     //if rating value is changed,
                     //display the current rating value in the on screen automatically
                     //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -207,7 +274,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
                             }else{
 
                                 //create and submit the overall feedback
-                                createFeedback(URL, spinnerCaseNo, spinnerPhase, ratingBar, txtEventFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4);
+                                createFeedback(URL, spinnerCaseNo, spinnerPhase, ratingBar, txtEventFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6);
 
                                 //after feedback has been submitted show pop up
                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -267,7 +334,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
     }
 
     //create feedback
-    public void createFeedback(String url, final Spinner spinnerCaseNo, final Spinner spinnerPhase, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4){
+    public void createFeedback(String url, final Spinner spinnerCaseNo, final Spinner spinnerPhase, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4, final CheckBox checkBox5, final CheckBox checkBox6){
 
         //submit objects that are strings
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -283,12 +350,12 @@ public class EventFeedbackActivity extends AppCompatActivity {
                         result.append("\ncheckbox3 : ").append(checkBox3.isChecked());
                         result.append("\ncheckbox4 : ").append(checkBox4.isChecked());
 
-                        Toast.makeText(context,"Case No: " + String.valueOf(spinnerCaseNo.getSelectedItem()) +
+                        /**Toast.makeText(context,"Case No: " + String.valueOf(spinnerCaseNo.getSelectedItem()) +
                                "\nPhase: "+ String.valueOf(spinnerPhase.getSelectedItem()) ,Toast.LENGTH_LONG).show();
                         Toast.makeText(context,"Star Rating: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
                         Toast.makeText(context,"Checkboxes: \n" + result.toString(),Toast.LENGTH_LONG).show();
                         //Tell user values have been submitted
-                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();*/
 
 
                     }
@@ -345,6 +412,8 @@ public class EventFeedbackActivity extends AppCompatActivity {
                     object.put("checkBox2",checkBox2.isChecked());
                     object.put("checkBox3",checkBox3.isChecked());
                     object.put("checkBox4",checkBox4.isChecked());
+                    //object.put("checkBox5",checkBox5.isChecked());
+                    //object.put("checkBox6",checkBox6.isChecked());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

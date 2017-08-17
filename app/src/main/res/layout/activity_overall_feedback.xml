@@ -44,7 +44,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="10dp"
-                        android:text="Are you satisfied with how your case was handled from beginning to end?"
+                        android:text="Are you satisfied with our overall services from start to finish?"
                         android:textAlignment="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtFeedbackQuestion"
                         android:layout_marginTop="10dp"
-                        android:text="Please give it a star rating"
+                        android:text="Please give us a star rating"
                         android:textAlignment="center" />
 
                     <RatingBar
@@ -70,38 +70,70 @@
                         android:stepSize="0.5"
                         tools:layout_gravity="center_horizontal" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxOF"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/happyQ"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/checkBox5OF"
-                        android:layout_below="@+id/checkBox5OF"
-                        android:text="The decision in my case was unfair." />
+                        android:text="What were you unhappy with?" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox2OF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/checkBox4OF"
-                        android:layout_centerVertical="true"
-                        android:text="The decision in my case was incorrect." />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox5OF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/checkBox4OF"
-                        android:layout_below="@+id/checkBox4OF"
-                        android:text="No follow up was done after opening the case." />
+                        <CheckBox
+                            android:id="@+id/checkBoxOF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/checkBox5OF"
+                            android:text="Attitude" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox4OF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/txtStarRating"
-                        android:layout_below="@+id/checkBox2OF"
-                        android:text="Nothing was communicated to me until the end." />
+                        <CheckBox
+                            android:id="@+id/checkBox2OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/checkBox4OF"
+                            android:layout_centerVertical="true"
+                            android:text="Your treatment" />
 
+                        <CheckBox
+                            android:id="@+id/checkBox5OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/checkBox4OF"
+                            android:layout_below="@+id/checkBox4OF"
+                            android:text="Handling of case" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_weight="100"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBox4OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/txtStarRating"
+                            android:text="Duration" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBox6OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Access to information" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox7OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Communication" />
+
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/txtOverallFeedbackEditText"
@@ -118,8 +150,8 @@
                         android:id="@+id/btnSubmitOF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/unsafebutton"
                         android:text="@string/strSubmitFeedback"
                         android:textColor="#fff" />

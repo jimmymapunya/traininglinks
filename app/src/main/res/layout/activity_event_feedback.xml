@@ -33,14 +33,14 @@
                 android:orientation="vertical">
 
                 <Spinner
-                    android:id="@+id/spinnerCaseNo"
+                    android:id="@+id/spinnerPhase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
                 <Spinner
-                    android:id="@+id/spinnerPhase"
+                    android:id="@+id/spinnerCaseNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -80,37 +80,70 @@
                     android:progressTint="@android:color/holo_orange_dark"
                     android:stepSize="0.5"/>
 
-                <CheckBox
-                    android:id="@+id/checkBoxEF"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/happyQ"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/checkBox5EF"
-                    android:layout_below="@+id/checkBox5EF"
-                    android:text="The outcome in event was unfair." />
+                    android:text="What were you unhappy with?" />
 
-                <CheckBox
-                    android:id="@+id/checkBox2EF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Too much time was spent in that event."
-                    android:layout_centerVertical="true"
-                    android:layout_alignStart="@+id/checkBox4EF" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/checkBox4EF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/txtStarRating"
-                    android:layout_below="@+id/checkBox2EF"
-                    android:text="My case was not attended in that event for too long." />
+                    <CheckBox
+                        android:id="@+id/checkBoxEF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/checkBox5OF"
+                        android:text="Attitude" />
 
-                <CheckBox
-                    android:id="@+id/checkBox5EF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/checkBox4EF"
-                    android:layout_below="@+id/checkBox4EF"
-                    android:text="Nothing was communicated to me prior to the event." />
+                    <CheckBox
+                        android:id="@+id/checkBox2EF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/checkBox4OF"
+                        android:layout_centerVertical="true"
+                        android:text="Your treatment" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox5EF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/checkBox4EF"
+                        android:layout_below="@+id/checkBox4EF"
+                        android:text="Handling of case" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:layout_weight="100"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkBox4EF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/txtStarRating"
+                        android:text="Duration" />
+
+
+                    <CheckBox
+                        android:id="@+id/checkBox6EF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Access to information" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox7EF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Communication" />
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/txtEventFeedbackEditText"

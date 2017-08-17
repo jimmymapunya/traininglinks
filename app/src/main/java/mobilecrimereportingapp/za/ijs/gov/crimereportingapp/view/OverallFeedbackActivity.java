@@ -47,7 +47,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
     private Context context = this;
     private Toolbar Toolbar;
 
-    private TextView notificationCountIcon, inboxCountIcon;
+    private TextView notificationCountIcon, inboxCountIcon, happyQ;
     private FrameLayout notificationLayout, inboxLayout;
 
     private OverallFeedback overallFeedback;
@@ -57,7 +57,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
     private String txtOverallFeedbackEditTextString;
     private String starRating;
     private String additionalComments;
-    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6;
     private ArrayList<String> CheckBoxComments;
     private Button btnSubmit, btnNotNow;
 
@@ -96,16 +96,23 @@ public class OverallFeedbackActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
-
+        happyQ = (TextView) findViewById(R.id.happyQ);
         checkBox1 = (CheckBox) findViewById(R.id.checkBoxOF);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2OF);
         checkBox3 = (CheckBox) findViewById(R.id.checkBox5OF);
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4OF);
+        checkBox5 = (CheckBox) findViewById(R.id.checkBox6OF);
+        checkBox6 = (CheckBox) findViewById(R.id.checkBox7OF);
+
+        //hide happyQ text view
+        happyQ.setVisibility(View.INVISIBLE);
         //hide checkboxes on load
         checkBox1.setVisibility(View.INVISIBLE);
         checkBox2.setVisibility(View.INVISIBLE);
         checkBox3.setVisibility(View.INVISIBLE);
         checkBox4.setVisibility(View.INVISIBLE);
+        checkBox5.setVisibility(View.INVISIBLE);
+        checkBox6.setVisibility(View.INVISIBLE);
 
         //get additional comments
         txtOverallFeedbackEditText = (EditText) findViewById(R.id.txtOverallFeedbackEditText);
@@ -121,19 +128,45 @@ public class OverallFeedbackActivity extends AppCompatActivity {
         //display the current rating value in the on screen automatically
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
            @Override
-            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+               ratingBar = (RatingBar) findViewById(R.id.ratingBar);
                //show the star rating on change
-               if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
+               if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5) {
+                   //hide happyQ text view
+                   happyQ.setVisibility(View.VISIBLE);
                    checkBox1.setVisibility(View.VISIBLE);
                    checkBox2.setVisibility(View.VISIBLE);
                    checkBox3.setVisibility(View.VISIBLE);
                    checkBox4.setVisibility(View.VISIBLE);
+                   checkBox5.setVisibility(View.VISIBLE);
+                   checkBox6.setVisibility(View.VISIBLE);
+
+
+
+               }else
+                if((double) ratingBar.getRating() == 5){
+
+                   //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                   happyQ.setText("What were you happy with?");
+                   happyQ.setVisibility(View.VISIBLE);
+                   checkBox1.setVisibility(View.VISIBLE);
+                   checkBox2.setVisibility(View.VISIBLE);
+                   checkBox3.setVisibility(View.VISIBLE);
+                   checkBox4.setVisibility(View.VISIBLE);
+                   checkBox5.setVisibility(View.VISIBLE);
+                   checkBox6.setVisibility(View.VISIBLE);
+
+
                }else{
                    //hide them
+                   //hide happyQ text view
+                   happyQ.setVisibility(View.INVISIBLE);
                    checkBox1.setVisibility(View.INVISIBLE);
                    checkBox2.setVisibility(View.INVISIBLE);
                    checkBox3.setVisibility(View.INVISIBLE);
                    checkBox4.setVisibility(View.INVISIBLE);
+                   checkBox5.setVisibility(View.INVISIBLE);
+                   checkBox6.setVisibility(View.INVISIBLE);
 
                }
            }
@@ -152,6 +185,8 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                             checkBox2 = (CheckBox) findViewById(R.id.checkBox2OF);
                             checkBox3 = (CheckBox) findViewById(R.id.checkBox5OF);
                             checkBox4 = (CheckBox) findViewById(R.id.checkBox4OF);
+                            checkBox5 = (CheckBox) findViewById(R.id.checkBox6OF);
+                            checkBox6 = (CheckBox) findViewById(R.id.checkBox7OF);
 
                             //show the star rating on change
                             //starRating = String.valueOf(ratingBar.getRating());
@@ -178,7 +213,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                             }else{
 
                                 //create and submit the overall feedback
-                                createFeedback(URL, ratingBar, txtOverallFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4);
+                                createFeedback(URL, ratingBar, txtOverallFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6);
 
                                 //after feedback has been submitted show pop up
                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -215,7 +250,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
     }
 
     //create feedback
-    public void createFeedback(String url, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4){
+    public void createFeedback(String url, final RatingBar ratingBar , final String additionalComments, final CheckBox checkBox1, final CheckBox checkBox2, final CheckBox checkBox3, final CheckBox checkBox4, final CheckBox checkBox5, final CheckBox checkBox6){
 
         //submit objects that are strings
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -230,10 +265,10 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                         result.append("\ncheckbox3 : ").append(checkBox3.isChecked());
                         result.append("\ncheckbox4 : ").append(checkBox4.isChecked());
 
-                        Toast.makeText(context, result.toString(),Toast.LENGTH_LONG).show();
+                        /**Toast.makeText(context, result.toString(),Toast.LENGTH_LONG).show();
                         Toast.makeText(context,starRating,Toast.LENGTH_LONG).show();
                         //Tell user values have been submitted
-                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();*/
 
 
                     }
@@ -288,6 +323,8 @@ public class OverallFeedbackActivity extends AppCompatActivity {
                     object.put("checkBox2",checkBox2.isChecked());
                     object.put("checkBox3",checkBox3.isChecked());
                     object.put("checkBox4",checkBox4.isChecked());
+                    //object.put("checkBox5",checkBox5.isChecked());
+                    //object.put("checkBox6",checkBox5.isChecked());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
