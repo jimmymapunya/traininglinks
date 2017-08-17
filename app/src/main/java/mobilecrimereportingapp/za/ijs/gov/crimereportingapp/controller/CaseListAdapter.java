@@ -7,11 +7,14 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -26,6 +29,7 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.StatusDetails;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CaseDetailsActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CaseListActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.CourtFinderActivity;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.EventFeedbackActivity;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ProvideFeedback;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportCrimeActivity;
 
@@ -33,27 +37,38 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportCrimeActi
  * Created by TsundzukaniM on 07-Aug-17.
  */
 
-public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
+public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filterable{
 
-    Context context;
-    int layoutResourceId;
-    ArrayList<CaseDetails> aList = null;
-    CaseHolder holder = null;
-    private static int index;
-    private ArrayList<CaseDetails> listdao = CaseListActivity.listdao;
+    private Context context;
+    private int layoutResourceId;
+    private ArrayList<CaseDetails> aList = null;
+    private ArrayList<CaseDetails> filteredData = null;
+    private CaseHolder holder = null;
+    private View dropDownView, layoutView;
+    //private ItemFilter mFilter = new ItemFilter();
 
     public CaseListAdapter(Context context, int layoutResourceId, ArrayList<CaseDetails> aList) {
         super(context, layoutResourceId, aList);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.aList = aList;
+        this.filteredData = aList;
+    }
+    public int getCount() {
+        return filteredData.size();
+    }
+
+    public CaseDetails getItem(int position) {
+        return filteredData.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        index = position -2;
-        Toast.makeText(context, index+" "+position, Toast.LENGTH_SHORT).show();
 
         if(view == null)
         {
@@ -95,15 +110,14 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
         {
             holder = (CaseHolder) view.getTag();
         }
-
+        System.out.println(position+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         CaseDetails caseDetails = aList.get(position);
         ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
         holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
-       // holder.txtOffense.setText("Crime : ");
         holder.txtSuspects.setText("Suspect(s): "+aList.get(position).getAccused());
 
         int occurencesCount=0;
-        //Check if the process have taken place
+
         String dateCreated ="";
         for(int x = 0; x<arrStatuses.size(); x++){
 
@@ -138,7 +152,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
             if(arrStatuses.get(x).isIsCurrent()){
 
                 occurencesCount++;
-                dateCreated = arrStatuses.get(x).getActionDate();
+                dateCreated = arrStatuses.get(x).getProcessName()+" date: "+ arrStatuses.get(x).getActionDate();
 
                     holder.txtinvestigate.setTextColor(Color.parseColor("#808080"));
                     holder.txtarrested.setTextColor(Color.parseColor("#808080"));
@@ -189,66 +203,58 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
 
             }
         if(occurencesCount==0){
-           dateCreated = arrStatuses.get(arrStatuses.size()-1).getActionDate();
+           dateCreated =  arrStatuses.get(arrStatuses.size()-1).getProcessName() + " date: "+arrStatuses.get(arrStatuses.size()-1).getActionDate();
         }
         holder.txtDateCreated.setText(dateCreated);
+        holder.relativeLayout2.setTag(position);
+        holder.relativeLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToCaseDetails((Integer)v.getTag());
 
+            }
+        });
+        holder.imgDropDown.setTag(position);
         holder.imgDropDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, "heloooooooooooooooo", Toast.LENGTH_SHORT).show();
+                dropDownView = v;
                 PopupMenu popup = new PopupMenu(context, v);
-                popup.getMenuInflater().inflate(R.menu.case_dropdown,
-                        popup.getMenu());
+                popup.getMenuInflater().inflate(R.menu.case_dropdown, popup.getMenu());
                 popup.show();
+                Menu menu = popup.getMenu();
+                ArrayList<StatusDetails> statuses = aList.get((Integer)dropDownView.getTag()).getStatus();
+                for(int x=0; x<statuses.size(); x++){
+                    if(statuses.get(x).isIsCurrent() && statuses.get(x).getActionLocation()!=null){
+
+                        menu.findItem(R.id.action_case_details).setVisible(false);
+
+                    }
+                }
+                if(menu.equals(R.id.action_case_details)){
+
+                }
+
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()) {
+
                             case R.id.action_navigate:
-
-                                String uri = "https://maps.google.com/maps?saddr=current location&daddr=316 Thabo Sehume street Pretoria";
-                                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                                context.startActivity(i);
-
+                                String address = "Johannesburg Magistrate court";
+                                String uri = "https://maps.google.com/maps?saddr=current location&daddr="+address;
+                                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
                                 break;
-                            case R.id.action_feedback:
 
-                                Toast.makeText(context, "zeeeeeeeeeeeeeeeeeeeeeee", Toast.LENGTH_SHORT).show();
+                            case R.id.action_feedback:
+                                context.startActivity(new Intent(context, EventFeedbackActivity.class));
                                 break;
 
                             default:
-                                ArrayList<StatusDetails> statusDetailsList = aList.get(index).getStatus();
-                                Intent intent = new Intent(context, CaseDetailsActivity.class);
-
-                                String[] processName = new String[statusDetailsList.size()];
-                                String[] actionDate = new String[statusDetailsList.size()];
-                                String[] actionLocation = new String[statusDetailsList.size()];
-                                boolean[] isCurrent = new boolean[statusDetailsList.size()];
-                                String currentProcess = "";
-                                for (int x = 0; x < statusDetailsList.size(); x++) {
-
-                                    processName[x] = statusDetailsList.get(x).getProcessName();
-                                    actionDate[x] = statusDetailsList.get(x).getActionDate();
-                                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
-                                    if (statusDetailsList.get(x).isIsCurrent()) {
-                                        currentProcess = statusDetailsList.get(x).getProcessName();
-                                    }
-                                }
-                                Toast.makeText(context, listdao.get(0).getCaseNo()+" "+listdao.get(1).getVictim()+" "+listdao.get(2).getAccused()+" "+listdao.get(index).getOffense(), Toast.LENGTH_SHORT).show();
-                                intent.putExtra("caseNo", aList.get(index).getCaseNo());
-                                intent.putExtra("victim", aList.get(index).getVictim());
-                                intent.putExtra("accused", aList.get(index).getAccused());
-                                intent.putExtra("offense", aList.get(index).getOffense());
-                                intent.putExtra("caseDesc", aList.get(index).getCaseDesc());
-                                intent.putExtra("processNameArr", processName);
-                                intent.putExtra("actionDateArr", actionDate);
-                                intent.putExtra("actionLocationArr", actionLocation);
-                                intent.putExtra("currentProcess", currentProcess);
-                                context.startActivity(intent);
+                                navigateToCaseDetails((Integer)dropDownView.getTag());
                                 break;
                         }
 
@@ -256,71 +262,93 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
                     }
                 });
 
-
-
             }
         });
 
-
-        holder.btnCaseDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                //context.startActivity(new Intent(context, CaseDetailsActivity.class));
-
-            }
-        });
-        holder.btnFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //call an intent
-                context.startActivity(new Intent(context, ProvideFeedback.class));
-            }
-        });
-        holder.relativeLayout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //call an intent
-
-                ArrayList<StatusDetails> statusDetailsList = aList.get(index).getStatus();
-                Intent intent = new Intent(context, CaseDetailsActivity.class);
-
-                String[] processName = new String[statusDetailsList.size()];
-                String[] actionDate = new String[statusDetailsList.size()];
-                String[] actionLocation = new String[statusDetailsList.size()];
-                boolean[] isCurrent = new boolean[statusDetailsList.size()];
-                String currentProcess = "";
-                for (int x = 0; x < statusDetailsList.size(); x++) {
-
-                    processName[x] = statusDetailsList.get(x).getProcessName();
-                    actionDate[x] = statusDetailsList.get(x).getActionDate();
-                    actionLocation[x] = statusDetailsList.get(x).getActionLocation();
-                    if (statusDetailsList.get(x).isIsCurrent()) {
-                        currentProcess = statusDetailsList.get(x).getProcessName();
-                    }
-                }
-                intent.putExtra("caseNo", aList.get(index).getCaseNo());
-                intent.putExtra("victim", aList.get(index).getVictim());
-                intent.putExtra("accused", aList.get(index).getAccused());
-                intent.putExtra("offense", aList.get(index).getOffense());
-                intent.putExtra("caseDesc", aList.get(index).getCaseDesc());
-                intent.putExtra("processNameArr", processName);
-                intent.putExtra("actionDateArr", actionDate);
-                intent.putExtra("actionLocationArr", actionLocation);
-                intent.putExtra("currentProcess", currentProcess);
-                context.startActivity(intent);
-                //context.startActivity(new Intent(context, CaseDetailsActivity.class));
-            }
-        });
 
         return view;
     }
-    public void markCurrentProcess(){
+    private void navigateToCaseDetails(int pos){
 
+
+        ArrayList<StatusDetails> statusDetailsList = aList.get(pos).getStatus();
+        Intent intent = new Intent(context, CaseDetailsActivity.class);
+
+        String[] processName = new String[statusDetailsList.size()];
+        String[] actionDate = new String[statusDetailsList.size()];
+        String[] actionLocation = new String[statusDetailsList.size()];
+        boolean[] isCurrent = new boolean[statusDetailsList.size()];
+        String currentProcess = "";
+        for (int x = 0; x < statusDetailsList.size(); x++) {
+
+            processName[x] = statusDetailsList.get(x).getProcessName();
+            actionDate[x] = statusDetailsList.get(x).getActionDate();
+            actionLocation[x] = statusDetailsList.get(x).getActionLocation();
+            if (statusDetailsList.get(x).isIsCurrent()) {
+                currentProcess = statusDetailsList.get(x).getProcessName();
+            }
+        }
+        // Toast.makeText(context, listdao.get(0).getCaseNo()+" "+listdao.get(1).getVictim()+" "+listdao.get(2).getAccused()+" "+listdao.get(index).getOffense(), Toast.LENGTH_SHORT).show();
+        intent.putExtra("caseNo", aList.get(pos).getCaseNo());
+        intent.putExtra("victim", aList.get(pos).getVictim());
+        intent.putExtra("accused", aList.get(pos).getAccused());
+        intent.putExtra("offense", aList.get(pos).getOffense());
+        intent.putExtra("caseDesc", aList.get(pos).getCaseDesc());
+        intent.putExtra("processNameArr", processName);
+        intent.putExtra("actionDateArr", actionDate);
+        intent.putExtra("actionLocationArr", actionLocation);
+        intent.putExtra("currentProcess", currentProcess);
+        context.startActivity(intent);
     }
+
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                aList = (ArrayList<CaseDetails>) results.values;
+                notifyDataSetChanged();
+            }
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                FilterResults filterResults = new FilterResults();
+                ArrayList<CaseDetails> fillteredArrList = new ArrayList<CaseDetails>();
+
+                if (filteredData == null) {
+                    filteredData = new ArrayList<CaseDetails>(aList);
+                }
+                if (constraint == null || constraint.length() == 0) {
+                    filterResults.count = filteredData.size();
+                    filterResults.values = filteredData;
+
+                } else {
+                    constraint = constraint.toString().toLowerCase();
+                    for (int i = 0; i < filteredData.size(); i++) {
+                        if (filteredData.get(i).getCaseNo().toLowerCase().startsWith(constraint.toString())) {
+                            fillteredArrList.add(new CaseDetails(
+                                    filteredData.get(i).getCaseNo(),
+                                    filteredData.get(i).getVictim(),
+                                    filteredData.get(i).getAccused(),
+                                    filteredData.get(i).getOffense(),
+                                    filteredData.get(i).getCaseDesc(),
+                                    filteredData.get(i).getStatus()));
+                        }
+                    }
+                    filterResults.count = fillteredArrList.size();
+                    filterResults.values = fillteredArrList;
+                }
+                return filterResults;
+            }
+
+
+        };
+        return filter;
+    }
+
+
 
     static class CaseHolder
     {
@@ -332,4 +360,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> {
         ImageView imgDropDown;
 
     }
+
+
+
 }

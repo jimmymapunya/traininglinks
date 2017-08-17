@@ -38,6 +38,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.UserProfile;
 
 public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
     private Context context = this;
     private FrameLayout notificationLayout, inboxLayout;
     private Button btnSubmitBus, btnSubmitIndividual;
+    private int device_id;
+    private String username, role;
     Calendar myCalendar;
     DatePickerDialog.OnDateSetListener date;
     EditText txtBusTel,txtCell,individualName,businessName, txtPhysicalAddress, txtBusinessAddress, dateOccurredBus, locationBus, complainDetailBus,dateOccurredIndividual, locationIndividual, complainDetailIndividual;
@@ -78,7 +81,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         ArrayAdapter<String> reportAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrReport);
         ArrayAdapter<String> companyOrIndividualAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrCompanyOrIndividual);
 
-       // spinnerComplaintype = (Spinner)findViewById(R.id.spinnerPersonOrBusiness);
+        spinnerComplaintype = (Spinner)findViewById(R.id.spinnerPersonOrBusiness);
         spinnerReportType = (Spinner)findViewById(R.id.spinnerType);
 
         spinnerReportType.setAdapter(reportAdapter);
@@ -313,7 +316,9 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
     }
 
-    private void CreateReportFraud(final String url,final String companyOrPerson,final String fraudDetails,final String address,final String fraudType) {
+    //create message
+    public void CreateReportFraud(final String url,final String companyOrPerson,final String fraudDetails,final String address,final String fraudType)
+    {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -332,16 +337,18 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
 
+                //Values to post
+                username = "jimmy";
+                role = "admin";
 
                 Map<String,String > params = new HashMap<String,String>();
-                params.put("AuthDetail.UserName","jimmy");
-                params.put("AuthDetail.Role","admin");
+                params.put("AuthDetail.UserName",username);
+                params.put("AuthDetail.Role",role);
                 params.put("AuthDetail.DeviceId", Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID));
                 params.put("SuspectType", fraudType);
                 params.put("FraudSuspect",companyOrPerson);
                 params.put("Physical_Address", address);
                 params.put("FraudDetails", fraudDetails);
-                params.put("From", "jimmy");
                 return params;
             }
 
@@ -349,8 +356,6 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
     }
 
     @Override

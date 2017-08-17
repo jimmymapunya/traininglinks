@@ -175,7 +175,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="28dp"
                     android:visibility="gone"
-                    android:background="#000"
+                    android:background="@drawable/unsafebutton"
                     android:text="Submit"
                     android:textColor="#fff"
                     android:layout_below="@+id/txtBusFraudDetails"
@@ -188,7 +188,7 @@
                     android:layout_marginRight="30dp"
                     android:visibility="gone"
                     android:layout_marginTop="28dp"
-                    android:background="#000"
+                    android:background="@drawable/unsafebutton"
                     android:text="Submit"
                     android:textColor="#fff"
                     android:layout_below="@+id/txtIndividualFraudDetails" />

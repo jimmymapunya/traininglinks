@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Accused of attempted murder on 16-Mar-2017"
-                        android:textSize="16dp"
+                        android:textSize="13dp"
                         android:paddingLeft="60dp"
                         android:layout_centerVertical="true" />
 
@@ -84,33 +84,35 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout6"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
 
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:background="#fff">
+
                     <Spinner
                         android:id="@+id/processNamesSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
 
-                        android:background="@drawable/bg_spinner_style"
                         android:layout_alignParentTop="true"
                         android:layout_alignStart="@+id/txtProcessDesc"
-                        android:layout_marginTop="15dp" />
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_spinner_style" />
+
                     <TextView
                         android:id="@+id/txtProcessDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textSize="16dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/processNamesSpinner"
                         android:background="#eee"
                         android:padding="10dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/processNamesSpinner"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentStart="true" />
+                        android:text="Description"
+                        android:textSize="13dp" />
 
                 </RelativeLayout>
 
@@ -160,7 +162,7 @@
                         android:layout_below="@id/txtA1"
                         android:background="@drawable/edit_text_style"
                         android:text="Albert Rhulani Mathebula"
-                        android:textSize="16dp"
+                        android:textSize="13dp"
                         android:layout_alignParentBottom="true" />
 
                     <TextView
@@ -172,7 +174,7 @@
                         android:layout_alignBottom="@+id/textView15"
                         android:text="Sebendzile Mabunda"
                         android:textAlignment="center"
-                        android:textSize="16dp"
+                        android:textSize="13dp"
                         android:layout_below="@id/txtA2"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/edit_text_style"
@@ -200,7 +202,7 @@
                         android:layout_marginStart="48dp"
                         android:paddingRight="160dp"
                         android:text="Inbox"
-                        android:textSize="16dp" />
+                        android:textSize="13dp" />
 
                     <TextView
                         android:id="@+id/txtInbox"
@@ -238,8 +240,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="48dp"
                         android:text="Notifications"
-                        android:paddingRight="105dp"
-                        android:textSize="16dp"
+                        android:paddingRight="115dp"
+                        android:textSize="13dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -277,7 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:background="#000"
-                        android:text="Navigete to court"
+                        android:text="Navigate to court"
                         android:textColor="#fff" />
 
                     <Button

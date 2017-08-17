@@ -6,6 +6,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +42,7 @@ public class CaseListActivity extends AppCompatActivity {
 
     private Toolbar Toolbar;
     private Context context = this;
+    CaseListAdapter adapter;
     public static ArrayList<CaseDetails> listdao = new ArrayList<>();
 
     private TextView notificationCountIcon, inboxCountIcon;
@@ -70,7 +73,8 @@ public class CaseListActivity extends AppCompatActivity {
 
 
         EditText txtSearch = (EditText) findViewById(R.id.plain_text_input);
-        txtSearch .setFocusable(false);
+        //txtSearch .setFocusable(false);
+
 
         getIntent().removeExtra("key");
         getIntent().removeExtra("caseNo");
@@ -114,11 +118,11 @@ public class CaseListActivity extends AppCompatActivity {
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Trial", true, "22-03-2017", null, "01-05-2017"));
 
-        listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList1));
-        listdao.add(new CaseDetails("03/2015/99", "John Dumelo", "Hlengiwe Mkhabele", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList2));
-        listdao.add(new CaseDetails("04/2017/44", "Yvone Nelson", "Adam Rabopape", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList3));
-        listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList4));
-        listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Attempted Murder", "The accused is suspected of sturbing a girl with a knife", statusDetailsList5));
+        listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of shooting a girl with a gun", statusDetailsList1));
+        listdao.add(new CaseDetails("03/2015/99", "John Dumelo", "Hlengiwe Mkhabele", "Rape", "The accused is suspected of sleeping with 3 years girl", statusDetailsList2));
+        listdao.add(new CaseDetails("04/2017/44", "Yvone Nelson", "Adam Rabopape", "Assault", "The accused harassed a woman sexually", statusDetailsList3));
+        listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of shooting a girl with a gun", statusDetailsList4));
+        listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Murder", "The accused is suspected of killing his girlfriend", statusDetailsList5));
 
 
         // Each row in the list stores country name, currency and flag
@@ -157,7 +161,7 @@ public class CaseListActivity extends AppCompatActivity {
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
 
-        CaseListAdapter adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
+        adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
 
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(listview);
@@ -165,6 +169,21 @@ public class CaseListActivity extends AppCompatActivity {
         // Setting the adapter to the listView
 
         listView.setAdapter(adapter);
+        listView.setTextFilterEnabled(true);
+
+        txtSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                CaseListActivity.this.adapter.getFilter().filter(cs.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+
+            @Override
+            public void afterTextChanged(Editable arg0) {}
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -184,7 +203,9 @@ public class CaseListActivity extends AppCompatActivity {
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

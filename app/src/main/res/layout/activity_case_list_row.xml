@@ -53,6 +53,8 @@
         android:id="@+id/txtDateCreated"
         android:layout_width="wrap_content"
         android:layout_height="30dip"
+        android:paddingTop="10dp"
+        android:textSize="10dp"
         android:text="@string/str_courtDate"
         android:layout_below="@+id/txtSuspects"
         android:layout_alignParentEnd="true"

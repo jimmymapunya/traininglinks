@@ -277,6 +277,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:text="Navigete to court"
+                        android:background="@drawable/unsafebutton"
                         android:textColor="#fff" />
 
                     <Button
@@ -285,6 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnNavigateToCourt"
                         android:layout_marginBottom="15dp"
+                        android:background="@drawable/unsafebutton"
                         android:text="Provide Feedback"
                         android:textColor="#fff" />
 
