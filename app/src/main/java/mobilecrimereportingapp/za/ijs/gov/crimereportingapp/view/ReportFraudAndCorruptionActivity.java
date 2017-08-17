@@ -78,7 +78,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         ArrayAdapter<String> reportAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrReport);
         ArrayAdapter<String> companyOrIndividualAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrCompanyOrIndividual);
 
-       // spinnerComplaintype = (Spinner)findViewById(R.id.spinnerPersonOrBusiness);
+        spinnerComplaintype = (Spinner)findViewById(R.id.spinnerPersonOrBusiness);
         spinnerReportType = (Spinner)findViewById(R.id.spinnerType);
 
         spinnerReportType.setAdapter(reportAdapter);

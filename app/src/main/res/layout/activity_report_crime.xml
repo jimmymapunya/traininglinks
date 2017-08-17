@@ -21,6 +21,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:id="@+id/reportCrimeLayout"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:overScrollMode="ifContentScrolls"
@@ -46,7 +47,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style"
                     android:entries="@array/crimes"
-                    app:hintText="Specify Here" />
+                    app:hintText="Select Here" />
 
                 <TextView
                     android:id="@+id/lblBeforeCrime"
@@ -305,7 +306,7 @@
                 <LinearLayout
                     android:id="@+id/editOffenderDetails"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/OffenderDetailsLayout"
                     android:orientation="vertical">
 
