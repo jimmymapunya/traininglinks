@@ -43,6 +43,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
     private int layoutResourceId;
     private ArrayList<CaseDetails> aList = null;
     private ArrayList<CaseDetails> filteredData = null;
+    private static final ArrayList<CaseDetails> data = CaseListActivity.listdao;
     private CaseHolder holder = null;
     private View dropDownView, layoutView;
     //private ItemFilter mFilter = new ItemFilter();
@@ -109,15 +110,21 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        System.out.println(position+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx start");
+        final ArrayList<CaseDetails> data  = aList;
+        System.out.println(data.size()+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx start"+position);
         View view = initializeHolder(convertView, parent);
-        ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
-        holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
-        holder.txtSuspects.setText("Crime: "+aList.get(position).getAccused());
-        holder.txtCaseContent.setText("Suspect(s): "+aList.get(position).getOffense());
-        holder.relativeLayout2.setTag(position);
 
-        applyStatusBarColors(arrStatuses);
+        if(position < data.size()){
+
+            ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
+            holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
+            holder.txtSuspects.setText("Suspect(s): "+aList.get(position).getAccused());
+            holder.txtCaseContent.setText("Crime: "+aList.get(position).getOffense());
+            holder.relativeLayout2.setTag(position);
+            applyStatusBarColors(arrStatuses);
+        }
+
+
 
         //When click the horizontal status bar
         holder.relativeLayout2.setOnClickListener(new View.OnClickListener() {

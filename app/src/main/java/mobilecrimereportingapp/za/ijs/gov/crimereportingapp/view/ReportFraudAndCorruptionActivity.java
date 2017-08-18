@@ -86,7 +86,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         String[] arrCompanyOrIndividual = {"Business","Individual"};
 
         ArrayAdapter<String> reportAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrReport);
-        ArrayAdapter<String> companyOrIndividualAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrCompanyOrIndividual);
+        final ArrayAdapter<String> companyOrIndividualAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrCompanyOrIndividual);
 
         spinnerComplaintype = (Spinner)findViewById(R.id.spinnerPersonOrBusiness);
         spinnerReportType = (Spinner)findViewById(R.id.spinnerType);
@@ -211,6 +211,47 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                     txtTittle1.setVisibility(View.VISIBLE);
                     btnSubmitIndividual.setVisibility(View.VISIBLE);
                     dateOccurredIndividual.setText("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerReportType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(position==0){
+
+                    businessName.setHint("Business name committing Fraud");
+                    txtBusTel.setHint("Business Tel");;
+                    txtBusinessAddress.setHint("Business Address");;
+                    dateOccurredBus.setHint("Date Fraud Occurred");;
+                    locationBus.setHint("Business Location");
+                    complainDetailBus.setHint("Detail description of Fraud");
+                    txtPhysicalAddress.setHint("Location Fraud Occurred");
+                    txtCell.setHint("Individual Cell number");
+                    individualName.setHint("Individual name committing Fraud");
+                    dateOccurredIndividual.setHint("Date Fraud Occurred");
+                    locationIndividual.setHint("Location Fraud Occurred");
+                    complainDetailIndividual.setHint("Detail description of Fraud");
+
+                }else{
+
+                    businessName.setHint("Business name committing Corruption");
+                    txtBusTel.setHint("Business Tel");;
+                    txtBusinessAddress.setHint("Business Address");;
+                    dateOccurredBus.setHint("Date Corruption Occurred");;
+                    locationBus.setHint("Business Location");
+                    complainDetailBus.setHint("Detail description of Corruption");
+                    txtPhysicalAddress.setHint("Location Corruption Occurred");
+                    txtCell.setHint("Individual Cell number");
+                    individualName.setHint("Individual name committing Corruption");
+                    dateOccurredIndividual.setHint("Date Corruption Occurred");
+                    locationIndividual.setHint("Location Corruption Occurred");
+                    complainDetailIndividual.setHint("Detail description of Corruption");
                 }
             }
 
@@ -372,11 +413,11 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
             protected Map<String,String> getParams(){
 
                 //Values to post
-                username = "jimmy";
+                username = "john";
                 role = "admin";
 
                 Map<String,String > params = new HashMap<String,String>();
-                params.put("AuthDetail.UserName",username);
+                params.put("AuthDetail.UserName",UserProfile.Username);
                 params.put("AuthDetail.Role",role);
                 params.put("AuthDetail.DeviceId", Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID));
                 params.put("SuspectType", fraudType);

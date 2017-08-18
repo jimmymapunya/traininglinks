@@ -22,7 +22,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="900dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:overScrollMode="ifContentScrolls"
                 android:scrollbarStyle="insideOverlay"
@@ -90,7 +90,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Business Tel"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:visibility="gone"
                     android:padding="10dp"
                     android:paddingTop="15dp" />
@@ -106,7 +106,7 @@
                     android:background="@drawable/edit_text_style"
                     android:hint="Cell Number"
                     android:visibility="gone"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:paddingTop="15dp" />
 
