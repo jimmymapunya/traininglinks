@@ -151,7 +151,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 }else{
 
                     // perform search
-                    //searchItem(s.toString());
+                    searchItem(s.toString());
 
                 }
 
@@ -166,26 +166,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         });
     }
 
-    /*public void searchItem(String textToSearch){
-
-        for(String item:items){
-            if(!item.contains(textToSearch)){
-                listItems.remove(item);
-            }
-        }
-        adapter.notifyDataSetChanged();
-    }
-    */
-
-    public void initList(){
-
-        /*items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
-
-        listItems=new ArrayList<>(Arrays.asList(items));
-
-        adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
-
-        listView.setAdapter(adapter);*/
+    public void searchItem(String textToSearch){
 
         try
         {
@@ -211,12 +192,12 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     JSONObject jsonInsideAdditionalAttributes = additionalAttributes.getJSONObject(x);
                     String name = jsonInsideAdditionalAttributes.getString("Name");
 
-                    /*Check to ensure we dealing with Coordinate lat and long*/
-                    if(name.equalsIgnoreCase("Facility Type")){
-                        String fType = jsonInsideAdditionalAttributes.getString("Value");
-                        listItems.add(fType);
+                    /**Check to ensure we dealing with Coordinate lat and long
+                     if(name.equalsIgnoreCase("Facility Type")){
+                     String fType = jsonInsideAdditionalAttributes.getString("Value");
+                     listItems.add(courtTitle+" "+fType);
 
-                    }
+                     }*/
                     if(name.equalsIgnoreCase("GPS Coordinate Lattitude"))
                     {
                         String value = jsonInsideAdditionalAttributes.getString("Value");
@@ -241,6 +222,8 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     if(name.equalsIgnoreCase("Facility Type"))
                     {
                         courtType = jsonInsideAdditionalAttributes.getString("Value");
+                        //String fType = jsonInsideAdditionalAttributes.getString("Value");
+                        listItems.add(courtTitle+" "+courtType);
 
                     }
                 }
@@ -248,39 +231,39 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 //Calculate distance between courts and current location
 
                 /**GPSTracker gps = new GPSTracker(this);
-                Location currentLocation = new Location("");
-                currentLocation.setLatitude(gps.getLatitude());
-                currentLocation.setLongitude(gps.getLongitude());
+                 Location currentLocation = new Location("");
+                 currentLocation.setLatitude(gps.getLatitude());
+                 currentLocation.setLongitude(gps.getLongitude());
 
-                LatLng CurrentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
-                final Marker markerCurrentLocation = mMap.addMarker(new MarkerOptions().position(CurrentLocation).title("You are here"));
-                mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(CurrentLocation));
-                mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
-                //markerCurrentLocation.setSnippet(courtType);
-                markerCurrentLocation.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                 LatLng CurrentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
+                 final Marker markerCurrentLocation = mMap.addMarker(new MarkerOptions().position(CurrentLocation).title("You are here"));
+                 mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
+                 mMap.moveCamera(CameraUpdateFactory.newLatLng(CurrentLocation));
+                 mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
+                 //markerCurrentLocation.setSnippet(courtType);
+                 markerCurrentLocation.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
-                Location courtLocation = new Location("");
-                courtLocation.setLatitude(courtLatitude);
-                courtLocation.setLongitude(courtLongitude);
+                 Location courtLocation = new Location("");
+                 courtLocation.setLatitude(courtLatitude);
+                 courtLocation.setLongitude(courtLongitude);
 
-                DecimalFormat decimalFormat = new DecimalFormat("##");
+                 DecimalFormat decimalFormat = new DecimalFormat("##");
 
-                float distanceInMeters = currentLocation.distanceTo(courtLocation)/1000;
-                String km = decimalFormat.format(distanceInMeters);
-                int finalKM = Integer.parseInt(km);
+                 float distanceInMeters = currentLocation.distanceTo(courtLocation)/1000;
+                 String km = decimalFormat.format(distanceInMeters);
+                 int finalKM = Integer.parseInt(km);
 
-                if(finalKM<=50)
-                {
+                 if(finalKM<=50)
+                 {
 
-                    LatLng location = new LatLng(courtLatitude, courtLongitude);
-                    final Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-                    mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
-                    marker.setSnippet(courtType+"\n"+"Court is "+finalKM+" KM away");
-                    marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                    //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.court));
-                }*/
+                 LatLng location = new LatLng(courtLatitude, courtLongitude);
+                 final Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
+                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                 mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
+                 marker.setSnippet(courtType+"\n"+"Court is "+finalKM+" KM away");
+                 marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                 //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.court));
+                 }*/
             }
             progressDialog.hide();
         }
@@ -289,6 +272,31 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
             progressDialog.hide();
             e.printStackTrace();
         }
+
+        for(int j=0;j<listItems.size();j++){
+            if(!(listItems.get(j).contains(textToSearch))){
+                listItems.remove(listItems.get(j));
+            }
+        }
+        /**for(String item:items){
+            if(!item.contains(textToSearch)){
+                listItems.remove(item);
+            }
+        }*/
+        adapter.notifyDataSetChanged();
+    }
+
+    public void initList(){
+
+        /**items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
+
+        listItems=new ArrayList<>(Arrays.asList(items));
+
+        adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
+
+        listView.setAdapter(adapter);*/
+
+
     }
 
 
