@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //startActivity(new Intent(context, CourtFinderActivity.class));
 
-                String uri = "https://maps.google.com/maps?saddr=current location&daddr=Type destination here...";
+                String uri = "https://maps.google.com/maps?saddr=Your location, Pretoria&daddr=";
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(i);
             }
