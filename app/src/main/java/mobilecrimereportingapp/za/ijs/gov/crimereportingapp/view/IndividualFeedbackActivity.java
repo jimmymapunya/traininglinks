@@ -176,6 +176,8 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                                 checkBox2.setVisibility(View.VISIBLE);
                                 checkBox3.setVisibility(View.VISIBLE);
                                 checkBox4.setVisibility(View.VISIBLE);
+                                checkBox5.setVisibility(View.VISIBLE);
+                                checkBox6.setVisibility(View.VISIBLE);
 
                             }else if((double) ratingBar.getRating() == 5){
 

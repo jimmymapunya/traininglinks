@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
@@ -152,11 +153,11 @@ public class MainActivity extends AppCompatActivity {
         btnCourtFinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, CourtFinderActivity.class));
+                //startActivity(new Intent(context, CourtFinderActivity.class));
 
-                /**String uri = "https://maps.google.com/maps?saddr=current location&daddr=Type destination here...";
+                String uri = "https://maps.google.com/maps?saddr=current location&daddr=Type destination here...";
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(i);*/
+                startActivity(i);
             }
         });
 

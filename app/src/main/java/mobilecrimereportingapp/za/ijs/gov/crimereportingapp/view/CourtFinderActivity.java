@@ -18,21 +18,26 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.GeneralCourtInfo;
+
+import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.layout.list_item;
+
 
 /**
  * Created by ThatoM on 2017/07/12.
@@ -40,6 +45,13 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.GeneralCourtIn
  */
 
 public class CourtFinderActivity extends AppCompatActivity implements OnMapReadyCallback {
+    // URL of object to be parsed
+    String JsonURL = "https://raw.githubusercontent.com/ianbar20/JSON-Volley-Tutorial/master/Example-JSON-Files/Example-Object.JSON";
+    // This string will hold the results
+    String data = "";
+    // Defining the Volley request queue that handles the URL request concurrently
+    RequestQueue requestQueue;
+
 
     private GoogleMap mMap;
     private Toolbar Toolbar;
@@ -54,7 +66,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     private List<GeneralCourtInfo> courtList  = new ArrayList<>();
     private GeneralCourtInfo court;
 
-    Context context = this;
+    Context context=this;
 
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
@@ -75,6 +87,16 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_finder);
+
+        // Creates the Volley request queue
+        requestQueue = Volley.newRequestQueue(this);
+
+        // Casts results into the TextView found within the main layout XML with id jsonData
+        listView = (ListView) findViewById(R.id.listview);
+        listItems = new ArrayList<String>();
+        adapter  = new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
+        listView.setAdapter(adapter);
+
 
         btnGo = (Button) findViewById(R.id.btnGo);
         txtTo = (EditText) findViewById(R.id.txtTo);
@@ -110,10 +132,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
-        listView = (ListView) findViewById(R.id.listview);
-        txtFrom = (EditText) findViewById(R.id.txtFrom);
-
-        initList();
+        //initList();
 
         txtFrom.addTextChangedListener(new TextWatcher(){
 
@@ -132,7 +151,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 }else{
 
                     // perform search
-                    searchItem(s.toString());
+                    //searchItem(s.toString());
 
                 }
 
@@ -147,7 +166,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         });
     }
 
-    public void searchItem(String textToSearch){
+    /*public void searchItem(String textToSearch){
 
         for(String item:items){
             if(!item.contains(textToSearch)){
@@ -156,19 +175,122 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         }
         adapter.notifyDataSetChanged();
     }
-
+    */
 
     public void initList(){
 
-        items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
+        /*items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
 
         listItems=new ArrayList<>(Arrays.asList(items));
 
-        adapter=new ArrayAdapter<String>(this,R.layout.list_item, R.id.txtitem, listItems);
+        adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
+        try
+        {
+
+            /*Get the JSON content using loadJSONFromAsset file*/
+            JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
+            /*Get the JSON array of the codes within the loaded asset*/
+            JSONArray jsonArrayCodes = jsonObject.getJSONArray("Codes");
+
+            for (int i = 0; i < jsonArrayCodes.length(); i++)
+            {
+                /*Get object for each of the array codes*/
+                JSONObject jsonInsideCodes = jsonArrayCodes.getJSONObject(i);
+
+                courtTitle = jsonInsideCodes.getString("Description");
+                JSONArray additionalAttributes = jsonInsideCodes.getJSONArray("AdditionalAttributes");
+
+                court = new GeneralCourtInfo(courtTitle);
+                courtList.add(court);
+
+                for (int x = 0; x < additionalAttributes.length(); x++) {
+
+                    JSONObject jsonInsideAdditionalAttributes = additionalAttributes.getJSONObject(x);
+                    String name = jsonInsideAdditionalAttributes.getString("Name");
+
+                    /*Check to ensure we dealing with Coordinate lat and long*/
+                    if(name.equalsIgnoreCase("Facility Type")){
+                        String fType = jsonInsideAdditionalAttributes.getString("Value");
+                        listItems.add(fType);
+
+                    }
+                    if(name.equalsIgnoreCase("GPS Coordinate Lattitude"))
+                    {
+                        String value = jsonInsideAdditionalAttributes.getString("Value");
+
+                        /*Check if value contains data and not empty*/
+                        if(!value.equals(""))
+                        {
+                            courtLatitude = Double.parseDouble(value);
+                        }
+                    }
+                    if(name.equalsIgnoreCase("GPS Coordinate Longitude"))
+                    {
+                        String value = jsonInsideAdditionalAttributes.getString("Value");
+
+                        /*Check if value contains data and not empty*/
+                        if(!value.equals(""))
+                        {
+                            courtLongitude = Double.parseDouble(value);
+                        }
+                    }
+
+                    if(name.equalsIgnoreCase("Facility Type"))
+                    {
+                        courtType = jsonInsideAdditionalAttributes.getString("Value");
+
+                    }
+                }
+
+                //Calculate distance between courts and current location
+
+                /**GPSTracker gps = new GPSTracker(this);
+                Location currentLocation = new Location("");
+                currentLocation.setLatitude(gps.getLatitude());
+                currentLocation.setLongitude(gps.getLongitude());
+
+                LatLng CurrentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
+                final Marker markerCurrentLocation = mMap.addMarker(new MarkerOptions().position(CurrentLocation).title("You are here"));
+                mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(CurrentLocation));
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
+                //markerCurrentLocation.setSnippet(courtType);
+                markerCurrentLocation.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+
+                Location courtLocation = new Location("");
+                courtLocation.setLatitude(courtLatitude);
+                courtLocation.setLongitude(courtLongitude);
+
+                DecimalFormat decimalFormat = new DecimalFormat("##");
+
+                float distanceInMeters = currentLocation.distanceTo(courtLocation)/1000;
+                String km = decimalFormat.format(distanceInMeters);
+                int finalKM = Integer.parseInt(km);
+
+                if(finalKM<=50)
+                {
+
+                    LatLng location = new LatLng(courtLatitude, courtLongitude);
+                    final Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(courtTitle));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                    mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
+                    marker.setSnippet(courtType+"\n"+"Court is "+finalKM+" KM away");
+                    marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                    //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.court));
+                }*/
+            }
+            progressDialog.hide();
+        }
+        catch (JSONException e)
+        {
+            progressDialog.hide();
+            e.printStackTrace();
+        }
     }
+
 
 
     public String loadJSONFromAsset() {
@@ -235,10 +357,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(context, OverallFeedbackActivity.class));
-                // Add a marker in Sydney and move the camera
-                LatLng currentLocation = new LatLng(-25.75006, 28.19121);
-                mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+
 
                 strTxtFrom = txtFrom.getText().toString();
                 strTxtTo = txtTo.getText().toString();
@@ -249,8 +368,6 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
 
             }
         });
-
-
 
 
     }
