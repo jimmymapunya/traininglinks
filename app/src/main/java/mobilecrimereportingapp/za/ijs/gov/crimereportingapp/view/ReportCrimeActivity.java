@@ -1,6 +1,7 @@
 package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
@@ -93,7 +94,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         btnAddOffenderInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done, null);
+                final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
 
                 /*TextView components initialisation*/
                 lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
@@ -176,11 +177,16 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
+                LinearLayout linearInjuries = (LinearLayout) findViewById(R.id.linearInjuries);
+                final View v = LayoutInflater.from(context).inflate(R.layout.injuries, null);
+
+                txtInjuries = (EditText) v.findViewById(R.id.txtInjuries);
+
                 if (itemSelected.equals("Yes")) {
-                    txtInjuries.setVisibility(View.VISIBLE);
+                    linearInjuries.addView(v);
                     isInjuries = true;
                 } else {
-                    txtInjuries.setVisibility(View.INVISIBLE);
+                    linearInjuries.removeAllViews();
                     isInjuries = false;
                 }
             }
@@ -194,11 +200,16 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
+                LinearLayout linearObjects = (LinearLayout) findViewById(R.id.linearObjects);
+                final View v = LayoutInflater.from(context).inflate(R.layout.objects, null);
+
+                txtObjectsUsed = (EditText) v.findViewById(R.id.txtObjectsUsed);
+
                 if (itemSelected.equals("Yes")) {
-                    txtObjectsUsed.setVisibility(View.VISIBLE);
+                    linearObjects.addView(v);
                     isObjectsUsed = true;
                 } else {
-                    txtObjectsUsed.setVisibility(View.INVISIBLE);
+                    linearObjects.removeAllViews();
                     isObjectsUsed = false;
                 }
             }
@@ -212,11 +223,16 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
+                LinearLayout linearSceneItems = (LinearLayout) findViewById(R.id.linearSceneItems);
+                final View v = LayoutInflater.from(context).inflate(R.layout.sceneitems, null);
+
+                txtSceneItems = (EditText) v.findViewById(R.id.txtSceneItems);
+
                 if (itemSelected.equals("Yes")) {
-                    txtSceneItems.setVisibility(View.VISIBLE);
+                    linearSceneItems.addView(v);
                     isRemovedItems = true;
                 } else {
-                    txtSceneItems.setVisibility(View.INVISIBLE);
+                    linearSceneItems.removeAllViews();
                     isRemovedItems = false;
                 }
             }
@@ -389,7 +405,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
                 username = UserProfile.Username;
                 role = "admin";
 
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
 
                 params.put("AuthDetail.UserName", username);
                 params.put("AuthDetail.Role", role);
@@ -449,12 +465,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtBeforeCrime = (EditText) findViewById(R.id.txtBeforeCrime);
         txtDuringCrime = (EditText) findViewById(R.id.txtDuringCrime);
         txtAfterCrime = (EditText) findViewById(R.id.txtAfterCrime);
-        txtInjuries = (EditText) findViewById(R.id.txtInjuries);
-        txtInjuries.setVisibility(View.INVISIBLE);
-        txtObjectsUsed = (EditText) findViewById(R.id.txtObjectsUsed);
-        txtObjectsUsed.setVisibility(View.INVISIBLE);
-        txtSceneItems = (EditText) findViewById(R.id.txtSceneItems);
-        txtSceneItems.setVisibility(View.INVISIBLE);
+
         txtCrimeSurroundings = (EditText) findViewById(R.id.txtCrimeSurroundings);
         txtOffenderName = (EditText) findViewById(R.id.txtOffenderName);
         txtOffenderContact = (EditText) findViewById(R.id.txtOffenderContact);
@@ -470,6 +481,12 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
         /*Starting code for the spinners*/
         searchableSpinner = (SearchableSpinner) findViewById(R.id.spinner);
+        searchableSpinner.setPositiveButton("Unknown Crime", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "Reporting an unknown crime",Toast.LENGTH_LONG).show();
+            }
+        });
 
         spinnerKnowOffender = (Spinner) findViewById(R.id.spinnerKnowOffender);
         spinnerInjuries = (Spinner) findViewById(R.id.spinnerInjuries);

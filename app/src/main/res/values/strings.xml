@@ -64,6 +64,7 @@
     <string name="describe_those_objects">Describe those objects</string>
     <string name="please_confirm_that_all_details_provided_are_correct_and_accurate">Please confirm that all details provided are correct and accurate</string>
     <string name="submit">Submit</string>
+    <string name="please_specify_which_crime_you_would_like_to_report">Please specify which crime you would like to report.</string>
 
     <string-array name="injuries_choice">
         <item>Select</item>

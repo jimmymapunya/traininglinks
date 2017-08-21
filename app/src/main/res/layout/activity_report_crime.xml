@@ -35,7 +35,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:text="Please specify which crime you would like to report." />
+                    android:text="@string/please_specify_which_crime_you_would_like_to_report" />
 
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                     android:id="@+id/spinner"
@@ -51,6 +51,7 @@
 
                 <TextView
                     android:id="@+id/lblBeforeCrime"
+                    android:labelFor="@id/txtBeforeCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinner"
@@ -78,6 +79,7 @@
 
                 <TextView
                     android:id="@+id/lblDuringCrime"
+                    android:labelFor="@+id/txtDuringCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtBeforeCrime"
@@ -105,6 +107,7 @@
 
                 <TextView
                     android:id="@+id/lblAfterCrime"
+                    android:labelFor="@+id/txtAfterCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtDuringCrime"
@@ -150,29 +153,20 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
-                <EditText
-                    android:id="@+id/txtInjuries"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:id="@+id/linearInjuries"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinnerInjuries"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:hint="@string/describe_injuries"
-                    android:inputType="textMultiLine"
-                    android:lines="2"
-                    android:maxLines="10"
-                    android:minLines="2"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
+                    android:orientation="vertical">
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/lblObjectsUsed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtInjuries"
+                    android:layout_below="@+id/linearInjuries"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
@@ -188,29 +182,19 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
-                <EditText
-                    android:id="@+id/txtObjectsUsed"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:id="@+id/linearObjects"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinnerObjectsUsed"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:hint="@string/describe_those_objects"
-                    android:inputType="textMultiLine"
-                    android:lines="2"
-                    android:maxLines="10"
-                    android:minLines="2"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
+                    android:orientation="vertical">
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/lblSceneItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtObjectsUsed"
+                    android:layout_below="@+id/linearObjects"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
@@ -226,29 +210,20 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_spinner_style" />
 
-                <EditText
-                    android:id="@+id/txtSceneItems"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:id="@+id/linearSceneItems"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinnerSceneItems"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:hint="@string/describe_crimescene_items"
-                    android:inputType="textMultiLine"
-                    android:lines="2"
-                    android:maxLines="10"
-                    android:minLines="2"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
+                    android:orientation="vertical">
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/lblCrimeSurroundings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtSceneItems"
+                    android:layout_below="@+id/linearSceneItems"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"

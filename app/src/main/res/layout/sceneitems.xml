@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/txtSceneItems"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerSceneItems"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text_style"
+        android:gravity="top|start"
+        android:hint="@string/describe_crimescene_items"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:maxLines="10"
+        android:minLines="2"
+        android:scrollbars="vertical"
+        android:textColorHint="#B0BEC5" />
+
+</LinearLayout>
