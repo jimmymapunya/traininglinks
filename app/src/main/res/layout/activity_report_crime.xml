@@ -51,7 +51,6 @@
 
                 <TextView
                     android:id="@+id/lblBeforeCrime"
-                    android:labelFor="@id/txtBeforeCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinner"
