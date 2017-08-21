@@ -91,29 +91,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         Initialisation();
 
         /*Button and Spinner listeners*/
-        btnAddOffenderInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
-
-                /*TextView components initialisation*/
-                lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
-                lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
-                lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
-
-                lblWitnessName.setText(txtOffenderName.getText().toString());
-                lblWitnessContact.setText(txtOffenderContact.getText().toString());
-                lblWitnessAddress.setText(txtOffenderAddress.getText().toString());
-
-                txtOffenderName.setText("");
-                txtOffenderContact.setText("");
-                txtOffenderAddress.setText("");
-                txtTattoos.setText("");
-                txtAppearance.setText("");
-
-                OffenderDetailsLayout.addView(view);
-            }
-        });
 
         btnAddWitnessInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,83 +223,142 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
+                LinearLayout linearOffender = (LinearLayout) findViewById(R.id.linearOffender);
+                final View v = LayoutInflater.from(context).inflate(R.layout.offender, null);
+
+                txtOffenderName = (EditText) v.findViewById(R.id.txtOffenderName);
+                txtOffenderContact = (EditText) v.findViewById(R.id.txtOffenderContact);
+                txtOffenderAddress = (EditText) v.findViewById(R.id.txtOffenderAddress);
+                txtTattoos = (EditText) v.findViewById(R.id.txtTattoos);
+                txtAppearance = (EditText) v.findViewById(R.id.txtAppearance);
+
+                btnAddOffenderInfo = (Button) v.findViewById(R.id.btnAddOffenderInfo);
+
+                spinnerRacialGroup = (Spinner) v.findViewById(R.id.spinnerRacialGroup);
+                spinnerGender = (Spinner) v.findViewById(R.id.spinnerGender);
+                spinnerAgeGroup = (Spinner) v.findViewById(R.id.spinnerAgeGroup);
+                spinnerFacialIdentikit = (Spinner) v.findViewById(R.id.spinnerFacialIdentikit);
+
+                spinnerRacialGroupAdapter = ArrayAdapter.createFromResource(context,
+                        R.array.racial_group, android.R.layout.simple_spinner_item);
+                spinnerGenderAdapter = ArrayAdapter.createFromResource(context,
+                        R.array.gender, android.R.layout.simple_spinner_item);
+                spinnerAgeGroupAdapter = ArrayAdapter.createFromResource(context,
+                        R.array.age_group, android.R.layout.simple_spinner_item);
+                spinnerFacialIdentikitAdapter = ArrayAdapter.createFromResource(context,
+                        R.array.injuries_choice, android.R.layout.simple_spinner_item);
+
+                spinnerRacialGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerGenderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerAgeGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerFacialIdentikitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                spinnerRacialGroup.setAdapter(spinnerRacialGroupAdapter);
+                spinnerGender.setAdapter(spinnerGenderAdapter);
+                spinnerAgeGroup.setAdapter(spinnerAgeGroupAdapter);
+                spinnerFacialIdentikit.setAdapter(spinnerFacialIdentikitAdapter);
+
                 if (itemSelected.equals("Yes")) {
-                    editOffenderDetails.setVisibility(View.VISIBLE);
-                    btnAddOffenderInfo.setClickable(true);
+                    linearOffender.addView(v);
                     isKnowOffender = true;
                 } else {
-                    editOffenderDetails.setVisibility(View.INVISIBLE);
-                    btnAddOffenderInfo.setClickable(false);
+                    linearOffender.removeAllViews();
                     isKnowOffender = false;
                 }
+
+                spinnerAgeGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String itemSelected = parent.getItemAtPosition(position).toString();
+
+                        if (!itemSelected.equals("Select age")) {
+                            offenderAge = itemSelected;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+
+                });
+
+                spinnerRacialGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String itemSelected = parent.getItemAtPosition(position).toString();
+
+                        if (!itemSelected.equals("Select race")) {
+                            offenderRace = itemSelected;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+
+                });
+
+                spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String itemSelected = parent.getItemAtPosition(position).toString();
+
+                        if (!itemSelected.equals("Select sex")) {
+                            offenderGender = itemSelected;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+                spinnerFacialIdentikit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String itemSelected = parent.getItemAtPosition(position).toString();
+
+                        if (!itemSelected.equals("Select")) {
+                            isIdentifyFacialIdentiKit = true;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+
+                });
+
+                btnAddOffenderInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done,null);
+
+                        /*TextView components initialisation*/
+                        lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
+                        lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
+                        lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
+
+                        lblWitnessName.setText(txtOffenderName.getText().toString());
+                        lblWitnessContact.setText(txtOffenderContact.getText().toString());
+                        lblWitnessAddress.setText(txtOffenderAddress.getText().toString());
+
+                        txtOffenderName.setText("");
+                        txtOffenderContact.setText("");
+                        txtOffenderAddress.setText("");
+                        txtTattoos.setText("");
+                        txtAppearance.setText("");
+
+                        OffenderDetailsLayout.addView(view);
+                    }
+                });
+
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        spinnerAgeGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemSelected = parent.getItemAtPosition(position).toString();
-
-                if (!itemSelected.equals("Select age")) {
-                    offenderAge = itemSelected;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-        });
-
-        spinnerRacialGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemSelected = parent.getItemAtPosition(position).toString();
-
-                if (!itemSelected.equals("Select race")) {
-                    offenderRace = itemSelected;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-        });
-
-        spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemSelected = parent.getItemAtPosition(position).toString();
-
-                if (!itemSelected.equals("Select sex")) {
-                    offenderGender = itemSelected;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerFacialIdentikit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemSelected = parent.getItemAtPosition(position).toString();
-
-                if (!itemSelected.equals("Select")) {
-                    isIdentifyFacialIdentiKit = true;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-        });
 
         spinnerFirstAccount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -467,11 +503,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtAfterCrime = (EditText) findViewById(R.id.txtAfterCrime);
 
         txtCrimeSurroundings = (EditText) findViewById(R.id.txtCrimeSurroundings);
-        txtOffenderName = (EditText) findViewById(R.id.txtOffenderName);
-        txtOffenderContact = (EditText) findViewById(R.id.txtOffenderContact);
-        txtOffenderAddress = (EditText) findViewById(R.id.txtOffenderAddress);
-        txtTattoos = (EditText) findViewById(R.id.txtTattoos);
-        txtAppearance = (EditText) findViewById(R.id.txtAppearance);
+
         txtFirstAccountName = (EditText) findViewById(R.id.txtFirstAccountName);
         txtFirstAccountContact = (EditText) findViewById(R.id.txtFirstAccountContact);
         txtFirstAccountAddress = (EditText) findViewById(R.id.txtFirstAccountAddress);
@@ -495,11 +527,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerFirstAccount = (Spinner) findViewById(R.id.spinnerFirstAccount);
         spinnerWitnesses = (Spinner) findViewById(R.id.spinnerWitnesses);
 
-        spinnerRacialGroup = (Spinner) findViewById(R.id.spinnerRacialGroup);
-        spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
-        spinnerAgeGroup = (Spinner) findViewById(R.id.spinnerAgeGroup);
-        spinnerFacialIdentikit = (Spinner) findViewById(R.id.spinnerFacialIdentikit);
-
         /* Create ArrayAdapters using the string array and a default spinner layout*/
         spinnerKnowOffenderAdapter = ArrayAdapter.createFromResource(this,
                 R.array.injuries_choice, android.R.layout.simple_spinner_item);
@@ -514,15 +541,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerWitnessesAdapter = ArrayAdapter.createFromResource(this,
                 R.array.injuries_choice, android.R.layout.simple_spinner_item);
 
-        spinnerRacialGroupAdapter = ArrayAdapter.createFromResource(this,
-                R.array.racial_group, android.R.layout.simple_spinner_item);
-        spinnerGenderAdapter = ArrayAdapter.createFromResource(this,
-                R.array.gender, android.R.layout.simple_spinner_item);
-        spinnerAgeGroupAdapter = ArrayAdapter.createFromResource(this,
-                R.array.age_group, android.R.layout.simple_spinner_item);
-        spinnerFacialIdentikitAdapter = ArrayAdapter.createFromResource(this,
-                R.array.injuries_choice, android.R.layout.simple_spinner_item);
-
         /* Specify the layout to use when the list of choices appears*/
         spinnerKnowOffenderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerInjuriesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -530,11 +548,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerWeaponsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFirstAccountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerWitnessesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerRacialGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerGenderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerAgeGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFacialIdentikitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         /* Apply the adapter to the spinner*/
         spinnerKnowOffender.setAdapter(spinnerKnowOffenderAdapter);
@@ -544,24 +557,17 @@ public class ReportCrimeActivity extends AppCompatActivity {
         spinnerFirstAccount.setAdapter(spinnerFirstAccountAdapter);
         spinnerWitnesses.setAdapter(spinnerWitnessesAdapter);
 
-        spinnerRacialGroup.setAdapter(spinnerRacialGroupAdapter);
-        spinnerGender.setAdapter(spinnerGenderAdapter);
-        spinnerAgeGroup.setAdapter(spinnerAgeGroupAdapter);
-        spinnerFacialIdentikit.setAdapter(spinnerFacialIdentikitAdapter);
-
         /*Dynamic linear layout offender and witness details*/
         OffenderDetailsLayout = (LinearLayout) findViewById(R.id.OffenderDetailsLayout);
         doneWitnessDetails = (LinearLayout) findViewById(R.id.doneWitnessDetails);
-        editOffenderDetails = (LinearLayout) findViewById(R.id.editOffenderDetails);
-        editOffenderDetails.setVisibility(View.INVISIBLE);
+
         editFirstAccountDetails = (LinearLayout) findViewById(R.id.editFirstAccountDetails);
         editFirstAccountDetails.setVisibility(View.INVISIBLE);
         editWitnessDetails = (LinearLayout) findViewById(R.id.editWitnessDetails);
         editWitnessDetails.setVisibility(View.INVISIBLE);
 
         /*Button to add the dynamic linear layout above*/
-        btnAddOffenderInfo = (Button) findViewById(R.id.btnAddOffenderInfo);
-        btnAddOffenderInfo.setClickable(false);
+
         btnAddWitnessInfo = (Button) findViewById(R.id.btnAddWitnessInfo);
         btnAddWitnessInfo.setClickable(false);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
