@@ -593,13 +593,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 
             return true;
-        } else if (id == R.id.notifications) {
-            //startActivity(new Intent(this, NotificationsActivity.class));
-
-        } else if (id == R.id.inbox) {
-            /*Add some inbox code to redirect*/
         }
-
         return false;
 
     }
