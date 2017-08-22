@@ -142,7 +142,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
 
                     //dynamically select spinner item
-                    final Spinner[] arr = {spinnerActorRole, spinnerActorName, spinnerCaseNo};
+                    final Spinner[] arr = {spinnerCaseNo, spinnerActorRole, spinnerActorName};
 
                     for(int i = 0; i <= 2; i++){
 
@@ -150,7 +150,7 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                                String txtFeedbackQuestion = "Are you satisfied with how "+ String.valueOf(arr[0].getSelectedItem()) + " " + String.valueOf(arr[1].getSelectedItem()) + " assisted you on  case " + String.valueOf(arr[2].getSelectedItem()) +" ?";
+                                String txtFeedbackQuestion = "Are you satisfied with how in your case(Case Number: "+ String.valueOf(arr[0].getSelectedItem()) + "), " + String.valueOf(arr[1].getSelectedItem()) +" "+ String.valueOf(arr[2].getSelectedItem()) +" assisted you?";
                                 txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
 
                             }

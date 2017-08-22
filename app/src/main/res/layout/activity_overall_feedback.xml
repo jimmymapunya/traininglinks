@@ -78,21 +78,19 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
+                        android:layout_height="match_parent"
                         android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkBoxOF"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignStart="@+id/checkBox5OF"
                             android:text="Attitude" />
 
                         <CheckBox
                             android:id="@+id/checkBox2OF"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignStart="@+id/checkBox4OF"
                             android:layout_centerVertical="true"
                             android:text="Your treatment" />
 
@@ -100,8 +98,6 @@
                             android:id="@+id/checkBox5OF"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignStart="@+id/checkBox4OF"
-                            android:layout_below="@+id/checkBox4OF"
                             android:text="Handling of case" />
 
 
@@ -109,7 +105,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="62dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="100"
                         android:orientation="horizontal">
 
@@ -127,12 +123,19 @@
                             android:layout_height="wrap_content"
                             android:text="Access to information" />
 
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="100"
+                        android:orientation="horizontal">
                         <CheckBox
                             android:id="@+id/checkBox7OF"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="100"
                             android:text="Communication" />
-
                     </LinearLayout>
 
                     <EditText

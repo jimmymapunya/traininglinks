@@ -2,6 +2,8 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +21,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,7 +80,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     String strTxtTo;
     String strTxtFrom;
 
-    String [] items;
+    String [] items = {"mehul joisar","amit mishra","amitabh","Aamir khan","jesica","katrina"};
     ArrayList<String> listItems;
     ArrayAdapter<String> adapter;
     ListView listView;
@@ -89,20 +93,43 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         setContentView(R.layout.activity_court_finder);
 
         // Creates the Volley request queue
-        requestQueue = Volley.newRequestQueue(this);
+        //requestQueue = Volley.newRequestQueue(this);
 
-        // Casts results into the TextView found within the main layout XML with id jsonData
-        listView = (ListView) findViewById(R.id.listview);
-        listItems = new ArrayList<String>();
-        adapter  = new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
-        listView.setAdapter(adapter);
-
+        initList();
 
         btnGo = (Button) findViewById(R.id.btnGo);
         txtTo = (EditText) findViewById(R.id.txtTo);
         txtFrom = (EditText) findViewById(R.id.txtFrom);
 
-        progressDialog = new ProgressDialog(context);
+        EditText [] toFromArr = new EditText[]{txtTo,txtFrom};
+
+         for(int i=0; i<=1;i++){
+             //implementation of list search form from edit text
+             toFromArr[i].addTextChangedListener(new TextWatcher(){
+
+                 @Override
+                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                     CourtFinderActivity.this.adapter.getFilter().filter(s);
+
+                 }
+
+                 @Override
+                 public void beforeTextChanged(CharSequence s, int start, int count, int	after) {
+
+                 }
+
+                 @Override
+
+                 public void afterTextChanged(Editable s) {
+
+                 }
+
+             });
+         }
+
+
+        //progressDialog = new ProgressDialog(context);
 
         notificationLayout = (FrameLayout) findViewById(R.id.Notification);
         inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
@@ -132,41 +159,28 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
 
         navigationDrawerFrag.setUpDrawer(R.id.frag_nav_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), Toolbar);
 
-        //initList();
-
-        txtFrom.addTextChangedListener(new TextWatcher(){
-
-            @Override
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int	after) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if(s.toString().equals("")){
-
-                    // reset listview
-
-                }else{
-
-                    // perform search
-                    searchItem(s.toString());
-
-                }
-
-            }
-
-            @Override
-
-            public void afterTextChanged(Editable s) {
-
-            }
-
-        });
     }
 
-    public void searchItem(String textToSearch){
+
+    public void initList(){
+
+        /**items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
+
+         listItems=new ArrayList<>(Arrays.asList(items));
+
+         adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
+
+         listView.setAdapter(adapter);*/
+
+
+
+        // Casts results into the TextView found within the main layout XML with id jsonData
+        listView = (ListView) findViewById(R.id.listview);
+        //ebable listview text filtering
+        listView.setTextFilterEnabled(true);
+        listItems = new ArrayList<String>();
+        adapter  = new ArrayAdapter<String>(CourtFinderActivity.this, list_item, R.id.txtitem, listItems);
+        listView.setAdapter(adapter);
 
         try
         {
@@ -223,7 +237,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     {
                         courtType = jsonInsideAdditionalAttributes.getString("Value");
                         //String fType = jsonInsideAdditionalAttributes.getString("Value");
-                        listItems.add(courtTitle+" "+courtType);
+                        listItems.add(courtTitle+" "+courtType+" [ "+courtLatitude+", "+courtLongitude+" ]");
 
                     }
                 }
@@ -265,7 +279,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                  //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.court));
                  }*/
             }
-            progressDialog.hide();
+            //progressDialog.hide();
         }
         catch (JSONException e)
         {
@@ -273,33 +287,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
             e.printStackTrace();
         }
 
-        for(int j=0;j<listItems.size();j++){
-            if(!(listItems.get(j).contains(textToSearch))){
-                listItems.remove(listItems.get(j));
-            }
-        }
-        /**for(String item:items){
-            if(!item.contains(textToSearch)){
-                listItems.remove(item);
-            }
-        }*/
-        adapter.notifyDataSetChanged();
     }
-
-    public void initList(){
-
-        /**items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
-
-        listItems=new ArrayList<>(Arrays.asList(items));
-
-        adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
-
-        listView.setAdapter(adapter);*/
-
-
-    }
-
-
 
     public String loadJSONFromAsset() {
         String json = null;
@@ -357,6 +345,10 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        LatLng currentLocation = new LatLng(-25.75006, 28.19121);
+        mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+
         /*progressDialog.setMessage("Loading...");
         progressDialog.show();
         progressDialog.hide();*/
@@ -366,10 +358,14 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
             public void onClick(View v) {
                 //startActivity(new Intent(context, OverallFeedbackActivity.class));
 
-
                 strTxtFrom = txtFrom.getText().toString();
                 strTxtTo = txtTo.getText().toString();
-
+                if(!(strTxtFrom.isEmpty()) && !(strTxtTo.isEmpty())){
+                    //go
+                    String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(i);
+                }
                 //String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
                 //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 //startActivity(i);

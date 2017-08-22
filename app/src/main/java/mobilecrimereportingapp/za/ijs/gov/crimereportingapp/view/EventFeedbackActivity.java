@@ -129,7 +129,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
         spinnerPhase = (Spinner)findViewById(R.id.spinnerPhase);
 
         //dynamically select spinner item
-        final Spinner[] arr = {spinnerPhase, spinnerCaseNo};
+        final Spinner[] arr = {spinnerCaseNo, spinnerPhase};
 
         for(int i = 0; i <= 1; i++){
 
@@ -137,7 +137,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                    String txtFeedbackQuestion = "Are you satisfied with how the "+ String.valueOf(arr[0].getSelectedItem()) + " of case " + String.valueOf(arr[1].getSelectedItem()) + " was handled?";
+                    String txtFeedbackQuestion = "Are you satisfied with how case "+ String.valueOf(arr[0].getSelectedItem()) + "'s " + String.valueOf(arr[1].getSelectedItem()) + " was handled?";
                     txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
 
                 }
@@ -149,180 +149,195 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         }
 
+        /**if((String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && (String.valueOf(spinnerPhase.getSelectedItem()).equals("---Select Event---"))){
+            Toast.makeText(context,spinnerCaseNo.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+            //tell user to select items first before proceeding
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+            // set title
+            alertDialogBuilder.setTitle("Please select Case number and event first");
 
-
-        //get additional comments
-        txtEventFeedbackEditText = (EditText) findViewById(R.id.txtEventFeedbackEditText);
-
-        btnSubmit = (Button) findViewById(R.id.btnSubmitEF);
-        //load with button disabled
-        //btnSubmit.setEnabled(false);
-        //btnSubmit.setClickable(false);
-
-        //get star rating
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-
-        btnNotNow = (Button) findViewById(R.id.btnNotNowEF);
-
-
-
-        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
-        spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
-
-        String selected = String.valueOf(spinnerCaseNo.getSelectedItem());
-
-        //get text in additional comments text box
-        txtEventFeedbackEditTextString = txtEventFeedbackEditText.getText().toString();
-        //Toast.makeText(context,starRating,Toast.LENGTH_LONG).show();
-        spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
-        spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
-                //show the star rating on change
-                if( Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5){
-
-                    happyQ.setVisibility(View.VISIBLE);
-                    checkBox1.setVisibility(View.VISIBLE);
-                    checkBox2.setVisibility(View.VISIBLE);
-                    checkBox3.setVisibility(View.VISIBLE);
-                    checkBox4.setVisibility(View.VISIBLE);
-                    checkBox5.setVisibility(View.VISIBLE);
-                    checkBox6.setVisibility(View.VISIBLE);
-
-                }else if((double) ratingBar.getRating() == 5){
-
-                    //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-                    happyQ.setText("What were you happy with?");
-                    happyQ.setVisibility(View.VISIBLE);
-                    checkBox1.setVisibility(View.VISIBLE);
-                    checkBox2.setVisibility(View.VISIBLE);
-                    checkBox3.setVisibility(View.VISIBLE);
-                    checkBox4.setVisibility(View.VISIBLE);
-                    checkBox5.setVisibility(View.VISIBLE);
-                    checkBox6.setVisibility(View.VISIBLE);
-
-
-                }else{
-                    //hide happyQ text view
-                    happyQ.setVisibility(View.INVISIBLE);
-                    checkBox1.setVisibility(View.INVISIBLE);
-                    checkBox2.setVisibility(View.INVISIBLE);
-                    checkBox3.setVisibility(View.INVISIBLE);
-                    checkBox4.setVisibility(View.INVISIBLE);
-                    checkBox5.setVisibility(View.INVISIBLE);
-                    checkBox6.setVisibility(View.INVISIBLE);
-
+            //set dialog message
+            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // if this button is clicked, just close
+                    // the dialog box and do nothing
+                    dialog.cancel();
                 }
-            }
-        });
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
-                //spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
-
-                checkBox1 = (CheckBox) findViewById(R.id.checkBoxEF);
-                checkBox2 = (CheckBox) findViewById(R.id.checkBox2EF);
-                checkBox3 = (CheckBox) findViewById(R.id.checkBox5EF);
-                checkBox4 = (CheckBox) findViewById(R.id.checkBox4EF);
-                checkBox5 = (CheckBox) findViewById(R.id.checkBox6EF);
-                checkBox6 = (CheckBox) findViewById(R.id.checkBox7EF);
+            });
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            //show it
+            alertDialog.show();
+        }else {*/
 
 
-                //make sure case no and phase are selected
-                if(!(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && !(String.valueOf(spinnerPhase.getSelectedItem()).equals("---Select Phase---"))) {
+            //get additional comments
+            txtEventFeedbackEditText = (EditText) findViewById(R.id.txtEventFeedbackEditText);
+
+            btnSubmit = (Button) findViewById(R.id.btnSubmitEF);
+            //load with button disabled
+            //btnSubmit.setEnabled(false);
+            //btnSubmit.setClickable(false);
+
+            //get star rating
+            ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+
+            btnNotNow = (Button) findViewById(R.id.btnNotNowEF);
 
 
-                    //String txtFeedbackQuestion = "Are you satisfied with how the "+ String.valueOf(spinnerPhase.getSelectedItem()) + " of your case was handled?";
+            spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
+            spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
 
-                    //if(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("Investigation")){
+            String selected = String.valueOf(spinnerCaseNo.getSelectedItem());
 
-                    //txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
+            //get text in additional comments text box
+            txtEventFeedbackEditTextString = txtEventFeedbackEditText.getText().toString();
+            //Toast.makeText(context,starRating,Toast.LENGTH_LONG).show();
 
-                    //}
-                    //if rating value is changed,
-                    //display the current rating value in the on screen automatically
-                    //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+                @Override
+                public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+
+                    //show the star rating on change
+                    if (Double.valueOf(ratingBar.getRating()) >= 0.0 && Double.valueOf(ratingBar.getRating()) < 5) {
+                        happyQ.setVisibility(View.VISIBLE);
+                        checkBox1.setVisibility(View.VISIBLE);
+                        checkBox2.setVisibility(View.VISIBLE);
+                        checkBox3.setVisibility(View.VISIBLE);
+                        checkBox4.setVisibility(View.VISIBLE);
+                        checkBox5.setVisibility(View.VISIBLE);
+                        checkBox6.setVisibility(View.VISIBLE);
+
+                    } else if ((double) ratingBar.getRating() == 5) {
+
+                        //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                        happyQ.setText("What were you happy with?");
+                        happyQ.setVisibility(View.VISIBLE);
+                        checkBox1.setVisibility(View.VISIBLE);
+                        checkBox2.setVisibility(View.VISIBLE);
+                        checkBox3.setVisibility(View.VISIBLE);
+                        checkBox4.setVisibility(View.VISIBLE);
+                        checkBox5.setVisibility(View.VISIBLE);
+                        checkBox6.setVisibility(View.VISIBLE);
+
+
+                    } else {
+                        //hide happyQ text view
+                        happyQ.setVisibility(View.INVISIBLE);
+                        checkBox1.setVisibility(View.INVISIBLE);
+                        checkBox2.setVisibility(View.INVISIBLE);
+                        checkBox3.setVisibility(View.INVISIBLE);
+                        checkBox4.setVisibility(View.INVISIBLE);
+                        checkBox5.setVisibility(View.INVISIBLE);
+                        checkBox6.setVisibility(View.INVISIBLE);
+
+                    }
+                }
+
+            });
+
+            btnSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    checkBox1 = (CheckBox) findViewById(R.id.checkBoxEF);
+                    checkBox2 = (CheckBox) findViewById(R.id.checkBox2EF);
+                    checkBox3 = (CheckBox) findViewById(R.id.checkBox5EF);
+                    checkBox4 = (CheckBox) findViewById(R.id.checkBox4EF);
+                    checkBox5 = (CheckBox) findViewById(R.id.checkBox6EF);
+                    checkBox6 = (CheckBox) findViewById(R.id.checkBox7EF);
+
+
+                    //make sure case no and phase are selected
+                    if (!(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && !(String.valueOf(spinnerPhase.getSelectedItem()).equals("---Select Event---"))) {
+
+
+                        //String txtFeedbackQuestion = "Are you satisfied with how the "+ String.valueOf(spinnerPhase.getSelectedItem()) + " of your case was handled?";
+
+                        //if(String.valueOf(spinnerCaseNo.getSelectedItem()).equals("Investigation")){
+
+                        //txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
+
+                        //}
+                        //if rating value is changed,
+                        //display the current rating value in the on screen automatically
+                        //ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                         //@Override
                         //public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
-                            //show the star rating on change
-                            //starRating = String.valueOf(ratingBar.getRating());
-                            if(String.valueOf(ratingBar.getRating()).equals("0.0")) {
-                                //Toast.makeText(context,"Star Rating Test: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
-                                //show pop up notifying user to star rate
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                                // set title
-                                alertDialogBuilder.setTitle("Please star rate");
+                        //show the star rating on change
+                        //starRating = String.valueOf(ratingBar.getRating());
+                        if (String.valueOf(ratingBar.getRating()).equals("0.0")) {
+                            //Toast.makeText(context,"Star Rating Test: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
+                            //show pop up notifying user to star rate
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                            // set title
+                            alertDialogBuilder.setTitle("Please star rate");
 
-                                //set dialog message
-                                alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        // if this button is clicked, just close
-                                        // the dialog box and do nothing
-                                        dialog.cancel();
-                                    }
-                                });
-                                // create alert dialog
-                                AlertDialog alertDialog = alertDialogBuilder.create();
-                                //show it
-                                alertDialog.show();
+                            //set dialog message
+                            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, just close
+                                    // the dialog box and do nothing
+                                    dialog.cancel();
+                                }
+                            });
+                            // create alert dialog
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            //show it
+                            alertDialog.show();
 
-                            }else{
+                        } else {
 
-                                //create and submit the overall feedback
-                                createFeedback(URL, spinnerCaseNo, spinnerPhase, ratingBar, txtEventFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6);
+                            //create and submit the overall feedback
+                            createFeedback(URL, spinnerCaseNo, spinnerPhase, ratingBar, txtEventFeedbackEditTextString, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6);
 
-                                //after feedback has been submitted show pop up
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                                // set title
-                                alertDialogBuilder.setTitle("Thank you for your feedback");
+                            //after feedback has been submitted show pop up
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                            // set title
+                            alertDialogBuilder.setTitle("Thank you for your feedback");
 
-                                //set dialog message
-                                alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //if this is clicked, close current activity and go back to provide feedback
-                                        startActivity(new Intent(context, ProvideFeedback.class));
-                                    }
-                                });
-                                // create alert dialog
-                                AlertDialog alertDialog = alertDialogBuilder.create();
-                                //show it
-                                alertDialog.show();
+                            //set dialog message
+                            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //if this is clicked, close current activity and go back to provide feedback
+                                    startActivity(new Intent(context, ProvideFeedback.class));
+                                }
+                            });
+                            // create alert dialog
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            //show it
+                            alertDialog.show();
 
-                            }
-                        //}
-                    //});
-
-
-                }else {
-
-                    //show pop up notifying user to select a case number or phase
-                    //after feedback has been submitted show pop up
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    // set title
-                    alertDialogBuilder.setTitle("Please select Case No and Phase");
-
-                    //set dialog message
-                    alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
-                            dialog.cancel();
                         }
-                    });
-                    // create alert dialog
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    //show it
-                    alertDialog.show();
+                        //}
+                        //});
 
+
+                    } else {
+
+                        //show pop up notifying user to select a case number or phase
+                        //after feedback has been submitted show pop up
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        // set title
+                        alertDialogBuilder.setTitle("Please select Case No and Event");
+
+                        //set dialog message
+                        alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+                        // create alert dialog
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        //show it
+                        alertDialog.show();
+
+                    }
                 }
-            }
-        });
-
+            });
         //when the user does not want submit feedback
         btnNotNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,7 +345,6 @@ public class EventFeedbackActivity extends AppCompatActivity {
                 startActivity(new Intent(context, ProvideFeedback.class));
             }
         });
-
     }
 
     //create feedback
