@@ -138,7 +138,25 @@ public class MainActivity extends AppCompatActivity {
         btnFraudCorruption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, ReportFraudAndCorruptionActivity.class));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please select type of Tip-Off you are reporting")
+                        .setCancelable(false)
+                        .setPositiveButton("Fraud and Corruption", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ReportCrimeActivity.isVictim = false;
+                                startActivity(new Intent(context, ReportFraudAndCorruptionActivity.class));
+                            }
+                        })
+                        .setNegativeButton("General", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ReportCrimeActivity.isVictim = true;
+                                startActivity(new Intent(context, TipOffActivity.class));
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+               // startActivity(new Intent(context, ReportFraudAndCorruptionActivity.class));
             }
         });
 

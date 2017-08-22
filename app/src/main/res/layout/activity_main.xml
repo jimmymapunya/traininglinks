@@ -47,7 +47,7 @@
                     android:layout_marginRight="20dp"
                     android:drawableStart="@mipmap/ic_bug"
                     android:drawableEnd="@mipmap/ic_arrow"
-                    android:text="@string/report_fraud_and_corruption" />
+                    android:text="TiP-Off" />
 
                 <Button
                     android:id="@+id/btnMycases"

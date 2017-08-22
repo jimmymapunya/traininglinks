@@ -52,6 +52,7 @@
                   android:windowSoftInputMode="stateHidden">
         </activity>
         <activity android:name=".view.CaseDetailsActivity" />
+        <activity android:name=".view.TipOffActivity" />
         <activity android:name=".view.NotificationActivity" />
         <activity android:name=".view.InboxActivity" />
         <activity android:name=".view.InboxMessagesActivity"></activity>
