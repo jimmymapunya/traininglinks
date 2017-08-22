@@ -2,6 +2,7 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
@@ -70,7 +71,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
     private Button btnAddOffenderInfo, btnAddWitnessInfo, btnSubmit;
     private TextView notificationCountIcon, inboxCountIcon, lblWitnessName, lblWitnessContact, lblWitnessAddress;
-    private LinearLayout OffenderDetailsLayout, doneWitnessDetails, editOffenderDetails, editFirstAccountDetails, editWitnessDetails;
+    private LinearLayout OffenderDetailsLayout, doneWitnessDetails;
     private FrameLayout notificationLayout, inboxLayout;
     private CheckBox checkBoxConfirmation;
 
@@ -90,39 +91,28 @@ public class ReportCrimeActivity extends AppCompatActivity {
 
         Initialisation();
 
-        /*Button and Spinner listeners*/
-
-        btnAddWitnessInfo.setOnClickListener(new View.OnClickListener() {
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done, null);
-
-                /*TextView components initialisation*/
-                lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
-                lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
-                lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
-
-                lblWitnessName.setText(txtWitnessName.getText().toString());
-                lblWitnessContact.setText(txtWitnessContact.getText().toString());
-                lblWitnessAddress.setText(txtWitnessAddress.getText().toString());
-
-                txtWitnessName.setText("");
-                txtWitnessContact.setText("");
-                txtWitnessAddress.setText("");
-
-                doneWitnessDetails.addView(view);
-
+                startActivity(new Intent(context, InboxActivity.class));
             }
         });
 
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+
+        /*Button and Spinner listeners*/
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 beforeCrime = txtBeforeCrime.getText().toString();
                 duringCrime = txtDuringCrime.getText().toString();
-                afterCrime = txtBeforeCrime.getText().toString();
+                afterCrime = txtAfterCrime.getText().toString();
                 surroundingsDescript = txtCrimeSurroundings.getText().toString();
 
                 if (isInjuries) injuriesDescript = txtInjuries.getText().toString();
@@ -352,25 +342,30 @@ public class ReportCrimeActivity extends AppCompatActivity {
                         OffenderDetailsLayout.addView(view);
                     }
                 });
-
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-
         spinnerFirstAccount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
+                LinearLayout linearFirstAccount = (LinearLayout) findViewById(R.id.linearFirstAccount);
+                final View v = LayoutInflater.from(context).inflate(R.layout.firstaccount, null);
+
+                txtFirstAccountName = (EditText) v.findViewById(R.id.txtFirstAccountName);
+                txtFirstAccountContact = (EditText) v.findViewById(R.id.txtFirstAccountContact);
+                txtFirstAccountAddress = (EditText) v.findViewById(R.id.txtFirstAccountAddress);
+
                 if (itemSelected.equals("Yes")) {
-                    editFirstAccountDetails.setVisibility(View.VISIBLE);
+                    linearFirstAccount.addView(v);
                     isToldAnyone = true;
 
                 } else {
-                    editFirstAccountDetails.setVisibility(View.INVISIBLE);
+                    linearFirstAccount.removeAllViews();
                     isToldAnyone = false;
                 }
             }
@@ -383,17 +378,48 @@ public class ReportCrimeActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String itemSelected = parent.getItemAtPosition(position).toString();
+                LinearLayout linearWitness = (LinearLayout) findViewById(R.id.linearWitness);
+
+                final View v = LayoutInflater.from(context).inflate(R.layout.witness, null);
+
+                txtWitnessName = (EditText) v.findViewById(R.id.txtWitnessName);
+                txtWitnessContact = (EditText) v.findViewById(R.id.txtWitnessContact);
+                txtWitnessAddress = (EditText) v.findViewById(R.id.txtWitnessAddress);
+                btnAddWitnessInfo = (Button) v.findViewById(R.id.btnAddWitnessInfo);
 
                 if (itemSelected.equals("Yes")) {
-                    editWitnessDetails.setVisibility(View.VISIBLE);
-                    btnAddWitnessInfo.setClickable(true);
+                    linearWitness.addView(v);
                     isPossibleWitnesses = true;
 
                 } else {
-                    editWitnessDetails.setVisibility(View.INVISIBLE);
-                    btnAddWitnessInfo.setClickable(false);
+                    linearWitness.removeAllViews();
                     isPossibleWitnesses = false;
                 }
+
+                btnAddWitnessInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        final View view = LayoutInflater.from(context).inflate(R.layout.custom_witness_done, null);
+
+                /*TextView components initialisation*/
+                        lblWitnessName = (TextView) view.findViewById(R.id.lblWitnessName);
+                        lblWitnessContact = (TextView) view.findViewById(R.id.lblWitnessContact);
+                        lblWitnessAddress = (TextView) view.findViewById(R.id.lblWitnessAddress);
+
+                        lblWitnessName.setText(txtWitnessName.getText().toString());
+                        lblWitnessContact.setText(txtWitnessContact.getText().toString());
+                        lblWitnessAddress.setText(txtWitnessAddress.getText().toString());
+
+                        txtWitnessName.setText("");
+                        txtWitnessContact.setText("");
+                        txtWitnessAddress.setText("");
+
+                        doneWitnessDetails.addView(view);
+
+                    }
+                });
+
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -501,15 +527,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         txtBeforeCrime = (EditText) findViewById(R.id.txtBeforeCrime);
         txtDuringCrime = (EditText) findViewById(R.id.txtDuringCrime);
         txtAfterCrime = (EditText) findViewById(R.id.txtAfterCrime);
-
         txtCrimeSurroundings = (EditText) findViewById(R.id.txtCrimeSurroundings);
-
-        txtFirstAccountName = (EditText) findViewById(R.id.txtFirstAccountName);
-        txtFirstAccountContact = (EditText) findViewById(R.id.txtFirstAccountContact);
-        txtFirstAccountAddress = (EditText) findViewById(R.id.txtFirstAccountAddress);
-        txtWitnessName = (EditText) findViewById(R.id.txtWitnessName);
-        txtWitnessContact = (EditText) findViewById(R.id.txtWitnessContact);
-        txtWitnessAddress = (EditText) findViewById(R.id.txtWitnessAddress);
 
         /*Starting code for the spinners*/
         searchableSpinner = (SearchableSpinner) findViewById(R.id.spinner);
@@ -561,15 +579,7 @@ public class ReportCrimeActivity extends AppCompatActivity {
         OffenderDetailsLayout = (LinearLayout) findViewById(R.id.OffenderDetailsLayout);
         doneWitnessDetails = (LinearLayout) findViewById(R.id.doneWitnessDetails);
 
-        editFirstAccountDetails = (LinearLayout) findViewById(R.id.editFirstAccountDetails);
-        editFirstAccountDetails.setVisibility(View.INVISIBLE);
-        editWitnessDetails = (LinearLayout) findViewById(R.id.editWitnessDetails);
-        editWitnessDetails.setVisibility(View.INVISIBLE);
-
-        /*Button to add the dynamic linear layout above*/
-
-        btnAddWitnessInfo = (Button) findViewById(R.id.btnAddWitnessInfo);
-        btnAddWitnessInfo.setClickable(false);
+        /*Button to submit*/
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
         /*Checkbox to confirm details reported are correct*/
@@ -583,7 +593,6 @@ public class ReportCrimeActivity extends AppCompatActivity {
         isPossibleWitnesses = false;
 
     }
-    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
