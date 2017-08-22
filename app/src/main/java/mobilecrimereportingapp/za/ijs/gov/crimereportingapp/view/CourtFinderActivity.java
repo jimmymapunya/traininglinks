@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,31 +93,33 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_finder);
 
-        // Creates the Volley request queue
-        //requestQueue = Volley.newRequestQueue(this);
-
         initList();
 
         btnGo = (Button) findViewById(R.id.btnGo);
         txtTo = (EditText) findViewById(R.id.txtTo);
         txtFrom = (EditText) findViewById(R.id.txtFrom);
 
-        EditText [] toFromArr = new EditText[]{txtTo,txtFrom};
+        //EditText [] toFromArr = new EditText[]{txtTo,txtFrom};
 
-         for(int i=0; i<=1;i++){
+         //for(int i=0; i<=1;i++){
              //implementation of list search form from edit text
-             toFromArr[i].addTextChangedListener(new TextWatcher(){
+        txtFrom.addTextChangedListener(new TextWatcher(){
 
                  @Override
                  public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                     CourtFinderActivity.this.adapter.getFilter().filter(s);
+                     if(s.length()>=1){
+                         //show listview
+                         listView.setVisibility(View.VISIBLE);
+                         CourtFinderActivity.this.adapter.getFilter().filter(s);
+                     }else {
+                         //hide listview
+                         listView.setVisibility(View.INVISIBLE);
+                     }
 
                  }
 
                  @Override
                  public void beforeTextChanged(CharSequence s, int start, int count, int	after) {
-
                  }
 
                  @Override
@@ -126,7 +129,36 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                  }
 
              });
-         }
+        //implementation of list search form from edit text
+        txtTo.addTextChangedListener(new TextWatcher(){
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length()>=1){
+
+                    //show listview
+                    listView.setVisibility(View.VISIBLE);
+                    CourtFinderActivity.this.adapter.getFilter().filter(s);
+                }else {
+                    //hide listview
+                    listView.setVisibility(View.INVISIBLE);
+                }
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int	after) {
+            }
+
+            @Override
+
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+         //}
+
 
 
         //progressDialog = new ProgressDialog(context);
@@ -164,16 +196,6 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
 
     public void initList(){
 
-        /**items=new String[]{"Pretoria","Johannesburg","Johannesburg Magistrate Court","Pretoria Court"};
-
-         listItems=new ArrayList<>(Arrays.asList(items));
-
-         adapter=new ArrayAdapter<String>(this, list_item, R.id.txtitem, listItems);
-
-         listView.setAdapter(adapter);*/
-
-
-
         // Casts results into the TextView found within the main layout XML with id jsonData
         listView = (ListView) findViewById(R.id.listview);
         //ebable listview text filtering
@@ -181,6 +203,44 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         listItems = new ArrayList<String>();
         adapter  = new ArrayAdapter<String>(CourtFinderActivity.this, list_item, R.id.txtitem, listItems);
         listView.setAdapter(adapter);
+
+        //hide list view
+        //listView.setVisibility(View.INVISIBLE);
+
+        //on listview item selected
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //on edit text focused drop the list item there
+                EditText [] toFromArr = new EditText[]{txtFrom, txtTo};
+
+                for(int i=0; i<=1;i++){
+                    toFromArr[i].setOnFocusChangeListener(focusListener);
+                    if(toFromArr[0].hasFocus()){
+
+                        // Get the selected item text from ListView
+                        String selectedItem = (String) parent.getItemAtPosition(position);
+
+                        // Display the selected item text on TextView
+                        txtFrom.setText(selectedItem);
+                        //then hide lisview
+                        listView.setVisibility(View.INVISIBLE);
+
+                    }if(toFromArr[1].hasFocus()){
+
+                        //listView.setVisibility(View.VISIBLE);
+                        // Get the selected item text from ListView
+                        String selectedItem = (String) parent.getItemAtPosition(position);
+
+                        // Display the selected item text on TextView
+                        txtTo.setText(selectedItem);
+                        //then hide lisview
+                        listView.setVisibility(View.INVISIBLE);
+
+                    }
+                }
+            }
+        });
 
         try
         {
@@ -237,7 +297,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     {
                         courtType = jsonInsideAdditionalAttributes.getString("Value");
                         //String fType = jsonInsideAdditionalAttributes.getString("Value");
-                        listItems.add(courtTitle+" "+courtType+" [ "+courtLatitude+", "+courtLongitude+" ]");
+                        listItems.add(wordFirstCap(courtTitle.toLowerCase())+" "+courtType);//+" [ "+courtLatitude+", "+courtLongitude+" ]"
 
                     }
                 }
@@ -287,6 +347,38 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
             e.printStackTrace();
         }
 
+    }
+    /**/
+    private View.OnFocusChangeListener focusListener = new View.OnFocusChangeListener() {
+        public void onFocusChange(View v, boolean hasFocus) {
+            View focusedView;
+            if (hasFocus){
+                focusedView = v;
+            } else {
+                focusedView  = null;
+            }
+        }
+    };
+
+    //capitalize first letter of every word
+    public String wordFirstCap(String str)
+    {
+        String[] words = str.trim().split(" ");
+        StringBuilder ret = new StringBuilder();
+        for(int i = 0; i < words.length; i++)
+        {
+            if(words[i].trim().length() > 0)
+            {
+                //Log.e("words[i].trim",""+words[i].trim().charAt(0));
+                ret.append(Character.toUpperCase(words[i].trim().charAt(0)));
+                ret.append(words[i].trim().substring(1));
+                if(i < words.length - 1) {
+                    ret.append(' ');
+                }
+            }
+        }
+
+        return ret.toString();
     }
 
     public String loadJSONFromAsset() {
