@@ -103,19 +103,19 @@ public class CaseListActivity extends AppCompatActivity {
         statusDetailsList2.add(new StatusDetails("03/2015/99", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
         statusDetailsList2.add(new StatusDetails("03/2015/99", "Trial", false, "22-03-2017", null, "01-05-2017"));
         statusDetailsList2.add(new StatusDetails("03/2015/99", "Verdict", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
-        statusDetailsList2.add(new StatusDetails("03/2015/99", "Sentence", true, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList2.add(new StatusDetails("03/2015/99", "Sentence", true, "21-08-2017", "Pretoria Magistrate Court", "01-05-2017"));
 
         statusDetailsList3.add(new StatusDetails("04/2017/44", "Investigate", false, "22-03-2017", null, "01-05-2017"));
         statusDetailsList3.add(new StatusDetails("04/2017/44", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
-        statusDetailsList3.add(new StatusDetails("04/2017/44", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList3.add(new StatusDetails("04/2017/44", "Bail Hearing", false, "21-08-2017", "Kempton Park Magistrate Court", "01-05-2017"));
         statusDetailsList3.add(new StatusDetails("04/2017/44", "Trial", true, "22-03-2017", null, "01-05-2017"));
 
         statusDetailsList4.add(new StatusDetails("06/2014/11", "Investigate", false, "22-03-2017", null, "01-05-2017"));
-        statusDetailsList4.add(new StatusDetails("06/2014/11", "Aquit", true, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
+        statusDetailsList4.add(new StatusDetails("06/2014/11", "Aquit", true, "22-03-2017", " Police Station", "01-05-2017"));
 
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Investigate", false, "22-03-2017", null, "01-05-2017"));
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Arrest", false, "22-03-2017", "Sunnyside Police Station", "01-05-2017"));
-        statusDetailsList5.add(new StatusDetails("06/2017/25", "Bail Hearing", false, "21-08-2017", "Johannesburg Magistrate Court", "01-05-2017"));
+        statusDetailsList5.add(new StatusDetails("06/2017/25", "Bail Hearing", false, "21-08-2017", "Germiston Magistrate Court", "01-05-2017"));
         statusDetailsList5.add(new StatusDetails("06/2017/25", "Trial", true, "22-03-2017", null, "01-05-2017"));
 
         listdao.add(new CaseDetails("02/2016/98", "Mazit Mikel", "Lindiwe Maponya", "Attempted Murder", "The accused is suspected of shooting a girl with a gun", statusDetailsList1));

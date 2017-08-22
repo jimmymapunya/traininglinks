@@ -46,6 +46,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
     private static final ArrayList<CaseDetails> data = CaseListActivity.listdao;
     private CaseHolder holder = null;
     private View dropDownView, layoutView;
+    private String dropCourts[] = new String[data.size()];
     //private ItemFilter mFilter = new ItemFilter();
 
     public CaseListAdapter(Context context, int layoutResourceId, ArrayList<CaseDetails> aList) {
@@ -145,16 +146,17 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
                 popup.show();
                 Menu menu = popup.getMenu();
                 ArrayList<StatusDetails> statuses = aList.get((Integer)dropDownView.getTag()).getStatus();
-                for(int x=0; x<statuses.size(); x++){
-                    if(statuses.get(x).isIsCurrent() && statuses.get(x).getActionLocation()!=null){
 
-                        menu.findItem(R.id.action_case_details).setVisible(false);
+                    System.out.println(statuses.get(statuses.size()-1).isIsCurrent() +"xxxxxxxxxxxxxxxxxxxx"+statuses.get(statuses.size()-1).getActionLocation());
+                    if(statuses.get(statuses.size()-1).isIsCurrent()==true && statuses.get(statuses.size()-1).getActionLocation()!=null){
 
+                        menu.findItem(R.id.action_navigate).setVisible(true);
+
+                    }else{
+                        menu.findItem(R.id.action_navigate).setVisible(false);
                     }
-                }
-                if(menu.equals(R.id.action_case_details)){
 
-                }
+
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
@@ -164,8 +166,9 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
                         switch (item.getItemId()) {
 
                             case R.id.action_navigate:
-                                String address = "Johannesburg Magistrate court";
-                                String uri = "https://maps.google.com/maps?saddr=current location&daddr="+address;
+
+                                ArrayList<StatusDetails> statuses = aList.get((Integer)dropDownView.getTag()).getStatus();
+                                String uri = "https://maps.google.com/maps?saddr=current location&daddr="+statuses.get(statuses.size()-1).getActionLocation();
                                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
                                 break;
 
