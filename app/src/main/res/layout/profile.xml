@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/frameImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="108dp"
+                        android:layout_height="133dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/ic_user"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/Name"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/frameImage"
+                    android:text="Maribolle Wilphasius Rakolota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/userEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/Name"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@mipmap/ic_email"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/email_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/userContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/userEmail"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@mipmap/ic_contact"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/_011_258_5233"
+                    android:imeOptions="actionNext"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/userAddress1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/userContact"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@mipmap/ic_home_black"
+                    android:drawablePadding="10dp"
+                    android:hint="10 Mabunda Road"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <fragment
+            android:id="@+id/frag_nav_drawer"
+            android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"
+            android:layout_width="@dimen/nav_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:layout="@layout/fragment_navigation_drawer" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+
+
+</LinearLayout>

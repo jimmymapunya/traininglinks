@@ -48,15 +48,15 @@
         <activity android:name=".view.IndividualFeedbackActivity" />
         <activity android:name=".view.ReportCrimeActivity" />
         <activity android:name=".view.ReportFraudAndCorruptionActivity" />
-        <activity android:name=".view.CaseListActivity"
-                  android:windowSoftInputMode="stateHidden">
-        </activity>
+        <activity
+            android:name=".view.CaseListActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".view.CaseDetailsActivity" />
         <activity android:name=".view.TipOffActivity" />
         <activity android:name=".view.NotificationActivity" />
         <activity android:name=".view.InboxActivity" />
-        <activity android:name=".view.InboxMessagesActivity"></activity>
-
+        <activity android:name=".view.InboxMessagesActivity" />
+        <activity android:name=".view.ProfileActivity"></activity>
     </application>
 
 </manifest>

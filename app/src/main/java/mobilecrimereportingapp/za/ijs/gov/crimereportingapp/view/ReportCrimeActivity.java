@@ -608,7 +608,9 @@ public class ReportCrimeActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 
             return true;
-        }
+        } else if(id == R.id.action_profile){
+            startActivity(new Intent(context,ProfileActivity.class));
+       }
         return false;
 
     }
