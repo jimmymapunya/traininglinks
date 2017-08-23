@@ -146,14 +146,18 @@ public class MainActivity extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("Fraud and Corruption", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                ReportCrimeActivity.isVictim = false;
-                                startActivity(new Intent(context, ReportFraudAndCorruptionActivity.class));
+                                ProfileActivity.screenToGoTo = false;
+                                ProfileActivity.screenToGoToTipOffGeneral = false;
+                                ProfileActivity.screenToGoToTipOffFraud = true;
+                                startActivity(new Intent(context, ProfileActivity.class));
                             }
                         })
                         .setNegativeButton("General", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                ReportCrimeActivity.isVictim = true;
-                                startActivity(new Intent(context, TipOffActivity.class));
+                                ProfileActivity.screenToGoTo = false;
+                                ProfileActivity.screenToGoToTipOffGeneral = true;
+                                ProfileActivity.screenToGoToTipOffFraud = false;
+                                startActivity(new Intent(context, ProfileActivity.class));
                             }
                         });
                 AlertDialog alert = builder.create();

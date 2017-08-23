@@ -24,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Button btnContinue;
 
     public static boolean screenToGoTo;
+    public static boolean screenToGoToTipOffGeneral;
+    public static boolean screenToGoToTipOffFraud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,15 @@ public class ProfileActivity extends AppCompatActivity {
 
                 if(screenToGoTo){
                     startActivity(new Intent(getApplicationContext(), ReportCrimeActivity.class));
-                }else{
+                }
+                else if(screenToGoToTipOffGeneral){
+                    startActivity(new Intent(getApplicationContext(), TipOffActivity.class));
+                    Toast.makeText(getApplicationContext(),"Personal details will be encrypted for your protection.",Toast.LENGTH_LONG).show();
+                }else {
                     startActivity(new Intent(getApplicationContext(), ReportFraudAndCorruptionActivity.class));
                     Toast.makeText(getApplicationContext(),"Personal details will be encrypted for your protection.",Toast.LENGTH_LONG).show();
                 }
+
 
             }
         });

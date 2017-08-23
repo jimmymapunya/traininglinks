@@ -300,6 +300,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                     locationBus.setText("");
                     complainDetailBus.setText("");
                     txttitle2.setText("");
+                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, MainActivity.class));
 
                 }
 
@@ -347,6 +348,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                     complainDetailIndividual.setText("");
                     btnSubmitIndividual.setText("");
                     dateOccurredIndividual.setText("");
+                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, MainActivity.class));
                 }
 
 
@@ -384,7 +386,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(context,"Corruption or fraud have been reported",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Corruption or Fraud has been submitted, Thank you for caring about South Africa by reporting.",Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

@@ -33,76 +33,79 @@
                     android:id="@+id/txtOffender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:hint="Offender details"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textSize="18dp"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/txtOffenderName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtOffender"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
-                    android:hint="Offender full names"
-                    android:layout_below="@+id/txtOffender"
+                    android:hint="Offender's full names"
                     android:inputType="text"
-                    android:padding="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:padding="10dp" />
+
                 <EditText
                     android:id="@+id/txtOffenderAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtOffenderName"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Offender's address"
-                    android:layout_below="@+id/txtOffenderName"
                     android:inputType="text"
-                    android:padding="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:padding="10dp" />
+
                 <EditText
                     android:id="@+id/txtOffenderCell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtOffenderAddress"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Offender's cell number"
-                    android:layout_below="@+id/txtOffenderAddress"
-                    android:inputType="text"
-                    android:padding="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:inputType="number"
+                    android:padding="10dp" />
 
                 <TextView
                     android:id="@+id/txtTransaction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtOffenderCell"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:hint="Transactions details"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
                     android:inputType="text"
-                    android:layout_below="@+id/txtOffenderCell"
                     android:padding="10dp"
-                    />
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtOffenseType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/txtTransaction"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
@@ -110,8 +113,7 @@
                     android:background="@drawable/edit_text_style"
                     android:hint="What offense committed/planned"
                     android:inputType="text"
-                    android:padding="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:padding="10dp" />
 
                 <EditText
                     android:id="@+id/txtDateCommited"
@@ -123,7 +125,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Date offense was committed/planned"
-                    android:inputType="number"
+                    android:inputType="date"
 
                     android:padding="10dp"
                     android:paddingTop="15dp" />
@@ -138,7 +140,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Offense Address"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:padding="10dp"
                     android:paddingTop="15dp" />
 
@@ -152,114 +154,116 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Describe the offense"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    />
+                    android:inputType="text"
+                    android:padding="10dp" />
 
                 <TextView
                     android:id="@+id/txtVictim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtOffenseDesc"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:hint="Transactions details"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:textAlignment="center"
+                    android:hint="Victim's details"
                     android:inputType="text"
-                    android:layout_below="@+id/txtOffenseDesc"
                     android:padding="10dp"
-                    />
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtVictimName"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/txtVictim"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/edit_text_style"
-                    android:hint="Victim full names"
+                    android:hint="Victim's full names"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:paddingTop="15dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_below="@+id/txtVictim" />
+                    android:paddingTop="15dp" />
+
                 <EditText
                     android:id="@+id/txtVictimAddress"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/txtVictimName"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/edit_text_style"
-                    android:hint="Victim Physical Address"
+                    android:hint="Victim's Physical Address"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:paddingTop="15dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_below="@+id/txtVictimName" />
+                    android:paddingTop="15dp" />
+
                 <EditText
                     android:id="@+id/txtVictimCell"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/txtVictimAddress"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/edit_text_style"
-                    android:hint="Victim cell Number"
-                    android:inputType="text"
-                    android:padding="10dp"
-                    android:paddingTop="15dp"
                     android:layout_marginTop="12dp"
-                    android:layout_below="@+id/txtVictimAddress" />
+                    android:background="@drawable/edit_text_style"
+                    android:hint="Victim's cell Number"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:paddingTop="15dp" />
+
                 <TextView
                     android:id="@+id/txtQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtVictimCell"
                     android:layout_marginLeft="30dp"
-                    android:textSize="15dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
                     android:hint="Is this information useful to any existing case?"
                     android:inputType="text"
                     android:padding="10dp"
                     android:paddingTop="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@+id/txtVictimCell"
-                    />
+                    android:textSize="15dp" />
+
                 <Spinner
                     android:id="@+id/spinnerQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtQuestion"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style"
-                    android:layout_below="@+id/txtQuestion"/>
+                    android:background="@drawable/bg_spinner_style" />
+
                 <EditText
                     android:id="@+id/txtCaseNo"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:layout_below="@+id/spinnerQuestion"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/edit_text_style"
                     android:hint="Case Number"
                     android:inputType="text"
                     android:padding="10dp"
                     android:paddingTop="18dp"
-                    android:visibility="gone"
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@+id/spinnerQuestion" />
+                    android:visibility="gone" />
+
                 <Button
                     android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCaseNo"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="28dp"
                     android:background="@drawable/unsafebutton"
                     android:text="Submit"
-                    android:textColor="#fff"
-                    android:layout_below="@+id/txtCaseNo"
-                    />
+                    android:textColor="#fff" />
 
             </RelativeLayout>
         </ScrollView>

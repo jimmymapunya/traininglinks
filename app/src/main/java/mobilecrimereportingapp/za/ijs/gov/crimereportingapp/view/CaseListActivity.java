@@ -43,6 +43,7 @@ public class CaseListActivity extends AppCompatActivity {
     private Toolbar Toolbar;
     private Context context = this;
     CaseListAdapter adapter;
+
     public static ArrayList<CaseDetails> listdao = new ArrayList<>();
 
     private TextView notificationCountIcon, inboxCountIcon;
