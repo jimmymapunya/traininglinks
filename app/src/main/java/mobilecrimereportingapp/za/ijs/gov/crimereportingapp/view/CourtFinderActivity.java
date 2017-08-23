@@ -447,11 +447,10 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         mMap = googleMap;
 
         //get current location
-        GPSTracker gps = new GPSTracker(this);
+        final GPSTracker gps = new GPSTracker(this);
         /**Location CurrentLocation = new Location("");
         CurrentLocation.setLatitude(gps.getLatitude());
         CurrentLocation.setLongitude(gps.getLongitude());*/
-
         LatLng currentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
         mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
@@ -511,7 +510,7 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     alertDialog.show();
                 } else {
                     //
-                    LatLng currentLocation = new LatLng(-25.75006, 28.19121);
+                    LatLng currentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                 }

@@ -94,11 +94,6 @@
                             android:layout_centerVertical="true"
                             android:text="Your treatment" />
 
-                        <CheckBox
-                            android:id="@+id/checkBox5OF"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Handling of case" />
 
 
                     </LinearLayout>
@@ -108,6 +103,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="100"
                         android:orientation="horizontal">
+
+
+                        <CheckBox
+                            android:id="@+id/checkBox5OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Handling of case" />
 
                         <CheckBox
                             android:id="@+id/checkBox4OF"
@@ -117,12 +119,6 @@
                             android:text="Duration" />
 
 
-                        <CheckBox
-                            android:id="@+id/checkBox6OF"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Access to information" />
-
 
                     </LinearLayout>
                     <LinearLayout
@@ -130,6 +126,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="100"
                         android:orientation="horizontal">
+
+
+                        <CheckBox
+                            android:id="@+id/checkBox6OF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Access to information" />
                         <CheckBox
                             android:id="@+id/checkBox7OF"
                             android:layout_width="wrap_content"
