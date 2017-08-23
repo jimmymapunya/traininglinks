@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +21,16 @@ public class ProfileActivity extends AppCompatActivity {
     private android.support.v7.widget.Toolbar Toolbar;
     private FrameLayout notificationLayout, inboxLayout;
     private TextView notificationCountIcon, inboxCountIcon;
+    private Button btnContinue;
+
+    public static boolean screenToGoTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         /*Icons with number init and setup*/
 
         notificationLayout = (FrameLayout) findViewById(R.id.Notification);
@@ -32,6 +39,21 @@ public class ProfileActivity extends AppCompatActivity {
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
         notificationCountIcon.setText(MainActivity.notificationCount);
         inboxCountIcon.setText(MainActivity.inboxCount);
+        btnContinue = (Button) findViewById(R.id.btnContinue);
+
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(screenToGoTo){
+                    startActivity(new Intent(getApplicationContext(), ReportCrimeActivity.class));
+                }else{
+                    startActivity(new Intent(getApplicationContext(), ReportFraudAndCorruptionActivity.class));
+                    Toast.makeText(getApplicationContext(),"Personal details will be encrypted for your protection.",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
 
         /*Toolbar instantiation and setup*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

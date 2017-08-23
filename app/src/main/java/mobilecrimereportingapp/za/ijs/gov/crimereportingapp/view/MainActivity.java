@@ -115,17 +115,19 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("Please select whether you are reporting as a witness or victim")
-                        .setCancelable(false)
+                        .setCancelable(true)
                         .setPositiveButton("Witness", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 ReportCrimeActivity.isVictim = false;
-                                startActivity(new Intent(context, ReportCrimeActivity.class));
+                                ProfileActivity.screenToGoTo = true;
+                                startActivity(new Intent(context, ProfileActivity.class));
                             }
                         })
                         .setNegativeButton("Victim", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 ReportCrimeActivity.isVictim = true;
-                                startActivity(new Intent(context, ReportCrimeActivity.class));
+                                ProfileActivity.screenToGoTo = true;
+                                startActivity(new Intent(context, ProfileActivity.class));
                             }
                         });
                 AlertDialog alert = builder.create();

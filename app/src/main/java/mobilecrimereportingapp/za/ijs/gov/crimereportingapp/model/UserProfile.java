@@ -6,7 +6,7 @@ package mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model;
 
 public class UserProfile {
 
-    public static final String Username = "John";
+    public static final String Username = "mariboller@ijs.gov.za";
     public static final String Role = "1";
     public static final String DeviceID = "1";
 

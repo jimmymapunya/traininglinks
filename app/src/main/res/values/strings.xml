@@ -68,6 +68,9 @@
     <string name="full_name">Full Name</string>
     <string name="email_hint">Email address</string>
     <string name="_011_258_5233">011 258 5233</string>
+    <string name="please_confirm_your_details_before_proceeding">Please confirm your details before proceeding.</string>
+    <string name="user_maribolle_rakolota">User: Maribolle Rakolota</string>
+    <string name="mariboller_ijs_gov_za">mariboller@ijs.gov.za</string>
 
     <string-array name="injuries_choice">
         <item>Select</item>

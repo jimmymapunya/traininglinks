@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include
@@ -22,40 +22,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/please_confirm_your_details_before_proceeding"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
                 <FrameLayout
                     android:id="@+id/frameImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/confirm">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_image"
                         android:layout_width="108dp"
                         android:layout_height="133dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:src="@mipmap/ic_user"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"/>
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp" />
 
                 </FrameLayout>
 
                 <TextView
                     android:id="@+id/Name"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/frameImage"
-                    android:text="Maribolle Wilphasius Rakolota"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frameImage"
+                    android:gravity="center"
+                    android:text="Maribolle Wilphasius Rakolota"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/IDNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Name"
+                    android:gravity="center"
+                    android:text="9407075091080"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/userEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/IDNum"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_below="@+id/Name"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:drawableLeft="@mipmap/ic_email"
@@ -68,9 +87,9 @@
                     android:id="@+id/userContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/userEmail"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_below="@+id/userEmail"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:drawableLeft="@mipmap/ic_contact"
@@ -83,9 +102,9 @@
                     android:id="@+id/userAddress1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/userContact"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_below="@+id/userContact"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_style"
                     android:drawableLeft="@mipmap/ic_home_black"
@@ -93,6 +112,19 @@
                     android:hint="10 Mabunda Road"
                     android:imeOptions="actionNext"
                     android:inputType="text" />
+
+                <Button
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userAddress1"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/unsafebutton"
+                    android:drawableStart="@mipmap/ic_edit"
+                    android:text="Continue Reporting"
+                    android:textColor="#fff" />
 
             </RelativeLayout>
 
@@ -107,8 +139,6 @@
             app:layout="@layout/fragment_navigation_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
-
-
 
 
 </LinearLayout>
