@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -42,6 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
+import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.GPSTracker;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.GeneralCourtInfo;
 
 import static mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R.layout.list_item;
@@ -101,6 +103,23 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         txtTo = (EditText) findViewById(R.id.txtTo);
         txtFrom = (EditText) findViewById(R.id.txtFrom);
 
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, InboxActivity.class));
+            }
+        });
         //EditText [] toFromArr = new EditText[]{txtTo,txtFrom};
 
         //for(int i=0; i<=1;i++){
@@ -428,12 +447,12 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         mMap = googleMap;
 
         //get current location
-       /** GPSTracker gps = new GPSTracker(this);
-        Location CurrentLocation = new Location("");
+        GPSTracker gps = new GPSTracker(this);
+        /**Location CurrentLocation = new Location("");
         CurrentLocation.setLatitude(gps.getLatitude());
         CurrentLocation.setLongitude(gps.getLongitude());*/
 
-        LatLng currentLocation = new LatLng(-25.75006, 28.19121);
+        LatLng currentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
         mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
 

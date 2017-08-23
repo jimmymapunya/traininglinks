@@ -77,6 +77,24 @@ public class OverallFeedbackActivity extends AppCompatActivity {
         notificationLayout = (FrameLayout) findViewById(R.id.Notification);
         inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
 
+
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, InboxActivity.class));
+            }
+        });
+
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 

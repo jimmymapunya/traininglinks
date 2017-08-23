@@ -82,6 +82,24 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                     super.onCreate(savedInstanceState);
                     setContentView(R.layout.activity_individual_feedback);
 
+        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+
+
+        notificationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, NotificationActivity.class));
+            }
+        });
+
+        inboxLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, InboxActivity.class));
+            }
+        });
+
                     notificationLayout = (FrameLayout) findViewById(R.id.Notification);
                     inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
 
