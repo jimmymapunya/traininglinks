@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -134,6 +135,16 @@ public class OverallFeedbackActivity extends AppCompatActivity {
 
         //get additional comments
         txtOverallFeedbackEditText = (EditText) findViewById(R.id.txtOverallFeedbackEditText);
+        //regain autofocus
+        txtOverallFeedbackEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.setFocusable(true);
+                v.setFocusableInTouchMode(true);
+                return false;
+            }
+        });
+
 
         btnSubmit = (Button) findViewById(R.id.btnSubmitOF);
 

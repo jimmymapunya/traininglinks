@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -146,6 +147,16 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
 
                     //get additional comments
                     txtIndividualFeedbackEditText = (EditText) findViewById(R.id.txtIndividualFeedbackEditText);
+                    //regain autofocus
+                    txtIndividualFeedbackEditText.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            v.setFocusable(true);
+                            v.setFocusableInTouchMode(true);
+                            return false;
+                        }
+                    });
+
 
                     btnSubmit = (Button) findViewById(R.id.btnSubmitFeedbackIF);
 

@@ -166,7 +166,8 @@
                     android:layout_below="@+id/checkBoxIF"
                     android:layout_alignEnd="@+id/btnSubmitFeedback"
                     android:layout_alignStart="@+id/btnSubmitFeedback"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    android:focusable="false"/>
 
                 <Button
                     android:id="@+id/btnSubmitFeedbackIF"

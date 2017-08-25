@@ -161,10 +161,8 @@
                     android:background="@drawable/edit_text_style"
                     android:hint=" Additional comments"
                     android:textAlignment="viewStart"
-                    android:layout_below="@+id/checkBox4EF"
-                    android:layout_alignStart="@+id/btnSubmitFeedback"
-                    android:layout_alignEnd="@+id/btnSubmitFeedback"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:focusable="false"/>
 
                 <Button
                     android:id="@+id/btnSubmitEF"

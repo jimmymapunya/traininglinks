@@ -150,7 +150,8 @@
                         android:ems="10"
                         android:hint=" Additional comments"
                         android:inputType="textPersonName"
-                        android:textAlignment="viewStart" />
+                        android:textAlignment="viewStart"
+                        android:focusable="false"/>
 
                     <Button
                         android:id="@+id/btnSubmitOF"

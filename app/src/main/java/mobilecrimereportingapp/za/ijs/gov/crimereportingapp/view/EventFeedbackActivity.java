@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -189,10 +190,21 @@ public class EventFeedbackActivity extends AppCompatActivity {
         }else {*/
 
 
-            //get additional comments
-            txtEventFeedbackEditText = (EditText) findViewById(R.id.txtEventFeedbackEditText);
+        //get additional comments
+        txtEventFeedbackEditText = (EditText) findViewById(R.id.txtEventFeedbackEditText);
+        //regain autofocus
+        txtEventFeedbackEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.setFocusable(true);
+                v.setFocusableInTouchMode(true);
+                return false;
+            }
+        });
 
-            btnSubmit = (Button) findViewById(R.id.btnSubmitEF);
+
+
+        btnSubmit = (Button) findViewById(R.id.btnSubmitEF);
             //load with button disabled
             //btnSubmit.setEnabled(false);
             //btnSubmit.setClickable(false);
