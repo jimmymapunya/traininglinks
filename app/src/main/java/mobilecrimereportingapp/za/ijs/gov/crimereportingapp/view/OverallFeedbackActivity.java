@@ -67,7 +67,7 @@ public class OverallFeedbackActivity extends AppCompatActivity {
     String URL = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateFeedback";
 
 
-    private  OverallFeedback oF = new OverallFeedback(starRating,  additionalComments, checkBox1,  checkBox2,  checkBox3,  checkBox4,  btnSubmit, btnNotNow);
+    //private  OverallFeedback oF = new OverallFeedback(starRating,  additionalComments, checkBox1,  checkBox2,  checkBox3,  checkBox4,  btnSubmit, btnNotNow);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,31 +162,38 @@ public class OverallFeedbackActivity extends AppCompatActivity {
 
 
                }else
-                if((double) ratingBar.getRating() == 5){
+                   ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                       @Override
+                       public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                           ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                           if((double) ratingBar.getRating() == 5){
 
-                   //ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-                   happyQ.setText("What were you happy with?");
-                   happyQ.setVisibility(View.VISIBLE);
-                   checkBox1.setVisibility(View.VISIBLE);
-                   checkBox2.setVisibility(View.VISIBLE);
-                   checkBox3.setVisibility(View.VISIBLE);
-                   checkBox4.setVisibility(View.VISIBLE);
-                   checkBox5.setVisibility(View.VISIBLE);
-                   checkBox6.setVisibility(View.VISIBLE);
+                               happyQ.setText("What were you happy with?");
+                               happyQ.setVisibility(View.VISIBLE);
+                               checkBox1.setVisibility(View.VISIBLE);
+                               checkBox2.setVisibility(View.VISIBLE);
+                               checkBox3.setVisibility(View.VISIBLE);
+                               checkBox4.setVisibility(View.VISIBLE);
+                               checkBox5.setVisibility(View.VISIBLE);
+                               checkBox6.setVisibility(View.VISIBLE);
 
 
-               }else{
-                   //hide them
-                   //hide happyQ text view
-                   happyQ.setVisibility(View.INVISIBLE);
-                   checkBox1.setVisibility(View.INVISIBLE);
-                   checkBox2.setVisibility(View.INVISIBLE);
-                   checkBox3.setVisibility(View.INVISIBLE);
-                   checkBox4.setVisibility(View.INVISIBLE);
-                   checkBox5.setVisibility(View.INVISIBLE);
-                   checkBox6.setVisibility(View.INVISIBLE);
+                           }/**else{
+                               //hide them
+                               //hide happyQ text view
+                               happyQ.setVisibility(View.INVISIBLE);
+                               checkBox1.setVisibility(View.INVISIBLE);
+                               checkBox2.setVisibility(View.INVISIBLE);
+                               checkBox3.setVisibility(View.INVISIBLE);
+                               checkBox4.setVisibility(View.INVISIBLE);
+                               checkBox5.setVisibility(View.INVISIBLE);
+                               checkBox6.setVisibility(View.INVISIBLE);
 
-               }
+                           }*/
+
+                       }
+                   });
+
            }
         });
                 starRating = String.valueOf(ratingBar.getRating());

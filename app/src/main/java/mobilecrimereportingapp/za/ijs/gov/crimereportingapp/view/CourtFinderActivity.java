@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -285,12 +286,6 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                     JSONObject jsonInsideAdditionalAttributes = additionalAttributes.getJSONObject(x);
                     String name = jsonInsideAdditionalAttributes.getString("Name");
 
-                    /**Check to ensure we dealing with Coordinate lat and long
-                     if(name.equalsIgnoreCase("Facility Type")){
-                     String fType = jsonInsideAdditionalAttributes.getString("Value");
-                     listItems.add(courtTitle+" "+fType);
-
-                     }*/
                     if (name.equalsIgnoreCase("GPS Coordinate Lattitude")) {
                         String value = jsonInsideAdditionalAttributes.getString("Value");
 
@@ -437,7 +432,6 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -454,6 +448,8 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
         LatLng currentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
         mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+
+
 
         /*progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -511,12 +507,19 @@ public class CourtFinderActivity extends AppCompatActivity implements OnMapReady
                 } else {
                     //
                     LatLng currentLocation = new LatLng(gps.getLatitude(), gps.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                    LatLng currentLocation2 = new LatLng(-25.743240, 28.194637);
+
+                    //mMap.addMarker(new MarkerOptions().position(currentLocation).title("You are here"));
+                    //mMap.addMarker(new MarkerOptions().position(currentLocation2).title("You are here"));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+
+                    //Toast.makeText(context,"Lat: "+ gps.getLatitude()+ "\nLng: "+gps.getLongitude(), Toast.LENGTH_LONG).show();
+
+                    String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(i);
                 }
-                //String uri = "https://maps.google.com/maps?saddr="+ strTxtFrom +"&daddr="+ strTxtTo;
-                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                //startActivity(i);
+
 
             }
         });
