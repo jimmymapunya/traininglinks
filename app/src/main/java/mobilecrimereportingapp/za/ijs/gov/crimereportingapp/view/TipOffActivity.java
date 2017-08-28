@@ -62,7 +62,7 @@ public class TipOffActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener date;
     EditText txtOffenderName,txtOffenderAddress,txtOffenderCell,txtOffenseComiited, txtDateOfOffense, txtLocationOfOffense, txtOffenseDetails, txtVictimNames, txtVictimAddress,txtVictimCellNumber, txtCaseNo;
     Spinner spinnerQuestion;
-    String URL = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateReportFraud";
+    String URL = "http://innovationmessagehub.azurewebsites.net/api/MessageHub/CreateTippOff";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +165,13 @@ public class TipOffActivity extends AppCompatActivity {
                 String strDateOfOffense = txtDateOfOffense.getText().toString();
                 String strLocationOfOffense = txtLocationOfOffense.getText().toString();
                 String strOffenseDesc = txtOffenseDetails.getText().toString();
+                String stroffenderNames =txtOffenderName.getText().toString();
+                String stroffenderAddress=txtOffenderAddress.getText().toString();
+                String stroffenderCell=txtOffenderCell.getText().toString();
+                String strvictimNames=txtVictimNames.getText().toString();
+                String strvictimAddress=txtVictimAddress.getText().toString();
+                String strvictimCell=txtVictimCellNumber.getText().toString();
+                String strcaseNo=txtCaseNo.getText().toString(); ;
 
                 txtOffenseComiited.setBackgroundResource(R.drawable.edit_text_style);
                 txtDateOfOffense.setBackgroundResource(R.drawable.edit_text_style);
@@ -187,7 +194,8 @@ public class TipOffActivity extends AppCompatActivity {
                     }
                 }else{
                     //CreateReporOffense(URL,strTypeOfOffesne,strDateOfOffense,strLocationOfOffense,strOffenseDesc);
-                    Toast.makeText(context,"Tip off has been submitted, Thank you for caring about South Africa by providing a tip-off.",Toast.LENGTH_LONG).show();
+                    createTippOff(URL,stroffenderNames,stroffenderAddress,stroffenderCell,strTypeOfOffesne,strDateOfOffense,strLocationOfOffense,strOffenseDesc,strvictimNames,strvictimAddress,strvictimCell,strcaseNo);
+                    //Toast.makeText(context,"Tip off has been submitted, Thank you for caring about South Africa by providing a tip-off.",Toast.LENGTH_LONG).show();
                     txtOffenseComiited.setText("");
                     txtDateOfOffense.setText("");
                     txtLocationOfOffense.setText("");
@@ -223,7 +231,7 @@ public class TipOffActivity extends AppCompatActivity {
     }
 
     //create message
-    public void CreateReporOffense(final String url,final String offenseType,final String offenseDate,final String address,final String detail)
+    public void createTippOff(final String url, final String strOffenderName,final String strOffenderAddress,final String strOffenderCell,final String strOffenseComiited, final String strDateOfOffense, final String strLocationOfOffense, final String strOffenseDetails, final String strVictimNames, final String strVictimAddress,final String strVictimCellNumber, final String strCaseNo)
     {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -258,18 +266,24 @@ public class TipOffActivity extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
 
-                //Values to post
-                username = "john";
-                role = "admin";
-
                 Map<String,String > params = new HashMap<String,String>();
                 params.put("AuthDetail.UserName",UserProfile.Username);
-                params.put("AuthDetail.Role",role);
+                params.put("AuthDetail.Role",UserProfile.Role);
                 params.put("AuthDetail.DeviceId", Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID));
-                params.put("OffenseComitted", offenseType);
-                params.put("OffenseDate",offenseDate);
-                params.put("OffenseLocation", address);
-                params.put("OffenseDesc", detail);
+
+                params.put("OffenderNames", strOffenderName);
+                params.put("OffenderAddress",strOffenderAddress);
+                params.put("OffenderCell", strOffenderCell);
+                params.put("OffenceCommited", strOffenseComiited);
+
+                params.put("DateOfOffence",strDateOfOffense);
+                params.put("LocationOffence", strLocationOfOffense);
+                params.put("OffenceDetail", strOffenseDetails);
+                params.put("VictimNames", strVictimNames);
+                params.put("VictimAddress",strVictimAddress);
+                params.put("VictimCell", strVictimCellNumber);
+
+                params.put("CaseNo", strCaseNo);
                 return params;
             }
 

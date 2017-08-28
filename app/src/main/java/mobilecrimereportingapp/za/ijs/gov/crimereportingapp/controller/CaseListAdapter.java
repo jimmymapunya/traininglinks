@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.CaseDetails;
@@ -37,20 +39,19 @@ import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.ReportCrimeActi
  * Created by TsundzukaniM on 07-Aug-17.
  */
 
-public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filterable{
+public class CaseListAdapter extends BaseAdapter implements Filterable{
 
     private Context context;
     private int layoutResourceId;
-    private ArrayList<CaseDetails> aList = null;
-    private ArrayList<CaseDetails> filteredData = null;
-    private static final ArrayList<CaseDetails> data = CaseListActivity.listdao;
+    private HashMap<Integer, CaseDetails>aList = null;
+    private HashMap<Integer, CaseDetails> filteredData = null;
+   // private static final ArrayList<CaseDetails> data = CaseListActivity.listdao;
     private CaseHolder holder = null;
     private View dropDownView, layoutView;
-    private String dropCourts[] = new String[data.size()];
-    //private ItemFilter mFilter = new ItemFilter();
 
-    public CaseListAdapter(Context context, int layoutResourceId, ArrayList<CaseDetails> aList) {
-        super(context, layoutResourceId, aList);
+
+    public CaseListAdapter(Context context, int layoutResourceId, HashMap<Integer, CaseDetails> aList) {
+        //super(context, layoutResourceId, aList);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.aList = aList;
@@ -66,6 +67,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
         return position;
     }
     private View initializeHolder(View view, ViewGroup parent){
+
         if(view == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -105,17 +107,30 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
         else
         {
             holder = (CaseHolder) view.getTag();
+            holder.investigate.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.arrested.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.bail.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.trial.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.verdict.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.aquit.setBackgroundResource(R.drawable.process_status_formatted);
+            holder.sentence.setBackgroundResource(R.drawable.process_status_formatted);
+
+
         }
         return view;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        final ArrayList<CaseDetails> data  = aList;
-        System.out.println(data.size()+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx start"+position);
+        System.out.println(aList.get(0).getCaseNo().toString()+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx start"+position);
+        //View view = convertView;
+        holder = null;
         View view = initializeHolder(convertView, parent);
 
-        if(position < data.size()){
+
+
+        if(position < aList.size()){
+
 
             ArrayList<StatusDetails> arrStatuses = aList.get(position).getStatus();
             holder.txtCaseNo.setText("Case No : "+aList.get(position).getCaseNo());
@@ -230,7 +245,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
             @SuppressWarnings("unchecked")
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                aList = (ArrayList<CaseDetails>) results.values;
+                aList = (HashMap<Integer, CaseDetails>) results.values;
                 notifyDataSetChanged();
             }
             @Override
@@ -240,7 +255,7 @@ public class CaseListAdapter extends ArrayAdapter<CaseDetails> implements Filter
                 ArrayList<CaseDetails> fillteredArrList = new ArrayList<CaseDetails>();
 
                 if (filteredData == null) {
-                    filteredData = new ArrayList<CaseDetails>(aList);
+                    filteredData = new HashMap<Integer, CaseDetails>(aList);
                 }
                 if (constraint == null || constraint.length() == 0) {
                     filterResults.count = filteredData.size();

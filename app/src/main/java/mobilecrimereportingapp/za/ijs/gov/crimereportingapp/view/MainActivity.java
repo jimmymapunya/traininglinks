@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("Please select type of Tip-Off you are reporting")
-                        .setCancelable(false)
+                        .setCancelable(true)
                         .setPositiveButton("Fraud and Corruption", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 ProfileActivity.screenToGoTo = false;

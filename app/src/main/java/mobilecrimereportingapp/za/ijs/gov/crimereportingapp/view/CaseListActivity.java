@@ -45,7 +45,7 @@ public class CaseListActivity extends AppCompatActivity {
     CaseListAdapter adapter;
 
     public static ArrayList<CaseDetails> listdao = new ArrayList<>();
-
+    public static HashMap<Integer,CaseDetails> map = new HashMap<>();
     private TextView notificationCountIcon, inboxCountIcon;
     private FrameLayout notificationLayout, inboxLayout;
 
@@ -125,9 +125,14 @@ public class CaseListActivity extends AppCompatActivity {
         listdao.add(new CaseDetails("06/2014/11", "Nadia Beure", "Khatisa Chabalala", "Attempted Murder", "The accused is suspected of shooting a girl with a gun", statusDetailsList4));
         listdao.add(new CaseDetails("06/2017/25", "Kackey Aphiah", "Siduel Maxakeni", "Murder", "The accused is suspected of killing his girlfriend", statusDetailsList5));
 
+        for(int x=0; x<listdao.size(); x++){
 
+              map.put(x,listdao.get(x));
 
-        adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, listdao);
+        }
+
+        System.out.println(map.get(1)+"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+        adapter = new CaseListAdapter(this, R.layout.activity_case_list_row, map);
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(listview);
 
