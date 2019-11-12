@@ -74,8 +74,10 @@ public class DashboardActivity extends AppCompatActivity {
                 if(role==1)
                 {
                     //Toast.makeText(getApplicationContext(), "Tutor Cannot Book", Toast.LENGTH_LONG).show();
-                    fabBookTutor.setEnabled(false);
+                    ///fabBookTutor.setEnabled(false);
                     //bookLayout.setEnabled(false);
+                    //fabBookTutor.setVisibility(android.view.View.INVISIBLE);
+                    //fabBookTutor.setVisibility(android.view.View.GONE);
                 }
                 else
                 {
