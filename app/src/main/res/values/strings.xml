@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crime Reporting</string>
+    <string name="app_name">Training Links</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="terms">Terms and conditions</string>
@@ -79,27 +79,22 @@
     </string-array>
 
     <string-array name="crimes">
-        <item>Possession or Use of Drugs</item>
-        <item>Theft</item>
-        <item>Aggravated Assault</item>
-        <item>Common Assault</item>
-        <item>Driving under the influence</item>
-        <item>House breaking to commit unknown crime</item>
-        <item>Malicious Injury to Property</item>
-        <item>Consuming liquor in public</item>
-        <item>Possession of suspected stolen goods</item>
-        <item>Aggravated Robbery</item>
-        <item>Dealing in Drugs</item>
-        <item>Driving MV without license</item>
-        <item>Rape</item>
-        <item>Murder</item>
-        <item>Drunk in public</item>
-        <item>House breaking to steal</item>
-        <item>Possession of weapon</item>
-        <item>Common Robbery</item>
-        <item>Failure to wear safety belt.</item>
-        <item>Contravening the conditions of a Protection Order</item>
-        <item>Reckless or Negligent driving</item>
+        <item>Mathematics</item>
+        <item>English</item>
+        <item>Isizulu</item>
+        <item>Natural Science</item>
+        <item>Life Orientation</item>
+        <item>Mathematical Literacy</item>
+        <item>Life Science</item>
+        <item>Physical Sciences</item>
+        <item>Business Studies</item>
+        <item>Economics</item>
+        <item>Accounting</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Consumer Studies</item>
+        <item>Religiuos Studies</item>
+        <item>Information Technology</item>
     </string-array>
 
     <string-array name="gender">

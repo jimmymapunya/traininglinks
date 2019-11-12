@@ -107,8 +107,8 @@ public class IndividualFeedbackActivity extends AppCompatActivity {
                     notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
                     inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-                    notificationCountIcon.setText(MainActivity.notificationCount);
-                    inboxCountIcon.setText(MainActivity.inboxCount);
+                    notificationCountIcon.setText(DashboardActivity.notificationCount);
+                    inboxCountIcon.setText(DashboardActivity.inboxCount);
 
                     /*Toolbar and Buttons instantiation*/
                     Toolbar = (Toolbar) findViewById(R.id.appBar);

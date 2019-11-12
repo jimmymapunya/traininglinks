@@ -106,12 +106,12 @@ public class EventFeedbackActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
-        Toolbar.setTitle("Event Feedback");
+        Toolbar.setTitle("Feedback");
 
         setSupportActionBar(Toolbar);
         /**Back notificationicon for navigation drawer*/
@@ -156,7 +156,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                    String txtFeedbackQuestion = "Are you satisfied with how case "+ String.valueOf(arr[0].getSelectedItem()) + "'s " + String.valueOf(arr[1].getSelectedItem()) + " was handled?";
+                    String txtFeedbackQuestion = "Are you satisfied with "+ String.valueOf(arr[1].getSelectedItem()) + "'s " + String.valueOf(arr[0].getSelectedItem()) + " tutoring";
                     txtViewFeedbackQuestion.setText(txtFeedbackQuestion);
 
                 }
@@ -167,27 +167,6 @@ public class EventFeedbackActivity extends AppCompatActivity {
             });
 
         }
-
-        /**if((String.valueOf(spinnerCaseNo.getSelectedItem()).equals("---Select Case No---")) && (String.valueOf(spinnerPhase.getSelectedItem()).equals("---Select Event---"))){
-            Toast.makeText(context,spinnerCaseNo.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
-            //tell user to select items first before proceeding
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-            // set title
-            alertDialogBuilder.setTitle("Please select Case number and event first");
-
-            //set dialog message
-            alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // if this button is clicked, just close
-                    // the dialog box and do nothing
-                    dialog.cancel();
-                }
-            });
-            // create alert dialog
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            //show it
-            alertDialog.show();
-        }else {*/
 
 
         //get additional comments
@@ -331,7 +310,7 @@ public class EventFeedbackActivity extends AppCompatActivity {
                             alertDialogBuilder.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //if this is clicked, close current activity and go back to provide feedback
-                                    startActivity(new Intent(context, ProvideFeedback.class));
+                                    startActivity(new Intent(context, DashboardActivity.class));
                                 }
                             });
                             // create alert dialog
@@ -394,12 +373,6 @@ public class EventFeedbackActivity extends AppCompatActivity {
                         result.append("\ncheckbox3 : ").append(checkBox3.isChecked());
                         result.append("\ncheckbox4 : ").append(checkBox4.isChecked());
 
-                        /**Toast.makeText(context,"Case No: " + String.valueOf(spinnerCaseNo.getSelectedItem()) +
-                               "\nPhase: "+ String.valueOf(spinnerPhase.getSelectedItem()) ,Toast.LENGTH_LONG).show();
-                        Toast.makeText(context,"Star Rating: "+ String.valueOf(ratingBar.getRating()),Toast.LENGTH_LONG).show();
-                        Toast.makeText(context,"Checkboxes: \n" + result.toString(),Toast.LENGTH_LONG).show();
-                        //Tell user values have been submitted
-                        Toast.makeText(context,"Sent",Toast.LENGTH_LONG).show();*/
 
 
                     }
@@ -477,9 +450,25 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         spinnerCaseNo = (Spinner) findViewById(R.id.spinnerCaseNo);
         List<String> list = new ArrayList<String>();
-        list.add("---Select Case No---");
-        list.add("05/2017/99");
-        list.add("07/2017/40");
+        list.add("Subject");
+        list.add("Mathematics");
+        list.add("English");
+        list.add("Isizulu");
+        list.add("Natural Science");
+        list.add("Life Orientation");
+        list.add("Mathematical Literacy");
+        list.add("Life Science");
+        list.add("Physical Sciences");
+        list.add("Business Studies");
+        list.add("Economics");
+        list.add("Accounting");
+        list.add("Geography");
+        list.add("History");
+        list.add("Consumer");
+        list.add("Studies");
+        list.add("Religiuos");
+        list.add("Information Technology");
+
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, list);
@@ -492,14 +481,10 @@ public class EventFeedbackActivity extends AppCompatActivity {
 
         spinnerPhase = (Spinner) findViewById(R.id.spinnerPhase);
         List<String> list = new ArrayList<String>();
-        list.add("---Select Event---");
-        list.add("Investigation");
-        list.add("Arrest");
-        list.add("Bail Hearing");
-        list.add("Trial");
-        list.add("Verdict");
-        list.add("Acquit");
-        list.add("Sentencing");
+        list.add("Tutor");
+        list.add("Vuyo Ndebele");
+        list.add("Mari Rakolota");
+
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, list);

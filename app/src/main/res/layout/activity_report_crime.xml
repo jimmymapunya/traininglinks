@@ -35,32 +35,65 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/please_specify_which_crime_you_would_like_to_report" />
+                    android:text="Please select tutor" />
 
-                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                    android:id="@+id/spinner"
+                <ListView
+                    android:id="@+id/lv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@+id/lblSelectCrime"
+                    android:choiceMode="singleChoice"
+                    android:divider="@drawable/custom_divider"
+                    android:dividerHeight="2dp"
+                    android:listSelector="@drawable/selected"></ListView>
+
+                <EditText
+                    android:id="@+id/txtTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblSelectCrime"
+                    android:layout_below="@+id/lv_list"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style"
-                    android:entries="@array/crimes"
-                    app:hintText="Select Here" />
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="top|start"
+                    android:hint="Time"
+                    android:textColorHint="@android:color/darker_gray" />
+                <EditText
+                    android:id="@+id/txtOffenderAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTime"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="top|start"
+                    android:hint="@string/address"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:id="@+id/linearTutors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtOffenderAddress"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/lblBeforeCrime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinner"
+                    android:layout_below="@+id/linearTutors"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/before_crime" />
+                    android:text="Comments" />
 
                 <EditText
-                    android:id="@+id/txtBeforeCrime"
+                    android:id="@+id/edtComments"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lblBeforeCrime"
@@ -76,295 +109,20 @@
                     android:scrollbars="vertical"
                     android:textColorHint="#B0BEC5" />
 
-                <TextView
-                    android:id="@+id/lblDuringCrime"
-                    android:labelFor="@+id/txtDuringCrime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtBeforeCrime"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/during_crime" />
 
-                <EditText
-                    android:id="@+id/txtDuringCrime"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblDuringCrime"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:maxLines="10"
-                    android:minLines="3"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
-
-                <TextView
-                    android:id="@+id/lblAfterCrime"
-                    android:labelFor="@+id/txtAfterCrime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDuringCrime"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/after_crime" />
-
-                <EditText
-                    android:id="@+id/txtAfterCrime"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblAfterCrime"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:maxLines="10"
-                    android:minLines="3"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
-
-                <TextView
-                    android:id="@+id/lblInjuries"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtAfterCrime"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/injuries" />
-
-                <Spinner
-                    android:id="@+id/spinnerInjuries"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblInjuries"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/linearInjuries"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerInjuries"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lblObjectsUsed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearInjuries"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/objects_used" />
-
-                <Spinner
-                    android:id="@+id/spinnerObjectsUsed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblObjectsUsed"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/linearObjects"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerObjectsUsed"
-                    android:orientation="vertical">
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lblSceneItems"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearObjects"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/crime_scene_items" />
-
-                <Spinner
-                    android:id="@+id/spinnerSceneItems"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblSceneItems"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/linearSceneItems"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerSceneItems"
-                    android:orientation="vertical">
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/lblCrimeSurroundings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearSceneItems"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/crime_surroundings" />
-
-                <EditText
-                    android:id="@+id/txtCrimeSurroundings"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblCrimeSurroundings"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_style"
-                    android:gravity="top|start"
-                    android:hint=""
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:maxLines="10"
-                    android:minLines="3"
-                    android:scrollbars="vertical"
-                    android:textColorHint="#B0BEC5" />
-
-                <TextView
-                    android:id="@+id/lblKnowOffender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtCrimeSurroundings"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginStart="60dp"
-                    android:text="@string/know_offender" />
-
-                <Spinner
-                    android:id="@+id/spinnerKnowOffender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblKnowOffender"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/OffenderDetailsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerKnowOffender"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearOffender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/OffenderDetailsLayout"
-                    android:orientation="vertical">
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lblFirstAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearOffender"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/first_account" />
-
-                <Spinner
-                    android:id="@+id/spinnerFirstAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblFirstAccount"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/linearFirstAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerFirstAccount"
-                    android:orientation="vertical">
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lblWitnesses"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearFirstAccount"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/possible_witnesses" />
-
-                <Spinner
-                    android:id="@+id/spinnerWitnesses"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lblWitnesses"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_spinner_style" />
-
-                <LinearLayout
-                    android:id="@+id/doneWitnessDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/spinnerWitnesses"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearWitness"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/doneWitnessDetails"
-                    android:orientation="vertical">
-                </LinearLayout>
 
                 <CheckBox
                     android:id="@+id/checkBoxConfirmation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearWitness"
+                    android:layout_below="@+id/edtComments"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/please_confirm_that_all_details_provided_are_correct_and_accurate" />
 
                 <Button
-                    android:id="@+id/btnSubmit"
+                    android:id="@+id/btnBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/checkBoxConfirmation"
@@ -372,7 +130,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/unsafebutton"
-                    android:text="@string/submit"
+                    android:text="Book"
                     android:textColor="#fff" />
 
             </RelativeLayout>

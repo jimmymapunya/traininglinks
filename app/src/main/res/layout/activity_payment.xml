@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Payment Details Here"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/confirm"
+                    android:gravity="center"
+                    android:text="FNB"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/IDNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Name"
+                    android:gravity="center"
+                    android:text="Account Number: 123456789"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/IDNum"
+                    android:gravity="center"
+                    android:text="Branch Name: Centurion"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/account"
+                    android:gravity="center"
+                    android:text="Branch Code: 220566"
+                    android:textStyle="bold" />
+
+
+
+
+
+
+                <Button
+                    android:id="@+id/btnClose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/code"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/unsafebutton"
+                    android:drawableStart="@mipmap/ic_edit"
+                    android:text="Close"
+                    android:textColor="#fff" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <fragment
+            android:id="@+id/frag_nav_drawer"
+            android:name="mobilecrimereportingapp.za.ijs.gov.crimereportingapp.view.NavigationDrawerFrag"
+            android:layout_width="@dimen/nav_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:layout="@layout/fragment_navigation_drawer" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>

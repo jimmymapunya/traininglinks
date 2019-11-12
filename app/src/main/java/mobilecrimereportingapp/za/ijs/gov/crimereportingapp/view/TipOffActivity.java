@@ -75,8 +75,8 @@ public class TipOffActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
@@ -200,7 +200,7 @@ public class TipOffActivity extends AppCompatActivity {
                     txtDateOfOffense.setText("");
                     txtLocationOfOffense.setText("");
                     txtOffenseDetails.setText("");
-                    startActivity(new Intent(TipOffActivity.this, MainActivity.class));
+                    startActivity(new Intent(TipOffActivity.this, DashboardActivity.class));
                 }
 
 

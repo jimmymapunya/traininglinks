@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1F3159"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:weightSum="6"
+            android:layout_weight="1.4">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_weight="3"
+                android:paddingTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/female"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_weight="0.8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="VUYO NDEBELE"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:id="@+id/txtRegistrationNo"
+                    android:text="Signed in as Tutor"
+                    android:textSize="13sp"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"></LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:background="@drawable/unsafebutton"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Sign Out"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"></LinearLayout>
+
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/mainGrid"
+            android:columnCount="3"
+            android:rowCount="3"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:layout_weight="2.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            >
+
+            <!-- Row 1 -->
+
+            <!-- Column 1 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/gradientbackground"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/bookLayout"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fabBookTutor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        app:srcCompat="@drawable/ic_booking"
+                        android:clickable="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Book Tutor"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- Column 2 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/bookLayout6"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        app:srcCompat="@android:drawable/ic_dialog_dialer"
+                        android:clickable="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Bookings"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- Column 3 -->
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+                <LinearLayout
+                    android:id="@+id/bookLayout5"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/ic_feedback"
+                        android:clickable="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Feedback"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <!-- Row 2 -->
+
+            <!-- Column 1 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/bookLayout4"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:clickable="true"
+                        android:src="@drawable/ic_chat" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Chat"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- Column 2 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/bookLayout3"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:clickable="true"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Profile"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- Column 1 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+                <LinearLayout
+                    android:id="@+id/bookLayout2"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:clickable="true"
+                        android:src="@drawable/ic_payment" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Payment Details"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <!-- Row 2 -->
+
+            <!-- Column 2 -->
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/bookLayout1"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:clickable="true"
+                        android:src="@drawable/ic_resources" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Resources"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#1F3159"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

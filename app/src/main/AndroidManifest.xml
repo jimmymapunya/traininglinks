@@ -13,21 +13,30 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/backgroud"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/backgroud"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.MainActivity" />
         <activity android:name=".view.ProvideFeedback" />
         <activity android:name=".view.ComposeMessageActivity" />
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".view.DashboardActivity" />
+        <activity android:name=".view.RegisterStudentActivity" />
+        <activity android:name=".view.RegisterTutorActivity" />
+        <activity android:name=".view.LoginActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -57,6 +66,7 @@
         <activity android:name=".view.InboxActivity" />
         <activity android:name=".view.InboxMessagesActivity" />
         <activity android:name=".view.ProfileActivity"></activity>
+        <activity android:name=".view.PaymentsActivity"></activity>
     </application>
 
 </manifest>

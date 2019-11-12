@@ -82,7 +82,7 @@ public class NavigationDrawerFrag extends Fragment {
         List<NavigationInfo> navigationInfos = new ArrayList<>();
 
         int icons [] = {R.mipmap.ic_home,R.mipmap.ic_book,R.mipmap.ic_bug,R.mipmap.ic_court, R.mipmap.ic_location, R.mipmap.ic_feedback, R.mipmap.ic_compose};
-        String itemTitles [] = {"Home","Report a crime","Report Fraud & Corruption","My Cases" , "Court Finder", "Provide Feedback", "Compose Message" };
+        String itemTitles [] = {"Home","Book Tutor","Bookings","My Profile" , "Payments", "Provide Feedback", "Compose Message" };
 
         for(int i = 0; i < icons.length && i < itemTitles.length; i++){
             NavigationInfo currentNavInfo = new NavigationInfo();

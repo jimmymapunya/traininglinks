@@ -37,8 +37,8 @@ public class ProvideFeedback extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provide_feedback);
 
-        notificationLayout = (FrameLayout) findViewById(R.id.Notification);
-        inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
+        //notificationLayout = (FrameLayout) findViewById(R.id.Notification);
+        //inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
 
 
         notificationLayout.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +61,8 @@ public class ProvideFeedback extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +26,6 @@ import java.util.Date;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.InboxAdapter;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.InboxModel;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.NotificationInfo;
 
 public class InboxActivity extends AppCompatActivity {
 
@@ -54,8 +52,8 @@ public class InboxActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
         notificationLayout = (FrameLayout) findViewById(R.id.Notification);
         notificationLayout.setOnClickListener(new View.OnClickListener() {
@@ -68,11 +66,11 @@ public class InboxActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.listview);
         inbox = new ArrayList<>();
 
-        for(int x=0;x<MainActivity.jsonArrayInboxes.length();x++)
+        for(int x = 0; x< DashboardActivity.jsonArrayInboxes.length(); x++)
         {
 
             try {
-                JSONObject jsonObjectInbox = MainActivity.jsonArrayInboxes.getJSONObject(x);
+                JSONObject jsonObjectInbox = DashboardActivity.jsonArrayInboxes.getJSONObject(x);
 
                 String subject = jsonObjectInbox.getString("subject");
                 String inboxDate = jsonObjectInbox.getString("inboxDate");

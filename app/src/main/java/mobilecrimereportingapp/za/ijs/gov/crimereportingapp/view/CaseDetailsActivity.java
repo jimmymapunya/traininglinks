@@ -13,18 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.CaseDetails;
-import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.model.StatusDetails;
 
 /**
  * Created by TsundzukaniM on 12-Jul-17.
@@ -57,8 +49,8 @@ public class CaseDetailsActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
          /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +22,9 @@ public class ProfileActivity extends AppCompatActivity {
     private android.support.v7.widget.Toolbar Toolbar;
     private FrameLayout notificationLayout, inboxLayout;
     private TextView notificationCountIcon, inboxCountIcon;
-    private Button btnContinue;
+    private Button btnClose;
 
-    public static boolean screenToGoTo;
-    public static boolean screenToGoToTipOffGeneral;
-    public static boolean screenToGoToTipOffFraud;
-
+    private EditText edtUserEmail, edtUserContact, edtUserAddress1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,28 +37,25 @@ public class ProfileActivity extends AppCompatActivity {
         inboxLayout = (FrameLayout) findViewById(R.id.Inbox);
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
-        btnContinue = (Button) findViewById(R.id.btnContinue);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
+        btnClose = (Button) findViewById(R.id.btnClose);
+        edtUserEmail = findViewById(R.id.userEmail);
+        edtUserContact = findViewById(R.id.userContact);
+        edtUserAddress1 = findViewById(R.id.userAddress1);
 
-        btnContinue.setOnClickListener(new View.OnClickListener() {
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(screenToGoTo){
-                    startActivity(new Intent(getApplicationContext(), ReportCrimeActivity.class));
-                }
-                else if(screenToGoToTipOffGeneral){
-                    startActivity(new Intent(getApplicationContext(), TipOffActivity.class));
-                    Toast.makeText(getApplicationContext(),"Personal details will be encrypted for your protection.",Toast.LENGTH_LONG).show();
-                }else {
-                    startActivity(new Intent(getApplicationContext(), ReportFraudAndCorruptionActivity.class));
-                    Toast.makeText(getApplicationContext(),"Personal details will be encrypted for your protection.",Toast.LENGTH_LONG).show();
-                }
-
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
 
             }
         });
+        edtUserEmail.setEnabled(false);
+        edtUserContact.setEnabled(false);
+        edtUserAddress1.setEnabled(false);
+
 
         /*Toolbar instantiation and setup*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);

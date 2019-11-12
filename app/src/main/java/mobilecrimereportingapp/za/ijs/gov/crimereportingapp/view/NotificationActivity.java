@@ -15,19 +15,15 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.R;
 import mobilecrimereportingapp.za.ijs.gov.crimereportingapp.controller.NotificationAdapter;
@@ -68,15 +64,15 @@ public class NotificationActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
 
-        for(int x=0;x<MainActivity.jsonArrayNotification.length();x++)
+        for(int x = 0; x< DashboardActivity.jsonArrayNotification.length(); x++)
         {
 
             try {
-                JSONObject jsonObjectNotification = MainActivity.jsonArrayNotification.getJSONObject(x);
+                JSONObject jsonObjectNotification = DashboardActivity.jsonArrayNotification.getJSONObject(x);
                 String notificationDescription = jsonObjectNotification.getString("description");
                 String notificationDate = jsonObjectNotification.getString("notificationDate");
                 //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");

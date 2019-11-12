@@ -74,8 +74,8 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
         notificationCountIcon = (TextView) findViewById(R.id.txtNotificationCount);
         inboxCountIcon = (TextView) findViewById(R.id.txtInboxCount);
 
-        notificationCountIcon.setText(MainActivity.notificationCount);
-        inboxCountIcon.setText(MainActivity.inboxCount);
+        notificationCountIcon.setText(DashboardActivity.notificationCount);
+        inboxCountIcon.setText(DashboardActivity.inboxCount);
 
         /*Toolbar and Buttons instantiation*/
         Toolbar = (Toolbar) findViewById(R.id.appBar);
@@ -300,7 +300,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                     locationBus.setText("");
                     complainDetailBus.setText("");
                     txttitle2.setText("");
-                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, MainActivity.class));
+                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, DashboardActivity.class));
 
                 }
 
@@ -348,7 +348,7 @@ public class ReportFraudAndCorruptionActivity extends AppCompatActivity {
                     complainDetailIndividual.setText("");
                     btnSubmitIndividual.setText("");
                     dateOccurredIndividual.setText("");
-                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, MainActivity.class));
+                    startActivity(new Intent(ReportFraudAndCorruptionActivity.this, DashboardActivity.class));
                 }
 
 
